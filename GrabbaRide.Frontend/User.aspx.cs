@@ -13,11 +13,11 @@ using System.Xml.Linq;
 
 namespace GrabbaRide.Frontend
 {
-    public partial class _Default : System.Web.UI.Page
+    public partial class User : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            Label1.Text = Request.QueryString.Get("id");
         }
     }
 }
