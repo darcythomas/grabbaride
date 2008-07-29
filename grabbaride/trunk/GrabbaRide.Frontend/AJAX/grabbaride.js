@@ -1,5 +1,5 @@
 ﻿//This file is in the GrabbaRide Namespace
-if (!GrabbaRide) { GrabbaRide = new Object(); }
+if (!GrabbaRide) { var GrabbaRide = new Object(); }
 
 
 /**
@@ -22,10 +22,35 @@ GrabbaRide.AJAXRequest = function(url, content, callback)
         request.onreadystatechange = function() {
             if (request.readyState == 4 && request.status == 200) {
                 if (request.responseText) {
-                    callback(request.responseText);
+                    callback(request.responseXML);
                 }
             }
         }  
     }
     request.send(content);
+}
+
+/**
+* setEventListener - sets an event listener defined by the "event" parameter to a function specified by "call", 
+* and binds it to the object specified by the "source" parameter. Valid events are:
+* - mousedown
+* - mouseup
+* - keydown
+* - keyup
+* - click
+* - dblclick
+* - mouseover
+* - mousemove
+* - mouseout
+* - keypress
+* These are just the keyboard and mouse events, for more events related to the page,
+* browser, or other elements; refer to http://en.wikipedia.org/wiki/DOM_events
+**/
+
+GrabbaRide.setEventListener = function(source, event, call) 
+{
+    if (typeof source == "string")
+        source = document.getElementById(source);
+    if (source)
+        source.addEventListener(event, call, false);
 }
