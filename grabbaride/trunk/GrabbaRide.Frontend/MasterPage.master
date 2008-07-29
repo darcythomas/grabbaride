@@ -15,7 +15,8 @@
     <form id="form1" runat="server">
     <div style="border: thin #C0C0C0 double; width: 900px; height: 130px" 
         id="Header">
-                head</div>
+                <img alt="GrabbaRide" src="images/logo.jpg" 
+                    style="width: 150px; height: 120px" />head</div>
     <div style="width: 900px; height: 400px" id="body">
         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
         
