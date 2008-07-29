@@ -7,8 +7,6 @@
     <title>Untitled Page</title>
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
-    <style type="text/css">
-        </style>
     <link href="Global.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
