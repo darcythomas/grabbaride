@@ -19,5 +19,11 @@ namespace GrabbaRide.Frontend
         {
 
         }
+
+        protected void ContinueButton_Click(object sender, EventArgs e)
+        {
+            //go to login page
+            Response.Redirect("Login.aspx");
+        }
     }
 }
