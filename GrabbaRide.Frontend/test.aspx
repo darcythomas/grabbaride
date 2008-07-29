@@ -1,0 +1,33 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="test.aspx.cs" Inherits="GrabbaRide.Frontend.WebForm2" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title>Search page AJAX test</title>
+    <style type="text/css">
+        #cityselect
+        {
+            width: 130px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+     &nbsp;</div>
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+        <ContentTemplate>
+            <asp:DropDownList ID="DropDownList1" runat="server">
+            </asp:DropDownList>
+        </ContentTemplate>
+    </asp:UpdatePanel>
+    <p>
+            <asp:Button ID="Button1" runat="server" onclick="Button1_Click" 
+            Text="Button" />
+        </p>
+    </form>
+</body>
+</html>

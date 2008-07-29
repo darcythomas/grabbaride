@@ -62,8 +62,6 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AJAX\search.js" />
-    <Content Include="AJAX\grabbaride.js" />
     <Content Include="Global.asax" />
     <Content Include="Global.css" />
     <Content Include="Web.config" />
@@ -96,12 +94,28 @@
     <Compile Include="User.aspx.designer.cs">
       <DependentUpon>User.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\logo.jpg" />
     <Content Include="MasterPage.master" />
     <Content Include="Default.aspx" />
     <Content Include="User.aspx" />
+    <Content Include="Login.aspx" />
+    <Content Include="Register.aspx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
