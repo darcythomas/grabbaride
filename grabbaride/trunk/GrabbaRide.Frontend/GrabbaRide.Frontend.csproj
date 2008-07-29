@@ -66,7 +66,6 @@
     <Content Include="AJAX\grabbaride.js" />
     <Content Include="Global.asax" />
     <Content Include="Global.css" />
-    <Content Include="User.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -83,6 +82,13 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="User.aspx.cs">
       <DependentUpon>User.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -94,6 +100,8 @@
   <ItemGroup>
     <Content Include="Images\logo.jpg" />
     <Content Include="MasterPage.master" />
+    <Content Include="Default.aspx" />
+    <Content Include="User.aspx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
