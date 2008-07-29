@@ -64,25 +64,12 @@
   <ItemGroup>
     <Content Include="AJAX\search.js" />
     <Content Include="AJAX\grabbaride.js" />
-    <Content Include="main.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Global.css" />
     <Content Include="User.aspx" />
     <Content Include="Web.config" />
-    <Content Include="login.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AJAX\MasterPage.master.cs">
-      <DependentUpon>MasterPage.master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="main.aspx.cs">
-      <SubType>ASPXCodeBehind</SubType>
-      <DependentUpon>main.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="main.aspx.designer.cs">
-      <DependentUpon>main.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -103,16 +90,8 @@
     <Compile Include="User.aspx.designer.cs">
       <DependentUpon>User.aspx</DependentUpon>
     </Compile>
-    <Compile Include="login.aspx.cs">
-      <DependentUpon>login.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="login.aspx.designer.cs">
-      <DependentUpon>login.aspx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AJAX\MasterPage.master" />
     <Content Include="MasterPage.master" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
