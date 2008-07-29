@@ -5,7 +5,7 @@
     <asp:CreateUserWizard ID="CreateUserWizard1" runat="server" BackColor="#EFF3FB" 
     BorderColor="#B5C7DE" BorderStyle="Solid" BorderWidth="1px" 
     Font-Names="Verdana" Font-Size="0.8em" Height="319px" 
-    style="text-align: center" Width="363px" ActiveStepIndex="1">
+    style="text-align: center" Width="363px">
     <SideBarStyle BackColor="#507CD1" Font-Size="0.9em" VerticalAlign="Top" />
     <SideBarButtonStyle BackColor="#507CD1" Font-Names="Verdana" 
         ForeColor="White" />
