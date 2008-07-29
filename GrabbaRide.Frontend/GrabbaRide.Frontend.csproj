@@ -92,6 +92,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\logo.jpg" />
     <Content Include="MasterPage.master" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
