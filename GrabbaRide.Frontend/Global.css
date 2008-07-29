@@ -1,1 +1,8 @@
-﻿
+﻿.centercol
+{
+	float: right;
+}
+.leftcol
+{
+	float: left;
+}
