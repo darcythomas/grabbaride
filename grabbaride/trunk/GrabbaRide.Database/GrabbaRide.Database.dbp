@@ -1,11 +1,17 @@
 # Microsoft Developer Studio Project File - Database Project
 Begin DataProject = "GrabbaRide.Database"
    MSDTVersion = "80"
+   DefDBRef = "GrabbaRideDB"
    Begin Folder = "Change Scripts"
    End
    Begin Folder = "Create Scripts"
    End
    Begin DBRefFolder = "Database References"
+      Begin DBRefNode = "GrabbaRideDB"
+         ConnectStr = "Data Source=LOCALHOST;Initial Catalog=GrabbaRideDB;Integrated Security=True"
+         Provider = "{91510608-8809-4020-8897-FBA057E22D54}"
+         Colorizer = 6
+      End
    End
    Begin Folder = "Queries"
    End
