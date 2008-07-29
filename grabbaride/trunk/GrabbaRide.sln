@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrabbaRide.ObjectMappings",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrabbaRide.UserManagement", "GrabbaRide.UserManagement\GrabbaRide.UserManagement.csproj", "{0ADB4FCB-9081-4E28-887B-3BBD5E5BD15E}"
 EndProject
+Project("{4F174C21-8C12-11D0-8340-0000F80270F8}") = "GrabbaRide.Database", "GrabbaRide.Database\GrabbaRide.Database.dbp", "{32D248C2-A7B5-4727-89B5-B16F3338ADCB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
