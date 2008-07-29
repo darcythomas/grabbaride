@@ -64,23 +64,14 @@
   <ItemGroup>
     <Content Include="AJAX\search.js" />
     <Content Include="AJAX\grabbaride.js" />
-    <Content Include="city.aspx" />
     <Content Include="main.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Global.css" />
     <Content Include="User.aspx" />
     <Content Include="Web.config" />
     <Content Include="login.aspx" />
-    <Content Include="test.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="city.aspx.cs">
-      <DependentUpon>city.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="city.aspx.designer.cs">
-      <DependentUpon>city.aspx</DependentUpon>
-    </Compile>
     <Compile Include="main.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>main.aspx</DependentUpon>
@@ -110,13 +101,6 @@
     </Compile>
     <Compile Include="login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="test.aspx.cs">
-      <DependentUpon>test.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="test.aspx.designer.cs">
-      <DependentUpon>test.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
