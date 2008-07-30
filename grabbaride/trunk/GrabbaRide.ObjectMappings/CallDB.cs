@@ -34,7 +34,7 @@ namespace GrabbaRide.ObjectMappings
             context.Rides.InsertOnSubmit(newRide);
             context.SubmitChanges();
         }
-
+        
     }
 }
 
