@@ -11,8 +11,7 @@
 <body>
     <form id="form1" runat="server">
     <div style="border: thin #C0C0C0 double; width: 900px; height: 130px" id="Header">
-        <asp:LoginStatus ID="LoginStatus" runat="server" style="float: right;" 
-            LogoutAction="RedirectToLoginPage" />
+        <asp:LoginStatus ID="LoginStatus" runat="server" Style="float: right;" LogoutAction="RedirectToLoginPage" />
         <img alt="logo" src="Images/logo.jpg" style="width: 150px; height: 120px" />GrabbaRide
         rocks!</div>
     <div style="width: 900px; height: 400px" id="body">
@@ -20,7 +19,7 @@
         </asp:ContentPlaceHolder>
     </div>
     </form>
-    <div style="width: 900px; height: 100px" id="Footer">
-        Copyright (c) 2008 The .NET Team =)</div>
+    <div class="footer">
+        Copyright &copy; 2008 | GrabbaRide.co.nz - <a href="Terms.aspx">Terms of Use</a> - <a href="Privacy.aspx">Privacy Policy</a> - <a href="About.aspx">About Us</a></div>
 </body>
 </html>
