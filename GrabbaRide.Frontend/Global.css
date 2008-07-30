@@ -6,3 +6,19 @@
 {
 	float: left;
 }
+.footer 
+{
+	text-align: center;
+	font-size: small;
+	font-weight: bold;
+	background-color: #AAAAFF;
+	height: 5ex;
+}
+a
+{
+	text-decoration: none;
+}
+a:hover
+{
+	text-decoration: underline;
+}
