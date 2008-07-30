@@ -6,7 +6,14 @@
 {
 	float: left;
 }
-.footer 
+.header
+{
+	text-align: center;
+	background-color: #AAAAFF;
+	height: 20ex;
+	color: Green;
+}
+.footer
 {
 	text-align: center;
 	font-size: small;

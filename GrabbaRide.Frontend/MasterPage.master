@@ -10,16 +10,18 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div style="border: thin #C0C0C0 double; width: 900px; height: 130px" id="Header">
+    <div class="header">
         <asp:LoginStatus ID="LoginStatus" runat="server" style="float: right;" />
-        <img alt="logo" src="Images/logo.jpg" style="width: 150px; height: 120px" />GrabbaRide
-        rocks!</div>
+        <img alt="logo" src="Images/logo.jpg" style="float: left;" /><h1>
+            GrabbaRide rocks!</h1>
+    </div>
     <div style="width: 900px; height: 400px" id="body">
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         </asp:ContentPlaceHolder>
     </div>
     </form>
     <div class="footer">
-        Copyright &copy; 2008 | GrabbaRide.co.nz - <a href="Terms.aspx">Terms of Use</a> - <a href="Privacy.aspx">Privacy Policy</a> - <a href="About.aspx">About Us</a></div>
+        Copyright &copy; 2008 | GrabbaRide.co.nz - <a href="Terms.aspx">Terms of Use</a>
+        - <a href="Privacy.aspx">Privacy Policy</a> - <a href="About.aspx">About Us</a></div>
 </body>
 </html>
