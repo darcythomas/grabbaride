@@ -5,9 +5,7 @@ Begin DataProject = "GrabbaRide.Database"
    Begin Folder = "Change Scripts"
    End
    Begin Folder = "Create Scripts"
-      Script = "GrabbaRideDB.dbo.Location.SQL"
-      Script = "GrabbaRideDB.dbo.Rides.SQL"
-      Script = "GrabbaRideDB.dbo.Users.SQL"
+      Script = "DBCreateScript.sql"
    End
    Begin DBRefFolder = "Database References"
       Begin DBRefNode = "GrabbaRideDB"
