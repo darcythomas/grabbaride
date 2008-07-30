@@ -42,7 +42,7 @@ namespace GrabbaRide.ObjectMappings
     #endregion
 		
 		public DataClassesDataContext() : 
-				base(global::GrabbaRide.ObjectMappings.Properties.Settings.Default.GrabbaRideDBConnectionString1, mappingSource)
+				base(global::GrabbaRide.ObjectMappings.Properties.Settings.Default.GrabbaRideDBConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -215,7 +215,7 @@ namespace GrabbaRide.ObjectMappings
 			}
 		}
 		
-		[Association(Name="Location_Ride", Storage="_Rides", OtherKey="FromLocation")]
+		[Association(Name="Location_Ride", Storage="_Rides", OtherKey="FromLocationID")]
 		public EntitySet<Ride> Rides
 		{
 			get
@@ -228,7 +228,7 @@ namespace GrabbaRide.ObjectMappings
 			}
 		}
 		
-		[Association(Name="Location_Ride1", Storage="_Rides1", OtherKey="ToLocation")]
+		[Association(Name="Location_Ride1", Storage="_Rides1", OtherKey="ToLocationID")]
 		public EntitySet<Ride> Rides1
 		{
 			get
@@ -296,11 +296,21 @@ namespace GrabbaRide.ObjectMappings
 		
 		private int _UserID;
 		
-		private System.Nullable<int> _FromLocation;
+		private int _FromLocationID;
 		
-		private System.Nullable<int> _ToLocation;
+		private int _ToLocationID;
 		
-		private System.Nullable<System.DateTime> _Date;
+		private System.DateTime _DepatureTime;
+		
+		private System.DateTime _ArivalTime;
+		
+		private System.Nullable<int> _ReturnRideID;
+		
+		private System.Xml.Linq.XElement _Recurrence;
+		
+		private System.Nullable<bool> _Complete;
+		
+		private System.Nullable<bool> _RideType;
 		
 		private EntityRef<Location> _Location;
 		
@@ -316,12 +326,22 @@ namespace GrabbaRide.ObjectMappings
     partial void OnRideIDChanged();
     partial void OnUserIDChanging(int value);
     partial void OnUserIDChanged();
-    partial void OnFromLocationChanging(System.Nullable<int> value);
-    partial void OnFromLocationChanged();
-    partial void OnToLocationChanging(System.Nullable<int> value);
-    partial void OnToLocationChanged();
-    partial void OnDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnDateChanged();
+    partial void OnFromLocationIDChanging(int value);
+    partial void OnFromLocationIDChanged();
+    partial void OnToLocationIDChanging(int value);
+    partial void OnToLocationIDChanged();
+    partial void OnDepatureTimeChanging(System.DateTime value);
+    partial void OnDepatureTimeChanged();
+    partial void OnArivalTimeChanging(System.DateTime value);
+    partial void OnArivalTimeChanged();
+    partial void OnReturnRideIDChanging(System.Nullable<int> value);
+    partial void OnReturnRideIDChanged();
+    partial void OnRecurrenceChanging(System.Xml.Linq.XElement value);
+    partial void OnRecurrenceChanged();
+    partial void OnCompleteChanging(System.Nullable<bool> value);
+    partial void OnCompleteChanged();
+    partial void OnRideTypeChanging(System.Nullable<bool> value);
+    partial void OnRideTypeChanged();
     #endregion
 		
 		public Ride()
@@ -376,75 +396,175 @@ namespace GrabbaRide.ObjectMappings
 			}
 		}
 		
-		[Column(Storage="_FromLocation", DbType="Int")]
-		public System.Nullable<int> FromLocation
+		[Column(Storage="_FromLocationID", DbType="Int NOT NULL")]
+		public int FromLocationID
 		{
 			get
 			{
-				return this._FromLocation;
+				return this._FromLocationID;
 			}
 			set
 			{
-				if ((this._FromLocation != value))
+				if ((this._FromLocationID != value))
 				{
 					if (this._Location.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
-					this.OnFromLocationChanging(value);
+					this.OnFromLocationIDChanging(value);
 					this.SendPropertyChanging();
-					this._FromLocation = value;
-					this.SendPropertyChanged("FromLocation");
-					this.OnFromLocationChanged();
+					this._FromLocationID = value;
+					this.SendPropertyChanged("FromLocationID");
+					this.OnFromLocationIDChanged();
 				}
 			}
 		}
 		
-		[Column(Storage="_ToLocation", DbType="Int")]
-		public System.Nullable<int> ToLocation
+		[Column(Storage="_ToLocationID", DbType="Int NOT NULL")]
+		public int ToLocationID
 		{
 			get
 			{
-				return this._ToLocation;
+				return this._ToLocationID;
 			}
 			set
 			{
-				if ((this._ToLocation != value))
+				if ((this._ToLocationID != value))
 				{
 					if (this._Location1.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
-					this.OnToLocationChanging(value);
+					this.OnToLocationIDChanging(value);
 					this.SendPropertyChanging();
-					this._ToLocation = value;
-					this.SendPropertyChanged("ToLocation");
-					this.OnToLocationChanged();
+					this._ToLocationID = value;
+					this.SendPropertyChanged("ToLocationID");
+					this.OnToLocationIDChanged();
 				}
 			}
 		}
 		
-		[Column(Storage="_Date", DbType="DateTime")]
-		public System.Nullable<System.DateTime> Date
+		[Column(Storage="_DepatureTime", DbType="DateTime NOT NULL")]
+		public System.DateTime DepatureTime
 		{
 			get
 			{
-				return this._Date;
+				return this._DepatureTime;
 			}
 			set
 			{
-				if ((this._Date != value))
+				if ((this._DepatureTime != value))
 				{
-					this.OnDateChanging(value);
+					this.OnDepatureTimeChanging(value);
 					this.SendPropertyChanging();
-					this._Date = value;
-					this.SendPropertyChanged("Date");
-					this.OnDateChanged();
+					this._DepatureTime = value;
+					this.SendPropertyChanged("DepatureTime");
+					this.OnDepatureTimeChanged();
 				}
 			}
 		}
 		
-		[Association(Name="Location_Ride", Storage="_Location", ThisKey="FromLocation", IsForeignKey=true)]
+		[Column(Storage="_ArivalTime", DbType="DateTime NOT NULL")]
+		public System.DateTime ArivalTime
+		{
+			get
+			{
+				return this._ArivalTime;
+			}
+			set
+			{
+				if ((this._ArivalTime != value))
+				{
+					this.OnArivalTimeChanging(value);
+					this.SendPropertyChanging();
+					this._ArivalTime = value;
+					this.SendPropertyChanged("ArivalTime");
+					this.OnArivalTimeChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_ReturnRideID", DbType="Int")]
+		public System.Nullable<int> ReturnRideID
+		{
+			get
+			{
+				return this._ReturnRideID;
+			}
+			set
+			{
+				if ((this._ReturnRideID != value))
+				{
+					this.OnReturnRideIDChanging(value);
+					this.SendPropertyChanging();
+					this._ReturnRideID = value;
+					this.SendPropertyChanged("ReturnRideID");
+					this.OnReturnRideIDChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Recurrence", DbType="Xml", UpdateCheck=UpdateCheck.Never)]
+		public System.Xml.Linq.XElement Recurrence
+		{
+			get
+			{
+				return this._Recurrence;
+			}
+			set
+			{
+				if ((this._Recurrence != value))
+				{
+					this.OnRecurrenceChanging(value);
+					this.SendPropertyChanging();
+					this._Recurrence = value;
+					this.SendPropertyChanged("Recurrence");
+					this.OnRecurrenceChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Complete", DbType="Bit")]
+		public System.Nullable<bool> Complete
+		{
+			get
+			{
+				return this._Complete;
+			}
+			set
+			{
+				if ((this._Complete != value))
+				{
+					this.OnCompleteChanging(value);
+					this.SendPropertyChanging();
+					this._Complete = value;
+					this.SendPropertyChanged("Complete");
+					this.OnCompleteChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_RideType", DbType="Bit")]
+		public System.Nullable<bool> RideType
+		{
+			get
+			{
+				return this._RideType;
+			}
+			set
+			{
+				if ((this._RideType != value))
+				{
+					this.OnRideTypeChanging(value);
+					this.SendPropertyChanging();
+					this._RideType = value;
+					this.SendPropertyChanged("RideType");
+					this.OnRideTypeChanged();
+				}
+			}
+		}
+		
+		[Association(Name="Location_Ride", Storage="_Location", ThisKey="FromLocationID", IsForeignKey=true)]
 		public Location Location
 		{
 			get
@@ -467,18 +587,18 @@ namespace GrabbaRide.ObjectMappings
 					if ((value != null))
 					{
 						value.Rides.Add(this);
-						this._FromLocation = value.LocationID;
+						this._FromLocationID = value.LocationID;
 					}
 					else
 					{
-						this._FromLocation = default(Nullable<int>);
+						this._FromLocationID = default(int);
 					}
 					this.SendPropertyChanged("Location");
 				}
 			}
 		}
 		
-		[Association(Name="Location_Ride1", Storage="_Location1", ThisKey="ToLocation", IsForeignKey=true)]
+		[Association(Name="Location_Ride1", Storage="_Location1", ThisKey="ToLocationID", IsForeignKey=true)]
 		public Location Location1
 		{
 			get
@@ -501,11 +621,11 @@ namespace GrabbaRide.ObjectMappings
 					if ((value != null))
 					{
 						value.Rides1.Add(this);
-						this._ToLocation = value.LocationID;
+						this._ToLocationID = value.LocationID;
 					}
 					else
 					{
-						this._ToLocation = default(Nullable<int>);
+						this._ToLocationID = default(int);
 					}
 					this.SendPropertyChanged("Location1");
 				}
