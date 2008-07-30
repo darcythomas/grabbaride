@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="GrabbaRideDB" Class="DataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=LOCALHOST;Initial Catalog=GrabbaRideDB;Integrated Security=True" SettingsObjectName="GrabbaRide.ObjectMappings.Properties.Settings" SettingsPropertyName="GrabbaRideDBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Location" Member="Locations">
+    <Type Name="Location">
+      <Column Name="LocationID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Long" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Lat" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Association Name="Location_Ride" Member="Rides" OtherKey="FromLocationID" Type="Ride" />
+      <Association Name="Location_Ride1" Member="Rides1" OtherKey="ToLocationID" Type="Ride" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Rides" Member="Rides">
+    <Type Name="Ride">
+      <Column Name="RideID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FromLocationID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ToLocationID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DepatureTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ArivalTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ReturnRideID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Recurrence" Type="System.Xml.Linq.XElement" DbType="Xml" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Complete" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="RideType" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Location_Ride" Member="Location" ThisKey="FromLocationID" Type="Location" IsForeignKey="true" />
+      <Association Name="Location_Ride1" Member="Location1" ThisKey="ToLocationID" Type="Location" IsForeignKey="true" />
+      <Association Name="User_Ride" Member="User" ThisKey="UserID" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="User">
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Username" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="User_Ride" Member="Rides" OtherKey="UserID" Type="Ride" />
+    </Type>
+  </Table>
+</Database>
