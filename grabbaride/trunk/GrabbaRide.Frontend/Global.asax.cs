@@ -20,7 +20,7 @@ namespace GrabbaRide.Frontend
         private static readonly Dictionary<string, string> UrlRewriteRules =
             new Dictionary<string, string>() {
                 // pattern: { regular expression, replacement string }
-                { "/user/([^/]+)/?$", "/User.aspx?id={1}" },
+                { "^/user/([^/]+)/?$", "/User.aspx?id={1}" },
             };
 
         protected void Application_Start(object sender, EventArgs e)
@@ -56,7 +56,7 @@ namespace GrabbaRide.Frontend
         private void RewriteUrls()
         {
             // get the current requested url
-            string requestPath = Request.Url.ToString();
+            string requestPath = Request.Url.PathAndQuery;
 
             // perform regex matching based on our rules
             foreach (KeyValuePair<string, string> kvp in UrlRewriteRules)
