@@ -17,6 +17,10 @@ namespace GrabbaRide.Frontend
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Request.IsAuthenticated)
+            {
+                Response.Redirect("Login.aspx");
+            }
             Label1.Text = Request.QueryString.Get("id");
         }
     }
