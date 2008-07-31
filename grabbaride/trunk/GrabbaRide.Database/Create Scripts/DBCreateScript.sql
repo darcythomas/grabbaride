@@ -58,7 +58,7 @@ CREATE TABLE [dbo].[Location](
 
 /* Create the Users table */
 CREATE TABLE [dbo].[Users](
-	[UserID] [int] NOT NULL,
+	[UserID] [int] IDENTITY(1,1) NOT NULL,
 	[ScreenName] [nchar](50) NULL,
 	[Gender] [bit] NOT NULL,
 	[OpenID] [xml] NULL,
