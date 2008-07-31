@@ -3,6 +3,8 @@ Begin DataProject = "GrabbaRide.Database"
    MSDTVersion = "80"
    DefDBRef = "GrabbaRideDB"
    Begin Folder = "Change Scripts"
+      Script = "AddLocations.sql"
+      Script = "AddUsers.sql"
    End
    Begin Folder = "Create Scripts"
       Script = "DBCreateScript.sql"
