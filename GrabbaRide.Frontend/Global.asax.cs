@@ -31,6 +31,9 @@ namespace GrabbaRide.Frontend
             if (!dc.DatabaseExists())
             {
                 dc.CreateDatabase();
+
+                dc.InputSampleData();
+                dc.SubmitChanges();
             }
         }
 

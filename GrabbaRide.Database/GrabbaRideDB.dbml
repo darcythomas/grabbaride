@@ -23,8 +23,8 @@
     <Type Name="Location">
       <Column Name="LocationID" Type="System.Int32" IsReadOnly="true" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Name" Type="System.String" CanBeNull="false" />
-      <Column Name="Long" Type="System.Single" CanBeNull="false" />
-      <Column Name="Lat" Type="System.Single" CanBeNull="false" />
+      <Column Name="Long" Type="System.Double" CanBeNull="false" />
+      <Column Name="Lat" Type="System.Double" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="" Member="Users">
@@ -32,7 +32,7 @@
       <Column Name="UserID" Type="System.Int32" IsReadOnly="true" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Username" Type="System.String" CanBeNull="false" />
       <Column Name="FullName" Type="System.String" CanBeNull="true" />
-      <Column Name="Gender" Type="System.Int16" CanBeNull="false" />
+      <Column Name="Gender" Type="Gender" CanBeNull="false" />
       <Column Name="DateOfBirth" Type="System.DateTime" CanBeNull="false" />
       <Association Name="User_Ride" Member="Rides" OtherKey="UserID" Type="Ride" />
     </Type>

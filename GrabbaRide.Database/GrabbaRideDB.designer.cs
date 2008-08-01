@@ -498,9 +498,9 @@ namespace GrabbaRide.Database
 		
 		private string _Name;
 		
-		private float _Long;
+		private double _Long;
 		
-		private float _Lat;
+		private double _Lat;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -508,9 +508,9 @@ namespace GrabbaRide.Database
     partial void OnCreated();
     partial void OnNameChanging(string value);
     partial void OnNameChanged();
-    partial void OnLongChanging(float value);
+    partial void OnLongChanging(double value);
     partial void OnLongChanged();
-    partial void OnLatChanging(float value);
+    partial void OnLatChanging(double value);
     partial void OnLatChanged();
     #endregion
 		
@@ -549,7 +549,7 @@ namespace GrabbaRide.Database
 		}
 		
 		[Column(Storage="_Long")]
-		public float Long
+		public double Long
 		{
 			get
 			{
@@ -569,7 +569,7 @@ namespace GrabbaRide.Database
 		}
 		
 		[Column(Storage="_Lat")]
-		public float Lat
+		public double Lat
 		{
 			get
 			{
@@ -621,7 +621,7 @@ namespace GrabbaRide.Database
 		
 		private string _FullName;
 		
-		private short _Gender;
+		private Gender _Gender;
 		
 		private System.DateTime _DateOfBirth;
 		
@@ -635,7 +635,7 @@ namespace GrabbaRide.Database
     partial void OnUsernameChanged();
     partial void OnFullNameChanging(string value);
     partial void OnFullNameChanged();
-    partial void OnGenderChanging(short value);
+    partial void OnGenderChanging(Gender value);
     partial void OnGenderChanged();
     partial void OnDateOfBirthChanging(System.DateTime value);
     partial void OnDateOfBirthChanged();
@@ -696,8 +696,8 @@ namespace GrabbaRide.Database
 			}
 		}
 		
-		[Column(Storage="_Gender")]
-		public short Gender
+		[Column(Storage="_Gender", CanBeNull=false)]
+		public Gender Gender
 		{
 			get
 			{
