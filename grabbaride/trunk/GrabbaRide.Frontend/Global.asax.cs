@@ -9,6 +9,7 @@ using System.Web.SessionState;
 using System.Xml.Linq;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
+using GrabbaRide.Database;
 
 namespace GrabbaRide.Frontend
 {
@@ -25,6 +26,12 @@ namespace GrabbaRide.Frontend
 
         protected void Application_Start(object sender, EventArgs e)
         {
+            // create the GrabbaRideDB if it doesn't already exist
+            GrabbaRideDBDataContext dc = new GrabbaRideDBDataContext();
+            if (!dc.DatabaseExists())
+            {
+                dc.CreateDatabase();
+            }
         }
 
         protected void Session_Start(object sender, EventArgs e)

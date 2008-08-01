@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true"
-    CodeBehind="Default.aspx.cs" Inherits="GrabbaRide.Frontend.WebForm1" Title="Untitled Page" %>
+    CodeBehind="Default.aspx.cs" Inherits="GrabbaRide.Frontend.WebForm1" Title="GrabbaRide Home" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
