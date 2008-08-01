@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("GrabbaRide ObjectMappings")]
+[assembly: AssemblyTitle("GrabbaRide.Database")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("The Software C .NET Team")]
-[assembly: AssemblyProduct("GrabbaRide")]
-[assembly: AssemblyCopyright("Copyright © 2008")]
+[assembly: AssemblyCompany("The Treasury")]
+[assembly: AssemblyProduct("GrabbaRide.Database")]
+[assembly: AssemblyCopyright("Copyright © The Treasury 2008")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("36c4e66a-e8c8-45fb-a0b0-30b1a8e9e0ea")]
+[assembly: Guid("3abe1d5e-dbf2-43b4-a9f6-5e3e5fdd7860")]
 
 // Version information for an assembly consists of the following four values:
 //

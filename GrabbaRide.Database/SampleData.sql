@@ -1,3 +1,5 @@
+﻿/* Add some sample locations */
+
 INSERT INTO Location (LocationID, Name, long, lat)
 VALUES ('Vegas', 36.196633, -115.136719)
 
@@ -18,3 +20,23 @@ VALUES ('New Washington', 33.299313, 44.395752)
 
 INSERT INTO Location (LocationID, Name, long, lat)
 VALUES ('Massey', -40.385765, 175.617779)
+
+/* Add some sample users */
+
+INSERT INTO users (screenName, gender, DOB)
+VALUES ('Darcy', 1, 1/1/1983)
+
+INSERT INTO users (screenName, gender, DOB)
+VALUES ('Amy', 0, 1/1/1983)
+
+INSERT INTO users (screenName, gender, DOB)
+VALUES ('Tom', 1, 1/1/1983)
+
+INSERT INTO users (screenName, gender, DOB)
+VALUES ('Adrian', 1, 1/1/1983)
+
+INSERT INTO users (screenName, gender, DOB)
+VALUES ('Michell', 0, 1/1/1983)
+
+INSERT INTO users (screenName, gender, DOB)
+VALUES ('Nic', 1, 1/1/1983)
