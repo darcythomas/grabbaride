@@ -23,20 +23,20 @@ VALUES ('Massey', -40.385765, 175.617779)
 
 /* Add some sample users */
 
-INSERT INTO users (screenName, gender, DOB)
+INSERT INTO users (Username, Gender, DateOfBirth)
 VALUES ('Darcy', 1, 1/1/1983)
 
-INSERT INTO users (screenName, gender, DOB)
+INSERT INTO users (Username, Gender, DateOfBirth)
 VALUES ('Amy', 0, 1/1/1983)
 
-INSERT INTO users (screenName, gender, DOB)
+INSERT INTO users (Username, Gender, DateOfBirth)
 VALUES ('Tom', 1, 1/1/1983)
 
-INSERT INTO users (screenName, gender, DOB)
+INSERT INTO users (Username, Gender, DateOfBirth)
 VALUES ('Adrian', 1, 1/1/1983)
 
-INSERT INTO users (screenName, gender, DOB)
-VALUES ('Michell', 0, 1/1/1983)
+INSERT INTO users (Username, Gender, DateOfBirth)
+VALUES ('Michelle', 0, 1/1/1983)
 
-INSERT INTO users (screenName, gender, DOB)
-VALUES ('Nic', 1, 1/1/1983)
+INSERT INTO users (Username, Gender, DateOfBirth)
+VALUES ('Nick', 1, 1/1/1983)

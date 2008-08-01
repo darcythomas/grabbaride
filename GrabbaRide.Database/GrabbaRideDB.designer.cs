@@ -93,6 +93,14 @@ namespace GrabbaRide.Database
 				return this.GetTable<User>();
 			}
 		}
+		
+		public System.Data.Linq.Table<RecurringRide> RecurringRides
+		{
+			get
+			{
+				return this.GetTable<RecurringRide>();
+			}
+		}
 	}
 	
 	[Table(Name="")]
@@ -101,7 +109,7 @@ namespace GrabbaRide.Database
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _RideID;
+		private int _RideID = default(int);
 		
 		private int _UserID;
 		
@@ -114,6 +122,10 @@ namespace GrabbaRide.Database
 		private System.Nullable<System.DateTime> _ArrivalTime;
 		
 		private System.Nullable<int> _ReturnRideID;
+		
+		private System.Nullable<System.DateTime> _CreationDate;
+		
+		private string _RecurringRideID;
 		
 		private EntitySet<Ride> _Rides;
 		
@@ -129,8 +141,6 @@ namespace GrabbaRide.Database
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnRideIDChanging(int value);
-    partial void OnRideIDChanged();
     partial void OnUserIDChanging(int value);
     partial void OnUserIDChanged();
     partial void OnFromLocationIDChanging(int value);
@@ -143,6 +153,10 @@ namespace GrabbaRide.Database
     partial void OnArrivalTimeChanged();
     partial void OnReturnRideIDChanging(System.Nullable<int> value);
     partial void OnReturnRideIDChanged();
+    partial void OnCreationDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreationDateChanged();
+    partial void OnRecurringRideIDChanging(string value);
+    partial void OnRecurringRideIDChanged();
     #endregion
 		
 		public Ride()
@@ -155,23 +169,12 @@ namespace GrabbaRide.Database
 			OnCreated();
 		}
 		
-		[Column(Storage="_RideID", AutoSync=AutoSync.OnInsert, IsPrimaryKey=true, IsDbGenerated=true)]
+		[Column(Storage="_RideID", AutoSync=AutoSync.OnInsert, IsPrimaryKey=true, IsDbGenerated=true, UpdateCheck=UpdateCheck.Never)]
 		public int RideID
 		{
 			get
 			{
 				return this._RideID;
-			}
-			set
-			{
-				if ((this._RideID != value))
-				{
-					this.OnRideIDChanging(value);
-					this.SendPropertyChanging();
-					this._RideID = value;
-					this.SendPropertyChanged("RideID");
-					this.OnRideIDChanged();
-				}
 			}
 		}
 		
@@ -307,6 +310,46 @@ namespace GrabbaRide.Database
 					this._ReturnRideID = value;
 					this.SendPropertyChanged("ReturnRideID");
 					this.OnReturnRideIDChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_CreationDate")]
+		public System.Nullable<System.DateTime> CreationDate
+		{
+			get
+			{
+				return this._CreationDate;
+			}
+			set
+			{
+				if ((this._CreationDate != value))
+				{
+					this.OnCreationDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreationDate = value;
+					this.SendPropertyChanged("CreationDate");
+					this.OnCreationDateChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_RecurringRideID", CanBeNull=false)]
+		public string RecurringRideID
+		{
+			get
+			{
+				return this._RecurringRideID;
+			}
+			set
+			{
+				if ((this._RecurringRideID != value))
+				{
+					this.OnRecurringRideIDChanging(value);
+					this.SendPropertyChanging();
+					this._RecurringRideID = value;
+					this.SendPropertyChanged("RecurringRideID");
+					this.OnRecurringRideIDChanged();
 				}
 			}
 		}
@@ -467,7 +510,7 @@ namespace GrabbaRide.Database
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _LocationID;
+		private int _LocationID = default(int);
 		
 		private string _Name;
 		
@@ -479,8 +522,6 @@ namespace GrabbaRide.Database
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnLocationIDChanging(int value);
-    partial void OnLocationIDChanged();
     partial void OnNameChanging(string value);
     partial void OnNameChanged();
     partial void OnLongChanging(float value);
@@ -494,23 +535,12 @@ namespace GrabbaRide.Database
 			OnCreated();
 		}
 		
-		[Column(Storage="_LocationID", AutoSync=AutoSync.OnInsert, IsPrimaryKey=true, IsDbGenerated=true)]
+		[Column(Storage="_LocationID", AutoSync=AutoSync.OnInsert, IsPrimaryKey=true, IsDbGenerated=true, UpdateCheck=UpdateCheck.Never)]
 		public int LocationID
 		{
 			get
 			{
 				return this._LocationID;
-			}
-			set
-			{
-				if ((this._LocationID != value))
-				{
-					this.OnLocationIDChanging(value);
-					this.SendPropertyChanging();
-					this._LocationID = value;
-					this.SendPropertyChanged("LocationID");
-					this.OnLocationIDChanged();
-				}
 			}
 		}
 		
@@ -601,7 +631,7 @@ namespace GrabbaRide.Database
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _UserID;
+		private int _UserID = default(int);
 		
 		private string _Username;
 		
@@ -613,8 +643,6 @@ namespace GrabbaRide.Database
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnUserIDChanging(int value);
-    partial void OnUserIDChanged();
     partial void OnUsernameChanging(string value);
     partial void OnUsernameChanged();
     partial void OnFullNameChanging(string value);
@@ -627,23 +655,12 @@ namespace GrabbaRide.Database
 			OnCreated();
 		}
 		
-		[Column(Storage="_UserID", AutoSync=AutoSync.OnInsert, IsPrimaryKey=true, IsDbGenerated=true)]
+		[Column(Storage="_UserID", AutoSync=AutoSync.OnInsert, IsPrimaryKey=true, IsDbGenerated=true, UpdateCheck=UpdateCheck.Never)]
 		public int UserID
 		{
 			get
 			{
 				return this._UserID;
-			}
-			set
-			{
-				if ((this._UserID != value))
-				{
-					this.OnUserIDChanging(value);
-					this.SendPropertyChanging();
-					this._UserID = value;
-					this.SendPropertyChanged("UserID");
-					this.OnUserIDChanged();
-				}
 			}
 		}
 		
@@ -730,6 +747,195 @@ namespace GrabbaRide.Database
 		{
 			this.SendPropertyChanging();
 			entity.User = null;
+		}
+	}
+	
+	[Table(Name="")]
+	public partial class RecurringRide
+	{
+		
+		private string _RecurringRideID;
+		
+		private string _Interval;
+		
+		private System.Nullable<bool> _RecurMon;
+		
+		private System.Nullable<bool> _RecurTue;
+		
+		private System.Nullable<bool> _RecurWed;
+		
+		private System.Nullable<bool> _RecurThu;
+		
+		private System.Nullable<bool> _RecurFri;
+		
+		private System.Nullable<bool> _RecurSat;
+		
+		private System.Nullable<bool> _RecurSun;
+		
+		private string _EndByDate;
+		
+		public RecurringRide()
+		{
+		}
+		
+		[Column(Storage="_RecurringRideID", CanBeNull=false)]
+		public string RecurringRideID
+		{
+			get
+			{
+				return this._RecurringRideID;
+			}
+			set
+			{
+				if ((this._RecurringRideID != value))
+				{
+					this._RecurringRideID = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_Interval", CanBeNull=false)]
+		public string Interval
+		{
+			get
+			{
+				return this._Interval;
+			}
+			set
+			{
+				if ((this._Interval != value))
+				{
+					this._Interval = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_RecurMon")]
+		public System.Nullable<bool> RecurMon
+		{
+			get
+			{
+				return this._RecurMon;
+			}
+			set
+			{
+				if ((this._RecurMon != value))
+				{
+					this._RecurMon = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_RecurTue")]
+		public System.Nullable<bool> RecurTue
+		{
+			get
+			{
+				return this._RecurTue;
+			}
+			set
+			{
+				if ((this._RecurTue != value))
+				{
+					this._RecurTue = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_RecurWed")]
+		public System.Nullable<bool> RecurWed
+		{
+			get
+			{
+				return this._RecurWed;
+			}
+			set
+			{
+				if ((this._RecurWed != value))
+				{
+					this._RecurWed = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_RecurThu")]
+		public System.Nullable<bool> RecurThu
+		{
+			get
+			{
+				return this._RecurThu;
+			}
+			set
+			{
+				if ((this._RecurThu != value))
+				{
+					this._RecurThu = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_RecurFri")]
+		public System.Nullable<bool> RecurFri
+		{
+			get
+			{
+				return this._RecurFri;
+			}
+			set
+			{
+				if ((this._RecurFri != value))
+				{
+					this._RecurFri = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_RecurSat")]
+		public System.Nullable<bool> RecurSat
+		{
+			get
+			{
+				return this._RecurSat;
+			}
+			set
+			{
+				if ((this._RecurSat != value))
+				{
+					this._RecurSat = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_RecurSun")]
+		public System.Nullable<bool> RecurSun
+		{
+			get
+			{
+				return this._RecurSun;
+			}
+			set
+			{
+				if ((this._RecurSun != value))
+				{
+					this._RecurSun = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_EndByDate")]
+		public string EndByDate
+		{
+			get
+			{
+				return this._EndByDate;
+			}
+			set
+			{
+				if ((this._EndByDate != value))
+				{
+					this._EndByDate = value;
+				}
+			}
 		}
 	}
 }
