@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Class="GrabbaRideDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=LOCALHOST;Initial Catalog=GrabbaRideDB;Integrated Security=True" SettingsObjectName="GrabbaRide.Database.Properties.Settings" SettingsPropertyName="GrabbaRideDBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="" Member="Rides">
+    <Type Name="Ride">
+      <Column Member="RideID" Type="System.Int32" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Member="UserID" Type="System.Int32" CanBeNull="false" />
+      <Column Member="FromLocationID" Type="System.Int32" CanBeNull="false" />
+      <Column Member="ToLocationID" Type="System.Int32" CanBeNull="false" />
+      <Column Member="DepartureTime" Type="System.DateTime" CanBeNull="false" />
+      <Column Member="ArrivalTime" Type="System.DateTime" CanBeNull="true" />
+      <Column Member="ReturnRideID" Type="System.Int32" CanBeNull="true" />
+      <Association Name="Ride_Ride" Member="Rides" ThisKey="RideID" OtherKey="ReturnRideID" Type="Ride" />
+      <Association Name="Location_Ride" Member="FromLocation" ThisKey="FromLocationID" OtherKey="LocationID" Type="Location" IsForeignKey="true" />
+      <Association Name="Location_Ride1" Member="ToLocation" ThisKey="ToLocationID" OtherKey="LocationID" Type="Location" IsForeignKey="true" />
+      <Association Name="User_Ride" Member="User" ThisKey="UserID" OtherKey="UserID" Type="User" IsForeignKey="true" />
+      <Association Name="Ride_Ride" Member="Ride1" ThisKey="ReturnRideID" OtherKey="RideID" Type="Ride" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="" Member="Locations">
+    <Type Name="Location">
+      <Column Member="LocationID" Type="System.Int32" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Member="Name" Type="System.String" CanBeNull="false" />
+      <Column Member="Long" Type="System.Single" CanBeNull="false" />
+      <Column Member="Lat" Type="System.Single" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="" Member="Users">
+    <Type Name="User">
+      <Column Member="UserID" Type="System.Int32" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Member="Username" Type="System.String" CanBeNull="false" />
+      <Column Member="FullName" Type="System.String" CanBeNull="true" />
+      <Association Name="User_Ride" Member="Rides" ThisKey="UserID" OtherKey="UserID" Type="Ride" />
+    </Type>
+  </Table>
+</Database>

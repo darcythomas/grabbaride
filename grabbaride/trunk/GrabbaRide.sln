@@ -5,11 +5,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrabbaRide.Frontend", "Grab
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrabbaRide.WebService", "GrabbaRide.WebService\GrabbaRide.WebService.csproj", "{D36C20C7-C3BC-47E7-B564-E544D4AF9484}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrabbaRide.ObjectMappings", "GrabbaRide.ObjectMappings\GrabbaRide.ObjectMappings.csproj", "{9507E3B7-56DA-40F3-A69F-5F45EC593C78}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrabbaRide.UserManagement", "GrabbaRide.UserManagement\GrabbaRide.UserManagement.csproj", "{0ADB4FCB-9081-4E28-887B-3BBD5E5BD15E}"
 EndProject
-Project("{4F174C21-8C12-11D0-8340-0000F80270F8}") = "GrabbaRide.Database", "GrabbaRide.Database\GrabbaRide.Database.dbp", "{32D248C2-A7B5-4727-89B5-B16F3338ADCB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrabbaRide.Database", "GrabbaRide.Database\GrabbaRide.Database.csproj", "{2C76E154-F418-4376-9101-BC61434623E7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,14 +23,14 @@ Global
 		{D36C20C7-C3BC-47E7-B564-E544D4AF9484}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D36C20C7-C3BC-47E7-B564-E544D4AF9484}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D36C20C7-C3BC-47E7-B564-E544D4AF9484}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9507E3B7-56DA-40F3-A69F-5F45EC593C78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9507E3B7-56DA-40F3-A69F-5F45EC593C78}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9507E3B7-56DA-40F3-A69F-5F45EC593C78}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9507E3B7-56DA-40F3-A69F-5F45EC593C78}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0ADB4FCB-9081-4E28-887B-3BBD5E5BD15E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0ADB4FCB-9081-4E28-887B-3BBD5E5BD15E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0ADB4FCB-9081-4E28-887B-3BBD5E5BD15E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0ADB4FCB-9081-4E28-887B-3BBD5E5BD15E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C76E154-F418-4376-9101-BC61434623E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C76E154-F418-4376-9101-BC61434623E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C76E154-F418-4376-9101-BC61434623E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C76E154-F418-4376-9101-BC61434623E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
