@@ -38,6 +38,9 @@ namespace GrabbaRide.Database
     partial void InsertUser(User instance);
     partial void UpdateUser(User instance);
     partial void DeleteUser(User instance);
+    partial void InsertRecurringRide(RecurringRide instance);
+    partial void UpdateRecurringRide(RecurringRide instance);
+    partial void DeleteRecurringRide(RecurringRide instance);
     #endregion
 		
 		public GrabbaRideDBDataContext() : 
@@ -125,9 +128,7 @@ namespace GrabbaRide.Database
 		
 		private System.Nullable<System.DateTime> _CreationDate;
 		
-		private string _RecurringRideID;
-		
-		private EntitySet<Ride> _Rides;
+		private System.Nullable<int> _RecurringRideID;
 		
 		private EntityRef<Location> _FromLocation;
 		
@@ -136,6 +137,8 @@ namespace GrabbaRide.Database
 		private EntityRef<User> _User;
 		
 		private EntityRef<Ride> _Ride1;
+		
+		private EntityRef<RecurringRide> _RecurringRide;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -155,17 +158,17 @@ namespace GrabbaRide.Database
     partial void OnReturnRideIDChanged();
     partial void OnCreationDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreationDateChanged();
-    partial void OnRecurringRideIDChanging(string value);
+    partial void OnRecurringRideIDChanging(System.Nullable<int> value);
     partial void OnRecurringRideIDChanged();
     #endregion
 		
 		public Ride()
 		{
-			this._Rides = new EntitySet<Ride>(new Action<Ride>(this.attach_Rides), new Action<Ride>(this.detach_Rides));
 			this._FromLocation = default(EntityRef<Location>);
 			this._ToLocation = default(EntityRef<Location>);
 			this._User = default(EntityRef<User>);
 			this._Ride1 = default(EntityRef<Ride>);
+			this._RecurringRide = default(EntityRef<RecurringRide>);
 			OnCreated();
 		}
 		
@@ -334,8 +337,8 @@ namespace GrabbaRide.Database
 			}
 		}
 		
-		[Column(Storage="_RecurringRideID", CanBeNull=false)]
-		public string RecurringRideID
+		[Column(Storage="_RecurringRideID")]
+		public System.Nullable<int> RecurringRideID
 		{
 			get
 			{
@@ -345,25 +348,16 @@ namespace GrabbaRide.Database
 			{
 				if ((this._RecurringRideID != value))
 				{
+					if (this._RecurringRide.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnRecurringRideIDChanging(value);
 					this.SendPropertyChanging();
 					this._RecurringRideID = value;
 					this.SendPropertyChanged("RecurringRideID");
 					this.OnRecurringRideIDChanged();
 				}
-			}
-		}
-		
-		[Association(Name="Ride_Ride", Storage="_Rides", OtherKey="ReturnRideID")]
-		public EntitySet<Ride> Rides
-		{
-			get
-			{
-				return this._Rides;
-			}
-			set
-			{
-				this._Rides.Assign(value);
 			}
 		}
 		
@@ -438,7 +432,7 @@ namespace GrabbaRide.Database
 		}
 		
 		[Association(Name="Ride_Ride", Storage="_Ride1", ThisKey="ReturnRideID", IsForeignKey=true)]
-		public Ride Ride1
+		public Ride ReturnRide
 		{
 			get
 			{
@@ -446,27 +440,29 @@ namespace GrabbaRide.Database
 			}
 			set
 			{
-				Ride previousValue = this._Ride1.Entity;
-				if (((previousValue != value) 
-							|| (this._Ride1.HasLoadedOrAssignedValue == false)))
+				if ((this._Ride1.Entity != value))
 				{
 					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Ride1.Entity = null;
-						previousValue.Rides.Remove(this);
-					}
 					this._Ride1.Entity = value;
-					if ((value != null))
-					{
-						value.Rides.Add(this);
-						this._ReturnRideID = value.RideID;
-					}
-					else
-					{
-						this._ReturnRideID = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Ride1");
+					this.SendPropertyChanged("ReturnRide");
+				}
+			}
+		}
+		
+		[Association(Name="RecurringRide_Ride", Storage="_RecurringRide", ThisKey="RecurringRideID", IsForeignKey=true)]
+		public RecurringRide RecurringRideInfo
+		{
+			get
+			{
+				return this._RecurringRide.Entity;
+			}
+			set
+			{
+				if ((this._RecurringRide.Entity != value))
+				{
+					this.SendPropertyChanging();
+					this._RecurringRide.Entity = value;
+					this.SendPropertyChanged("RecurringRideInfo");
 				}
 			}
 		}
@@ -489,18 +485,6 @@ namespace GrabbaRide.Database
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_Rides(Ride entity)
-		{
-			this.SendPropertyChanging();
-			entity.Ride1 = this;
-		}
-		
-		private void detach_Rides(Ride entity)
-		{
-			this.SendPropertyChanging();
-			entity.Ride1 = null;
 		}
 	}
 	
@@ -637,6 +621,10 @@ namespace GrabbaRide.Database
 		
 		private string _FullName;
 		
+		private short _Gender;
+		
+		private System.DateTime _DateOfBirth;
+		
 		private EntitySet<Ride> _Rides;
 		
     #region Extensibility Method Definitions
@@ -647,6 +635,10 @@ namespace GrabbaRide.Database
     partial void OnUsernameChanged();
     partial void OnFullNameChanging(string value);
     partial void OnFullNameChanged();
+    partial void OnGenderChanging(short value);
+    partial void OnGenderChanged();
+    partial void OnDateOfBirthChanging(System.DateTime value);
+    partial void OnDateOfBirthChanged();
     #endregion
 		
 		public User()
@@ -704,6 +696,46 @@ namespace GrabbaRide.Database
 			}
 		}
 		
+		[Column(Storage="_Gender")]
+		public short Gender
+		{
+			get
+			{
+				return this._Gender;
+			}
+			set
+			{
+				if ((this._Gender != value))
+				{
+					this.OnGenderChanging(value);
+					this.SendPropertyChanging();
+					this._Gender = value;
+					this.SendPropertyChanged("Gender");
+					this.OnGenderChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_DateOfBirth")]
+		public System.DateTime DateOfBirth
+		{
+			get
+			{
+				return this._DateOfBirth;
+			}
+			set
+			{
+				if ((this._DateOfBirth != value))
+				{
+					this.OnDateOfBirthChanging(value);
+					this.SendPropertyChanging();
+					this._DateOfBirth = value;
+					this.SendPropertyChanged("DateOfBirth");
+					this.OnDateOfBirthChanged();
+				}
+			}
+		}
+		
 		[Association(Name="User_Ride", Storage="_Rides", OtherKey="UserID")]
 		public EntitySet<Ride> Rides
 		{
@@ -751,10 +783,12 @@ namespace GrabbaRide.Database
 	}
 	
 	[Table(Name="")]
-	public partial class RecurringRide
+	public partial class RecurringRide : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
-		private string _RecurringRideID;
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _RecurringRideID = default(int);
 		
 		private string _Interval;
 		
@@ -772,30 +806,48 @@ namespace GrabbaRide.Database
 		
 		private System.Nullable<bool> _RecurSun;
 		
-		private string _EndByDate;
+		private System.Nullable<System.DateTime> _EndByDate;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnRecurIntervalChanging(string value);
+    partial void OnRecurIntervalChanged();
+    partial void OnRecurMonChanging(System.Nullable<bool> value);
+    partial void OnRecurMonChanged();
+    partial void OnRecurTueChanging(System.Nullable<bool> value);
+    partial void OnRecurTueChanged();
+    partial void OnRecurWedChanging(System.Nullable<bool> value);
+    partial void OnRecurWedChanged();
+    partial void OnRecurThuChanging(System.Nullable<bool> value);
+    partial void OnRecurThuChanged();
+    partial void OnRecurFriChanging(System.Nullable<bool> value);
+    partial void OnRecurFriChanged();
+    partial void OnRecurSatChanging(System.Nullable<bool> value);
+    partial void OnRecurSatChanged();
+    partial void OnRecurSunChanging(System.Nullable<bool> value);
+    partial void OnRecurSunChanged();
+    partial void OnRecurEndByDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnRecurEndByDateChanged();
+    #endregion
 		
 		public RecurringRide()
 		{
+			OnCreated();
 		}
 		
-		[Column(Storage="_RecurringRideID", CanBeNull=false)]
-		public string RecurringRideID
+		[Column(Storage="_RecurringRideID", AutoSync=AutoSync.OnInsert, IsPrimaryKey=true, IsDbGenerated=true, UpdateCheck=UpdateCheck.Never)]
+		public int RecurringRideID
 		{
 			get
 			{
 				return this._RecurringRideID;
 			}
-			set
-			{
-				if ((this._RecurringRideID != value))
-				{
-					this._RecurringRideID = value;
-				}
-			}
 		}
 		
-		[Column(Storage="_Interval", CanBeNull=false)]
-		public string Interval
+		[Column(Name="Interval", Storage="_Interval", CanBeNull=false)]
+		public string RecurInterval
 		{
 			get
 			{
@@ -805,7 +857,11 @@ namespace GrabbaRide.Database
 			{
 				if ((this._Interval != value))
 				{
+					this.OnRecurIntervalChanging(value);
+					this.SendPropertyChanging();
 					this._Interval = value;
+					this.SendPropertyChanged("RecurInterval");
+					this.OnRecurIntervalChanged();
 				}
 			}
 		}
@@ -821,7 +877,11 @@ namespace GrabbaRide.Database
 			{
 				if ((this._RecurMon != value))
 				{
+					this.OnRecurMonChanging(value);
+					this.SendPropertyChanging();
 					this._RecurMon = value;
+					this.SendPropertyChanged("RecurMon");
+					this.OnRecurMonChanged();
 				}
 			}
 		}
@@ -837,7 +897,11 @@ namespace GrabbaRide.Database
 			{
 				if ((this._RecurTue != value))
 				{
+					this.OnRecurTueChanging(value);
+					this.SendPropertyChanging();
 					this._RecurTue = value;
+					this.SendPropertyChanged("RecurTue");
+					this.OnRecurTueChanged();
 				}
 			}
 		}
@@ -853,7 +917,11 @@ namespace GrabbaRide.Database
 			{
 				if ((this._RecurWed != value))
 				{
+					this.OnRecurWedChanging(value);
+					this.SendPropertyChanging();
 					this._RecurWed = value;
+					this.SendPropertyChanged("RecurWed");
+					this.OnRecurWedChanged();
 				}
 			}
 		}
@@ -869,7 +937,11 @@ namespace GrabbaRide.Database
 			{
 				if ((this._RecurThu != value))
 				{
+					this.OnRecurThuChanging(value);
+					this.SendPropertyChanging();
 					this._RecurThu = value;
+					this.SendPropertyChanged("RecurThu");
+					this.OnRecurThuChanged();
 				}
 			}
 		}
@@ -885,7 +957,11 @@ namespace GrabbaRide.Database
 			{
 				if ((this._RecurFri != value))
 				{
+					this.OnRecurFriChanging(value);
+					this.SendPropertyChanging();
 					this._RecurFri = value;
+					this.SendPropertyChanged("RecurFri");
+					this.OnRecurFriChanged();
 				}
 			}
 		}
@@ -901,7 +977,11 @@ namespace GrabbaRide.Database
 			{
 				if ((this._RecurSat != value))
 				{
+					this.OnRecurSatChanging(value);
+					this.SendPropertyChanging();
 					this._RecurSat = value;
+					this.SendPropertyChanged("RecurSat");
+					this.OnRecurSatChanged();
 				}
 			}
 		}
@@ -917,13 +997,17 @@ namespace GrabbaRide.Database
 			{
 				if ((this._RecurSun != value))
 				{
+					this.OnRecurSunChanging(value);
+					this.SendPropertyChanging();
 					this._RecurSun = value;
+					this.SendPropertyChanged("RecurSun");
+					this.OnRecurSunChanged();
 				}
 			}
 		}
 		
-		[Column(Storage="_EndByDate")]
-		public string EndByDate
+		[Column(Name="EndByDate", Storage="_EndByDate")]
+		public System.Nullable<System.DateTime> RecurEndByDate
 		{
 			get
 			{
@@ -933,8 +1017,32 @@ namespace GrabbaRide.Database
 			{
 				if ((this._EndByDate != value))
 				{
+					this.OnRecurEndByDateChanging(value);
+					this.SendPropertyChanging();
 					this._EndByDate = value;
+					this.SendPropertyChanged("RecurEndByDate");
+					this.OnRecurEndByDateChanged();
 				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}

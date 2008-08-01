@@ -3,26 +3,25 @@
   <Connection Mode="AppSettings" ConnectionString="Data Source=LOCALHOST;Initial Catalog=GrabbaRideDB;Integrated Security=True" SettingsObjectName="GrabbaRide.Database.Properties.Settings" SettingsPropertyName="GrabbaRideDBConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="" Member="Rides">
     <Type Name="Ride">
-      <Column Name="RideID" Type="System.Int32" IsReadOnly="true" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Always" />
+      <Column Name="RideID" Type="System.Int32" IsReadOnly="true" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="UserID" Type="System.Int32" CanBeNull="false" />
       <Column Name="FromLocationID" Type="System.Int32" CanBeNull="false" />
       <Column Name="ToLocationID" Type="System.Int32" CanBeNull="false" />
       <Column Name="DepartureTime" Type="System.DateTime" CanBeNull="false" />
       <Column Name="ArrivalTime" Type="System.DateTime" CanBeNull="true" />
       <Column Name="ReturnRideID" Type="System.Int32" CanBeNull="true" />
-      <Column Member="CreationDate" Type="System.DateTime" CanBeNull="true" />
-      <Column Member="RecurringRideID" Type="System.Int32" CanBeNull="true" />
-      <Association Name="Ride_Ride" Member="InitialRide" Storage="_Rides" OtherKey="ReturnRideID" Type="Ride" Cardinality="One" />
+      <Column Name="CreationDate" Type="System.DateTime" CanBeNull="true" />
+      <Column Name="RecurringRideID" Type="System.Int32" CanBeNull="true" />
       <Association Name="Location_Ride" Member="FromLocation" ThisKey="FromLocationID" Type="Location" IsForeignKey="true" />
       <Association Name="Location_Ride1" Member="ToLocation" ThisKey="ToLocationID" Type="Location" IsForeignKey="true" />
       <Association Name="User_Ride" Member="User" ThisKey="UserID" Type="User" IsForeignKey="true" />
       <Association Name="Ride_Ride" Member="ReturnRide" Storage="_Ride1" ThisKey="ReturnRideID" Type="Ride" IsForeignKey="true" />
-      <Association Name="RecurringRide_Ride" Member="RecurringRide" ThisKey="RecurringRideID" OtherKey="RecurringRideID" Type="RecurringRide" IsForeignKey="true" />
+      <Association Name="RecurringRide_Ride" Member="RecurringRideInfo" Storage="_RecurringRide" ThisKey="RecurringRideID" Type="RecurringRide" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="" Member="Locations">
     <Type Name="Location">
-      <Column Name="LocationID" Type="System.Int32" IsReadOnly="true" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Always" />
+      <Column Name="LocationID" Type="System.Int32" IsReadOnly="true" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Name" Type="System.String" CanBeNull="false" />
       <Column Name="Long" Type="System.Single" CanBeNull="false" />
       <Column Name="Lat" Type="System.Single" CanBeNull="false" />
@@ -30,27 +29,26 @@
   </Table>
   <Table Name="" Member="Users">
     <Type Name="User">
-      <Column Name="UserID" Type="System.Int32" IsReadOnly="true" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Always" />
+      <Column Name="UserID" Type="System.Int32" IsReadOnly="true" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Username" Type="System.String" CanBeNull="false" />
       <Column Name="FullName" Type="System.String" CanBeNull="true" />
-      <Column Member="Gender" Type="System.Int16" CanBeNull="false" />
-      <Column Member="DateOfBirth" Type="System.DateTime" CanBeNull="false" />
+      <Column Name="Gender" Type="System.Int16" CanBeNull="false" />
+      <Column Name="DateOfBirth" Type="System.DateTime" CanBeNull="false" />
       <Association Name="User_Ride" Member="Rides" OtherKey="UserID" Type="Ride" />
     </Type>
   </Table>
   <Table Name="" Member="RecurringRides">
     <Type Name="RecurringRide">
-      <Column Member="RecurringRideID" Type="System.Int32" IsReadOnly="true" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Always" />
-      <Column Member="Interval" Type="System.String" CanBeNull="false" />
-      <Column Member="RecurMon" Type="System.Boolean" CanBeNull="true" />
-      <Column Member="RecurTue" Type="System.Boolean" CanBeNull="true" />
-      <Column Member="RecurWed" Type="System.Boolean" CanBeNull="true" />
-      <Column Member="RecurThu" Type="System.Boolean" CanBeNull="true" />
-      <Column Member="RecurFri" Type="System.Boolean" CanBeNull="true" />
-      <Column Member="RecurSat" Type="System.Boolean" CanBeNull="true" />
-      <Column Member="RecurSun" Type="System.Boolean" CanBeNull="true" />
-      <Column Member="EndByDate" Type="System.DateTime" CanBeNull="true" />
-      <Association Name="RecurringRide_Ride" Member="Ride" ThisKey="RecurringRideID" OtherKey="RecurringRideID" Type="Ride" Cardinality="One" />
+      <Column Name="RecurringRideID" Type="System.Int32" IsReadOnly="true" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Interval" Member="RecurInterval" Storage="_Interval" Type="System.String" CanBeNull="false" />
+      <Column Name="RecurMon" Type="System.Boolean" CanBeNull="true" />
+      <Column Name="RecurTue" Type="System.Boolean" CanBeNull="true" />
+      <Column Name="RecurWed" Type="System.Boolean" CanBeNull="true" />
+      <Column Name="RecurThu" Type="System.Boolean" CanBeNull="true" />
+      <Column Name="RecurFri" Type="System.Boolean" CanBeNull="true" />
+      <Column Name="RecurSat" Type="System.Boolean" CanBeNull="true" />
+      <Column Name="RecurSun" Type="System.Boolean" CanBeNull="true" />
+      <Column Name="EndByDate" Member="RecurEndByDate" Storage="_EndByDate" Type="System.DateTime" CanBeNull="true" />
     </Type>
   </Table>
 </Database>
