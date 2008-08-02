@@ -11,13 +11,14 @@ namespace ApplicationTests
     [TestFixture]
     public class LinqDatabaseCreationTests
     {
-        [Test] 
+        [Test]
         public void CreationTest()
         {
             GrabbaRideDBDataContext context = new GrabbaRideDBDataContext();
             context.CreateDatabase();
             Assert.IsTrue(context.DatabaseExists());
           
+            
         }
 
     }

@@ -8,9 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("GrabbaRide.Database")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("The Treasury")]
 [assembly: AssemblyProduct("GrabbaRide.Database")]
-[assembly: AssemblyCopyright("Copyright © The Treasury 2008")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
