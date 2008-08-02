@@ -1,9 +1,0 @@
-D:\Documents\SoftwareC\Project\ApplicationTests\bin\Debug\ApplicationTests.dll
-D:\Documents\SoftwareC\Project\ApplicationTests\bin\Debug\ApplicationTests.pdb
-D:\Documents\SoftwareC\Project\ApplicationTests\obj\Debug\ResolveAssemblyReference.cache
-D:\Documents\SoftwareC\Project\ApplicationTests\obj\Debug\ApplicationTests.dll
-D:\Documents\SoftwareC\Project\ApplicationTests\obj\Debug\ApplicationTests.pdb
-D:\Documents\SoftwareC\Project\ApplicationTests\bin\Debug\GrabbaRide.Database.dll
-D:\Documents\SoftwareC\Project\ApplicationTests\bin\Debug\nunit.framework.dll
-D:\Documents\SoftwareC\Project\ApplicationTests\bin\Debug\GrabbaRide.Database.pdb
-D:\Documents\SoftwareC\Project\ApplicationTests\bin\Debug\nunit.framework.xml
