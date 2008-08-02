@@ -24,12 +24,15 @@ namespace GrabbaRide.Database
         /// </summary>
         public void InputSampleData()
         {
+
+            System.Diagnostics.Debug.WriteLine("Adding Some data");
             // create some sample locations
             Location l = new Location();
             l.Name = "Vegas";
             l.Lat = -115.136719;
             l.Long = 36.196633;
             this.Locations.InsertOnSubmit(l);
+            
 
             l = new Location();
             l.Name = "Monte Carlo";
@@ -67,42 +70,7 @@ namespace GrabbaRide.Database
             l.Long = -40.385765;
             this.Locations.InsertOnSubmit(l);
 
-            // add some sample users
-            User u = new User();
-            u.Username = "Darcy";
-            u.Gender = Gender.Male;
-            u.DateOfBirth = new DateTime(1983, 1, 1);
-            this.Users.InsertOnSubmit(u);
-
-            u = new User();
-            u.Username = "Amy";
-            u.Gender = Gender.Female;
-            u.DateOfBirth = new DateTime(1983, 1, 1);
-            this.Users.InsertOnSubmit(u);
-
-            u = new User();
-            u.Username = "Adrian";
-            u.Gender = Gender.Male;
-            u.DateOfBirth = new DateTime(1983, 1, 1);
-            this.Users.InsertOnSubmit(u);
-
-            u = new User();
-            u.Username = "Nick";
-            u.Gender = Gender.Male;
-            u.DateOfBirth = new DateTime(1983, 1, 1);
-            this.Users.InsertOnSubmit(u);
-
-            u = new User();
-            u.Username = "Tom";
-            u.Gender = Gender.Male;
-            u.DateOfBirth = new DateTime(1983, 1, 1);
-            this.Users.InsertOnSubmit(u);
-
-            u = new User();
-            u.Username = "Michelle";
-            u.Gender = Gender.Female;
-            u.DateOfBirth = new DateTime(1983, 1, 1);
-            this.Users.InsertOnSubmit(u);
+  
         }
     }
 }

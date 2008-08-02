@@ -30,11 +30,11 @@
   <Table Name="" Member="Users">
     <Type Name="User">
       <Column Name="UserID" Type="System.Int32" IsReadOnly="true" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Username" Type="System.String" CanBeNull="false" />
-      <Column Name="FullName" Type="System.String" CanBeNull="true" />
-      <Column Name="Gender" Type="Gender" CanBeNull="false" />
-      <Column Name="DateOfBirth" Type="System.DateTime" CanBeNull="false" />
+      <Column Member="SignOnID" Type="System.String" CanBeNull="false" />
+      <Column Member="ProfileID" Type="System.Int32" CanBeNull="false" />
       <Association Name="User_Ride" Member="Rides" OtherKey="UserID" Type="Ride" />
+      <Association Name="SignOn_User" Member="SignOn" ThisKey="SignOnID" OtherKey="SignOnID" Type="SignOn" IsForeignKey="true" />
+      <Association Name="Profile_User" Member="Profile" ThisKey="ProfileID" OtherKey="ProfileID" Type="Profile" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="" Member="RecurringRides">
@@ -49,6 +49,26 @@
       <Column Name="RecurSat" Type="System.Boolean" CanBeNull="true" />
       <Column Name="RecurSun" Type="System.Boolean" CanBeNull="true" />
       <Column Name="EndByDate" Member="RecurEndByDate" Storage="_EndByDate" Type="System.DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="" Member="SignOns">
+    <Type Name="SignOn">
+      <Column Member="OpenID_Account" Type="System.Boolean" CanBeNull="false" />
+      <Column Member="OpenID" Type="System.String" CanBeNull="true" />
+      <Column Member="SignOnID" Type="System.String" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Member="Password" Type="System.String" CanBeNull="false" />
+      <Association Name="SignOn_User" Member="Users" ThisKey="SignOnID" OtherKey="SignOnID" Type="User" />
+    </Type>
+  </Table>
+  <Table Name="" Member="Profiles">
+    <Type Name="Profile">
+      <Column Member="ProfileID" Type="System.Int32" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Member="FirstName" Type="System.String" CanBeNull="false" />
+      <Column Member="LastName" Type="System.String" CanBeNull="false" />
+      <Column Member="Gender" Type="System.String" CanBeNull="false" />
+      <Column Member="DOB" Type="System.String" CanBeNull="false" />
+      <Column Member="Occupation" Type="System.String" CanBeNull="false" />
+      <Association Name="Profile_User" Member="Users" ThisKey="ProfileID" OtherKey="ProfileID" Type="User" />
     </Type>
   </Table>
 </Database>
