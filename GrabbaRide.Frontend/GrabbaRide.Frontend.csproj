@@ -120,6 +120,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\header.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\logo.jpg" />
     <Content Include="MasterPage.master" />
     <Content Include="Default.aspx" />

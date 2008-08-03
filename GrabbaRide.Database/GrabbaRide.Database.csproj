@@ -49,9 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GrabbaRideDB.cs">
-      <DependentUpon>GrabbaRideDB.dbml</DependentUpon>
-    </Compile>
     <Compile Include="GrabbaRideDB.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

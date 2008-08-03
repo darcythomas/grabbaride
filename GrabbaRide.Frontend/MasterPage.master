@@ -7,15 +7,15 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <link href="Global.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+</style>
 </head>
 <body>
     <form id="form1" runat="server">
     <div class="header">
         <asp:LoginStatus ID="LoginStatus" runat="server" Style="float: right;" />
-        <img alt="logo" src="Images/logo.jpg" style="float: left;" /><h1>
-            GrabbaRide rocks!</h1>
-        <asp:Menu ID="Menu1" runat="server" BackColor="#B5C7DE" DynamicHorizontalOffset="2"
-            Font-Names="Verdana" Font-Size="0.8em" ForeColor="#284E98" Orientation="Horizontal"
+        <asp:Menu ID="Menu1" runat="server" BackColor="#006699" DynamicHorizontalOffset="2"
+            Font-Names="Verdana" Font-Size="Large" ForeColor="#003366" Orientation="Horizontal"
             StaticSubMenuIndent="10px">
             <StaticSelectedStyle BackColor="#507CD1" />
             <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
@@ -23,7 +23,7 @@
             <DynamicMenuStyle BackColor="#B5C7DE" />
             <DynamicSelectedStyle BackColor="#507CD1" />
             <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
-            <StaticHoverStyle BackColor="#284E98" ForeColor="White" />
+            <StaticHoverStyle BackColor="#F89600" ForeColor="White" />
             <Items>
                 <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home" Value="Home"></asp:MenuItem>
                 <asp:MenuItem NavigateUrl="~/Search.aspx" Text="Search" Value="Search"></asp:MenuItem>
@@ -33,11 +33,14 @@
     </div>
     <div class="body" style="height: 400px">
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            <p>
+            </p>
         </asp:ContentPlaceHolder>
     </div>
     </form>
     <div class="footer">
         Copyright &copy; 2008 | GrabbaRide.co.nz - <a href="Terms.aspx">Terms of Use</a>
-        - <a href="Privacy.aspx">Privacy Policy</a> - <a href="About.aspx">About Us</a></div>
+        - <a href="Privacy.aspx">Privacy Policy</a> - <a href="About.aspx" 
+            class="footer">About Us</a></div>
 </body>
 </html>
