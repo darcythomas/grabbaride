@@ -45,11 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DBConnection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="UserManagement.cd" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GrabbaRide.Database\GrabbaRide.Database.csproj">
