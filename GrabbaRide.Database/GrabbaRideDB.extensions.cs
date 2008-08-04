@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.ComponentModel;
+﻿using System.ComponentModel;
+using System.Diagnostics;
 
 namespace GrabbaRide.Database
 {
@@ -24,15 +21,14 @@ namespace GrabbaRide.Database
         /// </summary>
         public void InputSampleData()
         {
-
-            System.Diagnostics.Debug.WriteLine("Adding Some data");
             // create some sample locations
+            Debug.WriteLine("Adding sample data to database...");
+
             Location l = new Location();
             l.Name = "Vegas";
             l.Lat = -115.136719;
             l.Long = 36.196633;
             this.Locations.InsertOnSubmit(l);
-            
 
             l = new Location();
             l.Name = "Monte Carlo";
@@ -68,9 +64,7 @@ namespace GrabbaRide.Database
             l.Name = "Massey";
             l.Lat = 175.617779;
             l.Long = -40.385765;
-            this.Locations.InsertOnSubmit(l);
-
-  
+            this.Locations.InsertOnSubmit(l);  
         }
     }
 }
