@@ -33,9 +33,7 @@ namespace GrabbaRide.Frontend
             {
                 Debug.WriteLine("Creating new Database");
                 dc.CreateDatabase();
-
-                dc.InputSampleData();
-                dc.SubmitChanges();
+                TestDataGeneration.InputSampleData();
             }
         }
 
