@@ -31,7 +31,7 @@
             </Items>
         </asp:Menu>
     </div>
-    <div class="body" style="height: 400px">
+    <div class="body">
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             <p>
             </p>
