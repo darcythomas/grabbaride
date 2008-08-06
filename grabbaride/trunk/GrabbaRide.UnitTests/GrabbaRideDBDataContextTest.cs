@@ -32,10 +32,12 @@ namespace GrabbaRide.UnitTests
             if (target.DatabaseExists())
             {
                 Assert.Inconclusive("Cannot test database creation if database already exists!");
+               
             }
             else
             {
                 target.CreateDatabase();
+             //   System.Diagnostics.Debug.WriteLine(target.Connection.Database);
                 Assert.IsTrue(target.DatabaseExists(), "The database could not be successfully created!");
                 target.DeleteDatabase();
             }
