@@ -17,7 +17,37 @@ namespace GrabbaRide.Frontend
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            string date = Request.QueryString["date"];
+            string fromLoc = Request.QueryString["fromloc"];
+            string toLoc = Request.QueryString["toloc"];
 
+            if (String.IsNullOrEmpty(date) &&
+                String.IsNullOrEmpty(fromLoc) &&
+                String.IsNullOrEmpty(toLoc))
+            {
+                ListView1.Visible = false;
+            }
+            else
+            {
+                GrabbaRideDataSource.Where = String.Empty;
+
+                if (!String.IsNullOrEmpty(date))
+                {
+                    GrabbaRideDataSource.Where += "Date = " + date;
+                }
+                if (!String.IsNullOrEmpty(fromLoc))
+                {
+                    if (!String.IsNullOrEmpty(GrabbaRideDataSource.Where))
+                        GrabbaRideDataSource.Where += " && ";
+                    GrabbaRideDataSource.Where += "FromLocation = " + fromLoc;
+                }
+                if (!String.IsNullOrEmpty(toLoc))
+                {
+                    if (!String.IsNullOrEmpty(GrabbaRideDataSource.Where))
+                        GrabbaRideDataSource.Where += " && ";
+                    GrabbaRideDataSource.Where += "ToLocation = " + toLoc;
+                }
+            }
         }
     }
 }

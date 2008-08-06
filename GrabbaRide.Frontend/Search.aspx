@@ -4,7 +4,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:ListView ID="ListView1" runat="server" DataSourceID="LinqDataSource">
+    <asp:ListView ID="ListView1" runat="server" DataSourceID="GrabbaRideDataSource">
         <AlternatingItemTemplate>
             <tr style="background-color: #FFFFFF; color: #284775;">
                 <td>
@@ -140,7 +140,7 @@
             </label>
         </ItemTemplate>
     </asp:ListView>
-    <asp:LinqDataSource ID="LinqDataSource" runat="server" ContextTypeName="GrabbaRide.Database.GrabbaRideDBDataContext"
+    <asp:LinqDataSource ID="GrabbaRideDataSource" runat="server" ContextTypeName="GrabbaRide.Database.GrabbaRideDBDataContext"
         OrderBy="DepartureTime" Select="new (ToLocation, FromLocation, DepartureTime, ArrivalTime, User)"
         TableName="Rides">
     </asp:LinqDataSource>
