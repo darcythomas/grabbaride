@@ -23,12 +23,12 @@ namespace GrabbaRide.Frontend {
         protected global::System.Web.UI.WebControls.ListView ListView1;
         
         /// <summary>
-        /// LinqDataSource control.
+        /// GrabbaRideDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinqDataSource LinqDataSource;
+        protected global::System.Web.UI.WebControls.LinqDataSource GrabbaRideDataSource;
     }
 }
