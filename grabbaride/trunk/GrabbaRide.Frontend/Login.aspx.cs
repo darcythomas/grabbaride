@@ -17,9 +17,19 @@ namespace GrabbaRide.Frontend
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            string redirectUrl = Request.QueryString["RedirectUrl"];
+            if (String.IsNullOrEmpty(redirectUrl))
+            {
+                redirectUrl = "Default.aspx";
+            }
+
             if (Request.IsAuthenticated)
             {
-                Response.Redirect("Default.aspx");
+                Response.Redirect(redirectUrl);
+            }
+            else
+            {
+                Login1.DestinationPageUrl = redirectUrl;
             }
         }
     }
