@@ -26,7 +26,8 @@ namespace GrabbaRide.Database
            // AddSampleLocations();
             TestDataGeneration.addTestUsers(10);
             TestDataGeneration.addTestLocations();
-
+            TestDataGeneration.addTestRides(10);
+   
            
         }
 
