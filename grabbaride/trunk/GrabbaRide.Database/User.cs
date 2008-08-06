@@ -11,10 +11,8 @@ using System;
 
 namespace GrabbaRide.Database
 {
-   
     public partial class User 
-    {  
-
+    {
         public User(string firstName, string lastName, Gender gender, DateTime DOB, string username,
             string password, string email)
         {
@@ -30,19 +28,5 @@ namespace GrabbaRide.Database
             this.Email = email;
             OnCreated();
         }
-
-        public static User getRandomUser()
-        {
-            GrabbaRideDBDataContext contex = new GrabbaRideDBDataContext();
-            var allUsers = from u in contex.Users
-                           select u;
-           
-            return allUsers.ElementAt(TestDataGeneration.getRandomNumber(allUsers.Count()));
-        }
-
-
-
-
-        
     }
 }
