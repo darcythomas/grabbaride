@@ -105,7 +105,9 @@ namespace GrabbaRide.Database
 
         private DateTime RandomDate()
         {
-            return new DateTime(1973, 7, 21);
+            return new DateTime(1920 + _random.Next(70),
+                _random.Next(12) + 1,
+                _random.Next(28) + 1);
         }
 
         //******Location Data *******
