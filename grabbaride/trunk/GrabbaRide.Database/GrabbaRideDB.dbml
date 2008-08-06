@@ -30,14 +30,14 @@
   <Table Name="" Member="Users">
     <Type Name="User">
       <Column Name="UserID" Type="System.Int32" IsReadOnly="true" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Member="FirstName" Type="System.String" CanBeNull="false" />
-      <Column Member="LastName" Type="System.String" CanBeNull="false" />
-      <Column Member="Gender" Type="Gender" CanBeNull="false" />
-      <Column Member="DOB" Type="System.DateTime" CanBeNull="false" />
-      <Column Member="Occupation" Type="System.String" CanBeNull="true" />
-      <Column Member="Username" Type="System.String" CanBeNull="false" />
-      <Column Member="Password" Type="System.String" CanBeNull="false" />
-      <Column Member="Email" Type="System.String" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" CanBeNull="false" />
+      <Column Name="Gender" Type="Gender" CanBeNull="false" />
+      <Column Name="DOB" Type="System.DateTime" CanBeNull="false" />
+      <Column Name="Occupation" Type="System.String" CanBeNull="true" />
+      <Column Name="Username" Type="System.String" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" CanBeNull="false" />
       <Association Name="User_Ride" Member="Rides" OtherKey="UserID" Type="Ride" />
       <Association Name="User_OpenID" Member="OpenIDs" OtherKey="UserID" Type="OpenID" />
     </Type>
@@ -58,8 +58,8 @@
   </Table>
   <Table Name="" Member="OpenIDs">
     <Type Name="OpenID">
-      <Column Member="OpenIDUrl" Type="System.String" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Member="UserID" Type="System.Int32" CanBeNull="false" />
+      <Column Name="OpenIDUrl" Type="System.String" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" CanBeNull="false" />
       <Association Name="User_OpenID" Member="User" ThisKey="UserID" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
