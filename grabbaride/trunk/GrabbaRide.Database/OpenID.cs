@@ -1,7 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data.Linq;
+using System.Data.Linq.Mapping;
+using System.Data;
+using System.Reflection;
+using System.Linq.Expressions;
+using System.ComponentModel;
 
 namespace GrabbaRide.Database
 {
@@ -123,7 +128,7 @@ namespace GrabbaRide.Database
             }
         }
 
-        protected virtual void SendPropertyChanged(String propertyName)
+        protected virtual void SendPropertyChanged(string propertyName)
         {
             if ((this.PropertyChanged != null))
             {

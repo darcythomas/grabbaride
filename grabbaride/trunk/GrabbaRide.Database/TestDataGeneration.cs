@@ -1,4 +1,14 @@
-﻿namespace GrabbaRide.Database
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Data.Linq;
+using System.Data.Linq.Mapping;
+using System.Data;
+using System.Reflection;
+using System.Linq.Expressions;
+using System.ComponentModel;
+
+namespace GrabbaRide.Database
 {
     public static class TestDataGeneration
     {
@@ -23,7 +33,14 @@
 
         public static string[] testLastNames = { "Murry", "Smith", "Camp", "Mcshit" };
 
+        public static void addTestUsers(int num)
+        {
+            GrabbaRideDBDataContext context = new GrabbaRideDBDataContext();
+            context.Users.InsertAllOnSubmit(generateTestUsers(num));
+            context.SubmitChanges();
 
+
+        }
       
 
         public static List<User> generateTestUsers(int numUsers)
@@ -41,28 +58,26 @@
         {
             string userName=randomUserName();
             // for test users, the password will be the same as the user name
-            return new User(randomFirstname(),randomLastname(),randomGender(),randomDate(),randomUserName(),userName,userName,"a.palamountain@gmail.com");
+            return new User(randomFirstname(),randomLastname(),randomGender(),randomDate(),userName,userName,"a.palamountain@gmail.com");
         }
 
         private static int getRandomNumber(int max)
         {
-            System.Random r= new System.Random(0,max);
-            return r.Next();
+            System.Random r= new System.Random();
+            return r.Next(0,max);
         }
 
         private static string randomUserName(){
-           return TestDataGeneration.randomUserName
-               [TestDataGeneration.getRandomNumber(TestDataGeneration.testUserNames.Length)];
+            return TestDataGeneration.testUserNames[TestDataGeneration.getRandomNumber(TestDataGeneration.testUserNames.Length)];
+             
         }
 
         private static string randomFirstname(){
-         return TestDataGeneration.randomFirstName
-               [TestDataGeneration.getRandomNumber(TestDataGeneration.testFirstNames.Length)];
+         return TestDataGeneration.testFirstNames[TestDataGeneration.getRandomNumber(TestDataGeneration.testFirstNames.Length)];
         }
 
         private static string randomLastname(){
-         return TestDataGeneration.randomLastName
-               [TestDataGeneration.getRandomNumber(TestDataGeneration.testLastNames.Length)];
+         return TestDataGeneration.testLastNames[TestDataGeneration.getRandomNumber(TestDataGeneration.testLastNames.Length)];
         }
 
         private static Gender randomGender()
@@ -80,21 +95,27 @@
 
 
         //******Location Data *******
+
+        private static Location[] testLocations = { new Location("Vegas", -115.136719,new long(36.1966330)),
+                                                  new Location("Monte Carlo", 43.7398,(long) 7.4272),
+                                                  new Location("Atlantis", -180, (long)180),
+                                                  new Location("South Pole", 175.617230,(long) -180),
+                                                  new Location("Mt Doom, Mordor", 75.526240,(long) -39.304700),
+                                                  new Location("New Washington", 44.395752,(long) 33.299313),
+                                                  new Location("Massey", 175.617779,(long) -40.385765)};
+
         /// <summary>
         /// Adds Sample locations to database for testing
         /// </summary>
-        private void GenerateSampleLocations()
-        {
-               List<Location> locations = new List<Location>(); 
-               locations.Add(new Location("Vegas", -115.136719, 36.196633));
-               locations.Add(new Location("Monte Carlo", 43.7398, 7.4272));
-               locations.Add(new Location("Atlantis", -180, 180));
-               locations.Add(new Location("South Pole", 175.617230, -180));
-               locations.Add(new Location("Mt Doom, Mordor", 75.526240, -39.304700));
-               locations.Add(new Location("New Washington", 44.395752, 33.299313));
-               locations.Add(new Location("Massey", 175.617779, -40.385765));
-           
-        }
+      
+      
+
+
+
+        //**** Ride Dummy Data****
+
+
+
 
 
     }

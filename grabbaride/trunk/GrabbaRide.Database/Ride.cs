@@ -81,6 +81,18 @@ namespace GrabbaRide.Database
             OnCreated();
         }
 
+
+        public Ride(int userID, int fromLocationId, int toLocationID, RecurringRide recurringRide,
+                    DateTime depature, DateTime arrival)
+        {
+            this.UserID = userID;
+            this.FromLocationID = fromLocationId;
+            this.ToLocationID = toLocationID;
+            this.RecurringRideID = recurringRide.RecurringRideID;
+            this.ReturnRide = recurringRide;// Amy come back to this
+            this.OnCreated();
+        }
+
         [Column(Storage = "_RideID", AutoSync = AutoSync.OnInsert, IsPrimaryKey = true, IsDbGenerated = true, UpdateCheck = UpdateCheck.Never)]
         public int RideID
         {

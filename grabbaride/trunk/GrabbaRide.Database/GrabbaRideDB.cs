@@ -30,11 +30,7 @@ namespace GrabbaRide.Database
 
 
         
-        private void AddSampleUsers()
-        {
-           
-        }
-
+        
 
         
     }
