@@ -31,6 +31,17 @@ namespace GrabbaRide.Database
             OnCreated();
         }
 
+        public static User getRandomUser()
+        {
+            GrabbaRideDBDataContext contex = new GrabbaRideDBDataContext();
+            var allUsers = from u in contex.Users
+                           select u;
+           
+            return allUsers.ElementAt(TestDataGeneration.getRandomNumber(allUsers.Count()));
+        }
+
+
+
 
         
     }

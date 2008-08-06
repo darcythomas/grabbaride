@@ -24,6 +24,8 @@ namespace GrabbaRide.Database
             // create some sample locations
             Debug.WriteLine("Adding sample data to database...");
            // AddSampleLocations();
+            TestDataGeneration.addTestUsers(10);
+            TestDataGeneration.addTestLocations();
 
            
         }

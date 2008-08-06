@@ -2,7 +2,7 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="GrabbaRideDB">
   <DataContextMoniker Name="/GrabbaRideDBDataContext" />
   <nestedChildShapes>
-    <classShape Id="0a07dd2a-6ad3-4d87-b6a9-5200ac4d106b" isExpanded="false" absoluteBounds="0.75, 1, 2, 0.45">
+    <classShape Id="0a07dd2a-6ad3-4d87-b6a9-5200ac4d106b" absoluteBounds="0.75, 1, 2, 2.24658447265625">
       <DataClassMoniker Name="/GrabbaRideDBDataContext/Ride" />
       <nestedChildShapes>
         <elementListCompartment Id="12c986ba-7f51-42a3-b8e8-d9b6fd185351" absoluteBounds="0.7649999999999999, 1.46, 1.9700000000000002, 1.68658447265625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
@@ -20,28 +20,28 @@
         <elementListCompartment Id="cf254ac2-ddd9-44a5-806a-fa2326d4c1ba" absoluteBounds="0.76500000000000057, 4.585, 1.9700000000000002, 1.68658447265625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(4.125 : 1.06894962310791); (2.75 : 1.06894962310791)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(4.125 : 1.54680391230573); (2.75 : 1.54680391230573)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/GrabbaRideDBDataContext/Location/Location_Ride" />
       <nodes>
         <classShapeMoniker Id="ee5eaa2c-b334-4453-9e2e-50e1835c2926" />
         <classShapeMoniker Id="0a07dd2a-6ad3-4d87-b6a9-5200ac4d106b" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(4.125 : 1.32197481155396); (3.83333333333333 : 1.32197481155395 : JumpStart); (3.66666666666667 : 1.32197481155396 : JumpEnd); (2.75 : 1.32197481155396)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(4.125 : 1.79832586565808); (2.75 : 1.79832586565808)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/GrabbaRideDBDataContext/Location/Location_Ride1" />
       <nodes>
         <classShapeMoniker Id="ee5eaa2c-b334-4453-9e2e-50e1835c2926" />
         <classShapeMoniker Id="0a07dd2a-6ad3-4d87-b6a9-5200ac4d106b" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(1.07336288461538 : 4.125); (1.07336288461538 : 1.45)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(1.75 : 4.125); (1.75 : 3.24658447265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/GrabbaRideDBDataContext/User/User_Ride" />
       <nodes>
         <classShapeMoniker Id="28260455-ec19-44b6-9779-f265ea37f299" />
         <classShapeMoniker Id="0a07dd2a-6ad3-4d87-b6a9-5200ac4d106b" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(1.43419230769231 : 1); (1.43419230769231 : 0.75); (2.08084615384615 : 0.75); (2.08084615384615 : 1)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(1.45923076923077 : 1); (1.45923076923077 : 0.75); (2.05461538461538 : 0.75); (2.05461538461538 : 1)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/GrabbaRideDBDataContext/Ride/Ride_Ride" />
       <nodes>
         <classShapeMoniker Id="0a07dd2a-6ad3-4d87-b6a9-5200ac4d106b" />
@@ -54,7 +54,7 @@
         <elementListCompartment Id="6411d6a7-2497-4aad-9c1f-388d4e439f02" absoluteBounds="4.14, 2.835, 1.9700000000000002, 1.8509318033854165" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(4.125 : 2.375); (3.75 : 2); (3.75 : 1.19546221733093); (2.75 : 1.19546221733093)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(4.125 : 2.81079223632813); (2.75 : 2.81079223632813)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/GrabbaRideDBDataContext/RecurringRide/RecurringRide_Ride" />
       <nodes>
         <classShapeMoniker Id="4068fcaa-7d3f-4196-a82c-fb2846e944b5" />

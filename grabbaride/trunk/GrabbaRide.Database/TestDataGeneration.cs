@@ -62,7 +62,7 @@ namespace GrabbaRide.Database
             return new User(randomFirstname(),randomLastname(),randomGender(),randomDate(),userName,userName,"a.palamountain@gmail.com");
         }
 
-        private static int getRandomNumber(int max)
+        public static int getRandomNumber(int max)
         {
             System.Random r= new System.Random();
             return r.Next(0,max);
@@ -108,13 +108,40 @@ namespace GrabbaRide.Database
         /// <summary>
         /// Adds Sample locations to database for testing
         /// </summary>
-      
-      
+
+        public static void addTestLocations()
+        {
+            GrabbaRideDBDataContext contex = new GrabbaRideDBDataContext();
+            contex.Locations.InsertAllOnSubmit(testLocations);
+            contex.SubmitChanges();
+        }
 
 
 
         //**** Ride Dummy Data****
 
+        private static Location getRandomLocation()
+        {
+            return testLocations[getRandomNumber(testLocations.Length)];
+        }
+
+        private static Ride generateRandomRide()
+        {
+            //GrabbaRideDBDataContext contex= new GrabbaRideDBDataContext();
+            User u= User.getRandomUser();
+            return new Ride(u.UserID, getRandomLocation(), getRandomLocation(), new System.DateTime(), new System.DateTime());
+        }
+
+        public static void addTestRides(int num)
+        {
+            GrabbaRideDBDataContext contex = new GrabbaRideDBDataContext();
+
+            for (int i = 0; i < num; i++) 
+            {
+                contex.Rides.InsertOnSubmit(generateRandomRide());
+            }
+            contex.SubmitChanges();
+        }
 
 
 
