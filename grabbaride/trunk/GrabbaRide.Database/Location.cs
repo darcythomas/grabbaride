@@ -4,7 +4,7 @@ namespace GrabbaRide.Database
 {
     partial class Location
     {
-        public Location(string locationName_, long lat_, long long_)
+        public Location(string locationName_, double lat_, double long_)
         {
             this.Name = locationName_;
             this.Lat = lat_;
