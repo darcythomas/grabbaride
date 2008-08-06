@@ -141,7 +141,7 @@
         </ItemTemplate>
     </asp:ListView>
     <asp:LinqDataSource ID="GrabbaRideDataSource" runat="server" ContextTypeName="GrabbaRide.Database.GrabbaRideDBDataContext"
-        OrderBy="DepartureTime" Select="new (ToLocation, FromLocation, DepartureTime, ArrivalTime, User)"
+        OrderBy="DepartureTime" Select="new (DepartureTime, ArrivalTime, User, FromLocationID, ToLocationID)"
         TableName="Rides">
     </asp:LinqDataSource>
 </asp:Content>
