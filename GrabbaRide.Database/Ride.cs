@@ -12,12 +12,12 @@ namespace GrabbaRide.Database
 
         
 
-        public Ride(int userID, int fromLocationId, int toLocationID,
+        public Ride(int userID, Location fromLocation,Location toLocation,
                     DateTime depature, DateTime arrival)
         {
             this.UserID = userID;
-            this.FromLocationID = fromLocationId;
-            this.ToLocationID = toLocationID;
+            this.FromLocation= fromLocation;
+            this.ToLocation = toLocation;
             this.OnCreated();
         }
 
