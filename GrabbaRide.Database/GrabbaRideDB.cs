@@ -1,13 +1,13 @@
 ﻿using System.ComponentModel;
 using System.Diagnostics;
+using System.Collections.Generic;
+partial class GrabbaRideDBDataContext
+{
+}
 
 namespace GrabbaRide.Database
 {
-    public partial class Ride : INotifyPropertyChanging, INotifyPropertyChanged
-    {
-        public int SearchRank { get; set; }
-    }
-
+   
     public enum Gender
     {
         Female,
@@ -23,7 +23,17 @@ namespace GrabbaRide.Database
         {
             // create some sample locations
             Debug.WriteLine("Adding sample data to database...");
+            AddSampleLocations();
 
+           
+        }
+
+
+        /// <summary>
+        /// Adds Sample locations to database for testing
+        /// </summary>
+        private void AddSampleLocations()
+        {
             Location l = new Location();
             l.Name = "Vegas";
             l.Lat = -115.136719;
@@ -64,7 +74,15 @@ namespace GrabbaRide.Database
             l.Name = "Massey";
             l.Lat = 175.617779;
             l.Long = -40.385765;
-            this.Locations.InsertOnSubmit(l);  
+            this.Locations.InsertOnSubmit(l); 
         }
+
+        private void AddSampleUsers()
+        {
+           
+        }
+
+
+        
     }
 }

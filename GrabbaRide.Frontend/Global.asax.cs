@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Web;
+using System.Diagnostics;
 using System.Web.Security;
 using System.Web.SessionState;
 using System.Xml.Linq;
@@ -30,6 +31,7 @@ namespace GrabbaRide.Frontend
             GrabbaRideDBDataContext dc = new GrabbaRideDBDataContext();
             if (!dc.DatabaseExists())
             {
+                Debug.WriteLine("Creating new Database");
                 dc.CreateDatabase();
 
                 dc.InputSampleData();
