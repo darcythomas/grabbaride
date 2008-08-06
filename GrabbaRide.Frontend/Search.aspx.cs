@@ -17,6 +17,7 @@ namespace GrabbaRide.Frontend
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            /*
             string date = Request.QueryString["date"];
             string fromLoc = Request.QueryString["fromloc"];
             string toLoc = Request.QueryString["toloc"];
@@ -39,15 +40,15 @@ namespace GrabbaRide.Frontend
                 {
                     if (!String.IsNullOrEmpty(GrabbaRideDataSource.Where))
                         GrabbaRideDataSource.Where += " && ";
-                    GrabbaRideDataSource.Where += "FromLocation = " + fromLoc;
+                    GrabbaRideDataSource.Where += "FromLocationID = " + fromLoc;
                 }
                 if (!String.IsNullOrEmpty(toLoc))
                 {
                     if (!String.IsNullOrEmpty(GrabbaRideDataSource.Where))
                         GrabbaRideDataSource.Where += " && ";
-                    GrabbaRideDataSource.Where += "ToLocation = " + toLoc;
+                    GrabbaRideDataSource.Where += "ToLocationID = " + toLoc;
                 }
-            }
+            }*/
         }
     }
 }
