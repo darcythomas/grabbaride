@@ -48,8 +48,9 @@ namespace GrabbaRide.Database
             List<User> userList = new List<User>();
             for (int i = 0; i < numUsers; i++)
             {
-                userList.Add();
+                userList.Add(generateNewUser());
             }
+            return userList;
 
                     
         }
@@ -96,13 +97,13 @@ namespace GrabbaRide.Database
 
         //******Location Data *******
 
-        private static Location[] testLocations = { new Location("Vegas", -115.136719,new long(36.1966330)),
-                                                  new Location("Monte Carlo", 43.7398,(long) 7.4272),
-                                                  new Location("Atlantis", -180, (long)180),
-                                                  new Location("South Pole", 175.617230,(long) -180),
-                                                  new Location("Mt Doom, Mordor", 75.526240,(long) -39.304700),
-                                                  new Location("New Washington", 44.395752,(long) 33.299313),
-                                                  new Location("Massey", 175.617779,(long) -40.385765)};
+        private static Location[] testLocations = {(new Location("Vegas", -115.136719,36.1966330)),
+                                                  (new Location("Monte Carlo", 43.7398, 7.4272)),
+                                                  new Location("Atlantis", -180, 180),
+                                                  new Location("South Pole", 175.617230, -180),
+                                                  new Location("Mt Doom, Mordor", 75.526240, -39.304700),
+                                                  new Location("New Washington", 44.395752, 33.299313),
+                                                  new Location("Massey", 175.617779, -40.3857650)};
 
         /// <summary>
         /// Adds Sample locations to database for testing
