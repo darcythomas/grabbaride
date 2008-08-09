@@ -17,7 +17,13 @@ namespace GrabbaRide.Frontend
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            /*
+
+            //GrabbaRide.Database.GrabbaRideDBDataContext gdb = new GrabbaRide.Database.GrabbaRideDBDataContext();
+
+            //ListView1.DataSource = gdb.Rides;
+
+            
+            
             string date = Request.QueryString["date"];
             string fromLoc = Request.QueryString["fromloc"];
             string toLoc = Request.QueryString["toloc"];
@@ -26,7 +32,7 @@ namespace GrabbaRide.Frontend
                 String.IsNullOrEmpty(fromLoc) &&
                 String.IsNullOrEmpty(toLoc))
             {
-                ListView1.Visible = false;
+                GridView1.Visible = false;
             }
             else
             {
@@ -48,7 +54,7 @@ namespace GrabbaRide.Frontend
                         GrabbaRideDataSource.Where += " && ";
                     GrabbaRideDataSource.Where += "ToLocationID = " + toLoc;
                 }
-            }*/
+            }
         }
     }
 }
