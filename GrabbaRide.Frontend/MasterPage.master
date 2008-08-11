@@ -7,40 +7,32 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <link href="Global.css" rel="stylesheet" type="text/css" />
-    <style type="text/css">
-</style>
 </head>
 <body>
     <form id="form1" runat="server">
     <div class="header">
-        <asp:LoginStatus ID="LoginStatus" runat="server" Style="float: right;" />
-        <asp:Menu ID="Menu1" runat="server" BackColor="#006699" DynamicHorizontalOffset="2"
-            Font-Names="Verdana" Font-Size="Large" ForeColor="#003366" Orientation="Horizontal"
-            StaticSubMenuIndent="10px">
-            <StaticSelectedStyle BackColor="#507CD1" />
-            <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
-            <DynamicHoverStyle BackColor="#284E98" ForeColor="White" />
-            <DynamicMenuStyle BackColor="#B5C7DE" />
-            <DynamicSelectedStyle BackColor="#507CD1" />
-            <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
-            <StaticHoverStyle BackColor="#F89600" ForeColor="White" />
+        <asp:Image ID="HeaderImage" runat="server" ImageUrl="Images/header.jpg" />
+        <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal">
             <Items>
-                <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home" Value="Home"></asp:MenuItem>
-                <asp:MenuItem NavigateUrl="~/Search.aspx" Text="Search" Value="Search"></asp:MenuItem>
-                <asp:MenuItem NavigateUrl="~/User.aspx" Text="UserCP" Value="UserCP"></asp:MenuItem>
+                <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home" Value="Home" />
+                <asp:MenuItem NavigateUrl="~/Search.aspx" Text="Search" Value="Search" />
+                <asp:MenuItem NavigateUrl="~/User.aspx" Text="Profile" Value="Profile" />
+                <asp:MenuItem NavigateUrl="~/CreateRide.aspx" Text="Create Ride" Value="Create Ride" />
             </Items>
         </asp:Menu>
+        <asp:LoginStatus ID="LoginStatus" runat="server" />
     </div>
     <div class="body">
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            <p>
-            </p>
+            <p />
         </asp:ContentPlaceHolder>
     </div>
     </form>
     <div class="footer">
-        Copyright &copy; 2008 | GrabbaRide.co.nz - <a href="Terms.aspx">Terms of Use</a>
-        - <a href="Privacy.aspx">Privacy Policy</a> - <a href="About.aspx" 
-            class="footer">About Us</a></div>
+        <p>
+            Copyright &copy; 2008 | GrabbaRide.co.nz - <a href="Terms.aspx">Terms of Use</a>
+            - <a href="Privacy.aspx">Privacy Policy</a> - <a href="About.aspx" class="footer">About
+                Us</a></p>
+    </div>
 </body>
 </html>
