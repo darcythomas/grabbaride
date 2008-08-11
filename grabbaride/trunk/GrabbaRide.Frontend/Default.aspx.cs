@@ -20,9 +20,13 @@ namespace GrabbaRide.Frontend
 
         }
 
-        protected void RideDateCalendar_SelectionChanged(object sender, EventArgs e)
+        protected void btnSearch_Click(object sender, EventArgs e)
         {
-            //RideDateTextBox.Text = RideDateCalendar.SelectedDate.ToShortDateString();
+            String search = "Search.aspx?fromloc=" + drpFrom.SelectedValue.ToString();
+            search += "&toloc=" + drpTo.SelectedValue.ToString();
+            if (calDate.SelectedDate >= DateTime.Now)
+                search += "&date=" + calDate.SelectedDate.ToShortDateString();
+            Response.Redirect(search);
         }
     }
 }

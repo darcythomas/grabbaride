@@ -40,7 +40,10 @@ namespace GrabbaRide.Frontend
 
                 if (!String.IsNullOrEmpty(date))
                 {
-                    GrabbaRideDataSource.Where += "Date = " + date;
+                    String[] datecomponents = new String[3];
+                    char delim = '/';
+                    datecomponents = date.Split(delim);
+                    GrabbaRideDataSource.Where += "DepartureTime = DateTime(" + datecomponents[2] + ", " + datecomponents[1] + ", " + datecomponents[0] + ")";
                 }
                 if (!String.IsNullOrEmpty(fromLoc))
                 {
@@ -55,6 +58,15 @@ namespace GrabbaRide.Frontend
                     GrabbaRideDataSource.Where += "ToLocationID = " + toLoc;
                 }
             }
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            String search = "Search.aspx?fromloc=" + drpFrom.SelectedValue.ToString();
+            search += "&toloc=" + drpTo.SelectedValue.ToString();
+            if (calDate.SelectedDate >= DateTime.Now)
+                search += "&date=" + calDate.SelectedDate.ToShortDateString();
+            Response.Redirect(search);
         }
     }
 }
