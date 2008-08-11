@@ -26,5 +26,10 @@ namespace GrabbaRide.Frontend
                 
             }
         }
+
+        protected void DepartureTimeCalendar_SelectionChanged(object sender, EventArgs e)
+        {   
+            
+        }
     }
 }
