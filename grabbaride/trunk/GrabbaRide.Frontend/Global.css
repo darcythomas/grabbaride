@@ -1,17 +1,10 @@
-﻿.body
+﻿body
 {
-    float: left;
-    font-family: verdana;
-    font-size: small;
-    color: #000000;
-    width: 800px;
-    height: 600px;
-    right: 50%;
-    left: 50%;
-    top: auto;
-    bottom: auto;
-    clip: rect(auto, 300px, auto, auto);
-    overflow: auto;
+	font-family: Verdana, Arial;
+	width: 800px;
+}
+.body
+{
 }
 .centercol
 {
@@ -23,39 +16,18 @@
 }
 .header
 {
-    border: thin solid #C0C0C0;
-    text-align: center;
-    height: 166px;
-    color: #000000;
-    font-family: verdana;
-    width: 800px;
-    top: 0px;
-    right: 50%;
-    bottom: auto;
-    left: auto;
-    position: static;
-    clip: rect(0%, 50%, auto, 50%);
-    background-image: url('Images/header.jpg');
+	text-align: center;
 }
 .footer
 {
-    text-align: center;
-    font-size: small;
-    font-weight: bold;
-    background-color: #FFFFFF;
-    height: 30px;
-    font-family: verdana;
-    width: 800px;
+	font-size: small;
+	text-align: center;
 }
 a
 {
-    text-decoration: none;
-    color: #000000;
-    font-size: small;
-    font-style: italic;
+	text-decoration: none;
 }
 a:hover
 {
-    text-decoration: underline;
-    background-color: #FF9A07;
+	text-decoration: underline;
 }
