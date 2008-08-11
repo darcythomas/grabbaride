@@ -4,7 +4,30 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
+    <br />
+    From:&nbsp;&nbsp;&nbsp;&nbsp;
+    <asp:DropDownList ID="drpFrom" runat="server" 
+        DataSourceID="SearchDataSource" DataTextField="Name" 
+        DataValueField="LocationID">
+    </asp:DropDownList>
+    <asp:LinqDataSource ID="SearchDataSource" runat="server" 
+        ContextTypeName="GrabbaRide.Database.GrabbaRideDBDataContext" 
+        Select="new (LocationID, Name)" 
+        TableName="Locations">
+    </asp:LinqDataSource>
+    <br />
+    To:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <asp:DropDownList ID="drpTo" runat="server" DataSourceID="SearchDataSource" 
+        DataTextField="Name" DataValueField="LocationID">
+    </asp:DropDownList>
+&nbsp;<br />
+    <br />
+    Date:<asp:Calendar ID="calDate" runat="server"></asp:Calendar>
+    <br />
+    <asp:Button ID="btnSearch" runat="server" onclick="btnSearch_Click" 
+        Text="Search Rides" />
+    <br />
+&nbsp;<asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
         DataKeyNames="RideID" DataSourceID="GrabbaRideDataSource">
         <Columns>
             <asp:BoundField DataField="SearchRank" HeaderText="SearchRank" 
