@@ -29,7 +29,8 @@ namespace GrabbaRide.Frontend
             }
             else
             {
-                Login1.DestinationPageUrl = redirectUrl;
+                GrabbaRideLogin.DestinationPageUrl = redirectUrl;
+                GrabbaRideLogin.CreateUserUrl += "?RedirectUrl=" + redirectUrl;
             }
         }
     }
