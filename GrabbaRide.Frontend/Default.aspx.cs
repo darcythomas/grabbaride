@@ -22,7 +22,7 @@ namespace GrabbaRide.Frontend
 
         protected void RideDateCalendar_SelectionChanged(object sender, EventArgs e)
         {
-            RideDateTextBox.Text = RideDateCalendar.SelectedDate.ToShortDateString();
+            //RideDateTextBox.Text = RideDateCalendar.SelectedDate.ToShortDateString();
         }
     }
 }
