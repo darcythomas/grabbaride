@@ -3,13 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrabbaRide.Frontend", "GrabbaRide.Frontend\GrabbaRide.Frontend.csproj", "{5F4F65E5-001E-46A6-90E5-611CE1A75016}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrabbaRide.WebService", "GrabbaRide.WebService\GrabbaRide.WebService.csproj", "{D36C20C7-C3BC-47E7-B564-E544D4AF9484}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrabbaRide.UserManagement", "GrabbaRide.UserManagement\GrabbaRide.UserManagement.csproj", "{0ADB4FCB-9081-4E28-887B-3BBD5E5BD15E}"
-	ProjectSection(ProjectDependencies) = postProject
-		{2C76E154-F418-4376-9101-BC61434623E7} = {2C76E154-F418-4376-9101-BC61434623E7}
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrabbaRide.Database", "GrabbaRide.Database\GrabbaRide.Database.csproj", "{2C76E154-F418-4376-9101-BC61434623E7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrabbaRide.UnitTests", "GrabbaRide.UnitTests\GrabbaRide.UnitTests.csproj", "{7C0CAE04-9E04-4C27-9320-0C7399C4A191}"
@@ -17,10 +10,16 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CFA4447C-017A-4DDF-8FEF-50F764881E45}"
 	ProjectSection(SolutionItems) = preProject
 		GrabbaRide.vsmdi = GrabbaRide.vsmdi
+		GrabbaRide1.vsmdi = GrabbaRide1.vsmdi
 		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemManagement", "UserManagement\SystemManagement.csproj", "{E76DCFAC-D89A-4402-A1DB-0D921358C351}"
+EndProject
 Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = GrabbaRide1.vsmdi
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -30,14 +29,6 @@ Global
 		{5F4F65E5-001E-46A6-90E5-611CE1A75016}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F4F65E5-001E-46A6-90E5-611CE1A75016}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F4F65E5-001E-46A6-90E5-611CE1A75016}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D36C20C7-C3BC-47E7-B564-E544D4AF9484}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D36C20C7-C3BC-47E7-B564-E544D4AF9484}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D36C20C7-C3BC-47E7-B564-E544D4AF9484}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D36C20C7-C3BC-47E7-B564-E544D4AF9484}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0ADB4FCB-9081-4E28-887B-3BBD5E5BD15E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0ADB4FCB-9081-4E28-887B-3BBD5E5BD15E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0ADB4FCB-9081-4E28-887B-3BBD5E5BD15E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0ADB4FCB-9081-4E28-887B-3BBD5E5BD15E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2C76E154-F418-4376-9101-BC61434623E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2C76E154-F418-4376-9101-BC61434623E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C76E154-F418-4376-9101-BC61434623E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -46,6 +37,10 @@ Global
 		{7C0CAE04-9E04-4C27-9320-0C7399C4A191}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C0CAE04-9E04-4C27-9320-0C7399C4A191}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C0CAE04-9E04-4C27-9320-0C7399C4A191}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E76DCFAC-D89A-4402-A1DB-0D921358C351}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E76DCFAC-D89A-4402-A1DB-0D921358C351}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E76DCFAC-D89A-4402-A1DB-0D921358C351}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E76DCFAC-D89A-4402-A1DB-0D921358C351}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

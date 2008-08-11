@@ -9,6 +9,7 @@ using System.Linq.Expressions;
 using System.ComponentModel;
 using System;
 
+
 namespace GrabbaRide.Database
 {
     public partial class User 
@@ -28,5 +29,18 @@ namespace GrabbaRide.Database
             this.Email = email;
             OnCreated();
         }
+
+
+        public User getUser(string userName)
+        {
+            GrabbaRideDBDataContext context = new GrabbaRideDBDataContext();
+            var user = from u in context.Users
+                       where u._Username == userName
+                       select u;
+            return (User)user;
+            
+        }
+
+        
     }
 }
