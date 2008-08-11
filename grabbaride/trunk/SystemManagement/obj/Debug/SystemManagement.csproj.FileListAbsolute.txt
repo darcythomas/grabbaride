@@ -1,7 +1,0 @@
-D:\Software C\Project\SystemManagement\obj\Debug\ResolveAssemblyReference.cache
-D:\Software C\Project\SystemManagement\bin\Debug\UserManagement.dll
-D:\Software C\Project\SystemManagement\bin\Debug\UserManagement.pdb
-D:\Software C\Project\SystemManagement\bin\Debug\GrabbaRide.Database.dll
-D:\Software C\Project\SystemManagement\bin\Debug\GrabbaRide.Database.pdb
-D:\Software C\Project\SystemManagement\obj\Debug\UserManagement.dll
-D:\Software C\Project\SystemManagement\obj\Debug\UserManagement.pdb
