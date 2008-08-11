@@ -644,6 +644,26 @@ namespace GrabbaRide.Database
 		
 		private string _Email;
 		
+		private string _ApplicationName = default(string);
+		
+		private string _PasswordQuestion;
+		
+		private string _PasswordAnswer;
+		
+		private bool _IsApproved;
+		
+		private System.DateTime _LastActvityDate;
+		
+		private System.DateTime _LastLogIn;
+		
+		private System.DateTime _LastPasswordChangedDate;
+		
+		private System.DateTime _CreationDate;
+		
+		private bool _IsOnline;
+		
+		private bool _IsLockedOut;
+		
 		private EntitySet<Ride> _Rides;
 		
 		private EntitySet<OpenID> _OpenIDs;
@@ -668,6 +688,24 @@ namespace GrabbaRide.Database
     partial void OnPasswordChanged();
     partial void OnEmailChanging(string value);
     partial void OnEmailChanged();
+    partial void OnPasswordQuestionChanging(string value);
+    partial void OnPasswordQuestionChanged();
+    partial void OnPasswordAnswerChanging(string value);
+    partial void OnPasswordAnswerChanged();
+    partial void OnIsApprovedChanging(bool value);
+    partial void OnIsApprovedChanged();
+    partial void OnLastActvityDateChanging(System.DateTime value);
+    partial void OnLastActvityDateChanged();
+    partial void OnLastLogInChanging(System.DateTime value);
+    partial void OnLastLogInChanged();
+    partial void OnLastPasswordChangedDateChanging(System.DateTime value);
+    partial void OnLastPasswordChangedDateChanged();
+    partial void OnCreationDateChanging(System.DateTime value);
+    partial void OnCreationDateChanged();
+    partial void OnIsOnlineChanging(bool value);
+    partial void OnIsOnlineChanged();
+    partial void OnIsLockedOutChanging(bool value);
+    partial void OnIsLockedOutChanged();
     #endregion
 		
 		public User()
@@ -842,6 +880,195 @@ namespace GrabbaRide.Database
 					this._Email = value;
 					this.SendPropertyChanged("Email");
 					this.OnEmailChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_ApplicationName", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+		public string ApplicationName
+		{
+			get
+			{
+				return this._ApplicationName;
+			}
+		}
+		
+		[Column(Storage="_PasswordQuestion", CanBeNull=false)]
+		public string PasswordQuestion
+		{
+			get
+			{
+				return this._PasswordQuestion;
+			}
+			set
+			{
+				if ((this._PasswordQuestion != value))
+				{
+					this.OnPasswordQuestionChanging(value);
+					this.SendPropertyChanging();
+					this._PasswordQuestion = value;
+					this.SendPropertyChanged("PasswordQuestion");
+					this.OnPasswordQuestionChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_PasswordAnswer", CanBeNull=false)]
+		public string PasswordAnswer
+		{
+			get
+			{
+				return this._PasswordAnswer;
+			}
+			set
+			{
+				if ((this._PasswordAnswer != value))
+				{
+					this.OnPasswordAnswerChanging(value);
+					this.SendPropertyChanging();
+					this._PasswordAnswer = value;
+					this.SendPropertyChanged("PasswordAnswer");
+					this.OnPasswordAnswerChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_IsApproved")]
+		public bool IsApproved
+		{
+			get
+			{
+				return this._IsApproved;
+			}
+			set
+			{
+				if ((this._IsApproved != value))
+				{
+					this.OnIsApprovedChanging(value);
+					this.SendPropertyChanging();
+					this._IsApproved = value;
+					this.SendPropertyChanged("IsApproved");
+					this.OnIsApprovedChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_LastActvityDate")]
+		public System.DateTime LastActvityDate
+		{
+			get
+			{
+				return this._LastActvityDate;
+			}
+			set
+			{
+				if ((this._LastActvityDate != value))
+				{
+					this.OnLastActvityDateChanging(value);
+					this.SendPropertyChanging();
+					this._LastActvityDate = value;
+					this.SendPropertyChanged("LastActvityDate");
+					this.OnLastActvityDateChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_LastLogIn")]
+		public System.DateTime LastLogIn
+		{
+			get
+			{
+				return this._LastLogIn;
+			}
+			set
+			{
+				if ((this._LastLogIn != value))
+				{
+					this.OnLastLogInChanging(value);
+					this.SendPropertyChanging();
+					this._LastLogIn = value;
+					this.SendPropertyChanged("LastLogIn");
+					this.OnLastLogInChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_LastPasswordChangedDate")]
+		public System.DateTime LastPasswordChangedDate
+		{
+			get
+			{
+				return this._LastPasswordChangedDate;
+			}
+			set
+			{
+				if ((this._LastPasswordChangedDate != value))
+				{
+					this.OnLastPasswordChangedDateChanging(value);
+					this.SendPropertyChanging();
+					this._LastPasswordChangedDate = value;
+					this.SendPropertyChanged("LastPasswordChangedDate");
+					this.OnLastPasswordChangedDateChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_CreationDate")]
+		public System.DateTime CreationDate
+		{
+			get
+			{
+				return this._CreationDate;
+			}
+			set
+			{
+				if ((this._CreationDate != value))
+				{
+					this.OnCreationDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreationDate = value;
+					this.SendPropertyChanged("CreationDate");
+					this.OnCreationDateChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_IsOnline")]
+		public bool IsOnline
+		{
+			get
+			{
+				return this._IsOnline;
+			}
+			set
+			{
+				if ((this._IsOnline != value))
+				{
+					this.OnIsOnlineChanging(value);
+					this.SendPropertyChanging();
+					this._IsOnline = value;
+					this.SendPropertyChanged("IsOnline");
+					this.OnIsOnlineChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_IsLockedOut")]
+		public bool IsLockedOut
+		{
+			get
+			{
+				return this._IsLockedOut;
+			}
+			set
+			{
+				if ((this._IsLockedOut != value))
+				{
+					this.OnIsLockedOutChanging(value);
+					this.SendPropertyChanging();
+					this._IsLockedOut = value;
+					this.SendPropertyChanged("IsLockedOut");
+					this.OnIsLockedOutChanged();
 				}
 			}
 		}
