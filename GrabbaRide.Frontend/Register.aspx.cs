@@ -17,13 +17,20 @@ namespace GrabbaRide.Frontend
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            string redirectUrl = Request.QueryString["RedirectUrl"];
+            if (String.IsNullOrEmpty(redirectUrl))
+            {
+                redirectUrl = "Default.aspx";
+            }
 
-        }
-
-        protected void ContinueButton_Click(object sender, EventArgs e)
-        {
-            //go to login page
-            Response.Redirect("Login.aspx");
+            if (Request.IsAuthenticated)
+            {
+                Response.Redirect(redirectUrl);
+            }
+            else
+            {
+                CreateUserWizard.ContinueDestinationPageUrl = redirectUrl;
+            }
         }
     }
 }
