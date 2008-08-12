@@ -29,7 +29,7 @@ namespace GrabbaRide.Frontend
         {
             // create the GrabbaRideDB if it doesn't already exist
             GrabbaRideDBDataContext dc = new GrabbaRideDBDataContext();
-            if (dc.DatabaseExists)
+            if (dc.DatabaseExists())
             {
                 dc.DeleteDatabase();
             }
