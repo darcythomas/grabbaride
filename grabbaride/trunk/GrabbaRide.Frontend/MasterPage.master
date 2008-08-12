@@ -10,7 +10,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div class="header">
+    <div id="header">
         <asp:Image ID="HeaderImage" runat="server" ImageUrl="Images/header.jpg" />
         <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal">
             <Items>
@@ -22,17 +22,18 @@
         </asp:Menu>
         <asp:LoginStatus ID="LoginStatus" runat="server" />
     </div>
-    <div class="body">
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            <p />
-        </asp:ContentPlaceHolder>
+    <div id="sidenav">
+        <asp:ContentPlaceHolder ID="SideNav" runat="server" />
     </div>
-    </form>
-    <div class="footer">
+    <div id="content">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" />
+    </div>
+    <div id="footer">
         <p>
             Copyright &copy; 2008 | GrabbaRide.co.nz - <a href="Terms.aspx">Terms of Use</a>
             - <a href="Privacy.aspx">Privacy Policy</a> - <a href="About.aspx" class="footer">About
                 Us</a></p>
     </div>
+    </form>
 </body>
 </html>
