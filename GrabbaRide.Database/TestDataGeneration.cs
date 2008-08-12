@@ -155,7 +155,7 @@ namespace GrabbaRide.Database
             TestDataGeneration dg = new TestDataGeneration();
             dg.AddUsers(30);
             dg.AddLocations();
-            dg.AddRides(10);
+            dg.AddRides(100);
         }
     }
 }
