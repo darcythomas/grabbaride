@@ -29,12 +29,14 @@ namespace GrabbaRide.Frontend
         {
             // create the GrabbaRideDB if it doesn't already exist
             GrabbaRideDBDataContext dc = new GrabbaRideDBDataContext();
-            if (!dc.DatabaseExists())
+            if (dc.DatabaseExists)
             {
-                Debug.WriteLine("Creating new Database");
-                dc.CreateDatabase();
-                TestDataGeneration.InputSampleData();
+                dc.DeleteDatabase();
             }
+
+            Debug.WriteLine("Creating new Database");
+            dc.CreateDatabase();
+            TestDataGeneration.InputSampleData();
         }
 
         protected void Session_Start(object sender, EventArgs e)
