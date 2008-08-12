@@ -1,0 +1,39 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>GrabbaRide</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="Global.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div id="header">
+        <asp:Image ID="HeaderImage" runat="server" ImageUrl="Images/header.jpg" />
+        <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal">
+            <Items>
+                <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home" Value="Home" />
+                <asp:MenuItem NavigateUrl="~/Search.aspx" Text="Search" Value="Search" />
+                <asp:MenuItem NavigateUrl="~/User.aspx" Text="Profile" Value="Profile" />
+                <asp:MenuItem NavigateUrl="~/CreateRide.aspx" Text="Create Ride" Value="Create Ride" />
+            </Items>
+        </asp:Menu>
+        <asp:LoginStatus ID="LoginStatus" runat="server" />
+    </div>
+    <div id="sidenav">
+        <asp:ContentPlaceHolder ID="SideNav" runat="server" />
+    </div>
+    <div id="content">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" />
+    </div>
+    <div id="footer">
+        <p>
+            Copyright &copy; 2008 | GrabbaRide.co.nz - <a href="Terms.aspx">Terms of Use</a>
+            - <a href="Privacy.aspx">Privacy Policy</a> - <a href="About.aspx" class="footer">About
+                Us</a></p>
+    </div>
+    </form>
+</body>
+</html>
