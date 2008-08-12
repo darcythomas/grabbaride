@@ -1,23 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="GrabbaRideDB">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.875" name="GrabbaRideDB">
   <DataContextMoniker Name="/GrabbaRideDBDataContext" />
   <nestedChildShapes>
-    <classShape Id="0a07dd2a-6ad3-4d87-b6a9-5200ac4d106b" absoluteBounds="0.75, 1, 2, 2.24658447265625">
+    <classShape Id="0a07dd2a-6ad3-4d87-b6a9-5200ac4d106b" absoluteBounds="0.75, 1, 2, 2.5401025390625">
       <DataClassMoniker Name="/GrabbaRideDBDataContext/Ride" />
       <nestedChildShapes>
-        <elementListCompartment Id="12c986ba-7f51-42a3-b8e8-d9b6fd185351" absoluteBounds="0.7649999999999999, 1.46, 1.9700000000000002, 1.68658447265625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="12c986ba-7f51-42a3-b8e8-d9b6fd185351" absoluteBounds="0.7649999999999999, 1.46, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="ee5eaa2c-b334-4453-9e2e-50e1835c2926" absoluteBounds="4.125, 0.5, 2, 1.4248478190104168">
+    <classShape Id="ee5eaa2c-b334-4453-9e2e-50e1835c2926" absoluteBounds="4.125, 0.5, 2, 1.5785953776041666">
       <DataClassMoniker Name="/GrabbaRideDBDataContext/Location" />
       <nestedChildShapes>
-        <elementListCompartment Id="890644e8-7510-43ba-811f-b7406a2c516e" absoluteBounds="4.1400000000000006, 0.96, 1.9700000000000002, 0.86484781901041663" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="890644e8-7510-43ba-811f-b7406a2c516e" absoluteBounds="4.1400000000000006, 0.96, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="28260455-ec19-44b6-9779-f265ea37f299" absoluteBounds="0.75, 4.125, 2, 3.8900577799479166">
+    <classShape Id="28260455-ec19-44b6-9779-f265ea37f299" absoluteBounds="0.75, 4.125, 2, 4.4631168619791666">
       <DataClassMoniker Name="/GrabbaRideDBDataContext/User" />
       <nestedChildShapes>
-        <elementListCompartment Id="cf254ac2-ddd9-44a5-806a-fa2326d4c1ba" absoluteBounds="0.76500000000000057, 4.585, 1.9700000000000002, 3.3300577799479165" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="cf254ac2-ddd9-44a5-806a-fa2326d4c1ba" absoluteBounds="0.76500000000000057, 4.585, 1.9700000000000002, 3.9031168619791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <associationConnector edgePoints="[(4.125 : 1.54680391230573); (2.75 : 1.54680391230573)]" fixedFrom="NotFixed" fixedTo="NotFixed">
@@ -34,7 +34,7 @@
         <classShapeMoniker Id="0a07dd2a-6ad3-4d87-b6a9-5200ac4d106b" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(1.75 : 4.125); (1.75 : 3.24658447265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(1.75 : 4.125); (1.75 : 3.24658447265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/GrabbaRideDBDataContext/User/User_Ride" />
       <nodes>
         <classShapeMoniker Id="28260455-ec19-44b6-9779-f265ea37f299" />
@@ -48,10 +48,10 @@
         <classShapeMoniker Id="0a07dd2a-6ad3-4d87-b6a9-5200ac4d106b" />
       </nodes>
     </associationConnector>
-    <classShape Id="4068fcaa-7d3f-4196-a82c-fb2846e944b5" absoluteBounds="4.125, 2.375, 2, 2.4109318033854166">
+    <classShape Id="4068fcaa-7d3f-4196-a82c-fb2846e944b5" absoluteBounds="4.125, 2.375, 2, 2.7324039713541666">
       <DataClassMoniker Name="/GrabbaRideDBDataContext/RecurringRide" />
       <nestedChildShapes>
-        <elementListCompartment Id="6411d6a7-2497-4aad-9c1f-388d4e439f02" absoluteBounds="4.14, 2.835, 1.9700000000000002, 1.8509318033854165" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="6411d6a7-2497-4aad-9c1f-388d4e439f02" absoluteBounds="4.14, 2.835, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <associationConnector edgePoints="[(4.125 : 2.81079223632813); (2.75 : 2.81079223632813)]" fixedFrom="NotFixed" fixedTo="NotFixed">
@@ -61,13 +61,13 @@
         <classShapeMoniker Id="0a07dd2a-6ad3-4d87-b6a9-5200ac4d106b" />
       </nodes>
     </associationConnector>
-    <classShape Id="d7771722-b22f-495f-a928-8c349427aaf3" absoluteBounds="4.125, 5.5, 2, 1.0961531575520827">
+    <classShape Id="d7771722-b22f-495f-a928-8c349427aaf3" absoluteBounds="4.125, 5.5, 2, 1.1939925130208327">
       <DataClassMoniker Name="/GrabbaRideDBDataContext/OpenID" />
       <nestedChildShapes>
-        <elementListCompartment Id="04053c23-c61f-4316-aba8-c05c983a0202" absoluteBounds="4.14, 5.96, 1.9700000000000002, 0.53615315755208326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="04053c23-c61f-4316-aba8-c05c983a0202" absoluteBounds="4.14, 5.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.75 : 6.04807657877604); (4.125 : 6.04807657877604)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 6.04807657877604); (4.125 : 6.04807657877604)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/GrabbaRideDBDataContext/User/User_OpenID" />
       <nodes>
         <classShapeMoniker Id="28260455-ec19-44b6-9779-f265ea37f299" />
