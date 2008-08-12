@@ -115,12 +115,9 @@ namespace GrabbaRide.Database
         /// <summary>
         /// Adds Sample locations to database for testing
         /// </summary>
-        private void AddLocations(int num)
+        private void AddLocations()
         {
-            for (int i = 0; i < num; i++)
-            {
-                _dataContext.Locations.InsertOnSubmit(RandomLocation());
-            }
+            _dataContext.Locations.InsertAllOnSubmit(_testLocations);
             _dataContext.SubmitChanges();
         }
 
@@ -155,8 +152,8 @@ namespace GrabbaRide.Database
         public static void InputSampleData()
         {
             TestDataGeneration dg = new TestDataGeneration();
-            dg.AddUsers(10);
-            dg.AddLocations(10);
+            dg.AddUsers(30);
+            dg.AddLocations();
             dg.AddRides(10);
         }
     }
