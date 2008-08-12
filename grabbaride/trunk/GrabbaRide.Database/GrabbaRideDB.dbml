@@ -38,16 +38,16 @@
       <Column Name="Username" Type="System.String" CanBeNull="false" />
       <Column Name="Password" Type="System.String" CanBeNull="false" />
       <Column Name="Email" Type="System.String" CanBeNull="false" />
-      <Column Member="ApplicationName" Type="System.String" IsReadOnly="true" CanBeNull="false" UpdateCheck="Always" />
-      <Column Member="PasswordQuestion" Type="System.String" CanBeNull="false" />
-      <Column Member="PasswordAnswer" Type="System.String" CanBeNull="false" />
-      <Column Member="IsApproved" Type="System.Boolean" CanBeNull="false" />
-      <Column Member="LastActvityDate" Type="System.DateTime" CanBeNull="false" />
-      <Column Member="LastLogIn" Type="System.DateTime" CanBeNull="false" />
-      <Column Member="LastPasswordChangedDate" Type="System.DateTime" CanBeNull="false" />
-      <Column Member="CreationDate" Type="System.DateTime" CanBeNull="false" />
-      <Column Member="IsOnline" Type="System.Boolean" CanBeNull="false" />
-      <Column Member="IsLockedOut" Type="System.Boolean" CanBeNull="false" />
+      <Column Name="ApplicationName" Type="System.String" IsReadOnly="true" CanBeNull="true" />
+      <Column Name="PasswordQuestion" Type="System.String" CanBeNull="true" />
+      <Column Name="PasswordAnswer" Type="System.String" CanBeNull="true" />
+      <Column Name="IsApproved" Type="System.Boolean" CanBeNull="true" />
+      <Column Name="LastActvityDate" Type="System.DateTime" CanBeNull="true" />
+      <Column Name="LastLogIn" Type="System.DateTime" CanBeNull="true" />
+      <Column Name="LastPasswordChangedDate" Type="System.DateTime" CanBeNull="true" />
+      <Column Name="CreationDate" Type="System.DateTime" CanBeNull="true" />
+      <Column Name="IsOnline" Type="System.Boolean" CanBeNull="true" />
+      <Column Name="IsLockedOut" Type="System.Boolean" CanBeNull="true" />
       <Association Name="User_Ride" Member="Rides" OtherKey="UserID" Type="Ride" />
       <Association Name="User_OpenID" Member="OpenIDs" OtherKey="UserID" Type="OpenID" />
     </Type>

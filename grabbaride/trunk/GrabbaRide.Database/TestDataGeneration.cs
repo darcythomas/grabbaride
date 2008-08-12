@@ -54,7 +54,8 @@ namespace GrabbaRide.Database
         {
             for (int i = 0; i < num; i++)
             {
-                _dataContext.Users.InsertOnSubmit(RandomUser());
+                User u = RandomUser();
+                _dataContext.Users.InsertOnSubmit(u);
             }
             _dataContext.SubmitChanges();
         }
