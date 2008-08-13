@@ -106,8 +106,8 @@ namespace GrabbaRide.Database
 
         private DateTime RandomDate()
         {
-            return new DateTime(1920 + _random.Next(70),
-                _random.Next(12) + 1,
+            return new DateTime(2008 ,
+                _random.Next(4) + 8,
                 _random.Next(28) + 1);
         }
 
