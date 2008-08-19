@@ -32,15 +32,9 @@ namespace GrabbaRide.Database
     partial void InsertRide(Ride instance);
     partial void UpdateRide(Ride instance);
     partial void DeleteRide(Ride instance);
-    partial void InsertLocation(Location instance);
-    partial void UpdateLocation(Location instance);
-    partial void DeleteLocation(Location instance);
     partial void InsertUser(User instance);
     partial void UpdateUser(User instance);
     partial void DeleteUser(User instance);
-    partial void InsertRecurringRide(RecurringRide instance);
-    partial void UpdateRecurringRide(RecurringRide instance);
-    partial void DeleteRecurringRide(RecurringRide instance);
     partial void InsertOpenID(OpenID instance);
     partial void UpdateOpenID(OpenID instance);
     partial void DeleteOpenID(OpenID instance);
@@ -84,27 +78,11 @@ namespace GrabbaRide.Database
 			}
 		}
 		
-		public System.Data.Linq.Table<Location> Locations
-		{
-			get
-			{
-				return this.GetTable<Location>();
-			}
-		}
-		
 		public System.Data.Linq.Table<User> Users
 		{
 			get
 			{
 				return this.GetTable<User>();
-			}
-		}
-		
-		public System.Data.Linq.Table<RecurringRide> RecurringRides
-		{
-			get
-			{
-				return this.GetTable<RecurringRide>();
 			}
 		}
 		
@@ -127,29 +105,33 @@ namespace GrabbaRide.Database
 		
 		private int _UserID;
 		
-		private int _FromLocationID;
+		private System.Nullable<int> _DepartureTime;
 		
-		private int _ToLocationID;
-		
-		private System.DateTime _DepartureTime;
-		
-		private System.Nullable<System.DateTime> _ArrivalTime;
-		
-		private System.Nullable<int> _ReturnRideID;
+		private System.Nullable<int> _ArrivalTime;
 		
 		private System.Nullable<System.DateTime> _CreationDate;
 		
-		private System.Nullable<int> _RecurringRideID;
+		private System.DateTime _StartDate;
 		
-		private EntityRef<Location> _FromLocation;
+		private System.DateTime _EndDate;
 		
-		private EntityRef<Location> _ToLocation;
+		private int _NumSeats;
+		
+		private bool _RecurMon;
+		
+		private bool _RecurTue;
+		
+		private bool _RecurWed;
+		
+		private bool _RecurThu;
+		
+		private bool _RecurFri;
+		
+		private bool _RecurSat;
+		
+		private bool _RecurSun;
 		
 		private EntityRef<User> _User;
-		
-		private EntityRef<Ride> _Ride1;
-		
-		private EntityRef<RecurringRide> _RecurringRide;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -157,29 +139,37 @@ namespace GrabbaRide.Database
     partial void OnCreated();
     partial void OnUserIDChanging(int value);
     partial void OnUserIDChanged();
-    partial void OnFromLocationIDChanging(int value);
-    partial void OnFromLocationIDChanged();
-    partial void OnToLocationIDChanging(int value);
-    partial void OnToLocationIDChanged();
-    partial void OnDepartureTimeChanging(System.DateTime value);
+    partial void OnDepartureTimeChanging(System.Nullable<int> value);
     partial void OnDepartureTimeChanged();
-    partial void OnArrivalTimeChanging(System.Nullable<System.DateTime> value);
+    partial void OnArrivalTimeChanging(System.Nullable<int> value);
     partial void OnArrivalTimeChanged();
-    partial void OnReturnRideIDChanging(System.Nullable<int> value);
-    partial void OnReturnRideIDChanged();
     partial void OnCreationDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreationDateChanged();
-    partial void OnRecurringRideIDChanging(System.Nullable<int> value);
-    partial void OnRecurringRideIDChanged();
+    partial void OnStartDateChanging(System.DateTime value);
+    partial void OnStartDateChanged();
+    partial void OnEndDateChanging(System.DateTime value);
+    partial void OnEndDateChanged();
+    partial void OnNumSeatsChanging(int value);
+    partial void OnNumSeatsChanged();
+    partial void OnRecurMonChanging(bool value);
+    partial void OnRecurMonChanged();
+    partial void OnRecurTueChanging(bool value);
+    partial void OnRecurTueChanged();
+    partial void OnRecurWedChanging(bool value);
+    partial void OnRecurWedChanged();
+    partial void OnRecurThuChanging(bool value);
+    partial void OnRecurThuChanged();
+    partial void OnRecurFriChanging(bool value);
+    partial void OnRecurFriChanged();
+    partial void OnRecurSatChanging(bool value);
+    partial void OnRecurSatChanged();
+    partial void OnRecurSunChanging(bool value);
+    partial void OnRecurSunChanged();
     #endregion
 		
 		public Ride()
 		{
-			this._FromLocation = default(EntityRef<Location>);
-			this._ToLocation = default(EntityRef<Location>);
 			this._User = default(EntityRef<User>);
-			this._Ride1 = default(EntityRef<Ride>);
-			this._RecurringRide = default(EntityRef<RecurringRide>);
 			OnCreated();
 		}
 		
@@ -216,56 +206,8 @@ namespace GrabbaRide.Database
 			}
 		}
 		
-		[Column(Storage="_FromLocationID")]
-		public int FromLocationID
-		{
-			get
-			{
-				return this._FromLocationID;
-			}
-			set
-			{
-				if ((this._FromLocationID != value))
-				{
-					if (this._FromLocation.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnFromLocationIDChanging(value);
-					this.SendPropertyChanging();
-					this._FromLocationID = value;
-					this.SendPropertyChanged("FromLocationID");
-					this.OnFromLocationIDChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_ToLocationID")]
-		public int ToLocationID
-		{
-			get
-			{
-				return this._ToLocationID;
-			}
-			set
-			{
-				if ((this._ToLocationID != value))
-				{
-					if (this._ToLocation.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnToLocationIDChanging(value);
-					this.SendPropertyChanging();
-					this._ToLocationID = value;
-					this.SendPropertyChanged("ToLocationID");
-					this.OnToLocationIDChanged();
-				}
-			}
-		}
-		
 		[Column(Storage="_DepartureTime")]
-		public System.DateTime DepartureTime
+		public System.Nullable<int> DepartureTime
 		{
 			get
 			{
@@ -285,7 +227,7 @@ namespace GrabbaRide.Database
 		}
 		
 		[Column(Storage="_ArrivalTime")]
-		public System.Nullable<System.DateTime> ArrivalTime
+		public System.Nullable<int> ArrivalTime
 		{
 			get
 			{
@@ -300,30 +242,6 @@ namespace GrabbaRide.Database
 					this._ArrivalTime = value;
 					this.SendPropertyChanged("ArrivalTime");
 					this.OnArrivalTimeChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_ReturnRideID")]
-		public System.Nullable<int> ReturnRideID
-		{
-			get
-			{
-				return this._ReturnRideID;
-			}
-			set
-			{
-				if ((this._ReturnRideID != value))
-				{
-					if (this._Ride1.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnReturnRideIDChanging(value);
-					this.SendPropertyChanging();
-					this._ReturnRideID = value;
-					this.SendPropertyChanged("ReturnRideID");
-					this.OnReturnRideIDChanged();
 				}
 			}
 		}
@@ -348,62 +266,202 @@ namespace GrabbaRide.Database
 			}
 		}
 		
-		[Column(Storage="_RecurringRideID")]
-		public System.Nullable<int> RecurringRideID
+		[Column(Storage="_StartDate")]
+		public System.DateTime StartDate
 		{
 			get
 			{
-				return this._RecurringRideID;
+				return this._StartDate;
 			}
 			set
 			{
-				if ((this._RecurringRideID != value))
+				if ((this._StartDate != value))
 				{
-					if (this._RecurringRide.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnRecurringRideIDChanging(value);
+					this.OnStartDateChanging(value);
 					this.SendPropertyChanging();
-					this._RecurringRideID = value;
-					this.SendPropertyChanged("RecurringRideID");
-					this.OnRecurringRideIDChanged();
+					this._StartDate = value;
+					this.SendPropertyChanged("StartDate");
+					this.OnStartDateChanged();
 				}
 			}
 		}
 		
-		[Association(Name="Location_Ride", Storage="_FromLocation", ThisKey="FromLocationID", IsForeignKey=true)]
-		public Location FromLocation
+		[Column(Storage="_EndDate")]
+		public System.DateTime EndDate
 		{
 			get
 			{
-				return this._FromLocation.Entity;
+				return this._EndDate;
 			}
 			set
 			{
-				if ((this._FromLocation.Entity != value))
+				if ((this._EndDate != value))
 				{
+					this.OnEndDateChanging(value);
 					this.SendPropertyChanging();
-					this._FromLocation.Entity = value;
-					this.SendPropertyChanged("FromLocation");
+					this._EndDate = value;
+					this.SendPropertyChanged("EndDate");
+					this.OnEndDateChanged();
 				}
 			}
 		}
 		
-		[Association(Name="Location_Ride1", Storage="_ToLocation", ThisKey="ToLocationID", IsForeignKey=true)]
-		public Location ToLocation
+		[Column(Storage="_NumSeats")]
+		public int NumSeats
 		{
 			get
 			{
-				return this._ToLocation.Entity;
+				return this._NumSeats;
 			}
 			set
 			{
-				if ((this._ToLocation.Entity != value))
+				if ((this._NumSeats != value))
 				{
+					this.OnNumSeatsChanging(value);
 					this.SendPropertyChanging();
-					this._ToLocation.Entity = value;
-					this.SendPropertyChanged("ToLocation");
+					this._NumSeats = value;
+					this.SendPropertyChanged("NumSeats");
+					this.OnNumSeatsChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_RecurMon")]
+		public bool RecurMon
+		{
+			get
+			{
+				return this._RecurMon;
+			}
+			set
+			{
+				if ((this._RecurMon != value))
+				{
+					this.OnRecurMonChanging(value);
+					this.SendPropertyChanging();
+					this._RecurMon = value;
+					this.SendPropertyChanged("RecurMon");
+					this.OnRecurMonChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_RecurTue")]
+		public bool RecurTue
+		{
+			get
+			{
+				return this._RecurTue;
+			}
+			set
+			{
+				if ((this._RecurTue != value))
+				{
+					this.OnRecurTueChanging(value);
+					this.SendPropertyChanging();
+					this._RecurTue = value;
+					this.SendPropertyChanged("RecurTue");
+					this.OnRecurTueChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_RecurWed")]
+		public bool RecurWed
+		{
+			get
+			{
+				return this._RecurWed;
+			}
+			set
+			{
+				if ((this._RecurWed != value))
+				{
+					this.OnRecurWedChanging(value);
+					this.SendPropertyChanging();
+					this._RecurWed = value;
+					this.SendPropertyChanged("RecurWed");
+					this.OnRecurWedChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_RecurThu")]
+		public bool RecurThu
+		{
+			get
+			{
+				return this._RecurThu;
+			}
+			set
+			{
+				if ((this._RecurThu != value))
+				{
+					this.OnRecurThuChanging(value);
+					this.SendPropertyChanging();
+					this._RecurThu = value;
+					this.SendPropertyChanged("RecurThu");
+					this.OnRecurThuChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_RecurFri")]
+		public bool RecurFri
+		{
+			get
+			{
+				return this._RecurFri;
+			}
+			set
+			{
+				if ((this._RecurFri != value))
+				{
+					this.OnRecurFriChanging(value);
+					this.SendPropertyChanging();
+					this._RecurFri = value;
+					this.SendPropertyChanged("RecurFri");
+					this.OnRecurFriChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_RecurSat")]
+		public bool RecurSat
+		{
+			get
+			{
+				return this._RecurSat;
+			}
+			set
+			{
+				if ((this._RecurSat != value))
+				{
+					this.OnRecurSatChanging(value);
+					this.SendPropertyChanging();
+					this._RecurSat = value;
+					this.SendPropertyChanged("RecurSat");
+					this.OnRecurSatChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_RecurSun")]
+		public bool RecurSun
+		{
+			get
+			{
+				return this._RecurSun;
+			}
+			set
+			{
+				if ((this._RecurSun != value))
+				{
+					this.OnRecurSunChanging(value);
+					this.SendPropertyChanging();
+					this._RecurSun = value;
+					this.SendPropertyChanged("RecurSun");
+					this.OnRecurSunChanged();
 				}
 			}
 		}
@@ -438,163 +496,6 @@ namespace GrabbaRide.Database
 						this._UserID = default(int);
 					}
 					this.SendPropertyChanged("User");
-				}
-			}
-		}
-		
-		[Association(Name="Ride_Ride", Storage="_Ride1", ThisKey="ReturnRideID", IsForeignKey=true)]
-		public Ride ReturnRide
-		{
-			get
-			{
-				return this._Ride1.Entity;
-			}
-			set
-			{
-				if ((this._Ride1.Entity != value))
-				{
-					this.SendPropertyChanging();
-					this._Ride1.Entity = value;
-					this.SendPropertyChanged("ReturnRide");
-				}
-			}
-		}
-		
-		[Association(Name="RecurringRide_Ride", Storage="_RecurringRide", ThisKey="RecurringRideID", IsForeignKey=true)]
-		public RecurringRide RecurringRideInfo
-		{
-			get
-			{
-				return this._RecurringRide.Entity;
-			}
-			set
-			{
-				if ((this._RecurringRide.Entity != value))
-				{
-					this.SendPropertyChanging();
-					this._RecurringRide.Entity = value;
-					this.SendPropertyChanged("RecurringRideInfo");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[Table(Name="")]
-	public partial class Location : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _LocationID = default(int);
-		
-		private string _Name;
-		
-		private double _Long;
-		
-		private double _Lat;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnNameChanging(string value);
-    partial void OnNameChanged();
-    partial void OnLongChanging(double value);
-    partial void OnLongChanged();
-    partial void OnLatChanging(double value);
-    partial void OnLatChanged();
-    #endregion
-		
-		public Location()
-		{
-			OnCreated();
-		}
-		
-		[Column(Storage="_LocationID", AutoSync=AutoSync.OnInsert, IsPrimaryKey=true, IsDbGenerated=true, UpdateCheck=UpdateCheck.Never)]
-		public int LocationID
-		{
-			get
-			{
-				return this._LocationID;
-			}
-		}
-		
-		[Column(Storage="_Name", CanBeNull=false)]
-		public string Name
-		{
-			get
-			{
-				return this._Name;
-			}
-			set
-			{
-				if ((this._Name != value))
-				{
-					this.OnNameChanging(value);
-					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_Long")]
-		public double Long
-		{
-			get
-			{
-				return this._Long;
-			}
-			set
-			{
-				if ((this._Long != value))
-				{
-					this.OnLongChanging(value);
-					this.SendPropertyChanging();
-					this._Long = value;
-					this.SendPropertyChanged("Long");
-					this.OnLongChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_Lat")]
-		public double Lat
-		{
-			get
-			{
-				return this._Lat;
-			}
-			set
-			{
-				if ((this._Lat != value))
-				{
-					this.OnLatChanging(value);
-					this.SendPropertyChanging();
-					this._Lat = value;
-					this.SendPropertyChanged("Lat");
-					this.OnLatChanged();
 				}
 			}
 		}
@@ -1141,271 +1042,6 @@ namespace GrabbaRide.Database
 		{
 			this.SendPropertyChanging();
 			entity.User = null;
-		}
-	}
-	
-	[Table(Name="")]
-	public partial class RecurringRide : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _RecurringRideID = default(int);
-		
-		private string _Interval;
-		
-		private System.Nullable<bool> _RecurMon;
-		
-		private System.Nullable<bool> _RecurTue;
-		
-		private System.Nullable<bool> _RecurWed;
-		
-		private System.Nullable<bool> _RecurThu;
-		
-		private System.Nullable<bool> _RecurFri;
-		
-		private System.Nullable<bool> _RecurSat;
-		
-		private System.Nullable<bool> _RecurSun;
-		
-		private System.Nullable<System.DateTime> _EndByDate;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnRecurIntervalChanging(string value);
-    partial void OnRecurIntervalChanged();
-    partial void OnRecurMonChanging(System.Nullable<bool> value);
-    partial void OnRecurMonChanged();
-    partial void OnRecurTueChanging(System.Nullable<bool> value);
-    partial void OnRecurTueChanged();
-    partial void OnRecurWedChanging(System.Nullable<bool> value);
-    partial void OnRecurWedChanged();
-    partial void OnRecurThuChanging(System.Nullable<bool> value);
-    partial void OnRecurThuChanged();
-    partial void OnRecurFriChanging(System.Nullable<bool> value);
-    partial void OnRecurFriChanged();
-    partial void OnRecurSatChanging(System.Nullable<bool> value);
-    partial void OnRecurSatChanged();
-    partial void OnRecurSunChanging(System.Nullable<bool> value);
-    partial void OnRecurSunChanged();
-    partial void OnRecurEndByDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnRecurEndByDateChanged();
-    #endregion
-		
-		public RecurringRide()
-		{
-			OnCreated();
-		}
-		
-		[Column(Storage="_RecurringRideID", AutoSync=AutoSync.OnInsert, IsPrimaryKey=true, IsDbGenerated=true, UpdateCheck=UpdateCheck.Never)]
-		public int RecurringRideID
-		{
-			get
-			{
-				return this._RecurringRideID;
-			}
-		}
-		
-		[Column(Name="Interval", Storage="_Interval", CanBeNull=false)]
-		public string RecurInterval
-		{
-			get
-			{
-				return this._Interval;
-			}
-			set
-			{
-				if ((this._Interval != value))
-				{
-					this.OnRecurIntervalChanging(value);
-					this.SendPropertyChanging();
-					this._Interval = value;
-					this.SendPropertyChanged("RecurInterval");
-					this.OnRecurIntervalChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_RecurMon")]
-		public System.Nullable<bool> RecurMon
-		{
-			get
-			{
-				return this._RecurMon;
-			}
-			set
-			{
-				if ((this._RecurMon != value))
-				{
-					this.OnRecurMonChanging(value);
-					this.SendPropertyChanging();
-					this._RecurMon = value;
-					this.SendPropertyChanged("RecurMon");
-					this.OnRecurMonChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_RecurTue")]
-		public System.Nullable<bool> RecurTue
-		{
-			get
-			{
-				return this._RecurTue;
-			}
-			set
-			{
-				if ((this._RecurTue != value))
-				{
-					this.OnRecurTueChanging(value);
-					this.SendPropertyChanging();
-					this._RecurTue = value;
-					this.SendPropertyChanged("RecurTue");
-					this.OnRecurTueChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_RecurWed")]
-		public System.Nullable<bool> RecurWed
-		{
-			get
-			{
-				return this._RecurWed;
-			}
-			set
-			{
-				if ((this._RecurWed != value))
-				{
-					this.OnRecurWedChanging(value);
-					this.SendPropertyChanging();
-					this._RecurWed = value;
-					this.SendPropertyChanged("RecurWed");
-					this.OnRecurWedChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_RecurThu")]
-		public System.Nullable<bool> RecurThu
-		{
-			get
-			{
-				return this._RecurThu;
-			}
-			set
-			{
-				if ((this._RecurThu != value))
-				{
-					this.OnRecurThuChanging(value);
-					this.SendPropertyChanging();
-					this._RecurThu = value;
-					this.SendPropertyChanged("RecurThu");
-					this.OnRecurThuChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_RecurFri")]
-		public System.Nullable<bool> RecurFri
-		{
-			get
-			{
-				return this._RecurFri;
-			}
-			set
-			{
-				if ((this._RecurFri != value))
-				{
-					this.OnRecurFriChanging(value);
-					this.SendPropertyChanging();
-					this._RecurFri = value;
-					this.SendPropertyChanged("RecurFri");
-					this.OnRecurFriChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_RecurSat")]
-		public System.Nullable<bool> RecurSat
-		{
-			get
-			{
-				return this._RecurSat;
-			}
-			set
-			{
-				if ((this._RecurSat != value))
-				{
-					this.OnRecurSatChanging(value);
-					this.SendPropertyChanging();
-					this._RecurSat = value;
-					this.SendPropertyChanged("RecurSat");
-					this.OnRecurSatChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_RecurSun")]
-		public System.Nullable<bool> RecurSun
-		{
-			get
-			{
-				return this._RecurSun;
-			}
-			set
-			{
-				if ((this._RecurSun != value))
-				{
-					this.OnRecurSunChanging(value);
-					this.SendPropertyChanging();
-					this._RecurSun = value;
-					this.SendPropertyChanged("RecurSun");
-					this.OnRecurSunChanged();
-				}
-			}
-		}
-		
-		[Column(Name="EndByDate", Storage="_EndByDate")]
-		public System.Nullable<System.DateTime> RecurEndByDate
-		{
-			get
-			{
-				return this._EndByDate;
-			}
-			set
-			{
-				if ((this._EndByDate != value))
-				{
-					this.OnRecurEndByDateChanging(value);
-					this.SendPropertyChanging();
-					this._EndByDate = value;
-					this.SendPropertyChanged("RecurEndByDate");
-					this.OnRecurEndByDateChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
 		}
 	}
 	
