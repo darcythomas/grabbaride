@@ -7,6 +7,9 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <link href="Global.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        v\:* { behavior:url(#default#VML); }
+    </style> 
 </head>
 <body>
     <form id="form1" runat="server">

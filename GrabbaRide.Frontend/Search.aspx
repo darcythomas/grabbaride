@@ -1,6 +1,8 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true"
     CodeBehind="Search.aspx.cs" Inherits="GrabbaRide.Frontend.WebForm5" Title="Untitled Page" %>
 
+<%@ Register assembly="GMaps" namespace="Subgurim.Controles" tagprefix="cc1" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -15,6 +17,9 @@
         Select="new (LocationID, Name)" 
         TableName="Locations">
     </asp:LinqDataSource>
+    <div style="float: right; width: 343px;">
+    <cc1:GMap ID="GMap1" runat="server" Key="ABQIAAAAdzIHDEcQlKVK0ZsLXgw7AxT2yXp_ZAY8_ufC3CFXhHIE1NvwkxTe_yeQBDaUEW7-M67E9zLbOak5Xw" />
+    </div>
     <br />
     To:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <asp:DropDownList ID="drpTo" runat="server" DataSourceID="SearchDataSource" 
