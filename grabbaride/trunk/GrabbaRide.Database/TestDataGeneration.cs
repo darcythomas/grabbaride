@@ -42,14 +42,6 @@ namespace GrabbaRide.Database
 
         private string[] _testLastNames = { "Murry", "Smith", "Camp", "Mcshit" };
 
-        private Location[] _testLocations = {new Location("Vegas", -115.136719,36.1966330),
-                                                  new Location("Monte Carlo", 43.7398, 7.4272),
-                                                  new Location("Atlantis", -180, 180),
-                                                  new Location("South Pole", 175.617230, -180),
-                                                  new Location("Mt Doom, Mordor", 75.526240, -39.304700),
-                                                  new Location("New Washington", 44.395752, 33.299313),
-                                                  new Location("Massey", 175.617779, -40.3857650)};
-
         private void AddUsers(int num)
         {
             for (int i = 0; i < num; i++)
@@ -111,31 +103,13 @@ namespace GrabbaRide.Database
                 _random.Next(28) + 1);
         }
 
-        //******Location Data *******
-
-        /// <summary>
-        /// Adds Sample locations to database for testing
-        /// </summary>
-        private void AddLocations()
-        {
-            _dataContext.Locations.InsertAllOnSubmit(_testLocations);
-            _dataContext.SubmitChanges();
-        }
-
         //**** Ride Dummy Data****
-
-        private Location RandomLocation()
-        {
-            return _testLocations[_random.Next(_testLocations.Length)];
-        }
 
         private Ride RandomRide()
         {
-            //GrabbaRideDBDataContext contex= new GrabbaRideDBDataContext();
-            User u = RandomExistingUser();
-            return new Ride(u.UserID,
-                RandomLocation(), RandomLocation(),
-                RandomDate(), RandomDate());
+            Ride r = new Ride();
+            r.User = RandomExistingUser();
+            return r;
         }
 
         private void AddRides(int num)
@@ -154,7 +128,6 @@ namespace GrabbaRide.Database
         {
             TestDataGeneration dg = new TestDataGeneration();
             dg.AddUsers(30);
-            dg.AddLocations();
             dg.AddRides(100);
         }
     }
