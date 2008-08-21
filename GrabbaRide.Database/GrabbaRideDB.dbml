@@ -5,19 +5,24 @@
     <Type Name="Ride">
       <Column Name="RideID" Type="System.Int32" IsReadOnly="true" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="UserID" Type="System.Int32" CanBeNull="false" />
-      <Column Name="DepartureTime" Type="System.Int32" CanBeNull="true" />
-      <Column Name="ArrivalTime" Type="System.Int32" CanBeNull="true" />
-      <Column Name="CreationDate" Type="System.DateTime" CanBeNull="true" />
-      <Column Member="StartDate" Type="System.DateTime" CanBeNull="false" />
-      <Column Member="EndDate" Type="System.DateTime" CanBeNull="false" />
-      <Column Member="NumSeats" Type="System.Int32" CanBeNull="false" />
-      <Column Member="RecurMon" Type="System.Boolean" CanBeNull="false" />
-      <Column Member="RecurTue" Type="System.Boolean" CanBeNull="false" />
-      <Column Member="RecurWed" Type="System.Boolean" CanBeNull="false" />
-      <Column Member="RecurThu" Type="System.Boolean" CanBeNull="false" />
-      <Column Member="RecurFri" Type="System.Boolean" CanBeNull="false" />
-      <Column Member="RecurSat" Type="System.Boolean" CanBeNull="false" />
-      <Column Member="RecurSun" Type="System.Boolean" CanBeNull="false" />
+      <Column Name="DepartureTime" Type="System.Int64" CanBeNull="false" />
+      <Column Name="ArrivalTime" Member="JourneyLength" Storage="_ArrivalTime" Type="System.Int64" CanBeNull="false" />
+      <Column Name="CreationDate" Type="System.DateTime" CanBeNull="false" />
+      <Column Name="StartDate" Type="System.DateTime" CanBeNull="false" />
+      <Column Name="EndDate" Type="System.DateTime" CanBeNull="false" />
+      <Column Name="NumSeats" Type="System.Int32" CanBeNull="false" />
+      <Column Name="RecurMon" Type="System.Boolean" CanBeNull="false" />
+      <Column Name="RecurTue" Type="System.Boolean" CanBeNull="false" />
+      <Column Name="RecurWed" Type="System.Boolean" CanBeNull="false" />
+      <Column Name="RecurThu" Type="System.Boolean" CanBeNull="false" />
+      <Column Name="RecurFri" Type="System.Boolean" CanBeNull="false" />
+      <Column Name="RecurSat" Type="System.Boolean" CanBeNull="false" />
+      <Column Name="RecurSun" Type="System.Boolean" CanBeNull="false" />
+      <Column Name="LocationFromLat" Type="System.Double" CanBeNull="false" />
+      <Column Name="LocationFromLong" Type="System.Double" CanBeNull="false" />
+      <Column Name="LocationToLat" Type="System.Double" CanBeNull="false" />
+      <Column Name="LocationToLong" Type="System.Double" CanBeNull="false" />
+      <Column Name="Available" Type="System.Boolean" CanBeNull="false" />
       <Association Name="User_Ride" Member="User" ThisKey="UserID" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
