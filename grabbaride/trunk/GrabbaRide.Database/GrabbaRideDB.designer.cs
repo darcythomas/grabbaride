@@ -105,11 +105,11 @@ namespace GrabbaRide.Database
 		
 		private int _UserID;
 		
-		private System.Nullable<int> _DepartureTime;
+		private long _DepartureTime;
 		
-		private System.Nullable<int> _ArrivalTime;
+		private long _ArrivalTime;
 		
-		private System.Nullable<System.DateTime> _CreationDate;
+		private System.DateTime _CreationDate;
 		
 		private System.DateTime _StartDate;
 		
@@ -131,6 +131,16 @@ namespace GrabbaRide.Database
 		
 		private bool _RecurSun;
 		
+		private double _LocationFromLat;
+		
+		private double _LocationFromLong;
+		
+		private double _LocationToLat;
+		
+		private double _LocationToLong;
+		
+		private bool _Available;
+		
 		private EntityRef<User> _User;
 		
     #region Extensibility Method Definitions
@@ -139,11 +149,11 @@ namespace GrabbaRide.Database
     partial void OnCreated();
     partial void OnUserIDChanging(int value);
     partial void OnUserIDChanged();
-    partial void OnDepartureTimeChanging(System.Nullable<int> value);
+    partial void OnDepartureTimeChanging(long value);
     partial void OnDepartureTimeChanged();
-    partial void OnArrivalTimeChanging(System.Nullable<int> value);
-    partial void OnArrivalTimeChanged();
-    partial void OnCreationDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnJourneyLengthChanging(long value);
+    partial void OnJourneyLengthChanged();
+    partial void OnCreationDateChanging(System.DateTime value);
     partial void OnCreationDateChanged();
     partial void OnStartDateChanging(System.DateTime value);
     partial void OnStartDateChanged();
@@ -165,6 +175,16 @@ namespace GrabbaRide.Database
     partial void OnRecurSatChanged();
     partial void OnRecurSunChanging(bool value);
     partial void OnRecurSunChanged();
+    partial void OnLocationFromLatChanging(double value);
+    partial void OnLocationFromLatChanged();
+    partial void OnLocationFromLongChanging(double value);
+    partial void OnLocationFromLongChanged();
+    partial void OnLocationToLatChanging(double value);
+    partial void OnLocationToLatChanged();
+    partial void OnLocationToLongChanging(double value);
+    partial void OnLocationToLongChanged();
+    partial void OnAvailableChanging(bool value);
+    partial void OnAvailableChanged();
     #endregion
 		
 		public Ride()
@@ -207,7 +227,7 @@ namespace GrabbaRide.Database
 		}
 		
 		[Column(Storage="_DepartureTime")]
-		public System.Nullable<int> DepartureTime
+		public long DepartureTime
 		{
 			get
 			{
@@ -226,8 +246,8 @@ namespace GrabbaRide.Database
 			}
 		}
 		
-		[Column(Storage="_ArrivalTime")]
-		public System.Nullable<int> ArrivalTime
+		[Column(Name="ArrivalTime", Storage="_ArrivalTime")]
+		public long JourneyLength
 		{
 			get
 			{
@@ -237,17 +257,17 @@ namespace GrabbaRide.Database
 			{
 				if ((this._ArrivalTime != value))
 				{
-					this.OnArrivalTimeChanging(value);
+					this.OnJourneyLengthChanging(value);
 					this.SendPropertyChanging();
 					this._ArrivalTime = value;
-					this.SendPropertyChanged("ArrivalTime");
-					this.OnArrivalTimeChanged();
+					this.SendPropertyChanged("JourneyLength");
+					this.OnJourneyLengthChanged();
 				}
 			}
 		}
 		
 		[Column(Storage="_CreationDate")]
-		public System.Nullable<System.DateTime> CreationDate
+		public System.DateTime CreationDate
 		{
 			get
 			{
@@ -462,6 +482,106 @@ namespace GrabbaRide.Database
 					this._RecurSun = value;
 					this.SendPropertyChanged("RecurSun");
 					this.OnRecurSunChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_LocationFromLat")]
+		public double LocationFromLat
+		{
+			get
+			{
+				return this._LocationFromLat;
+			}
+			set
+			{
+				if ((this._LocationFromLat != value))
+				{
+					this.OnLocationFromLatChanging(value);
+					this.SendPropertyChanging();
+					this._LocationFromLat = value;
+					this.SendPropertyChanged("LocationFromLat");
+					this.OnLocationFromLatChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_LocationFromLong")]
+		public double LocationFromLong
+		{
+			get
+			{
+				return this._LocationFromLong;
+			}
+			set
+			{
+				if ((this._LocationFromLong != value))
+				{
+					this.OnLocationFromLongChanging(value);
+					this.SendPropertyChanging();
+					this._LocationFromLong = value;
+					this.SendPropertyChanged("LocationFromLong");
+					this.OnLocationFromLongChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_LocationToLat")]
+		public double LocationToLat
+		{
+			get
+			{
+				return this._LocationToLat;
+			}
+			set
+			{
+				if ((this._LocationToLat != value))
+				{
+					this.OnLocationToLatChanging(value);
+					this.SendPropertyChanging();
+					this._LocationToLat = value;
+					this.SendPropertyChanged("LocationToLat");
+					this.OnLocationToLatChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_LocationToLong")]
+		public double LocationToLong
+		{
+			get
+			{
+				return this._LocationToLong;
+			}
+			set
+			{
+				if ((this._LocationToLong != value))
+				{
+					this.OnLocationToLongChanging(value);
+					this.SendPropertyChanging();
+					this._LocationToLong = value;
+					this.SendPropertyChanged("LocationToLong");
+					this.OnLocationToLongChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Available")]
+		public bool Available
+		{
+			get
+			{
+				return this._Available;
+			}
+			set
+			{
+				if ((this._Available != value))
+				{
+					this.OnAvailableChanging(value);
+					this.SendPropertyChanging();
+					this._Available = value;
+					this.SendPropertyChanged("Available");
+					this.OnAvailableChanged();
 				}
 			}
 		}

@@ -17,13 +17,7 @@ namespace GrabbaRide.Database
         GrabbaRideDBDataContext _dataContext;
         Random _random;
 
-        private TestDataGeneration()
-        {
-            _dataContext = new GrabbaRideDBDataContext();
-            _random = new Random();
-        }
-
-        private string[] _testUserNames = { "badguy69", "sillylady", "pissman", "duffman", "benjiMan", "Dogbrain",
+        private string[] _testUsernames = { "badguy69", "sillylady", "pissman", "duffman", "benjiMan", "Dogbrain",
                                        "BeerBarron", "Flanders", "AlGore", "BushRIP", "FACERIP", "DEATHDIVE",
                                        "Shitwolf", "Nick", "Thomas", "Adrian", "Michelle", "Darcy", "Tokenblackguy",
                                        "Droid1", "Droid2", "Droid3", "Droid4", "3cp0", "YODA", "Chewie", "JabbaTheHut",
@@ -42,35 +36,33 @@ namespace GrabbaRide.Database
 
         private string[] _testLastNames = { "Murry", "Smith", "Camp", "Mcshit" };
 
-        private void AddUsers(int num)
+        private TestDataGeneration()
         {
-            for (int i = 0; i < num; i++)
+            _dataContext = new GrabbaRideDBDataContext();
+            _random = new Random();
+        }
+
+        private void AddUsers()
+        {
+            foreach (string username in _testUsernames)
             {
-                User u = RandomUser();
+                User u = new User(username);
+                u.FirstName = RandomFirstname();
+                u.LastName = RandomLastname();
+                u.Gender = RandomGender();
+                u.DOB = RandomDate(1955, 1990);
+                u.Password = "password";
+                u.Email = RandomEmail();
+
                 _dataContext.Users.InsertOnSubmit(u);
             }
             _dataContext.SubmitChanges();
         }
 
-        private User RandomUser()
-        {
-            return new User(RandomFirstname(),
-                RandomLastname(),
-                RandomGender(),
-                RandomDate(),
-                RandomUsername(),
-                "password",
-                RandomEmail());
-        }
-
         private string RandomEmail()
         {
-            return "a.palamountain@gmail.com";
-        }
-
-        private string RandomUsername()
-        {
-            return _testUserNames[_random.Next(_testUserNames.Length)];
+            Guid g = Guid.NewGuid();
+            return g.ToString().Substring(1, 16) + "@amypal.com";
         }
 
         private string RandomFirstname()
@@ -96,19 +88,53 @@ namespace GrabbaRide.Database
             else { return Gender.Female; }
         }
 
-        private DateTime RandomDate()
+        private double RandomLatLong()
         {
-            return new DateTime(2008 ,
-                _random.Next(4) + 8,
-                _random.Next(28) + 1);
+            return _random.NextDouble() * 360 - 180;
         }
 
-        //**** Ride Dummy Data****
+        private DateTime RandomDate(int fromYear, int toYear)
+        {
+            if (fromYear > toYear)
+            {
+                throw new ArgumentException("fromYear can't be after toYear!");
+            }
+            else
+            {
+                int diff = toYear - fromYear;
+                DateTime result = new DateTime(
+                    fromYear + _random.Next(diff),
+                    _random.Next(12) + 1,
+                    _random.Next(28) + 1);
+
+                return result;
+            }
+        }
+
+        private TimeSpan RandomTimeSpan(int hours)
+        {
+            TimeSpan ts = new TimeSpan(_random.Next(hours), _random.Next(60), 0);
+            return ts;
+        }
 
         private Ride RandomRide()
         {
-            Ride r = new Ride();
+            Ride r = new Ride(RandomLatLong(), RandomLatLong(), RandomLatLong(), RandomLatLong());
             r.User = RandomExistingUser();
+            r.StartDate = RandomDate(2007, 2008);
+            r.EndDate = RandomDate(2009, 2010);
+            r.DepartureTimeSpan = RandomTimeSpan(24);
+            r.JourneyTimeSpan = RandomTimeSpan(3);
+            r.NumSeats = _random.Next(6);
+
+            r.RecurMon = _random.Next(2) == 1;
+            r.RecurTue = _random.Next(2) == 1;
+            r.RecurWed = _random.Next(2) == 1;
+            r.RecurThu = _random.Next(2) == 1;
+            r.RecurFri = _random.Next(2) == 1;
+            r.RecurSat = _random.Next(4) == 1;
+            r.RecurSun = _random.Next(4) == 1;
+
             return r;
         }
 
@@ -116,7 +142,8 @@ namespace GrabbaRide.Database
         {
             for (int i = 0; i < num; i++)
             {
-                _dataContext.Rides.InsertOnSubmit(RandomRide());
+                Ride r = RandomRide();
+                _dataContext.Rides.InsertOnSubmit(r);
             }
             _dataContext.SubmitChanges();
         }
@@ -127,7 +154,7 @@ namespace GrabbaRide.Database
         public static void InputSampleData()
         {
             TestDataGeneration dg = new TestDataGeneration();
-            dg.AddUsers(30);
+            dg.AddUsers();
             dg.AddRides(100);
         }
     }
