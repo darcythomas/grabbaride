@@ -123,8 +123,8 @@ namespace GrabbaRide.Database
             r.User = RandomExistingUser();
             r.StartDate = RandomDate(2007, 2008);
             r.EndDate = RandomDate(2009, 2010);
-            r.DepartureTimeSpan = RandomTimeSpan(24);
-            r.JourneyTimeSpan = RandomTimeSpan(3);
+            r.DepartureTime = RandomTimeSpan(24);
+            r.JourneyLength = RandomTimeSpan(3);
             r.NumSeats = _random.Next(6);
 
             r.RecurMon = _random.Next(2) == 1;
