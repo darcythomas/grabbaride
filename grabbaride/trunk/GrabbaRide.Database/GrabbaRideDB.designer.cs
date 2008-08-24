@@ -149,10 +149,10 @@ namespace GrabbaRide.Database
     partial void OnCreated();
     partial void OnUserIDChanging(int value);
     partial void OnUserIDChanged();
-    partial void OnDepartureTimeChanging(long value);
-    partial void OnDepartureTimeChanged();
-    partial void OnJourneyLengthChanging(long value);
-    partial void OnJourneyLengthChanged();
+    partial void OnDepartureTimeSrcChanging(long value);
+    partial void OnDepartureTimeSrcChanged();
+    partial void OnJourneyLengthSrcChanging(long value);
+    partial void OnJourneyLengthSrcChanged();
     partial void OnCreationDateChanging(System.DateTime value);
     partial void OnCreationDateChanged();
     partial void OnStartDateChanging(System.DateTime value);
@@ -226,8 +226,8 @@ namespace GrabbaRide.Database
 			}
 		}
 		
-		[Column(Storage="_DepartureTime")]
-		public long DepartureTime
+		[Column(Name="DepartureTime", Storage="_DepartureTime")]
+		protected long DepartureTimeSrc
 		{
 			get
 			{
@@ -237,17 +237,17 @@ namespace GrabbaRide.Database
 			{
 				if ((this._DepartureTime != value))
 				{
-					this.OnDepartureTimeChanging(value);
+					this.OnDepartureTimeSrcChanging(value);
 					this.SendPropertyChanging();
 					this._DepartureTime = value;
-					this.SendPropertyChanged("DepartureTime");
-					this.OnDepartureTimeChanged();
+					this.SendPropertyChanged("DepartureTimeSrc");
+					this.OnDepartureTimeSrcChanged();
 				}
 			}
 		}
 		
-		[Column(Name="ArrivalTime", Storage="_ArrivalTime")]
-		public long JourneyLength
+		[Column(Name="JourneyLength", Storage="_ArrivalTime")]
+		protected long JourneyLengthSrc
 		{
 			get
 			{
@@ -257,11 +257,11 @@ namespace GrabbaRide.Database
 			{
 				if ((this._ArrivalTime != value))
 				{
-					this.OnJourneyLengthChanging(value);
+					this.OnJourneyLengthSrcChanging(value);
 					this.SendPropertyChanging();
 					this._ArrivalTime = value;
-					this.SendPropertyChanged("JourneyLength");
-					this.OnJourneyLengthChanged();
+					this.SendPropertyChanged("JourneyLengthSrc");
+					this.OnJourneyLengthSrcChanged();
 				}
 			}
 		}

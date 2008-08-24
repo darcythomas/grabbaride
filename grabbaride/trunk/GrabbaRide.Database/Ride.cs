@@ -6,16 +6,16 @@ namespace GrabbaRide.Database
     {
         public int SearchRank { get; set; }
 
-        public TimeSpan DepartureTimeSpan
+        public TimeSpan DepartureTime
         {
-            get { return new TimeSpan(this.DepartureTime); }
-            set { this.DepartureTime = value.Ticks; }
+            get { return new TimeSpan(this.DepartureTimeSrc); }
+            set { this.DepartureTimeSrc = value.Ticks; }
         }
 
-        public TimeSpan JourneyTimeSpan
+        public TimeSpan JourneyLength
         {
-            get { return new TimeSpan(this.JourneyLength); }
-            set { this.JourneyLength = value.Ticks; }
+            get { return new TimeSpan(this.JourneyLengthSrc); }
+            set { this.JourneyLengthSrc = value.Ticks; }
         }
 
         public Ride(double locFromLat, double locFromLong, double locToLat, double locToLong)

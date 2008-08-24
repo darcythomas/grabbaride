@@ -5,8 +5,8 @@
     <Type Name="Ride">
       <Column Name="RideID" Type="System.Int32" IsReadOnly="true" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="UserID" Type="System.Int32" CanBeNull="false" />
-      <Column Name="DepartureTime" Type="System.Int64" CanBeNull="false" />
-      <Column Name="ArrivalTime" Member="JourneyLength" Storage="_ArrivalTime" Type="System.Int64" CanBeNull="false" />
+      <Column Name="DepartureTime" Member="DepartureTimeSrc" Storage="_DepartureTime" AccessModifier="Protected" Type="System.Int64" CanBeNull="false" />
+      <Column Name="JourneyLength" Member="JourneyLengthSrc" Storage="_ArrivalTime" AccessModifier="Protected" Type="System.Int64" CanBeNull="false" />
       <Column Name="CreationDate" Type="System.DateTime" CanBeNull="false" />
       <Column Name="StartDate" Type="System.DateTime" CanBeNull="false" />
       <Column Name="EndDate" Type="System.DateTime" CanBeNull="false" />
