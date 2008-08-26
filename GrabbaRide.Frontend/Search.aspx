@@ -6,6 +6,9 @@
     <script type="text/javascript"> 
     var startMkr = null;
     var endMkr = null;
+    var startpoly = null;
+    var endpoly = null;
+    
     function SetStart(lat, lng)
     {
         var hfstart = document.getElementById("ctl00_ContentPlaceHolder1_hfstart");
@@ -16,17 +19,16 @@
         } else
             startMkr.setLatLng(new GLatLng(lat, lng));
         var Offset = 0.005;
-       	var polygon = new GPolygon([
+        if (startpoly)
+            map.removeOverlay(startpoly);
+       	startpoly = new GPolygon([
             new GLatLng(lat, lng - Offset),
             new GLatLng(lat + Offset, lng),
             new GLatLng(lat, lng + Offset),
             new GLatLng(lat - Offset, lng),
             new GLatLng(lat, lng - Offset)
 		  ], "#f33f00", 5, 1, "#ff0000", 0.2);
-	    map.addOverlay(polygon);
-        
-        //CallServer("setstart" + "," + lat + "," + lng, "");
-        //return false;
+	    map.addOverlay(startpoly);
     }
     
     function SetEnd(lat, lng)
@@ -39,18 +41,16 @@
         } else
             endMkr.setLatLng(new GLatLng(lat, lng));
         var Offset = 0.005;
-       	var polygon = new GPolygon([
+        if (endpoly)
+            map.removeOverlay(endpoly);
+       	endpoly = new GPolygon([
             new GLatLng(lat, lng - Offset),
             new GLatLng(lat + Offset, lng),
             new GLatLng(lat, lng + Offset),
             new GLatLng(lat - Offset, lng),
             new GLatLng(lat, lng - Offset)
 		  ], "#f33f00", 5, 1, "#ff0000", 0.2);
-		map.addOverlay(polygon);
-
-        
-        //CallServer("setend" + "," + lat + "," + lng, "");
-        //return false;
+		map.addOverlay(endpoly);
     }
     
     function MapHandler(overlay, latlng) {     
@@ -58,25 +58,6 @@
             var myHtml = "<a onclick='SetStart(" + latlng.lat() + ", " + latlng.lng() + ");'>Set Start</a><br><a onclick='SetEnd(" + latlng.lat() + ", " + latlng.lng() + ");'>Set End</a>";
             map.openInfoWindow(latlng, myHtml);
         }
-    }
-    
-    function ReceiveServerData(response) {
-        var args = new Array();
-        args = response.split(",");
-        if (args[0] == "setstart") {
-            if (!startMkr) {
-                startMkr = new GMarker(new GLatLng(args[1], args[2]));
-                map.addOverlay(startMkr);
-            } else
-                startMkr.setLatLng(new GLatLng(args[1], args[2]));
-        } else if (args[0] == "setend") {
-            if (!endMkr) {
-                endMkr = new GMarker(new GLatLng(args[1], args[2]));
-                map.addOverlay(endMkr);
-            } else
-                endMkr.setLatLng(new GLatLng(args[1], args[2]));
-        }
-        return true;
     }
     
     //code pinched from http://code.google.com/apis/maps/documentation/examples/geocoding-simple.html
