@@ -7,11 +7,28 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <link href="Global.css" rel="stylesheet" type="text/css" />
-    <style type="text/css">
-        v\:* { behavior:url(#default#VML); }
-    </style> 
+    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAdzIHDEcQlKVK0ZsLXgw7AxT2yXp_ZAY8_ufC3CFXhHIE1NvwkxTe_yeQBDaUEW7-M67E9zLbOak5Xw"
+            type="text/javascript"></script>
+
+    <script type="text/javascript">
+    var map = null;
+    var geocoder = null;
+	function initialize() {
+	    if (GBrowserIsCompatible()) {
+		    if (document.getElementById("searchmap")) {
+    		    map = new GMap2(document.getElementById("searchmap"));
+    		    geocoder = new GClientGeocoder();
+
+	        	map.setCenter(new GLatLng(-40.364988693138365,175.60242176055908), 15);
+        		GEvent.addListener(map,"click", MapHandler);
+		        map.addControl(new GSmallMapControl());
+		        map.addControl(new GMapTypeControl());
+	        }
+	    }
+	}
+    </script>
 </head>
-<body>
+<body onload="initialize();">
     <form id="form1" runat="server">
     <div id="header">
         <asp:Image ID="HeaderImage" runat="server" ImageUrl="Images/header.jpg" />
