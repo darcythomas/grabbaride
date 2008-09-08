@@ -9,13 +9,12 @@ using System.Configuration;
 using System.Configuration.Provider;
 using SystemManagement.Properties;
 using GrabbaRide.Database;
+using System.Reflection;
 
 namespace SystemManagement
 {
     public sealed class GrabbaRideMembershipProvider : MembershipProvider
     {
-        GrabbaRideDBDataContext _dataContext;
-
         public override void Initialize(string name, NameValueCollection config)
         {
             if (config == null)
@@ -30,8 +29,6 @@ namespace SystemManagement
 
             //Initialize the abstract base class.
             base.Initialize(name, config);
-
-            _dataContext = new GrabbaRideDBDataContext();
         }
 
         #region Implementation of MembershipProvider Methods
@@ -158,9 +155,48 @@ namespace SystemManagement
             throw new NotImplementedException();
         }
 
-        public override void UpdateUser(MembershipUser user)
+        public override void UpdateUser(MembershipUser mUser)
         {
-            throw new NotImplementedException();
+            // find the underlying user with LINQ
+            GrabbaRideDBDataContext dataContext = new GrabbaRideDBDataContext();
+            User dbUser = dataContext.GetUserByID((int)mUser.ProviderUserKey);
+
+            // update the details in the underlying User object
+            if (!dbUser.Comment.Equals(mUser.Comment))
+                dbUser.Comment = mUser.Comment;
+
+            if (!dbUser.CreationDate.Equals(mUser.CreationDate))
+                dbUser.CreationDate = mUser.CreationDate;
+
+            if (!dbUser.Email.Equals(mUser.Email))
+                dbUser.Email = mUser.Email;
+
+            if (!dbUser.IsApproved.Equals(mUser.IsApproved))
+                dbUser.IsApproved = mUser.IsApproved;
+
+            if (!dbUser.IsLockedOut.Equals(mUser.IsLockedOut))
+                dbUser.IsLockedOut = mUser.IsLockedOut;
+
+            if (!dbUser.LastActvityDate.Equals(mUser.LastActivityDate))
+                dbUser.LastActvityDate = mUser.LastActivityDate;
+
+            if (!dbUser.LastLockoutDate.Equals(mUser.LastLockoutDate))
+                dbUser.LastLockoutDate = mUser.LastLockoutDate;
+
+            if (!dbUser.LastLoginDate.Equals(mUser.LastLoginDate))
+                dbUser.LastLoginDate = mUser.LastLoginDate;
+
+            if (!dbUser.LastPasswordChangedDate.Equals(mUser.LastPasswordChangedDate))
+                dbUser.LastPasswordChangedDate = mUser.LastPasswordChangedDate;
+
+            if (!dbUser.PasswordQuestion.Equals(mUser.PasswordQuestion))
+                dbUser.PasswordQuestion = mUser.PasswordQuestion;
+
+            if (!dbUser.Username.Equals(mUser.UserName))
+                dbUser.Username = mUser.UserName;
+
+            // save back to the database
+            dataContext.SubmitChanges();
         }
 
         public override bool ValidateUser(string username, string password)
