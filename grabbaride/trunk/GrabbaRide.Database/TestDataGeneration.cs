@@ -51,7 +51,7 @@ namespace GrabbaRide.Database
                 u.LastName = RandomLastname();
                 u.Gender = RandomGender();
                 u.DOB = RandomDate(1955, 1990);
-                u.Password = User.GenerateRandomPassword();
+                u.Password = String.Empty;
                 u.Email = RandomEmail();
                 u.Comment = String.Empty;
 
@@ -90,7 +90,7 @@ namespace GrabbaRide.Database
         }
 
 
-       
+
         private double RandomLatLong()
         {
             return _random.NextDouble() * 360 - 180;
@@ -151,7 +151,7 @@ namespace GrabbaRide.Database
             _dataContext.SubmitChanges();
         }
 
-      
+
 
         /// <summary>
         /// All rides are from the sqaure to massey but no ones going home :(
@@ -162,10 +162,10 @@ namespace GrabbaRide.Database
             for (int i = 0; i < num; i++)
             {
                 Ride r = RandomRide();
-                r.LocationFromLat=-40.355963256404124;
-                r.LocationFromLong=175.61147689819336;
-                r.LocationToLat=-40.38434352539335;
-                r.LocationToLong=175.61705589294434;
+                r.LocationFromLat = -40.355963256404124;
+                r.LocationFromLong = 175.61147689819336;
+                r.LocationToLat = -40.38434352539335;
+                r.LocationToLong = 175.61705589294434;
                 _dataContext.Rides.InsertOnSubmit(r);
             }
             _dataContext.SubmitChanges();
