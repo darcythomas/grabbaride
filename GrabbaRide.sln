@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemManagement", "SystemManagement\SystemManagement.csproj", "{E76DCFAC-D89A-4402-A1DB-0D921358C351}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrabbaRide.UserManagement", "GrabbaRide.UserManagement\GrabbaRide.UserManagement.csproj", "{E76DCFAC-D89A-4402-A1DB-0D921358C351}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrabbaRide.DatabaseManager", "GrabbaRide.DatabaseManager\GrabbaRide.DatabaseManager.csproj", "{FCA1192D-7AFD-436A-93EF-0869178F56B1}"
 EndProject
