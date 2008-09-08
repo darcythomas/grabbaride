@@ -37,12 +37,39 @@ namespace SystemManagement
 
         public override bool ChangePassword(string username, string oldPassword, string newPassword)
         {
-            throw new NotImplementedException();
+            GrabbaRideDBDataContext dataContext = new GrabbaRideDBDataContext();
+            User u = dataContext.GetUserByUsername(username);
+            if (u == null) { return false; }
+
+            if (u.Password == oldPassword)
+            {
+                u.Password = newPassword;
+                dataContext.SubmitChanges();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public override bool ChangePasswordQuestionAndAnswer(string username, string password, string newPasswordQuestion, string newPasswordAnswer)
         {
-            throw new NotImplementedException();
+            GrabbaRideDBDataContext dataContext = new GrabbaRideDBDataContext();
+            User u = dataContext.GetUserByUsername(username);
+            if (u == null) { return false; }
+
+            if (u.Password == password)
+            {
+                u.PasswordQuestion = newPasswordQuestion;
+                u.PasswordAnswer = newPasswordAnswer;
+                dataContext.SubmitChanges();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public override MembershipUser CreateUser(string username, string password, string email, string passwordQuestion, string passwordAnswer, bool isApproved, object providerUserKey, out MembershipCreateStatus status)
@@ -55,14 +82,20 @@ namespace SystemManagement
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// We do allow password resetting.
+        /// </summary>
         public override bool EnablePasswordReset
         {
-            get { throw new NotImplementedException(); }
+            get { return true; }
         }
 
+        /// <summary>
+        /// We do not allow password retrieval, users must reset their password.
+        /// </summary>
         public override bool EnablePasswordRetrieval
         {
-            get { throw new NotImplementedException(); }
+            get { return false; }
         }
 
         public override MembershipUserCollection FindUsersByEmail(string emailToMatch, int pageIndex, int pageSize, out int totalRecords)
@@ -87,17 +120,37 @@ namespace SystemManagement
 
         public override string GetPassword(string username, string answer)
         {
-            throw new NotImplementedException();
+            throw new NotSupportedException("You cannot retrieve users' passwords, they must be reset.");
         }
 
         public override MembershipUser GetUser(string username, bool userIsOnline)
         {
-            throw new NotImplementedException();
+            GrabbaRideDBDataContext dataContext = new GrabbaRideDBDataContext();
+            User u = dataContext.GetUserByUsername(username);
+            if (u == null) { return null; }
+
+            if (userIsOnline)
+            {
+                u.LastActvityDate = DateTime.Now;
+                dataContext.SubmitChanges();
+            }
+
+            return u.GetMembershipUser();
         }
 
         public override MembershipUser GetUser(object providerUserKey, bool userIsOnline)
         {
-            throw new NotImplementedException();
+            GrabbaRideDBDataContext dataContext = new GrabbaRideDBDataContext();
+            User u = dataContext.GetUserByID((int)providerUserKey);
+            if (u == null) { return null; }
+
+            if (userIsOnline)
+            {
+                u.LastActvityDate = DateTime.Now;
+                dataContext.SubmitChanges();
+            }
+
+            return u.GetMembershipUser();
         }
 
         public override string GetUserNameByEmail(string email)
@@ -178,6 +231,7 @@ namespace SystemManagement
         {
             GrabbaRideDBDataContext dataContext = new GrabbaRideDBDataContext();
             User u = dataContext.GetUserByUsername(userName);
+            if (u == null) { return false; }
 
             if (u.IsLockedOut == true)
                 u.IsLockedOut = false;
