@@ -148,10 +148,23 @@ namespace GrabbaRide.Database
         #region UserMappings
 
         /// <summary>
+        /// Finds a user by their user ID.
+        /// </summary>
+        /// <param name="userID">The user ID to search for.</param>
+        /// <returns>The User object, or null if no user was found.</returns>
+        public User GetUserByID(int userID)
+        {
+            User result = (User)from u in Users
+                                where u.UserID == userID
+                                select u;
+            return result;
+        }
+
+        /// <summary>
         /// Finds a user by their username.
         /// </summary>
         /// <param name="username">The username of the user to search for.</param>
-        /// <returns>A User object, or null if no user was found.</returns>
+        /// <returns>The User object, or null if no user was found.</returns>
         public User GetUserByUsername(string username)
         {
             User result = (User)from u in Users
