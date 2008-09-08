@@ -51,7 +51,7 @@ namespace GrabbaRide.Database
                 u.LastName = RandomLastname();
                 u.Gender = RandomGender();
                 u.DOB = RandomDate(1955, 1990);
-                u.Password = "password";
+                u.Password = User.GenerateRandomPassword();
                 u.Email = RandomEmail();
                 u.Comment = String.Empty;
 
