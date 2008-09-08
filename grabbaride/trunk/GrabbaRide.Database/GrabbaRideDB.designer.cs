@@ -681,8 +681,6 @@ namespace GrabbaRide.Database
 		
 		private System.Nullable<System.DateTime> _CreationDate;
 		
-		private System.Nullable<bool> _IsOnline;
-		
 		private bool _IsLockedOut;
 		
 		private string _Comment;
@@ -727,8 +725,6 @@ namespace GrabbaRide.Database
     partial void OnLastPasswordChangedDateChanged();
     partial void OnCreationDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreationDateChanged();
-    partial void OnIsOnlineChanging(System.Nullable<bool> value);
-    partial void OnIsOnlineChanged();
     partial void OnIsLockedOutChanging(bool value);
     partial void OnIsLockedOutChanged();
     partial void OnCommentChanging(string value);
@@ -1058,26 +1054,6 @@ namespace GrabbaRide.Database
 					this._CreationDate = value;
 					this.SendPropertyChanged("CreationDate");
 					this.OnCreationDateChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_IsOnline")]
-		public System.Nullable<bool> IsOnline
-		{
-			get
-			{
-				return this._IsOnline;
-			}
-			set
-			{
-				if ((this._IsOnline != value))
-				{
-					this.OnIsOnlineChanging(value);
-					this.SendPropertyChanging();
-					this._IsOnline = value;
-					this.SendPropertyChanged("IsOnline");
-					this.OnIsOnlineChanged();
 				}
 			}
 		}

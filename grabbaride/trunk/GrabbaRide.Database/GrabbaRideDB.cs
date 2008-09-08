@@ -209,13 +209,6 @@ namespace GrabbaRide.Database
                                select u;
         }
 
-        public List<User> GetUser_SortByIsOnline()
-        {
-            return (List<User>)from u in this.Users
-                               orderby u.IsOnline
-                               select u;
-        }
-
         public List<User> GetUser_SortByOccupation()
         {
             return (List<User>)from u in this.Users
