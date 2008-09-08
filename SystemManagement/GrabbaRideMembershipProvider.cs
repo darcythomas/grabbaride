@@ -102,27 +102,29 @@ namespace SystemManagement
 
         public override string GetUserNameByEmail(string email)
         {
-            throw new NotImplementedException();
+            GrabbaRideDBDataContext dataContext = new GrabbaRideDBDataContext();
+            User u = dataContext.GetUserByEmail(email);
+            return u.Username;
         }
 
         public override int MaxInvalidPasswordAttempts
         {
-            get { throw new NotImplementedException(); }
+            get { return Settings.Default.MaxInvalidPasswordAttempts; }
         }
 
         public override int MinRequiredNonAlphanumericCharacters
         {
-            get { throw new NotImplementedException(); }
+            get { return Settings.Default.MinRequiredNonAlphanumericCharacters; }
         }
 
         public override int MinRequiredPasswordLength
         {
-            get { throw new NotImplementedException(); }
+            get { return Settings.Default.MinRequiredPasswordLength; }
         }
 
         public override int PasswordAttemptWindow
         {
-            get { throw new NotImplementedException(); }
+            get { return Settings.Default.PasswordAttemptWindow; }
         }
 
         public override MembershipPasswordFormat PasswordFormat
@@ -135,24 +137,53 @@ namespace SystemManagement
             get { throw new NotImplementedException(); }
         }
 
+        /// <summary>
+        /// Our MembershipProvider requires the user to answer a password question
+        /// for password reset and retrieval.
+        /// </summary>
         public override bool RequiresQuestionAndAnswer
         {
-            get { throw new NotImplementedException(); }
+            get { return true; }
         }
 
+        /// <summary>
+        /// Our MembershipProvider requires unique emails.
+        /// </summary>
         public override bool RequiresUniqueEmail
         {
-            get { throw new NotImplementedException(); }
+            get { return true; }
         }
 
         public override string ResetPassword(string username, string answer)
         {
-            throw new NotImplementedException();
+            GrabbaRideDBDataContext dataContext = new GrabbaRideDBDataContext();
+            User u = dataContext.GetUserByUsername(username);
+
+            if (u.PasswordAnswer == answer)
+            {
+                // generate a new random password and save it to the database
+                u.Password = User.GenerateRandomPassword();
+                dataContext.SubmitChanges();
+
+                // return the new password
+                return u.Password;
+            }
+            else
+            {
+                throw new MembershipPasswordException("Incorrect password answer.");
+            }
         }
 
         public override bool UnlockUser(string userName)
         {
-            throw new NotImplementedException();
+            GrabbaRideDBDataContext dataContext = new GrabbaRideDBDataContext();
+            User u = dataContext.GetUserByUsername(userName);
+
+            if (u.IsLockedOut == true)
+                u.IsLockedOut = false;
+
+            dataContext.SubmitChanges();
+            return true;
         }
 
         public override void UpdateUser(MembershipUser mUser)
