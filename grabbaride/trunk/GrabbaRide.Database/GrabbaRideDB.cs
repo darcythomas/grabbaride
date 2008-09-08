@@ -222,6 +222,7 @@ namespace GrabbaRide.Database
 
         }
     }
+        #endregion
 
     public enum Gender
     {
