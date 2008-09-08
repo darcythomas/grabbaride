@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SystemManagement.Properties {
+namespace GrabbaRide.UserManagement.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -25,25 +25,13 @@ namespace SystemManagement.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
         public int MaxInvalidPasswordAttempts {
             get {
                 return ((int)(this["MaxInvalidPasswordAttempts"]));
             }
             set {
                 this["MaxInvalidPasswordAttempts"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("GrabbaRide")]
-        public string ApplicationName {
-            get {
-                return ((string)(this["ApplicationName"]));
-            }
-            set {
-                this["ApplicationName"] = value;
             }
         }
         
@@ -68,6 +56,30 @@ namespace SystemManagement.Properties {
             }
             set {
                 this["MinRequiredPasswordLength"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("15")]
+        public int PasswordAttemptWindow {
+            get {
+                return ((int)(this["PasswordAttemptWindow"]));
+            }
+            set {
+                this["PasswordAttemptWindow"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(".+")]
+        public string PasswordStrengthRegularExpression {
+            get {
+                return ((string)(this["PasswordStrengthRegularExpression"]));
+            }
+            set {
+                this["PasswordStrengthRegularExpression"] = value;
             }
         }
     }
