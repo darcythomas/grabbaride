@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
-
-
 
 namespace GrabbaRide.Database
 {
-
     partial class GrabbaRideDBDataContext
     {
-
         #region RideMappings
 
         /// <summary>
@@ -18,13 +14,13 @@ namespace GrabbaRide.Database
         /// </summary>
         /// <param name="rideID"></param>
         /// <returns></returns>
-        public Ride getRide(int rideID)
+        public Ride GetRideByID(int rideID)
         {
+            var query = from r in Rides
+                        where r.RideID == rideID
+                        select r;
 
-            var ride = from r in this.Rides
-                       where r.RideID == rideID
-                       select r;
-            return (Ride)ride;
+            return query.Single();
         }
 
         /// <summary>
@@ -32,30 +28,28 @@ namespace GrabbaRide.Database
         /// </summary>
         /// <param name="afterDate"></param>
         /// <returns></returns>
-        public List<Ride> getRidesAfterDate(DateTime afterDate)
+        public IEnumerable<Ride> getRidesAfterDate(DateTime afterDate)
         {
 
-            var rides = from r in this.Rides
+            var rides = from r in Rides
                         where r.StartDate >= afterDate
                         select r;
-            return (List<Ride>)rides;
+            return rides;
         }
-
 
         /// <summary>
         /// Returns all rides before the specifed date
         /// </summary>
         /// <param name="beforeDate"></param>
         /// <returns></returns>
-        public List<Ride> getRidesBeforeDate(DateTime beforeDate)
+        public IEnumerable<Ride> getRidesBeforeDate(DateTime beforeDate)
         {
 
-            var rides = from r in this.Rides
+            var rides = from r in Rides
                         where r.EndDate <= beforeDate
                         select r;
-            return (List<Ride>)rides;
+            return rides;
         }
-
 
         /// <summary>
         /// Returns all rides between the specifed Dates
@@ -63,26 +57,25 @@ namespace GrabbaRide.Database
         /// <param name="beforeDate"></param>
         /// <param name="afterDate"></param>
         /// <returns></returns>
-        public List<Ride> getRidesBetween(DateTime beforeDate, DateTime afterDate)
+        public IEnumerable<Ride> getRidesBetween(DateTime beforeDate, DateTime afterDate)
         {
-            var rides = from r in this.getRidesBeforeDate(beforeDate)
-                        where r.StartDate >= afterDate
+            var rides = from r in Rides
+                        where r.StartDate >= afterDate && r.EndDate <= beforeDate
                         select r;
-            return (List<Ride>)rides;
+            return rides;
 
         }
-
 
         /// <summary>
         /// Returns all rides avalible
         /// </summary>
         /// <returns></returns>
-        public List<Ride> getAllAvalibleRides()
+        public IEnumerable<Ride> getAllAvalibleRides()
         {
-            var rides = from r in this.Rides
+            var rides = from r in Rides
                         where r.NumSeats > 0 && r.Available
                         select r;
-            return (List<Ride>)rides;
+            return rides;
         }
 
         /// <summary>
@@ -90,12 +83,12 @@ namespace GrabbaRide.Database
         /// </summary>
         /// <param name="userID"></param>
         /// <returns></returns>
-        public List<Ride> getUserRides(int userID)
+        public IEnumerable<Ride> getUserRides(int userID)
         {
-            var rides = from r in this.Rides
+            var rides = from r in Rides
                         where r.UserID == userID
                         select r;
-            return (List<Ride>)rides;
+            return rides;
         }
 
         /// <summary>
@@ -104,39 +97,39 @@ namespace GrabbaRide.Database
         /// </summary>
         /// <param name="day"></param>
         /// <returns></returns>
-        public List<Ride> getAllRidesRecur(DayOfWeek day)
+        public IEnumerable<Ride> getAllRidesRecur(DayOfWeek day)
         {
-            List<Ride> rides = null;
+            IEnumerable<Ride> rides = null;
 
             switch (day)
             {
-                case DayOfWeek.Monday: rides = (List<Ride>)from r in this.Rides
-                                                           where r.RecurMon
-                                                           select r;
+                case DayOfWeek.Monday: rides = from r in this.Rides
+                                               where r.RecurMon
+                                               select r;
                     break;
-                case DayOfWeek.Tuesday: rides = (List<Ride>)from r in this.Rides
-                                                            where r.RecurTue
-                                                            select r;
+                case DayOfWeek.Tuesday: rides = from r in this.Rides
+                                                where r.RecurTue
+                                                select r;
                     break;
-                case DayOfWeek.Wednesday: rides = (List<Ride>)from r in this.Rides
-                                                              where r.RecurWed
-                                                              select r;
+                case DayOfWeek.Wednesday: rides = from r in this.Rides
+                                                  where r.RecurWed
+                                                  select r;
                     break;
-                case DayOfWeek.Thursday: rides = (List<Ride>)from r in this.Rides
-                                                             where r.RecurThu
-                                                             select r;
+                case DayOfWeek.Thursday: rides = from r in this.Rides
+                                                 where r.RecurThu
+                                                 select r;
                     break;
-                case DayOfWeek.Friday: rides = (List<Ride>)from r in this.Rides
-                                                           where r.RecurMon
-                                                           select r;
+                case DayOfWeek.Friday: rides = from r in this.Rides
+                                               where r.RecurMon
+                                               select r;
                     break;
-                case DayOfWeek.Saturday: rides = (List<Ride>)from r in this.Rides
-                                                             where r.RecurSat
-                                                             select r;
+                case DayOfWeek.Saturday: rides = from r in this.Rides
+                                                 where r.RecurSat
+                                                 select r;
                     break;
-                case DayOfWeek.Sunday: rides = (List<Ride>)from r in this.Rides
-                                                           where r.RecurSun
-                                                           select r;
+                case DayOfWeek.Sunday: rides = from r in this.Rides
+                                               where r.RecurSun
+                                               select r;
                     break;
             }
 
@@ -154,10 +147,11 @@ namespace GrabbaRide.Database
         /// <returns>The User object, or null if no user was found.</returns>
         public User GetUserByID(int userID)
         {
-            User result = (User)from u in Users
-                                where u.UserID == userID
-                                select u;
-            return result;
+            var query = from u in Users
+                        where u.UserID == userID
+                        select u;
+
+            return query.Single();
         }
 
         /// <summary>
@@ -167,67 +161,60 @@ namespace GrabbaRide.Database
         /// <returns>The User object, or null if no user was found.</returns>
         public User GetUserByUsername(string username)
         {
-            User result = (User)from u in Users
-                                where u.Username == username
-                                select u;
-            return result;
+            var query = from u in Users
+                        where u.Username == username
+                        select u;
+
+            return query.Single();
         }
 
-        public List<User> GetAllUsers()
+        public IEnumerable<User> GetAllUsers()
         {
-            return (List<User>)from u in this.Users
-                               select u;
+            return from u in this.Users
+                   select u;
         }
 
-
-
-        public List<User> GetUser_SortByUserName()
+        public IEnumerable<User> GetUser_SortByUserName()
         {
-            return (List<User>)from u in this.Users
-                               orderby u.Username
-                               select u;
+            return from u in this.Users
+                   orderby u.Username
+                   select u;
         }
 
-        public List<User> GetUser_SortByOccupation()
+        public IEnumerable<User> GetUser_SortByOccupation()
         {
-            return (List<User>)from u in this.Users
-                               orderby u.Occupation
-                               select u;
+            return from u in this.Users
+                   orderby u.Occupation
+                   select u;
         }
 
-        public List<User> GetUser_SortByLastActvityDate()
+        public IEnumerable<User> GetUser_SortByLastActvityDate()
         {
-            return (List<User>)from u in this.Users
-                               orderby u.LastActvityDate
-                               select u;
+            return from u in this.Users
+                   orderby u.LastActvityDate
+                   select u;
         }
-
-
-
 
         public User GetUserByEmail(String email)
         {
-            // Is it an email
-
+            // is it an email?
             if (!Regex.IsMatch(email, "(?<user>[^@]+)@(?<host>.+)"))
             {
-                // throw some exception
                 throw new ArgumentException("Not a valid email address: emails must be \"user@host.something\"");
-
             }
             else
             {
-                User user = (User)from u in this.Users
-                                  where u.Email == email
+                var query = from u in this.Users
+                            where u.Email == email
+                            select u;
 
-                                  select u;
-
-                return user;
+                return query.Single();
             }
 
         }
-    }
+
         #endregion
+    }
 
     public enum Gender
     {
