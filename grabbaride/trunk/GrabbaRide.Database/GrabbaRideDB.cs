@@ -151,7 +151,8 @@ namespace GrabbaRide.Database
                         where u.UserID == userID
                         select u;
 
-            return query.Single();
+            if (query.Count() == 0) { return null; }
+            else { return query.Single(); }
         }
 
         /// <summary>
@@ -165,7 +166,31 @@ namespace GrabbaRide.Database
                         where u.Username == username
                         select u;
 
-            return query.Single();
+            if (query.Count() == 0) { return null; }
+            else { return query.Single(); }
+        }
+
+        /// <summary>
+        /// Finds a user by the email address.
+        /// </summary>
+        /// <param name="email">The email of the user to search for.</param>
+        /// <returns>The User object, or null if no user was found.</returns>
+        public User GetUserByEmail(String email)
+        {
+            // is it an email?
+            if (!Regex.IsMatch(email, "(?<user>[^@]+)@(?<host>.+)"))
+            {
+                throw new ArgumentException("Not a valid email address: emails must be \"user@host.something\"");
+            }
+            else
+            {
+                var query = from u in this.Users
+                            where u.Email == email
+                            select u;
+
+                if (query.Count() == 0) { return null; }
+                else { return query.Single(); }
+            }
         }
 
         public IEnumerable<User> GetAllUsers()
@@ -193,24 +218,6 @@ namespace GrabbaRide.Database
             return from u in this.Users
                    orderby u.LastActvityDate
                    select u;
-        }
-
-        public User GetUserByEmail(String email)
-        {
-            // is it an email?
-            if (!Regex.IsMatch(email, "(?<user>[^@]+)@(?<host>.+)"))
-            {
-                throw new ArgumentException("Not a valid email address: emails must be \"user@host.something\"");
-            }
-            else
-            {
-                var query = from u in this.Users
-                            where u.Email == email
-                            select u;
-
-                return query.Single();
-            }
-
         }
 
         #endregion

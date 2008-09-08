@@ -99,6 +99,7 @@ namespace GrabbaRide.UserManagement
             u.Password = Convert.ToBase64String(encryptedPwd);
 
             u.Email = email;
+            u.CreationDate = DateTime.Now;
             u.PasswordQuestion = passwordQuestion;
             u.PasswordAnswer = passwordAnswer;
             u.IsApproved = isApproved;

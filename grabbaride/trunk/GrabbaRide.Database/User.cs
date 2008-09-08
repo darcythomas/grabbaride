@@ -30,7 +30,7 @@ namespace GrabbaRide.Database
         {
             MembershipUser user = new MembershipUser("GrabbaRideMembershipProvider", this.Username,
                 this.UserID, this.Email, this.PasswordQuestion, this.Comment, this.IsApproved,
-                this.IsLockedOut, this.CreationDate.GetValueOrDefault(), this.LastLoginDate.GetValueOrDefault(),
+                this.IsLockedOut, this.CreationDate, this.LastLoginDate.GetValueOrDefault(),
                 this.LastActvityDate.GetValueOrDefault(), this.LastPasswordChangedDate.GetValueOrDefault(),
                 this.LastLockoutDate.GetValueOrDefault());
             

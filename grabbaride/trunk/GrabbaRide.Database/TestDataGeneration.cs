@@ -19,7 +19,6 @@ namespace GrabbaRide.Database
 
         private string[] _testUsernames = { "badguy69", "sillylady", "pissman", "duffman", "benjiMan", "Dogbrain",
                                        "BeerBarron", "Flanders", "AlGore", "BushRIP", "FACERIP", "DEATHDIVE",
-                                       "Shitwolf", "Nick", "Thomas", "Adrian", "Michelle", "Darcy", "Tokenblackguy",
                                        "Droid1", "Droid2", "Droid3", "Droid4", "3cp0", "YODA", "Chewie", "JabbaTheHut",
                                        "mrPotatoHead", "mrsPotatoHead", "BuzzLightYear", "SlinkyDinky",
                                        "Droid2008", "HellenClarke", "Bigbummum", "wintsonPeters", "Denmin_deamon",
@@ -50,10 +49,10 @@ namespace GrabbaRide.Database
                 u.FirstName = RandomFirstname();
                 u.LastName = RandomLastname();
                 u.Gender = RandomGender();
-                u.DOB = RandomDate(1955, 1990);
+                u.DateOfBirth = RandomDate(1955, 1990);
+                u.CreationDate = RandomDate(2006, 2007);
                 u.Password = String.Empty;
                 u.Email = RandomEmail();
-                u.Comment = String.Empty;
 
                 _dataContext.Users.InsertOnSubmit(u);
             }
@@ -88,8 +87,6 @@ namespace GrabbaRide.Database
             if (_random.Next(2) == 1) { return Gender.Male; }
             else { return Gender.Female; }
         }
-
-
 
         private double RandomLatLong()
         {
