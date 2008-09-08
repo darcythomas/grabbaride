@@ -13,13 +13,15 @@ namespace GrabbaRide.DatabaseManager
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            Console.WriteLine("Getting database context...");
+            Console.Write("Getting database context...");
             GrabbaRideDBDataContext dc = new GrabbaRideDBDataContext();
+            Console.WriteLine(" success!");
 
             if (dc.DatabaseExists())
             {
-                Console.WriteLine("Database exists, deleting...");
+                Console.Write("Database exists, deleting...");
                 dc.DeleteDatabase();
+                Console.WriteLine(" success!");
             }
 
             Console.Write("Creating database...");
@@ -34,9 +36,11 @@ namespace GrabbaRide.DatabaseManager
                 Console.WriteLine(" failed!");
             }
 
-            Console.WriteLine("Inputting sample data...");
+            Console.Write("Inputting sample data...");
             TestDataGeneration.InputSampleData();
+            Console.WriteLine(" success!");
 
+            Console.WriteLine();
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
         }

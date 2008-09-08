@@ -671,7 +671,7 @@ namespace GrabbaRide.Database
 		
 		private string _PasswordAnswer;
 		
-		private System.Nullable<bool> _IsApproved;
+		private bool _IsApproved;
 		
 		private System.Nullable<System.DateTime> _LastActvityDate;
 		
@@ -683,7 +683,11 @@ namespace GrabbaRide.Database
 		
 		private System.Nullable<bool> _IsOnline;
 		
-		private System.Nullable<bool> _IsLockedOut;
+		private bool _IsLockedOut;
+		
+		private string _Comment;
+		
+		private System.Nullable<System.DateTime> _LastLockoutDate;
 		
 		private EntitySet<Ride> _Rides;
 		
@@ -713,20 +717,24 @@ namespace GrabbaRide.Database
     partial void OnPasswordQuestionChanged();
     partial void OnPasswordAnswerChanging(string value);
     partial void OnPasswordAnswerChanged();
-    partial void OnIsApprovedChanging(System.Nullable<bool> value);
+    partial void OnIsApprovedChanging(bool value);
     partial void OnIsApprovedChanged();
     partial void OnLastActvityDateChanging(System.Nullable<System.DateTime> value);
     partial void OnLastActvityDateChanged();
-    partial void OnLastLogInChanging(System.Nullable<System.DateTime> value);
-    partial void OnLastLogInChanged();
+    partial void OnLastLoginDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnLastLoginDateChanged();
     partial void OnLastPasswordChangedDateChanging(System.Nullable<System.DateTime> value);
     partial void OnLastPasswordChangedDateChanged();
     partial void OnCreationDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreationDateChanged();
     partial void OnIsOnlineChanging(System.Nullable<bool> value);
     partial void OnIsOnlineChanged();
-    partial void OnIsLockedOutChanging(System.Nullable<bool> value);
+    partial void OnIsLockedOutChanging(bool value);
     partial void OnIsLockedOutChanged();
+    partial void OnCommentChanging(string value);
+    partial void OnCommentChanged();
+    partial void OnLastLockoutDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnLastLockoutDateChanged();
     #endregion
 		
 		public User()
@@ -955,7 +963,7 @@ namespace GrabbaRide.Database
 		}
 		
 		[Column(Storage="_IsApproved")]
-		public System.Nullable<bool> IsApproved
+		public bool IsApproved
 		{
 			get
 			{
@@ -995,7 +1003,7 @@ namespace GrabbaRide.Database
 		}
 		
 		[Column(Storage="_LastLogIn")]
-		public System.Nullable<System.DateTime> LastLogIn
+		public System.Nullable<System.DateTime> LastLoginDate
 		{
 			get
 			{
@@ -1005,11 +1013,11 @@ namespace GrabbaRide.Database
 			{
 				if ((this._LastLogIn != value))
 				{
-					this.OnLastLogInChanging(value);
+					this.OnLastLoginDateChanging(value);
 					this.SendPropertyChanging();
 					this._LastLogIn = value;
-					this.SendPropertyChanged("LastLogIn");
-					this.OnLastLogInChanged();
+					this.SendPropertyChanged("LastLoginDate");
+					this.OnLastLoginDateChanged();
 				}
 			}
 		}
@@ -1075,7 +1083,7 @@ namespace GrabbaRide.Database
 		}
 		
 		[Column(Storage="_IsLockedOut")]
-		public System.Nullable<bool> IsLockedOut
+		public bool IsLockedOut
 		{
 			get
 			{
@@ -1090,6 +1098,46 @@ namespace GrabbaRide.Database
 					this._IsLockedOut = value;
 					this.SendPropertyChanged("IsLockedOut");
 					this.OnIsLockedOutChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Comment", CanBeNull=false)]
+		public string Comment
+		{
+			get
+			{
+				return this._Comment;
+			}
+			set
+			{
+				if ((this._Comment != value))
+				{
+					this.OnCommentChanging(value);
+					this.SendPropertyChanging();
+					this._Comment = value;
+					this.SendPropertyChanged("Comment");
+					this.OnCommentChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_LastLockoutDate")]
+		public System.Nullable<System.DateTime> LastLockoutDate
+		{
+			get
+			{
+				return this._LastLockoutDate;
+			}
+			set
+			{
+				if ((this._LastLockoutDate != value))
+				{
+					this.OnLastLockoutDateChanging(value);
+					this.SendPropertyChanging();
+					this._LastLockoutDate = value;
+					this.SendPropertyChanged("LastLockoutDate");
+					this.OnLastLockoutDateChanged();
 				}
 			}
 		}

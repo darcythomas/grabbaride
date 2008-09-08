@@ -53,6 +53,7 @@ namespace GrabbaRide.Database
                 u.DOB = RandomDate(1955, 1990);
                 u.Password = "password";
                 u.Email = RandomEmail();
+                u.Comment = String.Empty;
 
                 _dataContext.Users.InsertOnSubmit(u);
             }
