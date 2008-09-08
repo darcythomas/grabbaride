@@ -70,5 +70,17 @@ namespace SystemManagement.Properties {
                 this["PasswordAttemptWindow"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(".+")]
+        public string PasswordStrengthRegularExpression {
+            get {
+                return ((string)(this["PasswordStrengthRegularExpression"]));
+            }
+            set {
+                this["PasswordStrengthRegularExpression"] = value;
+            }
+        }
     }
 }

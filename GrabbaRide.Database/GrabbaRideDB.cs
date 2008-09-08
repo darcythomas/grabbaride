@@ -173,27 +173,6 @@ namespace GrabbaRide.Database
             return result;
         }
 
-
-        /// <summary>
-        /// Finds users whose usernames contain usernameToMatch. The results are limited by pageIndex and pageSize.
-        /// </summary>
-        /// <param name="usernameToMatch">A username to search for.</param>
-        /// <param name="pageIndex">The offset page index (starts from 0).</param>
-        /// <param name="pageSize">The page size.</param>
-        /// <param name="totalRecords">Returns the total number of records </param>
-        /// <returns>A list of Users that match.</returns>
-        public IEnumerable<User> FindUsersByName(string usernameToMatch, int pageIndex, int pageSize, out int totalRecords)
-        {
-            var query = from u in Users
-                        where u.Username.Contains(usernameToMatch)
-                        orderby u.Username
-                        select u;
-
-            totalRecords = query.Count();
-
-            return query.Skip(pageIndex * pageSize).Take(pageSize);
-        }
-
         public List<User> GetAllUsers()
         {
             return (List<User>)from u in this.Users

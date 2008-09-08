@@ -146,17 +146,64 @@ namespace SystemManagement
 
         public override MembershipUserCollection FindUsersByEmail(string emailToMatch, int pageIndex, int pageSize, out int totalRecords)
         {
-            throw new NotImplementedException();
+            // use LINQ directly here because it is very specific
+            GrabbaRideDBDataContext dataContext = new GrabbaRideDBDataContext();
+            MembershipUserCollection result = new MembershipUserCollection();
+
+            var users = from u in dataContext.Users
+                        where u.Email.Contains(emailToMatch)
+                        orderby u.Email
+                        select u;
+
+            totalRecords = users.Count();
+
+            foreach (User u in users.Skip(pageIndex * pageSize).Take(pageSize))
+            {
+                result.Add(u.GetMembershipUser());
+            }
+
+            return result;
         }
 
         public override MembershipUserCollection FindUsersByName(string usernameToMatch, int pageIndex, int pageSize, out int totalRecords)
         {
-            throw new NotImplementedException();
+            // use LINQ directly here because it is very specific
+            GrabbaRideDBDataContext dataContext = new GrabbaRideDBDataContext();
+            MembershipUserCollection result = new MembershipUserCollection();
+
+            var users = from u in dataContext.Users
+                        where u.Username.Contains(usernameToMatch)
+                        orderby u.Username
+                        select u;
+
+            totalRecords = users.Count();
+
+            foreach (User u in users.Skip(pageIndex * pageSize).Take(pageSize))
+            {
+                result.Add(u.GetMembershipUser());
+            }
+
+            return result;
         }
 
         public override MembershipUserCollection GetAllUsers(int pageIndex, int pageSize, out int totalRecords)
         {
-            throw new NotImplementedException();
+            // use LINQ directly here because it is very specific
+            GrabbaRideDBDataContext dataContext = new GrabbaRideDBDataContext();
+            MembershipUserCollection result = new MembershipUserCollection();
+
+            var users = from u in dataContext.Users
+                        orderby u.Username
+                        select u;
+
+            totalRecords = users.Count();
+
+            foreach (User u in users.Skip(pageIndex * pageSize).Take(pageSize))
+            {
+                result.Add(u.GetMembershipUser());
+            }
+
+            return result;
         }
 
         public override int GetNumberOfUsersOnline()
@@ -233,7 +280,7 @@ namespace SystemManagement
 
         public override string PasswordStrengthRegularExpression
         {
-            get { throw new NotImplementedException(); }
+            get { return Settings.Default.PasswordStrengthRegularExpression; }
         }
 
         /// <summary>
