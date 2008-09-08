@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 
 namespace GrabbaRide.Database
@@ -146,14 +147,36 @@ namespace GrabbaRide.Database
 
         #region UserMappings
 
-        public static User GetUser(string username)
+        public User GetUser(string username)
         {
-            GrabbaRideDBDataContext context = new GrabbaRideDBDataContext();
-            var user = from u in context.Users
+
+            var user = from u in this.Users
                        where u.Username == username
                        select u;
             return (User)user;
         }
+
+        public User getUserByEmail(String email)
+        {
+            // Is it an email
+
+            if (!Regex.IsMatch(email, "(?<user>[^@]+)@(?<host>.+)"))
+            {
+                // throw some exception
+                throw new ArgumentException("Not a valid email address: emails must be \"user@host.something\"");
+
+            }
+            else
+            {
+                User user = (User)from u in this.Users
+                                  where u.Email == email
+                                  select u;
+                return user;
+            }
+
+        }
+
+
         #endregion
     }
 
