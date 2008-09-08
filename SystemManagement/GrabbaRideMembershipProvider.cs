@@ -7,6 +7,7 @@ using System.Collections.Specialized;
 using System.Web.Configuration;
 using System.Configuration;
 using System.Configuration.Provider;
+using SystemManagement.Properties;
 
 namespace SystemManagement
 {
@@ -15,18 +16,12 @@ namespace SystemManagement
 
         #region Class Variables
 
-        private int _newPasswordLength;
-        private string _connectionString;
-        private string _applicationName;
         private bool _enablePasswordReset;
         private bool _enablePasswordRetrieval;
         private bool _requiresQuestionAndAnswer;
         private bool _requiresUniqueEmail;
-        private int _maxInvalidPasswordAttempts;
         private int _passwordAttemptWindow;
         private MembershipPasswordFormat _passwordFormat;
-        private int _minRequiredNonAlphanumericCharacters;
-        private int _minRequiredPasswordLength;
         private string _passwordStrengthRegularExpression;
         private MachineKeySection _machineKey; //Used when determining encryption key values.
 
@@ -45,7 +40,7 @@ namespace SystemManagement
 
         #region Properties
 
-       
+
 
         #endregion
 
@@ -55,34 +50,18 @@ namespace SystemManagement
         {
             if (config == null)
             {
-                throw new ArgumentNullException("config");
+                throw new ArgumentNullException("config cannot be null");
             }
 
-            if (name == null || name.Length == 0)
+            if (String.IsNullOrEmpty(name))
             {
                 name = "GrabbaRideMembershipProvider";
             }
 
-        
             //Initialize the abstract base class.
             base.Initialize(name, config);
 
-            _applicationName = GetConfigValue(config["ApplicationName"], System.Web.Hosting.HostingEnvironment.ApplicationVirtualPath);
-            // These should be set in web.config but this class also contains defult values also just incase!!
-            _maxInvalidPasswordAttempts = Convert.ToInt32(GetConfigValue(config["maxInvalidPasswordAttempts"], "5"));
-            //?? Shrug.... lets let the base class deal with this for now 10 seconds is a good window of opp nice and safe
-            _passwordAttemptWindow = Convert.ToInt32(GetConfigValue(config["passwordAttemptWindow"], "10"));
-           
-            _minRequiredNonAlphanumericCharacters = Convert.ToInt32(GetConfigValue(config["minRequiredAlphaNumericCharacters"], "1"));
-            _minRequiredPasswordLength = Convert.ToInt32(GetConfigValue(config["minRequiredPasswordLength"], "7"));
-        
-            // Amy your up to here
-            _passwordStrengthRegularExpression = Convert.ToString(GetConfigValue(config["passwordStrengthRegularExpression"], String.Empty));
-            _enablePasswordReset = Convert.ToBoolean(GetConfigValue(config["enablePasswordReset"], "true"));
-            _enablePasswordRetrieval = Convert.ToBoolean(GetConfigValue(config["enablePasswordRetrieval"], "true"));
-            _requiresQuestionAndAnswer = Convert.ToBoolean(GetConfigValue(config["requiresQuestionAndAnswer"], "false"));
-            _requiresUniqueEmail = Convert.ToBoolean(GetConfigValue(config["requiresUniqueEmail"], "true"));
-
+            /*
             string temp_format = config["passwordFormat"];
             if (temp_format == null)
             {
@@ -102,7 +81,9 @@ namespace SystemManagement
                     break;
                 default:
                     throw new ProviderException("Password format not supported.");
+             *
             }
+             
 
             ConnectionStringSettings _ConnectionStringSettings = ConfigurationManager.ConnectionStrings[config["connectionStringName"]];
 
@@ -124,32 +105,13 @@ namespace SystemManagement
                     throw new ProviderException("Hashed or Encrypted passwords are not supported with auto-generated keys.");
                 }
             }
-        }
-
-        private string GetConfigValue(string configValue, string defaultValue)
-        {
-            if (String.IsNullOrEmpty(configValue))
-            {
-                return defaultValue;
-            }
-
-            return configValue;
+            */
         }
         #endregion
 
         #region Implementation of MembershipProvider Methods
 
-        public override string ApplicationName
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
+        public override string ApplicationName { get; set; }
 
         public override bool ChangePassword(string username, string oldPassword, string newPassword)
         {
@@ -281,8 +243,5 @@ namespace SystemManagement
             throw new NotImplementedException();
         }
         #endregion
-
-
-
     }
 }

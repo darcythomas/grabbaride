@@ -22,10 +22,7 @@ namespace GrabbaRide.Frontend
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            String search = "Search.aspx?fromloc=" + drpFrom.SelectedValue.ToString();
-            search += "&toloc=" + drpTo.SelectedValue.ToString();
-            if (calDate.SelectedDate >= DateTime.Now)
-                search += "&date=" + calDate.SelectedDate.ToShortDateString();
+            string search = "Search.aspx";
             Response.Redirect(search);
         }
     }
