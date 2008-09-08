@@ -95,7 +95,7 @@ namespace GrabbaRide.Database
 		}
 	}
 	
-	[Table(Name="")]
+	[Table(Name="Rides")]
 	public partial class Ride : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -641,7 +641,7 @@ namespace GrabbaRide.Database
 		}
 	}
 	
-	[Table(Name="")]
+	[Table(Name="Users")]
 	public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -1165,7 +1165,7 @@ namespace GrabbaRide.Database
 		}
 	}
 	
-	[Table(Name="")]
+	[Table(Name="OpenIDs")]
 	public partial class OpenID : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		

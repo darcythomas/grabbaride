@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Database Class="GrabbaRideDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=LOCALHOST;Initial Catalog=GrabbaRideDB;Integrated Security=True" SettingsObjectName="GrabbaRide.Database.Properties.Settings" SettingsPropertyName="GrabbaRideDBConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="" Member="Rides">
+  <Table Name="Rides">
     <Type Name="Ride">
       <Column Name="RideID" Type="System.Int32" IsReadOnly="true" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="UserID" Type="System.Int32" CanBeNull="false" />
@@ -26,7 +26,7 @@
       <Association Name="User_Ride" Member="User" ThisKey="UserID" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="" Member="Users">
+  <Table Name="Users">
     <Type Name="User">
       <Column Name="UserID" Type="System.Int32" IsReadOnly="true" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="FirstName" Type="System.String" CanBeNull="false" />
@@ -51,7 +51,7 @@
       <Association Name="User_OpenID" Member="OpenIDs" OtherKey="UserID" Type="OpenID" />
     </Type>
   </Table>
-  <Table Name="" Member="OpenIDs">
+  <Table Name="OpenIDs">
     <Type Name="OpenID">
       <Column Name="OpenIDUrl" Type="System.String" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="UserID" Type="System.Int32" CanBeNull="false" />
