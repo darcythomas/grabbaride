@@ -27,16 +27,6 @@ namespace GrabbaRide.Frontend
 
         protected void Application_Start(object sender, EventArgs e)
         {
-            // create the GrabbaRideDB if it doesn't already exist
-            GrabbaRideDBDataContext dc = new GrabbaRideDBDataContext();
-            if (dc.DatabaseExists())
-            {
-                dc.DeleteDatabase();
-            }
-
-            Debug.WriteLine("Creating new Database");
-            dc.CreateDatabase();
-            TestDataGeneration.InputSampleData();
         }
 
         protected void Session_Start(object sender, EventArgs e)
