@@ -14,30 +14,7 @@ namespace SystemManagement
 {
     public sealed class GrabbaRideMembershipProvider : MembershipProvider
     {
-
-        #region Class Variables
-
         GrabbaRideDBDataContext _dataContext;
-
-        #endregion
-
-        #region Enums
-
-        private enum FailureType
-        {
-            Password = 1,
-            PasswordAnswer = 2
-        }
-
-        #endregion
-
-        #region Properties
-
-
-
-        #endregion
-
-        #region Initialization
 
         public override void Initialize(string name, NameValueCollection config)
         {
@@ -55,54 +32,7 @@ namespace SystemManagement
             base.Initialize(name, config);
 
             _dataContext = new GrabbaRideDBDataContext();
-
-            /*
-            string temp_format = config["passwordFormat"];
-            if (temp_format == null)
-            {
-                temp_format = "Hashed";
-            }
-
-            switch (temp_format)
-            {
-                case "Hashed":
-                    _passwordFormat = MembershipPasswordFormat.Hashed;
-                    break;
-                case "Encrypted":
-                    _passwordFormat = MembershipPasswordFormat.Encrypted;
-                    break;
-                case "Clear":
-                    _passwordFormat = MembershipPasswordFormat.Clear;
-                    break;
-                default:
-                    throw new ProviderException("Password format not supported.");
-             *
-            }
-             
-
-            ConnectionStringSettings _ConnectionStringSettings = ConfigurationManager.ConnectionStrings[config["connectionStringName"]];
-
-            if ((_ConnectionStringSettings == null) || (_ConnectionStringSettings.ConnectionString.Trim() == String.Empty))
-            {
-                throw new ProviderException("Connection string cannot be blank.");
-            }
-
-            _connectionString = _ConnectionStringSettings.ConnectionString;
-
-            //Get encryption and decryption key information from the configuration.
-            System.Configuration.Configuration cfg = WebConfigurationManager.OpenWebConfiguration(System.Web.Hosting.HostingEnvironment.ApplicationVirtualPath);
-            _machineKey = cfg.GetSection("system.web/machineKey") as MachineKeySection;
-
-            if (_machineKey.ValidationKey.Contains("AutoGenerate"))
-            {
-                if (PasswordFormat != MembershipPasswordFormat.Clear)
-                {
-                    throw new ProviderException("Hashed or Encrypted passwords are not supported with auto-generated keys.");
-                }
-            }
-            */
         }
-        #endregion
 
         #region Implementation of MembershipProvider Methods
 
