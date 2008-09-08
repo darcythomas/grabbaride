@@ -40,13 +40,15 @@
       <Column Name="ApplicationName" Type="System.String" IsReadOnly="true" CanBeNull="true" />
       <Column Name="PasswordQuestion" Type="System.String" CanBeNull="true" />
       <Column Name="PasswordAnswer" Type="System.String" CanBeNull="true" />
-      <Column Name="IsApproved" Type="System.Boolean" CanBeNull="true" />
+      <Column Name="IsApproved" Type="System.Boolean" CanBeNull="false" />
       <Column Name="LastActvityDate" Type="System.DateTime" CanBeNull="true" />
-      <Column Name="LastLogIn" Type="System.DateTime" CanBeNull="true" />
+      <Column Name="LastLoginDate" Storage="_LastLogIn" Type="System.DateTime" CanBeNull="true" />
       <Column Name="LastPasswordChangedDate" Type="System.DateTime" CanBeNull="true" />
       <Column Name="CreationDate" Type="System.DateTime" CanBeNull="true" />
       <Column Name="IsOnline" Type="System.Boolean" CanBeNull="true" />
-      <Column Name="IsLockedOut" Type="System.Boolean" CanBeNull="true" />
+      <Column Name="IsLockedOut" Type="System.Boolean" CanBeNull="false" />
+      <Column Name="Comment" Type="System.String" CanBeNull="false" />
+      <Column Name="LastLockoutDate" Type="System.DateTime" CanBeNull="true" />
       <Association Name="User_Ride" Member="Rides" OtherKey="UserID" Type="Ride" />
       <Association Name="User_OpenID" Member="OpenIDs" OtherKey="UserID" Type="OpenID" />
     </Type>
