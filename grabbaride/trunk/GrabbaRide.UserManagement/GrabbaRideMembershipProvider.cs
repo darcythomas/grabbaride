@@ -1,44 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Web.Security;
-using System.Collections.Specialized;
-using System.Web.Configuration;
-using System.Configuration;
-using System.Configuration.Provider;
-using SystemManagement.Properties;
 using GrabbaRide.Database;
+using GrabbaRide.UserManagement.Properties;
 
-namespace SystemManagement
+namespace GrabbaRide.UserManagement
 {
     public sealed class GrabbaRideMembershipProvider : MembershipProvider
     {
-
-        #region Class Variables
-
-        GrabbaRideDBDataContext _dataContext;
-
-        #endregion
-
-        #region Enums
-
-        private enum FailureType
-        {
-            Password = 1,
-            PasswordAnswer = 2
-        }
-
-        #endregion
-
-        #region Properties
-
-
-
-        #endregion
-
-        #region Initialization
-
         public override void Initialize(string name, NameValueCollection config)
         {
             if (config == null)
@@ -53,56 +24,7 @@ namespace SystemManagement
 
             //Initialize the abstract base class.
             base.Initialize(name, config);
-
-            _dataContext = new GrabbaRideDBDataContext();
-
-            /*
-            string temp_format = config["passwordFormat"];
-            if (temp_format == null)
-            {
-                temp_format = "Hashed";
-            }
-
-            switch (temp_format)
-            {
-                case "Hashed":
-                    _passwordFormat = MembershipPasswordFormat.Hashed;
-                    break;
-                case "Encrypted":
-                    _passwordFormat = MembershipPasswordFormat.Encrypted;
-                    break;
-                case "Clear":
-                    _passwordFormat = MembershipPasswordFormat.Clear;
-                    break;
-                default:
-                    throw new ProviderException("Password format not supported.");
-             *
-            }
-             
-
-            ConnectionStringSettings _ConnectionStringSettings = ConfigurationManager.ConnectionStrings[config["connectionStringName"]];
-
-            if ((_ConnectionStringSettings == null) || (_ConnectionStringSettings.ConnectionString.Trim() == String.Empty))
-            {
-                throw new ProviderException("Connection string cannot be blank.");
-            }
-
-            _connectionString = _ConnectionStringSettings.ConnectionString;
-
-            //Get encryption and decryption key information from the configuration.
-            System.Configuration.Configuration cfg = WebConfigurationManager.OpenWebConfiguration(System.Web.Hosting.HostingEnvironment.ApplicationVirtualPath);
-            _machineKey = cfg.GetSection("system.web/machineKey") as MachineKeySection;
-
-            if (_machineKey.ValidationKey.Contains("AutoGenerate"))
-            {
-                if (PasswordFormat != MembershipPasswordFormat.Clear)
-                {
-                    throw new ProviderException("Hashed or Encrypted passwords are not supported with auto-generated keys.");
-                }
-            }
-            */
         }
-        #endregion
 
         #region Implementation of MembershipProvider Methods
 
@@ -110,47 +32,173 @@ namespace SystemManagement
 
         public override bool ChangePassword(string username, string oldPassword, string newPassword)
         {
-            throw new NotImplementedException();
+            if (ValidateUser(username, oldPassword))
+            {
+                GrabbaRideDBDataContext dataContext = new GrabbaRideDBDataContext();
+                User u = dataContext.GetUserByUsername(username);
+
+                byte[] encryptedPwd = EncryptPassword(Encoding.Unicode.GetBytes(newPassword));
+
+                u.Password = Convert.ToBase64String(encryptedPwd);
+                dataContext.SubmitChanges();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public override bool ChangePasswordQuestionAndAnswer(string username, string password, string newPasswordQuestion, string newPasswordAnswer)
         {
-            throw new NotImplementedException();
+            if (ValidateUser(username, password))
+            {
+                GrabbaRideDBDataContext dataContext = new GrabbaRideDBDataContext();
+                User u = dataContext.GetUserByUsername(username);
+
+                u.PasswordQuestion = newPasswordQuestion;
+                u.PasswordAnswer = newPasswordAnswer;
+                dataContext.SubmitChanges();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public override MembershipUser CreateUser(string username, string password, string email, string passwordQuestion, string passwordAnswer, bool isApproved, object providerUserKey, out MembershipCreateStatus status)
         {
-            throw new NotImplementedException();
+            GrabbaRideDBDataContext dataContext = new GrabbaRideDBDataContext();
+
+            // perform some tests
+            if (dataContext.GetUserByUsername(username) != null)
+            {
+                status = MembershipCreateStatus.DuplicateUserName;
+                return null;
+            }
+
+            if (dataContext.GetUserByEmail(email) != null)
+            {
+                status = MembershipCreateStatus.DuplicateEmail;
+                return null;
+            }
+
+            if (providerUserKey != null)
+            {
+                // we don't support providing a user key, they are allocated
+                status = MembershipCreateStatus.InvalidProviderUserKey;
+                return null;
+            }
+
+            // create and populate the new user
+            User u = new User();
+            u.Username = username;
+
+            byte[] encryptedPwd = EncryptPassword(Encoding.Unicode.GetBytes(password));
+            u.Password = Convert.ToBase64String(encryptedPwd);
+
+            u.Email = email;
+            u.PasswordQuestion = passwordQuestion;
+            u.PasswordAnswer = passwordAnswer;
+            u.IsApproved = isApproved;
+
+            // add the user to the database
+            dataContext.Users.InsertOnSubmit(u);
+            dataContext.SubmitChanges();
+
+            // return the new user
+            status = MembershipCreateStatus.Success;
+            return u.GetMembershipUser();
         }
 
         public override bool DeleteUser(string username, bool deleteAllRelatedData)
         {
-            throw new NotImplementedException();
+            GrabbaRideDBDataContext dataContext = new GrabbaRideDBDataContext();
+            User u = dataContext.GetUserByUsername(username);
+            if (u == null) { return false; }
+
+            dataContext.Users.DeleteOnSubmit(u);
+            dataContext.SubmitChanges();
+            return true;
         }
 
+        /// <summary>
+        /// We do allow password resetting.
+        /// </summary>
         public override bool EnablePasswordReset
         {
-            get { throw new NotImplementedException(); }
+            get { return true; }
         }
 
+        /// <summary>
+        /// We do not allow password retrieval, users must reset their password.
+        /// </summary>
         public override bool EnablePasswordRetrieval
         {
-            get { throw new NotImplementedException(); }
+            get { return false; }
         }
 
         public override MembershipUserCollection FindUsersByEmail(string emailToMatch, int pageIndex, int pageSize, out int totalRecords)
         {
-            throw new NotImplementedException();
+            // use LINQ directly here because it is very specific
+            GrabbaRideDBDataContext dataContext = new GrabbaRideDBDataContext();
+            MembershipUserCollection result = new MembershipUserCollection();
+
+            var users = from u in dataContext.Users
+                        where u.Email.Contains(emailToMatch)
+                        orderby u.Email
+                        select u;
+
+            totalRecords = users.Count();
+
+            foreach (User u in users.Skip(pageIndex * pageSize).Take(pageSize))
+            {
+                result.Add(u.GetMembershipUser());
+            }
+
+            return result;
         }
 
         public override MembershipUserCollection FindUsersByName(string usernameToMatch, int pageIndex, int pageSize, out int totalRecords)
         {
-            throw new NotImplementedException();
+            // use LINQ directly here because it is very specific
+            GrabbaRideDBDataContext dataContext = new GrabbaRideDBDataContext();
+            MembershipUserCollection result = new MembershipUserCollection();
+
+            var users = from u in dataContext.Users
+                        where u.Username.Contains(usernameToMatch)
+                        orderby u.Username
+                        select u;
+
+            totalRecords = users.Count();
+
+            foreach (User u in users.Skip(pageIndex * pageSize).Take(pageSize))
+            {
+                result.Add(u.GetMembershipUser());
+            }
+
+            return result;
         }
 
         public override MembershipUserCollection GetAllUsers(int pageIndex, int pageSize, out int totalRecords)
         {
-            throw new NotImplementedException();
+            // use LINQ directly here because it is very specific
+            GrabbaRideDBDataContext dataContext = new GrabbaRideDBDataContext();
+            MembershipUserCollection result = new MembershipUserCollection();
+
+            var users = from u in dataContext.Users
+                        orderby u.Username
+                        select u;
+
+            totalRecords = users.Count();
+
+            foreach (User u in users.Skip(pageIndex * pageSize).Take(pageSize))
+            {
+                result.Add(u.GetMembershipUser());
+            }
+
+            return result;
         }
 
         public override int GetNumberOfUsersOnline()
@@ -160,83 +208,190 @@ namespace SystemManagement
 
         public override string GetPassword(string username, string answer)
         {
-            throw new NotImplementedException();
+            throw new NotSupportedException("You cannot retrieve users' passwords, they must be reset.");
         }
 
         public override MembershipUser GetUser(string username, bool userIsOnline)
         {
-            throw new NotImplementedException();
+            GrabbaRideDBDataContext dataContext = new GrabbaRideDBDataContext();
+            User u = dataContext.GetUserByUsername(username);
+            if (u == null) { return null; }
+
+            if (userIsOnline)
+            {
+                u.LastActvityDate = DateTime.Now;
+                dataContext.SubmitChanges();
+            }
+
+            return u.GetMembershipUser();
         }
 
         public override MembershipUser GetUser(object providerUserKey, bool userIsOnline)
         {
-            throw new NotImplementedException();
+            GrabbaRideDBDataContext dataContext = new GrabbaRideDBDataContext();
+            User u = dataContext.GetUserByID((int)providerUserKey);
+            if (u == null) { return null; }
+
+            if (userIsOnline)
+            {
+                u.LastActvityDate = DateTime.Now;
+                dataContext.SubmitChanges();
+            }
+
+            return u.GetMembershipUser();
         }
 
         public override string GetUserNameByEmail(string email)
         {
-            throw new NotImplementedException();
+            GrabbaRideDBDataContext dataContext = new GrabbaRideDBDataContext();
+            User u = dataContext.GetUserByEmail(email);
+            return u.Username;
         }
 
         public override int MaxInvalidPasswordAttempts
         {
-            get { throw new NotImplementedException(); }
+            get { return Settings.Default.MaxInvalidPasswordAttempts; }
         }
 
         public override int MinRequiredNonAlphanumericCharacters
         {
-            get { throw new NotImplementedException(); }
+            get { return Settings.Default.MinRequiredNonAlphanumericCharacters; }
         }
 
         public override int MinRequiredPasswordLength
         {
-            get { throw new NotImplementedException(); }
+            get { return Settings.Default.MinRequiredPasswordLength; }
         }
 
         public override int PasswordAttemptWindow
         {
-            get { throw new NotImplementedException(); }
+            get { return Settings.Default.PasswordAttemptWindow; }
         }
 
         public override MembershipPasswordFormat PasswordFormat
         {
-            get { throw new NotImplementedException(); }
+            get { return MembershipPasswordFormat.Encrypted; }
         }
 
         public override string PasswordStrengthRegularExpression
         {
-            get { throw new NotImplementedException(); }
+            get { return Settings.Default.PasswordStrengthRegularExpression; }
         }
 
+        /// <summary>
+        /// Our MembershipProvider requires the user to answer a password question
+        /// for password reset and retrieval.
+        /// </summary>
         public override bool RequiresQuestionAndAnswer
         {
-            get { throw new NotImplementedException(); }
+            get { return true; }
         }
 
+        /// <summary>
+        /// Our MembershipProvider requires unique emails.
+        /// </summary>
         public override bool RequiresUniqueEmail
         {
-            get { throw new NotImplementedException(); }
+            get { return true; }
         }
 
         public override string ResetPassword(string username, string answer)
         {
-            throw new NotImplementedException();
+            GrabbaRideDBDataContext dataContext = new GrabbaRideDBDataContext();
+            User u = dataContext.GetUserByUsername(username);
+
+            if (u.PasswordAnswer == answer)
+            {
+                // generate a new random password and save it to the database
+                string newPassword = User.GenerateRandomPassword();
+                byte[] encryptedPwd = EncryptPassword(Encoding.Unicode.GetBytes(newPassword));
+
+                u.Password = Convert.ToBase64String(encryptedPwd);
+                dataContext.SubmitChanges();
+
+                // return the new password
+                return u.Password;
+            }
+            else
+            {
+                throw new MembershipPasswordException("Incorrect password answer.");
+            }
         }
 
         public override bool UnlockUser(string userName)
         {
-            throw new NotImplementedException();
+            GrabbaRideDBDataContext dataContext = new GrabbaRideDBDataContext();
+            User u = dataContext.GetUserByUsername(userName);
+            if (u == null) { return false; }
+
+            if (u.IsLockedOut == true)
+                u.IsLockedOut = false;
+
+            dataContext.SubmitChanges();
+            return true;
         }
 
-        public override void UpdateUser(MembershipUser user)
+        public override void UpdateUser(MembershipUser mUser)
         {
-            throw new NotImplementedException();
+            // find the underlying user with LINQ
+            GrabbaRideDBDataContext dataContext = new GrabbaRideDBDataContext();
+            User dbUser = dataContext.GetUserByID((int)mUser.ProviderUserKey);
+
+            // update the details in the underlying User object
+            if (!dbUser.Comment.Equals(mUser.Comment))
+                dbUser.Comment = mUser.Comment;
+
+            if (!dbUser.CreationDate.Equals(mUser.CreationDate))
+                dbUser.CreationDate = mUser.CreationDate;
+
+            if (!dbUser.Email.Equals(mUser.Email))
+                dbUser.Email = mUser.Email;
+
+            if (!dbUser.IsApproved.Equals(mUser.IsApproved))
+                dbUser.IsApproved = mUser.IsApproved;
+
+            if (!dbUser.IsLockedOut.Equals(mUser.IsLockedOut))
+                dbUser.IsLockedOut = mUser.IsLockedOut;
+
+            if (!dbUser.LastActvityDate.Equals(mUser.LastActivityDate))
+                dbUser.LastActvityDate = mUser.LastActivityDate;
+
+            if (!dbUser.LastLockoutDate.Equals(mUser.LastLockoutDate))
+                dbUser.LastLockoutDate = mUser.LastLockoutDate;
+
+            if (!dbUser.LastLoginDate.Equals(mUser.LastLoginDate))
+                dbUser.LastLoginDate = mUser.LastLoginDate;
+
+            if (!dbUser.LastPasswordChangedDate.Equals(mUser.LastPasswordChangedDate))
+                dbUser.LastPasswordChangedDate = mUser.LastPasswordChangedDate;
+
+            if (!dbUser.PasswordQuestion.Equals(mUser.PasswordQuestion))
+                dbUser.PasswordQuestion = mUser.PasswordQuestion;
+
+            if (!dbUser.Username.Equals(mUser.UserName))
+                dbUser.Username = mUser.UserName;
+
+            // save back to the database
+            dataContext.SubmitChanges();
         }
 
         public override bool ValidateUser(string username, string password)
         {
-            throw new NotImplementedException();
+            GrabbaRideDBDataContext dataContext = new GrabbaRideDBDataContext();
+            User u = dataContext.GetUserByUsername(username);
+            if (u == null) { return false; }
+
+            byte[] decryptedPwd = DecryptPassword(Convert.FromBase64String(u.Password));
+            if (password == Encoding.Unicode.GetString(decryptedPwd))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
+
         #endregion
     }
 }

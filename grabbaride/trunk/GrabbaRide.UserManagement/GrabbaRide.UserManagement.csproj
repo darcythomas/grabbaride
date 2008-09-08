@@ -8,8 +8,8 @@
     <ProjectGuid>{E76DCFAC-D89A-4402-A1DB-0D921358C351}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SystemManagement</RootNamespace>
-    <AssemblyName>UserManagement</AssemblyName>
+    <RootNamespace>GrabbaRide.UserManagement</RootNamespace>
+    <AssemblyName>GrabbaRide.UserManagement</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -50,7 +50,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DatabaseManager.cs" />
     <Compile Include="GrabbaRideMembershipProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
