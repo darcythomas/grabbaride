@@ -50,6 +50,7 @@ namespace GrabbaRide.UserManagement
                 byte[] encryptedPwd = EncryptPassword(Encoding.Unicode.GetBytes(newPassword));
 
                 u.Password = Convert.ToBase64String(encryptedPwd);
+                u.LastPasswordChangedDate = DateTime.Now;
                 dataContext.SubmitChanges();
                 return true;
             }
@@ -107,9 +108,11 @@ namespace GrabbaRide.UserManagement
 
             byte[] encryptedPwd = EncryptPassword(Encoding.Unicode.GetBytes(password));
             u.Password = Convert.ToBase64String(encryptedPwd);
+            u.LastPasswordChangedDate = DateTime.Now;
 
             u.Email = email;
             u.CreationDate = DateTime.Now;
+            u.LastActvityDate = DateTime.Now;
             u.PasswordQuestion = passwordQuestion;
             u.PasswordAnswer = passwordAnswer;
             u.IsApproved = isApproved;
@@ -319,6 +322,7 @@ namespace GrabbaRide.UserManagement
                 byte[] encryptedPwd = EncryptPassword(Encoding.Unicode.GetBytes(newPassword));
 
                 u.Password = Convert.ToBase64String(encryptedPwd);
+                u.LastPasswordChangedDate = DateTime.Now;
                 dataContext.SubmitChanges();
 
                 // return the new password

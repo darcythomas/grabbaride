@@ -17,11 +17,23 @@ namespace GrabbaRide.Frontend
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Request.IsAuthenticated)
+            if (Request.IsAuthenticated)
             {
+                if (String.IsNullOrEmpty(Request.QueryString["id"]))
+                {
+                    // redirect to "my profile" page
+                    Response.Redirect("User.aspx?id=" + User.Identity.Name);
+                }
+                else
+                {
+                    // display the profile of whoever it is
+                }
+            }
+            else
+            {
+                // must be logged in to view this page
                 Response.Redirect("Login.aspx?RedirectUrl=User.aspx");
             }
-            Label1.Text = Request.QueryString.Get("id");
         }
     }
 }
