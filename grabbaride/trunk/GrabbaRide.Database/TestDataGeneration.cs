@@ -88,6 +88,8 @@ namespace GrabbaRide.Database
             else { return Gender.Female; }
         }
 
+
+       
         private double RandomLatLong()
         {
             return _random.NextDouble() * 360 - 180;
@@ -148,6 +150,22 @@ namespace GrabbaRide.Database
             _dataContext.SubmitChanges();
         }
 
+      
+
+        private void AddFixedRides(int num)
+        {
+            for (int i = 0; i < num; i++)
+            {
+                Ride r = RandomRide();
+                r.LocationFromLat=-40.355963256404124;
+                r.LocationFromLong=175.61147689819336;
+                r.LocationToLat=-40.38434352539335;
+                r.LocationToLong=175.61705589294434;
+                _dataContext.Rides.InsertOnSubmit(r);
+            }
+            _dataContext.SubmitChanges();
+        }
+
         /// <summary>
         /// Fills up the database with some sample data for testing.
         /// </summary>
@@ -155,7 +173,8 @@ namespace GrabbaRide.Database
         {
             TestDataGeneration dg = new TestDataGeneration();
             dg.AddUsers();
-            dg.AddRides(100);
+            dg.AddRides(500);
+            dg.AddFixedRides(50);
         }
     }
 }
