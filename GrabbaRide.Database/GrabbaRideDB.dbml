@@ -37,7 +37,7 @@
       <Column Name="Username" Type="System.String" CanBeNull="false" />
       <Column Name="Password" Type="System.String" CanBeNull="false" />
       <Column Name="Email" Type="System.String" CanBeNull="false" />
-      <Column Name="ApplicationName" Type="System.String" IsReadOnly="true" CanBeNull="true" />
+      <Column Name="ApplicationName" Type="System.String" CanBeNull="false" UpdateCheck="Never" />
       <Column Name="PasswordQuestion" Type="System.String" CanBeNull="true" />
       <Column Name="PasswordAnswer" Type="System.String" CanBeNull="true" />
       <Column Name="IsApproved" Type="System.Boolean" CanBeNull="false" />

@@ -665,7 +665,7 @@ namespace GrabbaRide.Database
 		
 		private string _Email;
 		
-		private string _ApplicationName = default(string);
+		private string _ApplicationName;
 		
 		private string _PasswordQuestion;
 		
@@ -711,6 +711,8 @@ namespace GrabbaRide.Database
     partial void OnPasswordChanged();
     partial void OnEmailChanging(string value);
     partial void OnEmailChanged();
+    partial void OnApplicationNameChanging(string value);
+    partial void OnApplicationNameChanged();
     partial void OnPasswordQuestionChanging(string value);
     partial void OnPasswordQuestionChanged();
     partial void OnPasswordAnswerChanging(string value);
@@ -909,12 +911,23 @@ namespace GrabbaRide.Database
 			}
 		}
 		
-		[Column(Storage="_ApplicationName", UpdateCheck=UpdateCheck.Never)]
+		[Column(Storage="_ApplicationName", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
 		public string ApplicationName
 		{
 			get
 			{
 				return this._ApplicationName;
+			}
+			set
+			{
+				if ((this._ApplicationName != value))
+				{
+					this.OnApplicationNameChanging(value);
+					this.SendPropertyChanging();
+					this._ApplicationName = value;
+					this.SendPropertyChanged("ApplicationName");
+					this.OnApplicationNameChanged();
+				}
 			}
 		}
 		
