@@ -155,6 +155,10 @@
       <Project>{2C76E154-F418-4376-9101-BC61434623E7}</Project>
       <Name>GrabbaRide.Database</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GrabbaRide.UserManagement\GrabbaRide.UserManagement.csproj">
+      <Project>{E76DCFAC-D89A-4402-A1DB-0D921358C351}</Project>
+      <Name>GrabbaRide.UserManagement</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
