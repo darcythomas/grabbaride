@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 
+
 namespace GrabbaRide.Database
 {
 
@@ -147,18 +148,57 @@ namespace GrabbaRide.Database
 
         #region UserMappings
 
-        /// <summary>
-        /// Finds a user by their username.
-        /// </summary>
-        /// <param name="username">The username of the user to search for.</param>
-        /// <returns>A User object, or null if no user was found.</returns>
-        public User GetUserByUsername(string username)
+        public User GetUser(string username)
         {
-            User result = (User)from u in Users
-                                where u.Username == username
-                                select u;
-            return result;
+
+            var user = from u in this.Users
+                       where u.Username == username
+                       select u;
+            return (User)user;
         }
+
+        public List<User> GetAllUsers()
+        {
+            List<User> user = List < User > from u in this.Users
+                                            select u;
+
+            return user;
+        }
+
+
+
+        public List<User> GetUser_SortByUserName()
+        {
+            List<User> user = List < User > from u in this.Users
+                                            orderby u.Username
+                                            select u;
+
+            return user;
+        }
+
+        public List<User> GetUser_SortByIsOnline()
+        {
+            List<User> user = List < User > from u in this.Users
+                                            orderby u.IsOnline
+                                            select u;
+        }
+
+        public List<User> GetUser_SortByOccupation()
+        {
+            List<User> user = List < User > from u in this.Users
+                                            orderby u.Occupation
+                                            select u;
+        }
+
+        public List<User> GetUser_SortByLastActvityDate()
+        {
+            List<User> user = List < User > from u in this.Users
+                                            orderby u.LastActvityDate
+                                            select u;
+        }
+
+
+
 
         public User GetUserByEmail(String email)
         {
@@ -174,14 +214,13 @@ namespace GrabbaRide.Database
             {
                 User user = (User)from u in this.Users
                                   where u.Email == email
+
                                   select u;
+
                 return user;
             }
 
         }
-
-
-        #endregion
     }
 
     public enum Gender
