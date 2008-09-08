@@ -8,6 +8,7 @@ using System.Web.Configuration;
 using System.Configuration;
 using System.Configuration.Provider;
 using SystemManagement.Properties;
+using GrabbaRide.Database;
 
 namespace SystemManagement
 {
@@ -16,15 +17,7 @@ namespace SystemManagement
 
         #region Class Variables
 
-        private bool _enablePasswordReset;
-        private bool _enablePasswordRetrieval;
-        private bool _requiresQuestionAndAnswer;
-        private bool _requiresUniqueEmail;
-        private int _passwordAttemptWindow;
-        private MembershipPasswordFormat _passwordFormat;
-        private string _passwordStrengthRegularExpression;
-        private MachineKeySection _machineKey; //Used when determining encryption key values.
-
+        GrabbaRideDBDataContext _dataContext;
 
         #endregion
 
@@ -60,6 +53,8 @@ namespace SystemManagement
 
             //Initialize the abstract base class.
             base.Initialize(name, config);
+
+            _dataContext = new GrabbaRideDBDataContext();
 
             /*
             string temp_format = config["passwordFormat"];
