@@ -28,5 +28,7 @@ namespace GrabbaRide.Database
             this.LocationToLat = locToLat;
             this.LocationToLong = locToLong;
         }
+
+      
     }
 }
