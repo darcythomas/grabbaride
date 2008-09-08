@@ -147,16 +147,20 @@ namespace GrabbaRide.Database
 
         #region UserMappings
 
-        public User GetUser(string username)
+        /// <summary>
+        /// Finds a user by their username.
+        /// </summary>
+        /// <param name="username">The username of the user to search for.</param>
+        /// <returns>A User object, or null if no user was found.</returns>
+        public User GetUserByUsername(string username)
         {
-
-            var user = from u in this.Users
-                       where u.Username == username
-                       select u;
-            return (User)user;
+            User result = (User)from u in Users
+                                where u.Username == username
+                                select u;
+            return result;
         }
 
-        public User getUserByEmail(String email)
+        public User GetUserByEmail(String email)
         {
             // Is it an email
 
