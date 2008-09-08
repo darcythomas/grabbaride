@@ -37,13 +37,14 @@ namespace SystemManagement
 
         public override bool ChangePassword(string username, string oldPassword, string newPassword)
         {
-            GrabbaRideDBDataContext dataContext = new GrabbaRideDBDataContext();
-            User u = dataContext.GetUserByUsername(username);
-            if (u == null) { return false; }
-
-            if (u.Password == oldPassword)
+            if (ValidateUser(username, oldPassword))
             {
-                u.Password = newPassword;
+                GrabbaRideDBDataContext dataContext = new GrabbaRideDBDataContext();
+                User u = dataContext.GetUserByUsername(username);
+
+                byte[] encryptedPwd = EncryptPassword(Encoding.Unicode.GetBytes(newPassword));
+
+                u.Password = Convert.ToBase64String(encryptedPwd);
                 dataContext.SubmitChanges();
                 return true;
             }
@@ -55,12 +56,11 @@ namespace SystemManagement
 
         public override bool ChangePasswordQuestionAndAnswer(string username, string password, string newPasswordQuestion, string newPasswordAnswer)
         {
-            GrabbaRideDBDataContext dataContext = new GrabbaRideDBDataContext();
-            User u = dataContext.GetUserByUsername(username);
-            if (u == null) { return false; }
-
-            if (u.Password == password)
+            if (ValidateUser(username, password))
             {
+                GrabbaRideDBDataContext dataContext = new GrabbaRideDBDataContext();
+                User u = dataContext.GetUserByUsername(username);
+
                 u.PasswordQuestion = newPasswordQuestion;
                 u.PasswordAnswer = newPasswordAnswer;
                 dataContext.SubmitChanges();
@@ -74,12 +74,58 @@ namespace SystemManagement
 
         public override MembershipUser CreateUser(string username, string password, string email, string passwordQuestion, string passwordAnswer, bool isApproved, object providerUserKey, out MembershipCreateStatus status)
         {
-            throw new NotImplementedException();
+            GrabbaRideDBDataContext dataContext = new GrabbaRideDBDataContext();
+
+            // perform some tests
+            if (dataContext.GetUserByUsername(username) != null)
+            {
+                status = MembershipCreateStatus.DuplicateUserName;
+                return null;
+            }
+
+            if (dataContext.GetUserByEmail(email) != null)
+            {
+                status = MembershipCreateStatus.DuplicateEmail;
+                return null;
+            }
+
+            if (providerUserKey != null)
+            {
+                // we don't support providing a user key, they are allocated
+                status = MembershipCreateStatus.InvalidProviderUserKey;
+                return null;
+            }
+
+            // create and populate the new user
+            User u = new User();
+            u.Username = username;
+
+            byte[] encryptedPwd = EncryptPassword(Encoding.Unicode.GetBytes(password));
+            u.Password = Convert.ToBase64String(encryptedPwd);
+
+            u.Email = email;
+            u.PasswordQuestion = passwordQuestion;
+            u.PasswordAnswer = passwordAnswer;
+            u.IsApproved = isApproved;
+
+            // add the user to the database
+            dataContext.Users.InsertOnSubmit(u);
+            dataContext.SubmitChanges();
+
+            // return the new user
+            status = MembershipCreateStatus.Success;
+            return u.GetMembershipUser();
         }
 
         public override bool DeleteUser(string username, bool deleteAllRelatedData)
         {
-            throw new NotImplementedException();
+            GrabbaRideDBDataContext dataContext = new GrabbaRideDBDataContext();
+            User u = dataContext.GetUserByUsername(username);
+            if (u == null) { return false; }
+
+            dataContext.Users.DeleteOnSubmit(u);
+            dataContext.SubmitChanges();
+            return true;
         }
 
         /// <summary>
@@ -182,7 +228,7 @@ namespace SystemManagement
 
         public override MembershipPasswordFormat PasswordFormat
         {
-            get { throw new NotImplementedException(); }
+            get { return MembershipPasswordFormat.Encrypted; }
         }
 
         public override string PasswordStrengthRegularExpression
@@ -215,7 +261,10 @@ namespace SystemManagement
             if (u.PasswordAnswer == answer)
             {
                 // generate a new random password and save it to the database
-                u.Password = User.GenerateRandomPassword();
+                string newPassword = User.GenerateRandomPassword();
+                byte[] encryptedPwd = EncryptPassword(Encoding.Unicode.GetBytes(newPassword));
+
+                u.Password = Convert.ToBase64String(encryptedPwd);
                 dataContext.SubmitChanges();
 
                 // return the new password
@@ -286,8 +335,21 @@ namespace SystemManagement
 
         public override bool ValidateUser(string username, string password)
         {
-            throw new NotImplementedException();
+            GrabbaRideDBDataContext dataContext = new GrabbaRideDBDataContext();
+            User u = dataContext.GetUserByUsername(username);
+            if (u == null) { return false; }
+
+            byte[] decryptedPwd = DecryptPassword(Convert.FromBase64String(u.Password));
+            if (password == Encoding.Unicode.GetString(decryptedPwd))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
+
         #endregion
     }
 }
