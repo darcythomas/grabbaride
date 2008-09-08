@@ -152,6 +152,10 @@ namespace GrabbaRide.Database
 
       
 
+        /// <summary>
+        /// All rides are from the sqaure to massey but no ones going home :(
+        /// </summary>
+        /// <param name="num"></param>
         private void AddFixedRides(int num)
         {
             for (int i = 0; i < num; i++)
