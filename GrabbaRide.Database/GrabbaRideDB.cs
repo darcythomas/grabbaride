@@ -10,8 +10,13 @@ namespace GrabbaRide.Database
     {
 
         #region RideMappings
-
-        public  Ride getRide(Integer rideID)
+        
+        /// <summary>
+        /// Gets the ride owned by the id
+        /// </summary>
+        /// <param name="rideID"></param>
+        /// <returns></returns>
+        public  Ride getRide(int rideID)
         {
           
            var ride = from r in this.Rides
@@ -20,6 +25,11 @@ namespace GrabbaRide.Database
            return (Ride)ride;
         }
 
+        /// <summary>
+        /// Returns All rides after the specifed date
+        /// </summary>
+        /// <param name="afterDate"></param>
+        /// <returns></returns>
         public List<Ride> getRidesAfterDate(DateTime afterDate)
         {
           
@@ -29,6 +39,12 @@ namespace GrabbaRide.Database
             return (List<Ride>)rides;
         }
 
+
+        /// <summary>
+        /// Returns all rides before the specifed date
+        /// </summary>
+        /// <param name="beforeDate"></param>
+        /// <returns></returns>
         public List<Ride> getRidesBeforeDate(DateTime beforeDate)
         {
           
@@ -38,6 +54,13 @@ namespace GrabbaRide.Database
             return (List<Ride>)rides;
         }
 
+
+        /// <summary>
+        /// Returns all rides between the specifed Dates
+        /// </summary>
+        /// <param name="beforeDate"></param>
+        /// <param name="afterDate"></param>
+        /// <returns></returns>
         public List<Ride> getRidesBetween(DateTime beforeDate, DateTime afterDate)
         {
             var rides = from r in this.getRidesBeforeDate(beforeDate)
@@ -47,6 +70,11 @@ namespace GrabbaRide.Database
 
         }
 
+        
+        /// <summary>
+        /// Returns all rides avalible
+        /// </summary>
+        /// <returns></returns>
         public List<Ride> getAllAvalibleRides()
         {
             var rides = from r in this.Rides
@@ -54,6 +82,68 @@ namespace GrabbaRide.Database
                         select r;
             return (List<Ride>)rides;
         }
+
+        /// <summary>
+        /// Returns all rides belonging to userID
+        /// </summary>
+        /// <param name="userID"></param>
+        /// <returns></returns>
+        public List<Ride> getUserRides(int userID)
+        {
+            var rides = from r in this.Rides
+                        where r.UserID == userID
+                        select r;
+            return (List<Ride>)rides;
+        }
+
+
+        /// <summary>
+        /// Returns all rides that reocur for a given day
+        /// Day is an enum dayofweek
+        /// </summary>
+        /// <param name="day"></param>
+        /// <returns></returns>
+        public List<Ride> getAllRidesRecur(DayOfWeek day)
+        {
+            var rides;
+            switch (day) 
+            {
+                case DayOfWeek.Monday: rides = from r in this.Rides
+                                                   where r.RecurMon
+                                                   select r;
+                                         return (List<Ride>)rides;
+                case DayOfWeek.Tuesday: rides = from r in this.Rides
+                                                   where r.RecurTue
+                                                   select r;
+                                         return (List<Ride>)rides;
+                case DayOfWeek.Wednesday: rides = from r in this.Rides
+                                                   where r.RecurWed
+                                                   select r;
+                                         return (List<Ride>)rides;
+                case DayOfWeek.Thursday: rides = from r in this.Rides
+                                                   where r.RecurThu
+                                                   select r;
+                                         return (List<Ride>)rides;
+                case DayOfWeek.Friday:  rides = from r in this.Rides
+                                                   where r.RecurMon
+                                                   select r;
+                                         return (List<Ride>)rides;
+                case DayOfWeek.Saturday: rides = from r in this.Rides
+                                                   where r.RecurSat
+                                                   select r;
+                                         return (List<Ride>)rides;
+                case DayOfWeek.Sunday:  rides = from r in this.Rides
+                                                   where r.RecurSun
+                                                   select r;
+                                         return (List<Ride>)rides;
+               
+            }
+        }
+
+
+      
+
+
 
         #endregion
 
