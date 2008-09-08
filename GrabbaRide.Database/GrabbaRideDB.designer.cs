@@ -655,7 +655,7 @@ namespace GrabbaRide.Database
 		
 		private Gender _Gender;
 		
-		private System.DateTime _DOB;
+		private System.Nullable<System.DateTime> _DOB;
 		
 		private string _Occupation;
 		
@@ -679,7 +679,7 @@ namespace GrabbaRide.Database
 		
 		private System.Nullable<System.DateTime> _LastPasswordChangedDate;
 		
-		private System.Nullable<System.DateTime> _CreationDate;
+		private System.DateTime _CreationDate;
 		
 		private bool _IsLockedOut;
 		
@@ -701,8 +701,8 @@ namespace GrabbaRide.Database
     partial void OnLastNameChanged();
     partial void OnGenderChanging(Gender value);
     partial void OnGenderChanged();
-    partial void OnDOBChanging(System.DateTime value);
-    partial void OnDOBChanged();
+    partial void OnDateOfBirthChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateOfBirthChanged();
     partial void OnOccupationChanging(string value);
     partial void OnOccupationChanged();
     partial void OnUsernameChanging(string value);
@@ -723,7 +723,7 @@ namespace GrabbaRide.Database
     partial void OnLastLoginDateChanged();
     partial void OnLastPasswordChangedDateChanging(System.Nullable<System.DateTime> value);
     partial void OnLastPasswordChangedDateChanged();
-    partial void OnCreationDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreationDateChanging(System.DateTime value);
     partial void OnCreationDateChanged();
     partial void OnIsLockedOutChanging(bool value);
     partial void OnIsLockedOutChanged();
@@ -749,7 +749,7 @@ namespace GrabbaRide.Database
 			}
 		}
 		
-		[Column(Storage="_FirstName", CanBeNull=false)]
+		[Column(Storage="_FirstName")]
 		public string FirstName
 		{
 			get
@@ -769,7 +769,7 @@ namespace GrabbaRide.Database
 			}
 		}
 		
-		[Column(Storage="_LastName", CanBeNull=false)]
+		[Column(Storage="_LastName")]
 		public string LastName
 		{
 			get
@@ -789,7 +789,7 @@ namespace GrabbaRide.Database
 			}
 		}
 		
-		[Column(Storage="_Gender", CanBeNull=false)]
+		[Column(Storage="_Gender", CanBeNull=true)]
 		public Gender Gender
 		{
 			get
@@ -810,7 +810,7 @@ namespace GrabbaRide.Database
 		}
 		
 		[Column(Storage="_DOB")]
-		public System.DateTime DOB
+		public System.Nullable<System.DateTime> DateOfBirth
 		{
 			get
 			{
@@ -820,11 +820,11 @@ namespace GrabbaRide.Database
 			{
 				if ((this._DOB != value))
 				{
-					this.OnDOBChanging(value);
+					this.OnDateOfBirthChanging(value);
 					this.SendPropertyChanging();
 					this._DOB = value;
-					this.SendPropertyChanged("DOB");
-					this.OnDOBChanged();
+					this.SendPropertyChanged("DateOfBirth");
+					this.OnDateOfBirthChanged();
 				}
 			}
 		}
@@ -1039,7 +1039,7 @@ namespace GrabbaRide.Database
 		}
 		
 		[Column(Storage="_CreationDate")]
-		public System.Nullable<System.DateTime> CreationDate
+		public System.DateTime CreationDate
 		{
 			get
 			{
@@ -1078,7 +1078,7 @@ namespace GrabbaRide.Database
 			}
 		}
 		
-		[Column(Storage="_Comment", CanBeNull=false)]
+		[Column(Storage="_Comment")]
 		public string Comment
 		{
 			get

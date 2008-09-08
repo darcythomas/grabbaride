@@ -20,26 +20,54 @@ namespace GrabbaRide.DatabaseManager
             if (dc.DatabaseExists())
             {
                 Console.Write("Database exists, deleting...");
-                dc.DeleteDatabase();
-                Console.WriteLine(" success!");
+                try
+                {
+                    dc.DeleteDatabase();
+                    Console.WriteLine(" success!");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine(ex.Message);
+                    End();
+                    return;
+                }
             }
 
             Console.Write("Creating database...");
-            dc.CreateDatabase();
-            
-            if (dc.DatabaseExists())
+            try
             {
+                dc.CreateDatabase();
                 Console.WriteLine(" success!");
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine(" failed!");
+                Console.WriteLine();
+                Console.WriteLine(ex.Message);
+                End();
+                return;
             }
 
             Console.Write("Inputting sample data...");
-            TestDataGeneration.InputSampleData();
-            Console.WriteLine(" success!");
+            try
+            {
+                TestDataGeneration.InputSampleData();
+                Console.WriteLine(" success!");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine();
+                Console.WriteLine(ex.Message);
+                End();
+                return;
+            }
 
+            // success!
+            End();
+        }
+
+        static void End()
+        {
             Console.WriteLine();
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();

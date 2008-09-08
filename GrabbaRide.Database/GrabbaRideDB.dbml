@@ -29,10 +29,10 @@
   <Table Name="Users">
     <Type Name="User">
       <Column Name="UserID" Type="System.Int32" IsReadOnly="true" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="FirstName" Type="System.String" CanBeNull="false" />
-      <Column Name="LastName" Type="System.String" CanBeNull="false" />
-      <Column Name="Gender" Type="Gender" CanBeNull="false" />
-      <Column Name="DOB" Type="System.DateTime" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" CanBeNull="true" />
+      <Column Name="Gender" Type="Gender" CanBeNull="true" />
+      <Column Name="DateOfBirth" Storage="_DOB" Type="System.DateTime" CanBeNull="true" />
       <Column Name="Occupation" Type="System.String" CanBeNull="true" />
       <Column Name="Username" Type="System.String" CanBeNull="false" />
       <Column Name="Password" Type="System.String" CanBeNull="false" />
@@ -44,9 +44,9 @@
       <Column Name="LastActvityDate" Type="System.DateTime" CanBeNull="true" />
       <Column Name="LastLoginDate" Storage="_LastLogIn" Type="System.DateTime" CanBeNull="true" />
       <Column Name="LastPasswordChangedDate" Type="System.DateTime" CanBeNull="true" />
-      <Column Name="CreationDate" Type="System.DateTime" CanBeNull="true" />
+      <Column Name="CreationDate" Type="System.DateTime" CanBeNull="false" />
       <Column Name="IsLockedOut" Type="System.Boolean" CanBeNull="false" />
-      <Column Name="Comment" Type="System.String" CanBeNull="false" />
+      <Column Name="Comment" Type="System.String" CanBeNull="true" />
       <Column Name="LastLockoutDate" Type="System.DateTime" CanBeNull="true" />
       <Association Name="User_Ride" Member="Rides" OtherKey="UserID" Type="Ride" />
       <Association Name="User_OpenID" Member="OpenIDs" OtherKey="UserID" Type="OpenID" />
