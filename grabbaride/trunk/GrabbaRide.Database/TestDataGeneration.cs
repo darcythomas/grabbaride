@@ -53,6 +53,7 @@ namespace GrabbaRide.Database
                 u.CreationDate = RandomDate(2006, 2007);
                 u.Password = String.Empty;
                 u.Email = RandomEmail();
+                u.ApplicationName = "GrabbaRide";
 
                 _dataContext.Users.InsertOnSubmit(u);
             }
@@ -147,8 +148,6 @@ namespace GrabbaRide.Database
             }
             _dataContext.SubmitChanges();
         }
-
-
 
         /// <summary>
         /// All rides are from the sqaure to massey but no ones going home :(

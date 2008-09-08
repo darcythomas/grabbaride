@@ -7,6 +7,8 @@ namespace GrabbaRide.Database
 {
     partial class GrabbaRideDBDataContext
     {
+        protected const string APPLICATION_NAME = "GrabbaRide";
+
         #region RideMappings
 
         /// <summary>
@@ -148,7 +150,8 @@ namespace GrabbaRide.Database
         public User GetUserByID(int userID)
         {
             var query = from u in Users
-                        where u.UserID == userID
+                        where u.UserID == userID &&
+                              u.ApplicationName == APPLICATION_NAME
                         select u;
 
             if (query.Count() == 0) { return null; }
@@ -163,7 +166,8 @@ namespace GrabbaRide.Database
         public User GetUserByUsername(string username)
         {
             var query = from u in Users
-                        where u.Username == username
+                        where u.Username == username &&
+                              u.ApplicationName == APPLICATION_NAME
                         select u;
 
             if (query.Count() == 0) { return null; }
@@ -175,7 +179,7 @@ namespace GrabbaRide.Database
         /// </summary>
         /// <param name="email">The email of the user to search for.</param>
         /// <returns>The User object, or null if no user was found.</returns>
-        public User GetUserByEmail(String email)
+        public User GetUserByEmail(string email)
         {
             // is it an email?
             if (!Regex.IsMatch(email, "(?<user>[^@]+)@(?<host>.+)"))
@@ -185,7 +189,8 @@ namespace GrabbaRide.Database
             else
             {
                 var query = from u in this.Users
-                            where u.Email == email
+                            where u.Email == email &&
+                                  u.ApplicationName == APPLICATION_NAME
                             select u;
 
                 if (query.Count() == 0) { return null; }
@@ -193,15 +198,21 @@ namespace GrabbaRide.Database
             }
         }
 
+        /// <summary>
+        /// Gets a list of all users.
+        /// </summary>
+        /// <returns>A list of all users.</returns>
         public IEnumerable<User> GetAllUsers()
         {
             return from u in this.Users
+                   where u.ApplicationName == APPLICATION_NAME
                    select u;
         }
 
         public IEnumerable<User> GetUser_SortByUserName()
         {
             return from u in this.Users
+                   where u.ApplicationName == APPLICATION_NAME
                    orderby u.Username
                    select u;
         }
@@ -209,6 +220,7 @@ namespace GrabbaRide.Database
         public IEnumerable<User> GetUser_SortByOccupation()
         {
             return from u in this.Users
+                   where u.ApplicationName == APPLICATION_NAME
                    orderby u.Occupation
                    select u;
         }
@@ -216,6 +228,7 @@ namespace GrabbaRide.Database
         public IEnumerable<User> GetUser_SortByLastActvityDate()
         {
             return from u in this.Users
+                   where u.ApplicationName == APPLICATION_NAME
                    orderby u.LastActvityDate
                    select u;
         }

@@ -12,23 +12,33 @@ namespace GrabbaRide.UserManagement
     {
         public override void Initialize(string name, NameValueCollection config)
         {
-            if (config == null)
-            {
-                throw new ArgumentNullException("config cannot be null");
-            }
-
             if (String.IsNullOrEmpty(name))
             {
                 name = "GrabbaRideMembershipProvider";
             }
 
-            //Initialize the abstract base class.
+            if (!String.IsNullOrEmpty(config["applicationName"]))
+            {
+                throw new NotSupportedException("ApplicationName is always 'GrabbaRide'!");
+            }
+
+            if (String.IsNullOrEmpty(config["description"]))
+            {
+                config.Remove("description");
+                config.Add("description", "GrabbaRide Membership Provider");
+            }
+
+            // initialize the abstract base class.
             base.Initialize(name, config);
         }
 
         #region Implementation of MembershipProvider Methods
 
-        public override string ApplicationName { get; set; }
+        public override string ApplicationName
+        {
+            get { return "GrabbaRide"; }
+            set { throw new NotSupportedException("ApplicationName is always 'GrabbaRide'!"); }
+        }
 
         public override bool ChangePassword(string username, string oldPassword, string newPassword)
         {
@@ -103,6 +113,7 @@ namespace GrabbaRide.UserManagement
             u.PasswordQuestion = passwordQuestion;
             u.PasswordAnswer = passwordAnswer;
             u.IsApproved = isApproved;
+            u.ApplicationName = ApplicationName;
 
             // add the user to the database
             dataContext.Users.InsertOnSubmit(u);
