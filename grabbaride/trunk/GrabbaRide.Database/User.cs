@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System;
+using System.Web.Security;
 
 namespace GrabbaRide.Database
 {
@@ -19,6 +20,21 @@ namespace GrabbaRide.Database
         {
             Guid g = new Guid();
             return g.ToString().Substring(1, 8);
+        }
+
+        /// <summary>
+        /// Gets a MembershipUser object corresponding to this User.
+        /// </summary>
+        /// <returns></returns>
+        public MembershipUser GetMembershipUser()
+        {
+            MembershipUser user = new MembershipUser("GrabbaRideMembershipProvider", this.Username,
+                this.UserID, this.Email, this.PasswordQuestion, this.Comment, this.IsApproved,
+                this.IsLockedOut, this.CreationDate.GetValueOrDefault(), this.LastLoginDate.GetValueOrDefault(),
+                this.LastActvityDate.GetValueOrDefault(), this.LastPasswordChangedDate.GetValueOrDefault(),
+                this.LastLockoutDate.GetValueOrDefault());
+            
+            return user;
         }
     }
 }
