@@ -10,19 +10,19 @@ namespace GrabbaRide.Database
     {
 
         #region RideMappings
-        
+
         /// <summary>
         /// Gets the ride owned by the id
         /// </summary>
         /// <param name="rideID"></param>
         /// <returns></returns>
-        public  Ride getRide(int rideID)
+        public Ride getRide(int rideID)
         {
-          
-           var ride = from r in this.Rides
-                      where r.RideID == rideID
-                      select r;
-           return (Ride)ride;
+
+            var ride = from r in this.Rides
+                       where r.RideID == rideID
+                       select r;
+            return (Ride)ride;
         }
 
         /// <summary>
@@ -32,9 +32,9 @@ namespace GrabbaRide.Database
         /// <returns></returns>
         public List<Ride> getRidesAfterDate(DateTime afterDate)
         {
-          
+
             var rides = from r in this.Rides
-                        where r.DepartureTime >= afterDate
+                        where r.StartDate >= afterDate
                         select r;
             return (List<Ride>)rides;
         }
@@ -47,9 +47,9 @@ namespace GrabbaRide.Database
         /// <returns></returns>
         public List<Ride> getRidesBeforeDate(DateTime beforeDate)
         {
-          
+
             var rides = from r in this.Rides
-                        where r.DepartureTime <= beforeDate
+                        where r.EndDate <= beforeDate
                         select r;
             return (List<Ride>)rides;
         }
@@ -64,13 +64,13 @@ namespace GrabbaRide.Database
         public List<Ride> getRidesBetween(DateTime beforeDate, DateTime afterDate)
         {
             var rides = from r in this.getRidesBeforeDate(beforeDate)
-                        where r.DepartureTime >= afterDate
+                        where r.StartDate >= afterDate
                         select r;
             return (List<Ride>)rides;
 
         }
 
-        
+
         /// <summary>
         /// Returns all rides avalible
         /// </summary>
@@ -78,7 +78,7 @@ namespace GrabbaRide.Database
         public List<Ride> getAllAvalibleRides()
         {
             var rides = from r in this.Rides
-                        where r.NumSeats>0 && r.Available
+                        where r.NumSeats > 0 && r.Available
                         select r;
             return (List<Ride>)rides;
         }
@@ -105,45 +105,42 @@ namespace GrabbaRide.Database
         /// <returns></returns>
         public List<Ride> getAllRidesRecur(DayOfWeek day)
         {
-            var rides;
-            switch (day) 
+            List<Ride> rides = null;
+
+            switch (day)
             {
-                case DayOfWeek.Monday: rides = from r in this.Rides
-                                                   where r.RecurMon
-                                                   select r;
-                                         return (List<Ride>)rides;
-                case DayOfWeek.Tuesday: rides = from r in this.Rides
-                                                   where r.RecurTue
-                                                   select r;
-                                         return (List<Ride>)rides;
-                case DayOfWeek.Wednesday: rides = from r in this.Rides
-                                                   where r.RecurWed
-                                                   select r;
-                                         return (List<Ride>)rides;
-                case DayOfWeek.Thursday: rides = from r in this.Rides
-                                                   where r.RecurThu
-                                                   select r;
-                                         return (List<Ride>)rides;
-                case DayOfWeek.Friday:  rides = from r in this.Rides
-                                                   where r.RecurMon
-                                                   select r;
-                                         return (List<Ride>)rides;
-                case DayOfWeek.Saturday: rides = from r in this.Rides
-                                                   where r.RecurSat
-                                                   select r;
-                                         return (List<Ride>)rides;
-                case DayOfWeek.Sunday:  rides = from r in this.Rides
-                                                   where r.RecurSun
-                                                   select r;
-                                         return (List<Ride>)rides;
-               
+                case DayOfWeek.Monday: rides = (List<Ride>)from r in this.Rides
+                                                           where r.RecurMon
+                                                           select r;
+                    break;
+                case DayOfWeek.Tuesday: rides = (List<Ride>)from r in this.Rides
+                                                            where r.RecurTue
+                                                            select r;
+                    break;
+                case DayOfWeek.Wednesday: rides = (List<Ride>)from r in this.Rides
+                                                              where r.RecurWed
+                                                              select r;
+                    break;
+                case DayOfWeek.Thursday: rides = (List<Ride>)from r in this.Rides
+                                                             where r.RecurThu
+                                                             select r;
+                    break;
+                case DayOfWeek.Friday: rides = (List<Ride>)from r in this.Rides
+                                                           where r.RecurMon
+                                                           select r;
+                    break;
+                case DayOfWeek.Saturday: rides = (List<Ride>)from r in this.Rides
+                                                             where r.RecurSat
+                                                             select r;
+                    break;
+                case DayOfWeek.Sunday: rides = (List<Ride>)from r in this.Rides
+                                                           where r.RecurSun
+                                                           select r;
+                    break;
             }
+
+            return rides;
         }
-
-
-      
-
-
 
         #endregion
 
