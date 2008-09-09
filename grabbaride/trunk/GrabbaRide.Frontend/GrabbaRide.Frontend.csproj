@@ -158,9 +158,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\logo.jpg" />
-    <Resource Include="lib\GMaps.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
     <Content Include="MasterPage.master" />
     <Content Include="Default.aspx" />
     <Content Include="Privacy.aspx" />

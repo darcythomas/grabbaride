@@ -50,7 +50,8 @@ namespace GrabbaRide.Database
             });
 
             // Return the ranked list of possibly suitable rides
-            return rankedRides;
+
+            return (List<Ride>)rankedRides.AsEnumerable();
         }
 
 
