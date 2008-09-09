@@ -1,12 +1,9 @@
 <%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true"
     CodeBehind="CreateRide.aspx.cs" Inherits="GrabbaRide.Frontend.CreateRide" Title="Grabbaride: Create a new Ride" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-
-    <script type="text/javascript" src="GoogleMaps.js"></script>
-
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <div id="gdiv" style="float: right;">
         <p>
             <input id="txtgeo" type="text" size="60" name="address" value="Palmerston North" />

@@ -1,9 +1,9 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true"
     CodeBehind="Register.aspx.cs" Inherits="GrabbaRide.Frontend.WebForm4" Title="Untitled Page" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <asp:CreateUserWizard ID="CreateUserWizard" runat="server" BackColor="#EFF3FB" BorderColor="#B5C7DE"
         BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="0.8em"
         Height="319px" Style="text-align: center" Width="363px">

@@ -8,34 +8,31 @@
 
     <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAdzIHDEcQlKVK0ZsLXgw7AxT2yXp_ZAY8_ufC3CFXhHIE1NvwkxTe_yeQBDaUEW7-M67E9zLbOak5Xw"
         type="text/javascript"></script>
+    <script type="text/javascript" src="GoogleMaps.js"></script>
 
-    <asp:ContentPlaceHolder ID="head" runat="server" />
+    <asp:ContentPlaceHolder ID="HeadContentPlaceHolder" runat="server" />
 </head>
 <body onload="initialize();">
     <form id="form1" runat="server">
     <div id="header">
-        <asp:Image ID="HeaderImage" runat="server" ImageUrl="Images/header.jpg" />
-        <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal">
-            <Items>
-                <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home" Value="Home" />
-                <asp:MenuItem NavigateUrl="~/Search.aspx" Text="Search" Value="Search" />
-                <asp:MenuItem NavigateUrl="~/User.aspx" Text="Profile" Value="Profile" />
-                <asp:MenuItem NavigateUrl="~/CreateRide.aspx" Text="Create Ride" Value="Create Ride" />
-            </Items>
-        </asp:Menu>
-        <asp:LoginStatus ID="LoginStatus" runat="server" />
+        <h1>
+            GrabbaRide</h1>
+        <div>
+            <a href="Default.aspx">Home</a> - <a href="Search.aspx">Search</a> - <a href="CreateRide.aspx">
+                Create Ride</a> - <a href="User.aspx">My Profile</a> -
+            <asp:LoginStatus ID="LoginStatus" runat="server" />
+        </div>
     </div>
-    <div id="sidenav">
-        <asp:ContentPlaceHolder ID="SideNav" runat="server" />
+    <div id="leftnav">
+        <asp:ContentPlaceHolder ID="LeftNavContentPlaceHolder" runat="server" />
     </div>
-    <div id="content">
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" />
+    <div id="maincontent">
+        <asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server" />
     </div>
     <div id="footer">
         <p>
             Copyright &copy; 2008 | GrabbaRide.co.nz - <a href="Terms.aspx">Terms of Use</a>
-            - <a href="Privacy.aspx">Privacy Policy</a> - <a href="About.aspx" class="footer">About
-                Us</a></p>
+            - <a href="Privacy.aspx">Privacy Policy</a> - <a href="About.aspx">About Us</a></p>
     </div>
     </form>
 </body>
