@@ -31,7 +31,7 @@ namespace GrabbaRide.Database
             //This takes one of the ride returned by the LINQ db query,
             // runs the ranking algorithm (updating the SearchRank field) on it and then puts it into 
             // an array list
-            foreach (var p in this.Rides)
+            foreach (var p in q)
             {
                 this.RideRank(p, submittedRide);
                 rankedRides.Add(p);
