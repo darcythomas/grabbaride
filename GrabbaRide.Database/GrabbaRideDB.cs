@@ -11,6 +11,19 @@ namespace GrabbaRide.Database
 
         #region RideMappings
 
+
+        public void AttachRide(Ride newRide)
+        {
+            this.Rides.Attach(newRide);
+            this.SubmitChanges();
+        }
+
+        public void DetachRide(Ride oldRide)
+        {
+            this.Rides.DeleteOnSubmit(oldRide);
+            this.SubmitChanges();
+        }
+
         /// <summary>
         /// Gets the ride owned by the id
         /// </summary>
@@ -142,6 +155,18 @@ namespace GrabbaRide.Database
 
         #region UserMappings
 
+        public void AttachNewUser(User newUser)
+        {
+            this.Users.Attach(newUser);
+            this.SubmitChanges();
+        }
+
+        public void DetachUser(User deleteUser)
+        {
+            this.Users.DeleteOnSubmit(deleteUser);
+            this.SubmitChanges();
+        }
+
         /// <summary>
         /// Finds a user by their user ID.
         /// </summary>
@@ -232,6 +257,99 @@ namespace GrabbaRide.Database
                    orderby u.LastActvityDate
                    select u;
         }
+
+        #endregion
+
+        #region OpenIDMappings
+
+        /// <summary>
+        /// Aelect user_id from user_openids where openid_url = openid_url 
+        /// </summary>
+        /// <param name="?">The url to search for</param>
+        /// <returns>The unique user id mapped to the url </returns>
+        public int GetUserId(string openid_url)
+        {
+            int userID = (int)from url in this.OpenIDs
+                              where url == openid_url
+                              select url.UserID;
+            return userID;
+        }
+
+        /// <summary>
+        /// select openid_url from user_openids where user_id = user_id 
+        /// </summary>
+        /// <param name="user_id"></param>
+        /// <returns></returns>
+        public User GetOpenIDsByUser(int user_id)
+        {
+            User user = (user)from u in this.Users
+                              where u.UserID == user_id
+                              select u;
+            return user;
+        }
+
+        /// <summary>
+        /// Insert new open ID into the database
+        /// </summary>
+        /// <param name="?"></param>
+        /// <param name="?"></param>
+        public void AttachOpenID(string openid_url, int user_id)
+        {
+            //check if url is valid
+            if (!Regex.IsMatch("(([a-zA-Z][0-9a-zA-Z+\\-\\.]*:)?/{0,2}[0-9a-zA-Z;"
+                +"/?:@&=+$\\.\\-_!~*'()%]+)?(#[0-9a-zA-Z;/?:@&=+$\\.\\-_!~*'()%]+)?"))
+            { 
+                //throw some sweet exception
+                throw new ArgumentException("Not a valid Url provided for OpenID");
+            }else
+            {
+                OpenID id= new OpenID(openid_url,user_id);
+                this.OpenIDs.Attach(id);
+                this.SubmitChanges();
+            }
+        }
+
+
+        /// <summary>
+        /// delete from user_openids where openid_url = openid_url and user_id = user_id 
+        /// </summary>
+        /// <param name="?"></param>
+        /// <param name="?"></param>
+        public void DetachOpenID(String openid_url,int user_id)
+        {
+            // not sure yet why userID is required for this ... just leave please
+           this.OpenIDs.DeleteOnSubmit(this.GetOpenIDsByURL(openid_url));
+           this.SubmitChanges();
+        }
+
+
+        /// <summary>
+        /// delete from user_openids where user_id = user_id
+        /// </summary>
+        /// <param name="user_id"></param>
+        public void DetachOpenIDsByUser(int user_id)
+        {
+            this.OpenIDs.DeleteOnSubmit(this.GetOpenIDsByUser(user_id));
+            this.SubmitChanges();
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="openid_url"></param>
+        /// <returns></returns>
+        public OpenID getOpenIDbyURL(string openid_url)
+        {
+            OpenID id = (OpenID)from oid in this.OpenIDs
+                                where oid.OpenIDUrl == openid_url
+                                select oid;
+            return id;
+        }
+
+
+
+
 
         #endregion
     }
