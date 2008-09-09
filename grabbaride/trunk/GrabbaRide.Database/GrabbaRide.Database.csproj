@@ -65,7 +65,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Ride.cs" />
-    <Compile Include="search.cs" />
+    <Compile Include="Search.cs" />
     <Compile Include="TestDataGeneration.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>
