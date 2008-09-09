@@ -13,7 +13,7 @@ namespace GrabbaRide.Database
         /// <param name="submittedRide"></param>
         /// <returns>A list of Ride objects found in the DB which are similar to the submittedRide param. 
         /// The list is ranked based on similarty to the param submittedRide</returns>
-        List<Ride> FindSimilarRides(Ride submittedRide)
+        public List<Ride> FindSimilarRides(Ride submittedRide)
         {
             List<Ride> rankedRides = new List<Ride>();
             float locToll = 0.01f;
