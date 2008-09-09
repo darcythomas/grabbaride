@@ -48,6 +48,7 @@
       <Column Name="IsLockedOut" Type="System.Boolean" CanBeNull="false" />
       <Column Name="Comment" Type="System.String" CanBeNull="true" />
       <Column Name="LastLockoutDate" Type="System.DateTime" CanBeNull="true" />
+      <Column Member="Location" Type="System.String" CanBeNull="true" />
       <Association Name="User_Ride" Member="Rides" OtherKey="UserID" Type="Ride" />
       <Association Name="User_OpenID" Member="OpenIDs" OtherKey="UserID" Type="OpenID" />
     </Type>

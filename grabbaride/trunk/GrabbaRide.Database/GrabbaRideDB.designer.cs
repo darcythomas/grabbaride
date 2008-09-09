@@ -687,6 +687,8 @@ namespace GrabbaRide.Database
 		
 		private System.Nullable<System.DateTime> _LastLockoutDate;
 		
+		private string _Location;
+		
 		private EntitySet<Ride> _Rides;
 		
 		private EntitySet<OpenID> _OpenIDs;
@@ -733,6 +735,8 @@ namespace GrabbaRide.Database
     partial void OnCommentChanged();
     partial void OnLastLockoutDateChanging(System.Nullable<System.DateTime> value);
     partial void OnLastLockoutDateChanged();
+    partial void OnLocationChanging(string value);
+    partial void OnLocationChanged();
     #endregion
 		
 		public User()
@@ -1127,6 +1131,26 @@ namespace GrabbaRide.Database
 					this._LastLockoutDate = value;
 					this.SendPropertyChanged("LastLockoutDate");
 					this.OnLastLockoutDateChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Location")]
+		public string Location
+		{
+			get
+			{
+				return this._Location;
+			}
+			set
+			{
+				if ((this._Location != value))
+				{
+					this.OnLocationChanging(value);
+					this.SendPropertyChanging();
+					this._Location = value;
+					this.SendPropertyChanged("Location");
+					this.OnLocationChanged();
 				}
 			}
 		}
