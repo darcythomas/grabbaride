@@ -21,7 +21,7 @@ function initialize() {
 }
 
 function SetStart(lat, lng) {
-  var hfstart = document.getElementById("ctl00_ContentPlaceHolder1_hfstart");
+  var hfstart = document.getElementById("ctl00_MainContentPlaceHolder_hfstart");
   hfstart.value = lat + "," + lng;
   if (!startMkr) {
     startMkr = new GMarker(new GLatLng(lat, lng));
@@ -44,7 +44,7 @@ function SetStart(lat, lng) {
 }
 
 function SetEnd(lat, lng) {
-  var hfend = document.getElementById("ctl00_ContentPlaceHolder1_hfend");
+  var hfend = document.getElementById("ctl00_MainContentPlaceHolder_hfend");
   hfend.value = lat + "," + lng;
   if (!endMkr) {
     endMkr = new GMarker(new GLatLng(lat, lng));
@@ -91,4 +91,4 @@ function showAddress(address) {
   }
 }
 
-initialize();
+document.addEventListener("load", initialize, false);

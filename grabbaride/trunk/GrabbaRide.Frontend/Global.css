@@ -1,31 +1,35 @@
-﻿body
+﻿
+body
 {
 	font-family: Verdana, Arial;
+	margin: 0px;
+	padding: 0px;
 }
 #header
 {
-	border-bottom: 5px solid #507CD1;
+	background-color: #507cd1;
 	text-align: center;
 	clear: both;
+	margin: 0px;
 }
-#sidenav
+#leftnav
 {
 	float: left;
 	width: 200px;
-	margin: 5px;
-	background-color: #507CD1;
+	margin: 0px;
+	background-color: #507cd1;
 	border-right: 2px solid black;
 	height: 400px;
 }
-#content
+#maincontent
 {
-	padding-left: 200px;
-	margin: 10px;
+	margin: 0px 0px 0px 200px;
 }
 #footer
 {
 	clear: both;
-	background-color: #507CD1;
+	margin: 0px;
+	background-color: #507cd1;
 	font-size: small;
 	text-align: center;
 }
