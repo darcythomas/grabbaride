@@ -269,10 +269,11 @@ namespace GrabbaRide.Database
         /// <returns>The unique user id mapped to the url </returns>
         public int GetUserId(string openid_url)
         {
-            int userID = (int)from url in this.OpenIDs
-                              where url == openid_url
-                              select url.UserID;
-            return userID;
+            var query = from url in this.OpenIDs
+                        where url.OpenIDUrl == openid_url
+                        select url.UserID;
+
+            return query.Single();
         }
 
         /// <summary>
@@ -280,12 +281,12 @@ namespace GrabbaRide.Database
         /// </summary>
         /// <param name="user_id"></param>
         /// <returns></returns>
-        public User GetOpenIDsByUser(int user_id)
+        public OpenID GetOpenIDsByUser(int user_id)
         {
-            User user = (user)from u in this.Users
+            var user = from u in this.OpenIDs
                               where u.UserID == user_id
                               select u;
-            return user;
+            return user.Single();
         }
 
         /// <summary>
@@ -297,13 +298,14 @@ namespace GrabbaRide.Database
         {
             //check if url is valid
             if (!Regex.IsMatch("(([a-zA-Z][0-9a-zA-Z+\\-\\.]*:)?/{0,2}[0-9a-zA-Z;"
-                +"/?:@&=+$\\.\\-_!~*'()%]+)?(#[0-9a-zA-Z;/?:@&=+$\\.\\-_!~*'()%]+)?"))
-            { 
+                + "/?:@&=+$\\.\\-_!~*'()%]+)?(#[0-9a-zA-Z;/?:@&=+$\\.\\-_!~*'()%]+)?",openid_url))
+            {
                 //throw some sweet exception
                 throw new ArgumentException("Not a valid Url provided for OpenID");
-            }else
+            }
+            else
             {
-                OpenID id= new OpenID(openid_url,user_id);
+                OpenID id = new OpenID(openid_url, user_id);
                 this.OpenIDs.Attach(id);
                 this.SubmitChanges();
             }
@@ -315,11 +317,11 @@ namespace GrabbaRide.Database
         /// </summary>
         /// <param name="?"></param>
         /// <param name="?"></param>
-        public void DetachOpenID(String openid_url,int user_id)
+        public void DetachOpenID(String openid_url, int user_id)
         {
             // not sure yet why userID is required for this ... just leave please
-           this.OpenIDs.DeleteOnSubmit(this.GetOpenIDsByURL(openid_url));
-           this.SubmitChanges();
+            this.OpenIDs.DeleteOnSubmit(this.GetOpenIDsByURL(openid_url));
+            this.SubmitChanges();
         }
 
 
@@ -339,12 +341,12 @@ namespace GrabbaRide.Database
         /// </summary>
         /// <param name="openid_url"></param>
         /// <returns></returns>
-        public OpenID getOpenIDbyURL(string openid_url)
+        public OpenID GetOpenIDsByURL(string openid_url)
         {
-            OpenID id = (OpenID)from oid in this.OpenIDs
+            var id = from oid in this.OpenIDs
                                 where oid.OpenIDUrl == openid_url
                                 select oid;
-            return id;
+            return id.Single();
         }
 
 
