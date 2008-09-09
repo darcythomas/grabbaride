@@ -250,6 +250,16 @@ namespace GrabbaRide.Database
                    select u;
         }
 
+        public User GetUser_ByOpenID(String url)
+        { 
+            int id= GetOpenIDsByURL(url).UserID;
+            var user= from u in this.Users
+                   where u.UserID == id
+                   select u;
+            return user.Single();
+                   
+        }
+
         public IEnumerable<User> GetUser_SortByLastActvityDate()
         {
             return from u in this.Users
@@ -276,12 +286,18 @@ namespace GrabbaRide.Database
             return query.Single();
         }
 
+
+        public Boolean IsOpenIDRegistered(string url)
+        {
+            return (GetOpenIDsByURL(url) != null);
+        }
+
         /// <summary>
         /// select openid_url from user_openids where user_id = user_id 
         /// </summary>
         /// <param name="user_id"></param>
         /// <returns></returns>
-        public OpenID GetOpenIDsByUser(int user_id)
+        public OpenID GetOpenIDByUser(int user_id)
         {
             var user = from u in this.OpenIDs
                               where u.UserID == user_id
@@ -335,6 +351,14 @@ namespace GrabbaRide.Database
             this.SubmitChanges();
         }
 
+        private OpenID GetOpenIDsByUser(int user_id)
+        {
+            var id = from oid in this.OpenIDs
+                     where oid.UserID == user_id
+                     select oid;
+            return id.Single();
+        }
+
 
         /// <summary>
         /// 
@@ -348,6 +372,8 @@ namespace GrabbaRide.Database
                                 select oid;
             return id.Single();
         }
+        
+        
 
 
 
