@@ -13,40 +13,76 @@
         <div id="searchmap" style="width: 400px; height: 400px;">
         </div>
     </div>
-    <br />
-    Date:<asp:UpdatePanel ID="UpdatePanel1" runat="server">
-        <ContentTemplate>
-            <asp:Calendar ID="calDate" runat="server"></asp:Calendar>
-        </ContentTemplate>
-    </asp:UpdatePanel>
+                Time:<br />
+                <asp:DropDownList ID="drphours" runat="server">
+                    <asp:ListItem Value="1"></asp:ListItem>
+                    <asp:ListItem Value="2"></asp:ListItem>
+                    <asp:ListItem Value="3"></asp:ListItem>
+                    <asp:ListItem Value="4"></asp:ListItem>
+                    <asp:ListItem Value="5"></asp:ListItem>
+                    <asp:ListItem Value="6"></asp:ListItem>
+                    <asp:ListItem Value="7"></asp:ListItem>
+                    <asp:ListItem Value="8"></asp:ListItem>
+                    <asp:ListItem Value="9"></asp:ListItem>
+                    <asp:ListItem Value="10"></asp:ListItem>
+                    <asp:ListItem Value="11"></asp:ListItem>
+                    <asp:ListItem Value="12"></asp:ListItem>
+                </asp:DropDownList>
+                <asp:DropDownList ID="drpmins" runat="server">
+                    <asp:ListItem Value="5">05</asp:ListItem>
+                    <asp:ListItem Value="10"></asp:ListItem>
+                    <asp:ListItem Value="15"></asp:ListItem>
+                    <asp:ListItem Value="20"></asp:ListItem>
+                    <asp:ListItem Value="25"></asp:ListItem>
+                    <asp:ListItem Value="30"></asp:ListItem>
+                    <asp:ListItem Value="35"></asp:ListItem>
+                    <asp:ListItem Value="40"></asp:ListItem>
+                    <asp:ListItem Value="45"></asp:ListItem>
+                    <asp:ListItem Value="50"></asp:ListItem>
+                    <asp:ListItem Value="55"></asp:ListItem>
+                    <asp:ListItem Value="0"></asp:ListItem>
+                </asp:DropDownList>
+                <asp:DropDownList ID="drpdayhalf" runat="server">
+                    <asp:ListItem Value="am"></asp:ListItem>
+                    <asp:ListItem Value="pm"></asp:ListItem>
+                </asp:DropDownList>
+                <br />
+                <br />
+        On Days:<br />
+        <asp:CheckBox ID="chkmon" runat="server" Text="Monday" />
+        <br />
+        <asp:CheckBox ID="chktue" runat="server" Text="Tuesday" />
+        <br />
+        <asp:CheckBox ID="chkwed" runat="server" Text="Wednesday" />
+        <br />
+        <asp:CheckBox ID="chkthu" runat="server" Text="Thursday" />
+        <br />
+        <asp:CheckBox ID="chkfri" runat="server" Text="Friday" />
+        <br />
+        <asp:CheckBox ID="chksat" runat="server" Text="Saturday" />
+        <br />
+        <asp:CheckBox ID="chksun" runat="server" Text="Sunday" />
+        <br />
     <asp:HiddenField ID="hfstart" runat="server" />
     <asp:HiddenField ID="hfend" runat="server" />
     <br />
     <asp:Button ID="btnSearch" runat="server" OnClick="btnSearch_Click" Text="Search Rides" />
     <br />
-    &nbsp;<asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="GrabbaRideDataSource"
-        CellPadding="4" ForeColor="#333333" GridLines="None">
+&nbsp;<asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
+        CellPadding="4" ForeColor="#333333" 
+        GridLines="None">
         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
         <RowStyle BackColor="#EFF3FB" />
         <Columns>
-            <asp:CheckBoxField DataField="RecurMon" HeaderText="RecurMon" ReadOnly="True" SortExpression="RecurMon" />
-            <asp:CheckBoxField DataField="RecurTue" HeaderText="RecurTue" ReadOnly="True" SortExpression="RecurTue" />
-            <asp:CheckBoxField DataField="RecurWed" HeaderText="RecurWed" ReadOnly="True" SortExpression="RecurWed" />
-            <asp:CheckBoxField DataField="RecurThu" HeaderText="RecurThu" ReadOnly="True" SortExpression="RecurThu" />
-            <asp:CheckBoxField DataField="RecurFri" HeaderText="RecurFri" ReadOnly="True" SortExpression="RecurFri" />
-            <asp:BoundField DataField="NumSeats" HeaderText="NumSeats" ReadOnly="True" SortExpression="NumSeats" />
-            <asp:BoundField DataField="UserID" HeaderText="UserID" ReadOnly="True" SortExpression="UserID" />
-            <asp:BoundField DataField="RideID" HeaderText="RideID" ReadOnly="True" SortExpression="RideID" />
-            <asp:BoundField DataField="LocationFromLat" HeaderText="LocationFromLat" ReadOnly="True"
-                SortExpression="LocationFromLat" />
-            <asp:BoundField DataField="LocationFromLong" HeaderText="LocationFromLong" ReadOnly="True"
-                SortExpression="LocationFromLong" />
-            <asp:BoundField DataField="LocationToLat" HeaderText="LocationToLat" ReadOnly="True"
-                SortExpression="LocationToLat" />
-            <asp:BoundField DataField="LocationToLong" HeaderText="LocationToLong" ReadOnly="True"
-                SortExpression="LocationToLong" />
-            <asp:BoundField DataField="StartDate" HeaderText="StartDate" ReadOnly="True" SortExpression="StartDate" />
-            <asp:BoundField DataField="EndDate" HeaderText="EndDate" ReadOnly="True" SortExpression="EndDate" />
+            <asp:BoundField DataField="RideID" HeaderText="Ride ID" />
+            <asp:BoundField DataField="RecurMon" HeaderText="Monday" />
+            <asp:BoundField DataField="RecurTue" HeaderText="Tuesday" />
+            <asp:BoundField DataField="RecurWed" HeaderText="Wednesday" />
+            <asp:BoundField DataField="RecurThu" HeaderText="Thursday" />
+            <asp:BoundField DataField="RecurFri" HeaderText="Friday" />
+            <asp:BoundField DataField="RecurSat" HeaderText="Saturday" />
+            <asp:BoundField DataField="RecurSun" HeaderText="Sunday" />
+            <asp:BoundField DataField="NumSeats" HeaderText="Seats" />
         </Columns>
         <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
         <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
@@ -54,7 +90,4 @@
         <EditRowStyle BackColor="#2461BF" />
         <AlternatingRowStyle BackColor="White" />
     </asp:GridView>
-    <asp:LinqDataSource ID="GrabbaRideDataSource" runat="server" ContextTypeName="GrabbaRide.Database.GrabbaRideDBDataContext"
-        TableName="Rides" Select="new (RecurMon, RecurTue, RecurWed, RecurThu, RecurFri, NumSeats, UserID, RideID, LocationFromLat, LocationFromLong, LocationToLat, LocationToLong, StartDate, EndDate)">
-    </asp:LinqDataSource>
 </asp:Content>
