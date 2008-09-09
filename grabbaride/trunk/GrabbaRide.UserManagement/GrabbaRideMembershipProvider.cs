@@ -119,8 +119,8 @@ namespace GrabbaRide.UserManagement
             u.ApplicationName = ApplicationName;
 
             // add the user to the database
-            dataContext.Users.InsertOnSubmit(u);
-            dataContext.SubmitChanges();
+            dataContext.AttachNewUser(u);
+           
 
             // return the new user
             status = MembershipCreateStatus.Success;
