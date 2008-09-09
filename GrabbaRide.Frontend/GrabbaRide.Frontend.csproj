@@ -131,6 +131,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="GoogleMaps.js" />
     <Content Include="Images\header.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
