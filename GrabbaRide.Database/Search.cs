@@ -7,79 +7,77 @@ namespace GrabbaRide.Database
 {
     partial class GrabbaRideDBDataContext
     {
+        const double DISTANCE_VECTOR = 0.0001;
+        const double TIME_VECTOR = 0.5;
+
         /// <summary>
         /// Finds Rides in the DB which are similar to the submitted param ride object
         /// </summary>
         /// <param name="submittedRide"></param>
         /// <returns>A list of Ride objects found in the DB which are similar to the submittedRide param. 
         /// The list is ranked based on similarty to the param submittedRide</returns>
-        public List<Ride> FindSimilarRides(Ride submittedRide)
+        public List<Ride> FindSimilarRides(Ride ride)
         {
-            List<Ride> rankedRides = new List<Ride>();
-            float locToll = 0.01f;
-            var timeTol = 1800;
+            // get rides that are similar in latitude and longitude
+            var query = from r in Rides
+                        where r.LocationFromLat >= (ride.LocationFromLat - DISTANCE_VECTOR) &&
+                              r.LocationFromLat <= (ride.LocationFromLat + DISTANCE_VECTOR) &&
+                              r.LocationFromLong >= (ride.LocationFromLong - DISTANCE_VECTOR) &&
+                              r.LocationFromLong <= (ride.LocationFromLong + DISTANCE_VECTOR)
+                        select r;
 
-            var q = from p in this.Rides
-                    where p.LocationFromLat >= (submittedRide.LocationFromLat - locToll)
-                    && p.LocationFromLat <= (submittedRide.LocationFromLat + locToll)
-                    && p.LocationFromLong >= (submittedRide.LocationFromLong - locToll)
-                    && p.LocationFromLong <= (submittedRide.LocationFromLong + locToll)
-                    && p.DepartureTime.TotalMinutes >= (submittedRide.DepartureTime.TotalMinutes - timeTol)
-                    && p.DepartureTime.TotalMinutes <= (submittedRide.DepartureTime.TotalMinutes + timeTol)
-                    select p;
-
-            //This takes one of the ride returned by the LINQ db query,
-            // runs the ranking algorithm (updating the SearchRank field) on it and then puts it into 
-            // an array list
-            foreach (var p in q)
+            // cut out rides that aren't similar in time (the DepartureTime field doesn't
+            // exist on the server, so has to be done separately)
+            List<Ride> result = query.Where(delegate(Ride r)
             {
-                this.RideRank(p, submittedRide);
-                rankedRides.Add(p);
-            }
+                return r.DepartureTime.TotalHours >= (ride.DepartureTime.TotalHours - TIME_VECTOR) &&
+                       r.DepartureTime.TotalHours <= (ride.DepartureTime.TotalHours + TIME_VECTOR);
+            }).ToList();
 
             //This sorts the List according to the values in the SearchRank field of the Ride object
-            rankedRides.Sort(delegate(Ride r1, Ride r2)
-            {
-                int returnValue = -1;
-                if (r1.SearchRank > r2.SearchRank)
-                {
-                    returnValue = 1;
-                }
-
-                return returnValue;
-            });
+            result.Sort(new SimilarRideComparer(ride));
 
             // Return the ranked list of possibly suitable rides
+            return result;
+        }
+    }
 
-            return (List<Ride>)rankedRides.AsEnumerable();
+    /// <summary>
+    /// Ranks two rides based on their similarity to a base ride specified
+    /// in the constructor.
+    /// </summary>
+    class SimilarRideComparer : IComparer<Ride>
+    {
+        private Ride baseRide;
+
+        private SimilarRideComparer() { }
+        public SimilarRideComparer(Ride baseRide)
+        {
+            this.baseRide = baseRide;
         }
 
-
-
-        /// <summary>
-        /// Sets the SearchRank value of one Ride object, based on the simalarty to another Ride object 
-        /// </summary>
-        /// <param name="rideToRank"></param>
-        /// <param name="submittedRide"></param>
-        /// <returns>A ride object the same as the rideToRank pram but with the SearchRank value modified</returns>
-        Ride RideRank(Ride rideToRank, Ride submittedRide)
+        public int Compare(Ride r1, Ride r2)
         {
-            double rank = 0;
+            // find the distance between the two rides (a^2 + b^2 = c^2)
+            double r1Distance = Math.Pow(r1.LocationFromLat - baseRide.LocationFromLat, 2) +
+                                Math.Pow(r1.LocationFromLong - baseRide.LocationFromLong, 2) +
+                                Math.Pow(r1.LocationToLat - baseRide.LocationToLat, 2) +
+                                Math.Pow(r1.LocationToLong - baseRide.LocationToLong, 2);
+            double r2Distance = Math.Pow(r2.LocationFromLat - baseRide.LocationFromLat, 2) +
+                                Math.Pow(r2.LocationFromLong - baseRide.LocationFromLong, 2) +
+                                Math.Pow(r2.LocationToLat - baseRide.LocationToLat, 2) +
+                                Math.Pow(r2.LocationToLong - baseRide.LocationToLong, 2);
 
-            float distanceScale = 1.0f;
-            float timeScale = 1.0f;
+            // find the time between the two rides
+            double r1Time = Math.Pow((r1.DepartureTime - baseRide.DepartureTime).TotalHours, 2);
+            double r2Time = Math.Pow((r2.DepartureTime - baseRide.DepartureTime).TotalHours, 2);
 
+            // find the total score for each ride
+            double r1Total = r1Distance + r1Time;
+            double r2Total = r2Distance + r2Time;
 
-            rank += Math.Pow(1 + Math.Abs(rideToRank.LocationFromLat - submittedRide.LocationFromLat), 2) * distanceScale;
-
-            rank += Math.Pow(1 + Math.Abs(rideToRank.LocationFromLong - submittedRide.LocationFromLong), 2) * distanceScale;
-
-            rank += Math.Pow((rideToRank.DepartureTime - submittedRide.DepartureTime).TotalMinutes, 2) * timeScale;
-
-            rideToRank.SearchRank = rank;
-
-            return rideToRank;
-
+            // compare the two rides
+            return (int)(r2Total - r1Total);
         }
     }
 }
