@@ -11,12 +11,21 @@
             width: 214px;
         }
     </style>
+<script language="javascript" type="text/javascript">
+// <!CDATA[
+
+function OpenIDLoginButton_onclick() {
+
+}
+
+// ]]>
+</script>
 </head>
 <body>
     <form id="form1" runat="server">
     <img alt="OpenID" src="Images/OpenIDSmall.jpeg" 
         style="width: 166px; height: 44px" /><input id="OpenIDLoginInput" 
-        type="text" /><input id="OpenIDLoginButton" type="button" value="Log In" /><div>
+        type="text" /><div>
     
     </div>
     </form>
