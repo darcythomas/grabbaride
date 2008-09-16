@@ -18,95 +18,75 @@ namespace GrabbaRide.Frontend
 {
     public partial class WebForm5 : System.Web.UI.Page
     {
-        String returnValue;
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            String fromLoc = Request.QueryString["fromloc"];
-            String toLoc = Request.QueryString["toloc"];
-            Boolean[] days = new Boolean[7];
-            days[0] = Convert.ToBoolean(Request.QueryString["mon"]);
-            days[1] = Convert.ToBoolean(Request.QueryString["tue"]);
-            days[2] = Convert.ToBoolean(Request.QueryString["wed"]);
-            days[3] = Convert.ToBoolean(Request.QueryString["thu"]);
-            days[4] = Convert.ToBoolean(Request.QueryString["fri"]);
-            days[5] = Convert.ToBoolean(Request.QueryString["sat"]);
-            days[6] = Convert.ToBoolean(Request.QueryString["sun"]);
-
-            TimeSpan departure = new TimeSpan(0,0,0);
-            if (drpdayhalf.SelectedValue == "am")
-                departure = new TimeSpan(Convert.ToInt32(Request.QueryString["hours"]), Convert.ToInt32(Request.QueryString["mins"]), 0);
-            else if (drpdayhalf.SelectedValue == "pm")
-                departure = new TimeSpan(Convert.ToInt32(Request.QueryString["hours"]) + 12, Convert.ToInt32(Request.QueryString["mins"]), 0);
-
-            if (String.IsNullOrEmpty(fromLoc) &&
-                String.IsNullOrEmpty(toLoc))
+            if (String.IsNullOrEmpty(Request.QueryString["fromloc"]) &&
+                String.IsNullOrEmpty(Request.QueryString["toloc"]))
             {
                 GridView1.Visible = false;
             }
             else
             {
-                queryDB(fromLoc, toLoc, departure, days);
+                DisplayResults();
             }
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            String search = "Search.aspx?fromloc=" + hfstart.Value;
-            search += "&toloc=" + hfend.Value;
-            search += "&mon=" + chkmon.Checked;
-            search += "&tue=" + chktue.Checked;
-            search += "&wed=" + chkwed.Checked;
-            search += "&thu=" + chkthu.Checked;
-            search += "&fri=" + chkfri.Checked;
-            search += "&sat=" + chksat.Checked;
-            search += "&sun=" + chksun.Checked;
-            search += "&hours=" + drphours.SelectedValue;
-            search += "&mins=" + drpmins.SelectedValue;
-            search += "&daytime=" + drpdayhalf.SelectedValue;
+            // convert the hours to 24h time
+            int hours = Int32.Parse(drphours.SelectedValue);
+            if (drpdayhalf.SelectedValue != "am")
+            {
+                hours += 12;
+            }
+
+            // redirect to the search results
+            String search = "Search.aspx?" +
+                "fromloc=" + hfstart.Value +
+                "&toloc=" + hfend.Value +
+                "&mon=" + chkmon.Checked +
+                "&tue=" + chktue.Checked +
+                "&wed=" + chkwed.Checked +
+                "&thu=" + chkthu.Checked +
+                "&fri=" + chkfri.Checked +
+                "&sat=" + chksat.Checked +
+                "&sun=" + chksun.Checked +
+                "&hours=" + hours.ToString() +
+                "&mins=" + drpmins.SelectedValue;
+
             Response.Redirect(search);
         }
 
-        private void queryDB(String fromLoc, String toLoc, TimeSpan deptime, Boolean[] days)
+        protected void DisplayResults()
         {
-            Double[] start = new Double[2];
-            Double[] end = new Double[2];
-            String[] strstart = fromLoc.Split(',');
-            String[] strend = toLoc.Split(',');
-            start[0] = Convert.ToDouble(strstart[0]);
-            start[1] = Convert.ToDouble(strstart[1]);
-            end[0] = Convert.ToDouble(strend[0]);
-            end[1] = Convert.ToDouble(strend[1]);
-            Ride searchride = new Ride();
-            GrabbaRideDBDataContext db = new GrabbaRideDBDataContext();
-            
-            searchride.RecurMon = days[0];
-            searchride.RecurTue = days[1];
-            searchride.RecurWed = days[2];
-            searchride.RecurThu = days[3];
-            searchride.RecurFri = days[4];
-            searchride.RecurSat = days[5];
-            searchride.RecurSun = days[6];
+            Ride searchedRide = new Ride();
 
-            searchride.DepartureTime = deptime;
-            
-            if (!String.IsNullOrEmpty(fromLoc))
-            {
-                if (start != null)
-                {
-                    searchride.LocationFromLat = start[0];
-                    searchride.LocationFromLong = start[1];
-                }
-            }
-            if (!String.IsNullOrEmpty(toLoc))
-            {
-                if (end != null)
-                {
-                    searchride.LocationToLat = end[0];
-                    searchride.LocationToLong = end[1];
-                }
-            }
-            GridView1.DataSource = db.FindSimilarRides(searchride);
+            // location searched for
+            string[] fromLoc = Request.QueryString["fromloc"].Split(',');
+            string[] toLoc = Request.QueryString["toloc"].Split(',');
+
+            searchedRide.LocationFromLat = Double.Parse(fromLoc[0]);
+            searchedRide.LocationFromLong = Double.Parse(fromLoc[1]);
+            searchedRide.LocationToLat = Double.Parse(toLoc[0]);
+            searchedRide.LocationToLong = Double.Parse(toLoc[1]);
+
+            // days of the week searched for
+            searchedRide.RecurMon = Boolean.Parse(Request.QueryString["mon"]);
+            searchedRide.RecurTue = Boolean.Parse(Request.QueryString["tue"]);
+            searchedRide.RecurWed = Boolean.Parse(Request.QueryString["wed"]);
+            searchedRide.RecurThu = Boolean.Parse(Request.QueryString["thu"]);
+            searchedRide.RecurFri = Boolean.Parse(Request.QueryString["fri"]);
+            searchedRide.RecurSat = Boolean.Parse(Request.QueryString["sat"]);
+            searchedRide.RecurSun = Boolean.Parse(Request.QueryString["sun"]);
+
+            // time searched for
+            searchedRide.DepartureTime = new TimeSpan(
+                Int32.Parse(Request.QueryString["hours"]),
+                Int32.Parse(Request.QueryString["mins"]), 0);
+
+            // search for the ride & display results
+            GrabbaRideDBDataContext dc = new GrabbaRideDBDataContext();
+            GridView1.DataSource = dc.FindSimilarRides(searchedRide);
             GridView1.DataBind();
         }
     }

@@ -7,7 +7,7 @@ namespace GrabbaRide.Database
 {
     partial class GrabbaRideDBDataContext
     {
-        const double DISTANCE_VECTOR = 0.0001;
+        const double DISTANCE_VECTOR = 0.1;
         const double TIME_VECTOR = 0.5;
 
         /// <summary>
@@ -19,19 +19,20 @@ namespace GrabbaRide.Database
         public List<Ride> FindSimilarRides(Ride ride)
         {
             var query = from r in Rides
-                        where // rides are similar in location
-                              r.LocationFromLat  >= (ride.LocationFromLat  - DISTANCE_VECTOR) &&
-                              r.LocationFromLat  <= (ride.LocationFromLat  + DISTANCE_VECTOR) &&
+                        where
+                            // rides are similar in location
+                              r.LocationFromLat >= (ride.LocationFromLat - DISTANCE_VECTOR) &&
+                              r.LocationFromLat <= (ride.LocationFromLat + DISTANCE_VECTOR) &&
                               r.LocationFromLong >= (ride.LocationFromLong - DISTANCE_VECTOR) &&
                               r.LocationFromLong <= (ride.LocationFromLong + DISTANCE_VECTOR) &&
-                              // rides are on at least one of the same days
-                            ( r.RecurMon == ride.RecurMon ||
-                              r.RecurTue == ride.RecurTue ||
-                              r.RecurWed == ride.RecurWed ||
-                              r.RecurThu == ride.RecurThu ||
-                              r.RecurFri == ride.RecurFri ||
-                              r.RecurSat == ride.RecurSat ||
-                              r.RecurSun == ride.RecurSun )
+                            // rides are on the right days
+                              (r.RecurMon || !ride.RecurMon) &&
+                              (r.RecurTue || !ride.RecurTue) &&
+                              (r.RecurWed || !ride.RecurWed) &&
+                              (r.RecurThu || !ride.RecurThu) &&
+                              (r.RecurFri || !ride.RecurFri) &&
+                              (r.RecurSat || !ride.RecurSat) &&
+                              (r.RecurSun || !ride.RecurSun)
                         select r;
 
             // cut out rides that aren't similar in time (the DepartureTime field doesn't
