@@ -2,6 +2,12 @@
     CodeBehind="Search.aspx.cs" Inherits="GrabbaRide.Frontend.WebForm5" Title="GrabbaRide Search" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">
+
+    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAdzIHDEcQlKVK0ZsLXgw7AxT2yXp_ZAY8_ufC3CFXhHIE1NvwkxTe_yeQBDaUEW7-M67E9zLbOak5Xw"
+        type="text/javascript"></script>
+
+    <script type="text/javascript" src="GoogleMaps.js"></script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server" />
@@ -13,64 +19,63 @@
         <div id="searchmap" style="width: 400px; height: 400px;">
         </div>
     </div>
-                Time:<br />
-                <asp:DropDownList ID="drphours" runat="server">
-                    <asp:ListItem Value="1"></asp:ListItem>
-                    <asp:ListItem Value="2"></asp:ListItem>
-                    <asp:ListItem Value="3"></asp:ListItem>
-                    <asp:ListItem Value="4"></asp:ListItem>
-                    <asp:ListItem Value="5"></asp:ListItem>
-                    <asp:ListItem Value="6"></asp:ListItem>
-                    <asp:ListItem Value="7"></asp:ListItem>
-                    <asp:ListItem Value="8"></asp:ListItem>
-                    <asp:ListItem Value="9"></asp:ListItem>
-                    <asp:ListItem Value="10"></asp:ListItem>
-                    <asp:ListItem Value="11"></asp:ListItem>
-                    <asp:ListItem Value="12"></asp:ListItem>
-                </asp:DropDownList>
-                <asp:DropDownList ID="drpmins" runat="server">
-                    <asp:ListItem Value="5">05</asp:ListItem>
-                    <asp:ListItem Value="10"></asp:ListItem>
-                    <asp:ListItem Value="15"></asp:ListItem>
-                    <asp:ListItem Value="20"></asp:ListItem>
-                    <asp:ListItem Value="25"></asp:ListItem>
-                    <asp:ListItem Value="30"></asp:ListItem>
-                    <asp:ListItem Value="35"></asp:ListItem>
-                    <asp:ListItem Value="40"></asp:ListItem>
-                    <asp:ListItem Value="45"></asp:ListItem>
-                    <asp:ListItem Value="50"></asp:ListItem>
-                    <asp:ListItem Value="55"></asp:ListItem>
-                    <asp:ListItem Value="0"></asp:ListItem>
-                </asp:DropDownList>
-                <asp:DropDownList ID="drpdayhalf" runat="server">
-                    <asp:ListItem Value="am"></asp:ListItem>
-                    <asp:ListItem Value="pm"></asp:ListItem>
-                </asp:DropDownList>
-                <br />
-                <br />
-        On Days:<br />
-        <asp:CheckBox ID="chkmon" runat="server" Text="Monday" />
-        <br />
-        <asp:CheckBox ID="chktue" runat="server" Text="Tuesday" />
-        <br />
-        <asp:CheckBox ID="chkwed" runat="server" Text="Wednesday" />
-        <br />
-        <asp:CheckBox ID="chkthu" runat="server" Text="Thursday" />
-        <br />
-        <asp:CheckBox ID="chkfri" runat="server" Text="Friday" />
-        <br />
-        <asp:CheckBox ID="chksat" runat="server" Text="Saturday" />
-        <br />
-        <asp:CheckBox ID="chksun" runat="server" Text="Sunday" />
-        <br />
+    Time:<br />
+    <asp:DropDownList ID="drphours" runat="server">
+        <asp:ListItem Value="1"></asp:ListItem>
+        <asp:ListItem Value="2"></asp:ListItem>
+        <asp:ListItem Value="3"></asp:ListItem>
+        <asp:ListItem Value="4"></asp:ListItem>
+        <asp:ListItem Value="5"></asp:ListItem>
+        <asp:ListItem Value="6"></asp:ListItem>
+        <asp:ListItem Value="7"></asp:ListItem>
+        <asp:ListItem Value="8"></asp:ListItem>
+        <asp:ListItem Value="9"></asp:ListItem>
+        <asp:ListItem Value="10"></asp:ListItem>
+        <asp:ListItem Value="11"></asp:ListItem>
+        <asp:ListItem Value="12"></asp:ListItem>
+    </asp:DropDownList>
+    <asp:DropDownList ID="drpmins" runat="server">
+        <asp:ListItem Value="5">05</asp:ListItem>
+        <asp:ListItem Value="10"></asp:ListItem>
+        <asp:ListItem Value="15"></asp:ListItem>
+        <asp:ListItem Value="20"></asp:ListItem>
+        <asp:ListItem Value="25"></asp:ListItem>
+        <asp:ListItem Value="30"></asp:ListItem>
+        <asp:ListItem Value="35"></asp:ListItem>
+        <asp:ListItem Value="40"></asp:ListItem>
+        <asp:ListItem Value="45"></asp:ListItem>
+        <asp:ListItem Value="50"></asp:ListItem>
+        <asp:ListItem Value="55"></asp:ListItem>
+        <asp:ListItem Value="0"></asp:ListItem>
+    </asp:DropDownList>
+    <asp:DropDownList ID="drpdayhalf" runat="server">
+        <asp:ListItem Value="am"></asp:ListItem>
+        <asp:ListItem Value="pm"></asp:ListItem>
+    </asp:DropDownList>
+    <br />
+    <br />
+    On Days:<br />
+    <asp:CheckBox ID="chkmon" runat="server" Text="Monday" />
+    <br />
+    <asp:CheckBox ID="chktue" runat="server" Text="Tuesday" />
+    <br />
+    <asp:CheckBox ID="chkwed" runat="server" Text="Wednesday" />
+    <br />
+    <asp:CheckBox ID="chkthu" runat="server" Text="Thursday" />
+    <br />
+    <asp:CheckBox ID="chkfri" runat="server" Text="Friday" />
+    <br />
+    <asp:CheckBox ID="chksat" runat="server" Text="Saturday" />
+    <br />
+    <asp:CheckBox ID="chksun" runat="server" Text="Sunday" />
+    <br />
     <asp:HiddenField ID="hfstart" runat="server" />
     <asp:HiddenField ID="hfend" runat="server" />
     <br />
     <asp:Button ID="btnSearch" runat="server" OnClick="btnSearch_Click" Text="Search Rides" />
     <br />
-&nbsp;<asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
-        CellPadding="4" ForeColor="#333333" 
-        GridLines="None">
+    &nbsp;<asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4"
+        ForeColor="#333333" GridLines="None">
         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
         <RowStyle BackColor="#EFF3FB" />
         <Columns>

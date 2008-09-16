@@ -6,7 +6,7 @@ var endMkr = null;
 var startpoly = null;
 var endpoly = null;
 
-function initialize() {
+function doPageLoad() {
   if (GBrowserIsCompatible()) {
     if (document.getElementById("searchmap")) {
       map = new GMap2(document.getElementById("searchmap"));
@@ -91,4 +91,4 @@ function showAddress(address) {
   }
 }
 
-document.addEventListener("load", initialize, false);
+window.onload = doPageLoad;
