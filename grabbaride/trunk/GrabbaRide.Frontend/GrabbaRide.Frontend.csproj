@@ -30,6 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ExtremeSwank.OpenID, Version=4.0.0.1, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core">
@@ -83,6 +84,13 @@
     <Compile Include="MasterPage.master.cs">
       <DependentUpon>MasterPage.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OpenIDLogin.aspx.cs">
+      <DependentUpon>OpenIDLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OpenIDLogin.aspx.designer.cs">
+      <DependentUpon>OpenIDLogin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Privacy.aspx.cs">
       <DependentUpon>Privacy.aspx</DependentUpon>
@@ -149,6 +157,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="Images\OpenIDSmall.jpeg" />
     <Content Include="GoogleMaps.js" />
     <Content Include="Images\header.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -156,6 +165,8 @@
     <Content Include="Images\logo.jpg" />
     <Content Include="MasterPage.master" />
     <Content Include="Default.aspx" />
+    <Content Include="OpenIDLibrary\ExtremeSwank.OpenID.dll" />
+    <Content Include="OpenIDLogin.aspx" />
     <Content Include="Privacy.aspx" />
     <Content Include="Terms.aspx" />
     <Content Include="User.aspx" />
