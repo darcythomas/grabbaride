@@ -18,12 +18,20 @@ namespace GrabbaRide.Database
         /// The list is ranked based on similarty to the param submittedRide</returns>
         public List<Ride> FindSimilarRides(Ride ride)
         {
-            // get rides that are similar in latitude and longitude
             var query = from r in Rides
-                        where r.LocationFromLat >= (ride.LocationFromLat - DISTANCE_VECTOR) &&
-                              r.LocationFromLat <= (ride.LocationFromLat + DISTANCE_VECTOR) &&
+                        where // rides are similar in location
+                              r.LocationFromLat  >= (ride.LocationFromLat  - DISTANCE_VECTOR) &&
+                              r.LocationFromLat  <= (ride.LocationFromLat  + DISTANCE_VECTOR) &&
                               r.LocationFromLong >= (ride.LocationFromLong - DISTANCE_VECTOR) &&
-                              r.LocationFromLong <= (ride.LocationFromLong + DISTANCE_VECTOR)
+                              r.LocationFromLong <= (ride.LocationFromLong + DISTANCE_VECTOR) &&
+                              // rides are on at least one of the same days
+                            ( r.RecurMon == ride.RecurMon ||
+                              r.RecurTue == ride.RecurTue ||
+                              r.RecurWed == ride.RecurWed ||
+                              r.RecurThu == ride.RecurThu ||
+                              r.RecurFri == ride.RecurFri ||
+                              r.RecurSat == ride.RecurSat ||
+                              r.RecurSun == ride.RecurSun )
                         select r;
 
             // cut out rides that aren't similar in time (the DepartureTime field doesn't
