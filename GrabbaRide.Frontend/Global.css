@@ -5,9 +5,19 @@ body
 	margin: 0px;
 	padding: 0px;
 }
-#header
+a, a:visited
 {
+	color: #3333ff;
+}
+a:hover
+{
+	text-decoration: underline;
+}
+#header, #header a
+{
+	color: #00ff00;
 	background-color: #507cd1;
+	font-weight: bold;
 	text-align: center;
 	clear: both;
 	margin: 0px;
