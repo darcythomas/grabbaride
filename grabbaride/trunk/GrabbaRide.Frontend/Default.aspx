@@ -4,20 +4,11 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
-    <div class="searchcol">
-        <h2>Search rides...</h2>
-                    <p>From:&nbsp;&nbsp;&nbsp;&nbsp;
-    <br />
-    To:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;<br />
-    <br />
-    Date:<br />
-    <asp:Button ID="btnSearch" runat="server" onclick="btnSearch_Click" 
-        Text="Search Rides" />
-    <br />
-                    </p>
-    </div>
-    <div class="centercol">
-    <p>put a cool map here</p>
-    </div>
+    <h2 style="color: #00cc00">
+        Welcome to GrabbaRide!</h2>
+    <p>
+        GrabbaRide allows you to save petrol, money, and time, by sharing rides with others!</p>
+    <p>
+        To get started: <a href="Search.aspx">search for a ride</a>, or <a href="CreateRide.aspx">
+            create a ride of your own</a>.</p>
 </asp:Content>
