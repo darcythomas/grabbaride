@@ -1,18 +1,6 @@
 ﻿using System;
-using System.Collections;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
-using System.Xml.Linq;
 
 using GrabbaRide.Database;
-using System.Collections.Generic;
 
 namespace GrabbaRide.Frontend
 {
@@ -20,6 +8,8 @@ namespace GrabbaRide.Frontend
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            LoadQueryStringValues();
+
             if (String.IsNullOrEmpty(Request.QueryString["fromloc"]) &&
                 String.IsNullOrEmpty(Request.QueryString["toloc"]))
             {
@@ -31,44 +21,98 @@ namespace GrabbaRide.Frontend
             }
         }
 
+        /// <summary>
+        /// Loads values from the query string back into the search fields,
+        /// so that people can see what the searched for.
+        /// </summary>
+        protected void LoadQueryStringValues()
+        {
+            // TODO: load the google map with a location
+
+            // update the time
+            if (!String.IsNullOrEmpty(Request.QueryString["hours"]))
+            {
+                int hours = Int32.Parse(Request.QueryString["hours"]);
+                if (hours >= 12)
+                {
+                    drpdayhalf.SelectedValue = "pm";
+                    hours -= 12;
+                }
+                drphours.SelectedValue = hours.ToString();
+            }
+
+            if (!String.IsNullOrEmpty(Request.QueryString["mins"]))
+            {
+                drpmins.SelectedValue = Request.QueryString["mins"];
+            }
+
+            // update the days
+            if (!String.IsNullOrEmpty(Request.QueryString["mon"]))
+            { chkmon.Checked = Boolean.Parse(Request.QueryString["mon"]); }
+            if (!String.IsNullOrEmpty(Request.QueryString["tue"]))
+            { chktue.Checked = Boolean.Parse(Request.QueryString["tue"]); }
+            if (!String.IsNullOrEmpty(Request.QueryString["wed"]))
+            { chkwed.Checked = Boolean.Parse(Request.QueryString["wed"]); }
+            if (!String.IsNullOrEmpty(Request.QueryString["thu"]))
+            { chkthu.Checked = Boolean.Parse(Request.QueryString["thu"]); }
+            if (!String.IsNullOrEmpty(Request.QueryString["fri"]))
+            { chkfri.Checked = Boolean.Parse(Request.QueryString["fri"]); }
+            if (!String.IsNullOrEmpty(Request.QueryString["sat"]))
+            { chksat.Checked = Boolean.Parse(Request.QueryString["sat"]); }
+            if (!String.IsNullOrEmpty(Request.QueryString["sun"]))
+            { chksun.Checked = Boolean.Parse(Request.QueryString["sun"]); }
+        }
+
+        /// <summary>
+        /// Redirects the user to the search results page, based on the values they entered.
+        /// </summary>
         protected void btnSearch_Click(object sender, EventArgs e)
         {
             // convert the hours to 24h time
             int hours = Int32.Parse(drphours.SelectedValue);
-            if (drpdayhalf.SelectedValue != "am")
+            if (drpdayhalf.SelectedValue == "pm")
             {
                 hours += 12;
             }
 
             // redirect to the search results
-            String search = "Search.aspx?" +
+            string search = "Search.aspx?" +
                 "fromloc=" + hfstart.Value +
                 "&toloc=" + hfend.Value +
+                "&hours=" + hours.ToString() +
+                "&mins=" + drpmins.SelectedValue +
                 "&mon=" + chkmon.Checked +
                 "&tue=" + chktue.Checked +
                 "&wed=" + chkwed.Checked +
                 "&thu=" + chkthu.Checked +
                 "&fri=" + chkfri.Checked +
                 "&sat=" + chksat.Checked +
-                "&sun=" + chksun.Checked +
-                "&hours=" + hours.ToString() +
-                "&mins=" + drpmins.SelectedValue;
+                "&sun=" + chksun.Checked;
 
             Response.Redirect(search);
         }
 
+        /// <summary>
+        /// Displays search results, based on values in the query string.
+        /// </summary>
         protected void DisplayResults()
         {
             Ride searchedRide = new Ride();
 
             // location searched for
             string[] fromLoc = Request.QueryString["fromloc"].Split(',');
-            string[] toLoc = Request.QueryString["toloc"].Split(',');
+            if (fromLoc.Length == 2)
+            {
+                searchedRide.LocationFromLat = Double.Parse(fromLoc[0]);
+                searchedRide.LocationFromLong = Double.Parse(fromLoc[1]);
+            }
 
-            searchedRide.LocationFromLat = Double.Parse(fromLoc[0]);
-            searchedRide.LocationFromLong = Double.Parse(fromLoc[1]);
-            searchedRide.LocationToLat = Double.Parse(toLoc[0]);
-            searchedRide.LocationToLong = Double.Parse(toLoc[1]);
+            string[] toLoc = Request.QueryString["toloc"].Split(',');
+            if (toLoc.Length == 2)
+            {
+                searchedRide.LocationToLat = Double.Parse(toLoc[0]);
+                searchedRide.LocationToLong = Double.Parse(toLoc[1]);
+            }
 
             // days of the week searched for
             searchedRide.RecurMon = Boolean.Parse(Request.QueryString["mon"]);
