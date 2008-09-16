@@ -18,6 +18,22 @@ namespace GrabbaRide.Database
             set { this.JourneyLengthSrc = value.Ticks; }
         }
 
+        /// <summary>
+        /// The distance of the journey, calcuated with sweet pythagoras.
+        /// </summary>
+        public double JourneyDistance
+        {
+            get
+            {
+                // a^2 + b^2 = c^2
+                double a = this.LocationToLat - this.LocationFromLat;
+                double b = this.LocationToLong - this.LocationFromLong;
+                double c2 = Math.Pow(a,2) + Math.Pow(b,2);
+
+                return Math.Sqrt(c2);
+            }
+        }
+
         public Ride(double locFromLat, double locFromLong, double locToLat, double locToLong)
             : this()
         {
@@ -29,6 +45,6 @@ namespace GrabbaRide.Database
             this.LocationToLong = locToLong;
         }
 
-      
+
     }
 }

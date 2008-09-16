@@ -7,8 +7,8 @@ namespace GrabbaRide.Database
 {
     partial class GrabbaRideDBDataContext
     {
-        const double DISTANCE_VECTOR = 0.1;
-        const double TIME_VECTOR = 0.5;
+        const double DISTANCE_VECTOR = 0.1; // 10%
+        const double TIME_VECTOR = 0.5; // 30 mins
 
         /// <summary>
         /// Finds Rides in the DB which are similar to the submitted param ride object
@@ -16,35 +16,47 @@ namespace GrabbaRide.Database
         /// <param name="submittedRide"></param>
         /// <returns>A list of Ride objects found in the DB which are similar to the submittedRide param. 
         /// The list is ranked based on similarty to the param submittedRide</returns>
-        public List<Ride> FindSimilarRides(Ride ride)
+        public List<Ride> FindSimilarRides(Ride searchedRide)
         {
+            double searchRadius = searchedRide.JourneyDistance * DISTANCE_VECTOR;
+            if (searchRadius == 0) { searchRadius = 0.1; }
+
             var query = from r in Rides
                         where
-                            // rides are similar in location
-                              r.LocationFromLat >= (ride.LocationFromLat - DISTANCE_VECTOR) &&
-                              r.LocationFromLat <= (ride.LocationFromLat + DISTANCE_VECTOR) &&
-                              r.LocationFromLong >= (ride.LocationFromLong - DISTANCE_VECTOR) &&
-                              r.LocationFromLong <= (ride.LocationFromLong + DISTANCE_VECTOR) &&
+                            // rides are similar in from location
+                             (searchedRide.LocationFromLat == 0 ||
+                              searchedRide.LocationFromLong == 0 ||
+                               (r.LocationFromLat >= (searchedRide.LocationFromLat - searchRadius) &&
+                                r.LocationFromLat <= (searchedRide.LocationFromLat + searchRadius) &&
+                                r.LocationFromLong >= (searchedRide.LocationFromLong - searchRadius) &&
+                                r.LocationFromLong <= (searchedRide.LocationFromLong + searchRadius)))
+                          && (searchedRide.LocationToLat == 0 ||
+                              searchedRide.LocationToLong == 0 ||
+                              (r.LocationToLat >= (searchedRide.LocationToLat - searchRadius) &&
+                               r.LocationToLat <= (searchedRide.LocationToLat + searchRadius) &&
+                               r.LocationToLong >= (searchedRide.LocationToLong - searchRadius) &&
+                               r.LocationToLong <= (searchedRide.LocationToLong + searchRadius)))
                             // rides are on the right days
-                              (r.RecurMon || !ride.RecurMon) &&
-                              (r.RecurTue || !ride.RecurTue) &&
-                              (r.RecurWed || !ride.RecurWed) &&
-                              (r.RecurThu || !ride.RecurThu) &&
-                              (r.RecurFri || !ride.RecurFri) &&
-                              (r.RecurSat || !ride.RecurSat) &&
-                              (r.RecurSun || !ride.RecurSun)
+                          && (r.RecurMon || !searchedRide.RecurMon) &&
+                             (r.RecurTue || !searchedRide.RecurTue) &&
+                             (r.RecurWed || !searchedRide.RecurWed) &&
+                             (r.RecurThu || !searchedRide.RecurThu) &&
+                             (r.RecurFri || !searchedRide.RecurFri) &&
+                             (r.RecurSat || !searchedRide.RecurSat) &&
+                             (r.RecurSun || !searchedRide.RecurSun)
+
                         select r;
 
             // cut out rides that aren't similar in time (the DepartureTime field doesn't
             // exist on the server, so has to be done separately)
             List<Ride> result = query.Where(delegate(Ride r)
             {
-                return r.DepartureTime.TotalHours >= (ride.DepartureTime.TotalHours - TIME_VECTOR) &&
-                       r.DepartureTime.TotalHours <= (ride.DepartureTime.TotalHours + TIME_VECTOR);
+                return r.DepartureTime.TotalHours >= (searchedRide.DepartureTime.TotalHours - TIME_VECTOR) &&
+                       r.DepartureTime.TotalHours <= (searchedRide.DepartureTime.TotalHours + TIME_VECTOR);
             }).ToList();
 
             //This sorts the List according to the values in the SearchRank field of the Ride object
-            result.Sort(new SimilarRideComparer(ride));
+            result.Sort(new SimilarRideComparer(searchedRide));
 
             // Return the ranked list of possibly suitable rides
             return result;
