@@ -8,16 +8,24 @@ namespace GrabbaRide.Frontend
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            LoadQueryStringValues();
+            /*
+             * It is vital that this stuff only happens if this is not a postback.
+             * Note that a postback in this context means when the submit button is pressed,
+             * not when we redirect ourselves to a querystring.
+             */
+            if (!Page.IsPostBack)
+            {
+                LoadQueryStringValues();
 
-            if (String.IsNullOrEmpty(Request.QueryString["fromloc"]) &&
-                String.IsNullOrEmpty(Request.QueryString["toloc"]))
-            {
-                GridView1.Visible = false;
-            }
-            else
-            {
-                DisplayResults();
+                if (String.IsNullOrEmpty(Request.QueryString["fromloc"]) &&
+                    String.IsNullOrEmpty(Request.QueryString["toloc"]))
+                {
+                    GridView1.Visible = false;
+                }
+                else
+                {
+                    DisplayResults();
+                }
             }
         }
 
@@ -70,10 +78,7 @@ namespace GrabbaRide.Frontend
         {
             // convert the hours to 24h time
             int hours = Int32.Parse(drphours.SelectedValue);
-            if (drpdayhalf.SelectedValue == "pm")
-            {
-                hours += 12;
-            }
+            if (drpdayhalf.SelectedValue == "pm") { hours += 12; }
 
             // redirect to the search results
             string search = "Search.aspx?" +
