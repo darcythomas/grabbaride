@@ -4,22 +4,21 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
-    <title>Login With Your OpenID</title>
+    <title>Log in with OpenID</title>
     <style type="text/css">
-        #OpenIDLoginFeild
+        #Text1
         {
-            width: 232px;
+            width: 214px;
         }
     </style>
-
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
+    <img alt="OpenID" src="Images/OpenIDSmall.jpeg" 
+        style="width: 166px; height: 44px" /><input id="OpenIDLoginInput" 
+        type="text" /><input id="OpenIDLoginButton" type="button" value="Log In" /><div>
     
-        <img alt="Log in with OpenID" src="Images/OpenIDSmall.jpeg" 
-            style="width: 135px; height: 41px" /><input id="OpenIDLoginFeild" 
-            type="text" /><input id="LogInButton" type="button" value="Log In" onclick="return LogInButton_onclick()" /></div>
+    </div>
     </form>
 </body>
 </html>
