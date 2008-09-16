@@ -23,13 +23,14 @@ namespace GrabbaRide.Database
 
             var query = from r in Rides
                         where
-                            // rides are similar in from location
+                            // rides are similar in source location
                              (searchedRide.LocationFromLat == 0 ||
                               searchedRide.LocationFromLong == 0 ||
                                (r.LocationFromLat >= (searchedRide.LocationFromLat - searchRadius) &&
                                 r.LocationFromLat <= (searchedRide.LocationFromLat + searchRadius) &&
                                 r.LocationFromLong >= (searchedRide.LocationFromLong - searchRadius) &&
                                 r.LocationFromLong <= (searchedRide.LocationFromLong + searchRadius)))
+                            // rides are similar in destination location
                           && (searchedRide.LocationToLat == 0 ||
                               searchedRide.LocationToLong == 0 ||
                               (r.LocationToLat >= (searchedRide.LocationToLat - searchRadius) &&
@@ -71,6 +72,9 @@ namespace GrabbaRide.Database
     {
         private Ride baseRide;
 
+        const double DISTANCE_SCALE = 100000;
+        const double TIME_SCALE = 10;
+
         private SimilarRideComparer() { }
         public SimilarRideComparer(Ride baseRide)
         {
@@ -94,8 +98,10 @@ namespace GrabbaRide.Database
             double r2Time = Math.Pow((r2.DepartureTime - baseRide.DepartureTime).TotalHours, 2);
 
             // find the total score for each ride
-            double r1Total = r1Distance + r1Time;
-            double r2Total = r2Distance + r2Time;
+            double r1Total = r1Distance * DISTANCE_SCALE +
+                             r1Time * TIME_SCALE;
+            double r2Total = r2Distance * DISTANCE_SCALE +
+                             r2Time * TIME_SCALE;
 
             // compare the two rides
             return (int)(r2Total - r1Total);
