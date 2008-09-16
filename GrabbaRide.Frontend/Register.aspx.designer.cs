@@ -11,7 +11,7 @@
 namespace GrabbaRide.Frontend {
     
     
-    public partial class WebForm4 {
+    public partial class Register {
         
         /// <summary>
         /// CreateUserWizard control.
