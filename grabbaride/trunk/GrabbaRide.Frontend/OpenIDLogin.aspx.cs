@@ -13,12 +13,13 @@ using System.Xml.Linq;
 using ExtremeSwank.OpenId;
 
 
-/*
+
 
 namespace GrabbaRide.Frontend
 {
     public partial class OpenIDLogin : System.Web.UI.Page
     {
+        /*
         protected void Page_Load(object sender, EventArgs e)
         {
             // If this is not a postback, start up the Consumer
@@ -88,11 +89,9 @@ namespace GrabbaRide.Frontend
             openid.CreateRequest();
         }
 
-        
+       */
 
-       
 
-       
     }
+
 }
-*/
