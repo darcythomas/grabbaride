@@ -20,7 +20,7 @@ namespace GrabbaRide.Frontend
                 if (String.IsNullOrEmpty(Request.QueryString["fromloc"]) &&
                     String.IsNullOrEmpty(Request.QueryString["toloc"]))
                 {
-                    GridView1.Visible = false;
+                    ResultsListView.Visible = false;
                 }
                 else
                 {
@@ -135,8 +135,8 @@ namespace GrabbaRide.Frontend
 
             // search for the ride & display results
             GrabbaRideDBDataContext dc = new GrabbaRideDBDataContext();
-            GridView1.DataSource = dc.FindSimilarRides(searchedRide);
-            GridView1.DataBind();
+            ResultsListView.DataSource = dc.FindSimilarRides(searchedRide);
+            ResultsListView.DataBind();
         }
     }
 }
