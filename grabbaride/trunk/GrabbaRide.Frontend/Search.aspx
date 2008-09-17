@@ -73,25 +73,126 @@
     <br />
     <asp:Button ID="btnSearch" runat="server" OnClick="btnSearch_Click" Text="Search Rides" />
     <br />
-    &nbsp;<asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4"
-        ForeColor="#333333" GridLines="None">
-        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-        <RowStyle BackColor="#EFF3FB" />
-        <Columns>
-            <asp:BoundField DataField="RideID" HeaderText="Ride ID" />
-            <asp:BoundField DataField="RecurMon" HeaderText="Monday" />
-            <asp:BoundField DataField="RecurTue" HeaderText="Tuesday" />
-            <asp:BoundField DataField="RecurWed" HeaderText="Wednesday" />
-            <asp:BoundField DataField="RecurThu" HeaderText="Thursday" />
-            <asp:BoundField DataField="RecurFri" HeaderText="Friday" />
-            <asp:BoundField DataField="RecurSat" HeaderText="Saturday" />
-            <asp:BoundField DataField="RecurSun" HeaderText="Sunday" />
-            <asp:BoundField DataField="NumSeats" HeaderText="Seats" />
-        </Columns>
-        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-        <EditRowStyle BackColor="#2461BF" />
-        <AlternatingRowStyle BackColor="White" />
-    </asp:GridView>
+    <asp:ListView ID="ResultsListView" runat="server" DataKeyNames="RideID">
+        <LayoutTemplate>
+            <table runat="server">
+                <tr runat="server">
+                    <td runat="server">
+                        <table id="itemPlaceholderContainer" runat="server" border="1" style="background-color: #FFFFFF;
+                            border-collapse: collapse; border-color: #999999; border-style: none; border-width: 1px;
+                            font-family: Verdana, Arial, Helvetica, sans-serif;">
+                            <tr runat="server" style="background-color: #E0FFFF; color: #333333;">
+                                <th runat="server">
+                                    Ride ID
+                                </th>
+                                <th id="Th1" runat="server">
+                                    User
+                                </th>
+                                <th id="Th4" runat="server">
+                                    Seats
+                                </th>
+                                <th id="Th2" runat="server">
+                                    Departing
+                                </th>
+                                <th id="Th3" runat="server">
+                                    Length
+                                </th>
+                                <th runat="server">
+                                    Mon
+                                </th>
+                                <th runat="server">
+                                    Tue
+                                </th>
+                                <th runat="server">
+                                    Wed
+                                </th>
+                                <th runat="server">
+                                    Thu
+                                </th>
+                                <th runat="server">
+                                    Fri
+                                </th>
+                                <th runat="server">
+                                    Sat
+                                </th>
+                                <th runat="server">
+                                    Sun
+                                </th>
+                                <th id="Th5" runat="server">
+                                    End Date
+                                </th>
+                            </tr>
+                            <tr id="itemPlaceholder" runat="server">
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr runat="server">
+                    <td runat="server" style="text-align: center; background-color: #5D7B9D; font-family: Verdana, Arial, Helvetica, sans-serif;
+                        color: #FFFFFF">
+                    </td>
+                </tr>
+            </table>
+        </LayoutTemplate>
+        <EmptyDataTemplate>
+            <table runat="server" style="background-color: #FFFFFF; border-collapse: collapse;
+                border-color: #999999; border-style: none; border-width: 1px;">
+                <tr>
+                    <td>
+                        No data was returned.
+                    </td>
+                </tr>
+            </table>
+        </EmptyDataTemplate>
+        <ItemTemplate>
+            <tr style="background-color: #E0FFFF; color: #333333;">
+                <td>
+                    <asp:Label ID="RideIDLabel" runat="server" Text='<%# Eval("RideID") %>' />
+                </td>
+                <td>
+                    <asp:Label ID="UserLabel" runat="server" Text='<%# Eval("User.Username") %>' />
+                </td>
+                <td>
+                    <asp:Label ID="NumSeatsLabel" runat="server" Text='<%# Eval("NumSeats") %>' />
+                </td>
+                <td>
+                    <asp:Label ID="DepartureTimeLabel" runat="server" Text='<%# new DateTime((long)Eval("DepartureTime.Ticks")).ToString("t") %>' />
+                </td>
+                <td>
+                    <asp:Label ID="JourneyLengthLabel" runat="server" Text='<%# new DateTime((long)Eval("JourneyLength.Ticks")).ToString("h:mm") %>' />
+                </td>
+                <td>
+                    <asp:CheckBox ID="RecurMonCheckBox" runat="server" Checked='<%# Eval("RecurMon") %>'
+                        Enabled="false" />
+                </td>
+                <td>
+                    <asp:CheckBox ID="RecurTueCheckBox" runat="server" Checked='<%# Eval("RecurTue") %>'
+                        Enabled="false" />
+                </td>
+                <td>
+                    <asp:CheckBox ID="RecurWedCheckBox" runat="server" Checked='<%# Eval("RecurWed") %>'
+                        Enabled="false" />
+                </td>
+                <td>
+                    <asp:CheckBox ID="RecurThuCheckBox" runat="server" Checked='<%# Eval("RecurThu") %>'
+                        Enabled="false" />
+                </td>
+                <td>
+                    <asp:CheckBox ID="RecurFriCheckBox" runat="server" Checked='<%# Eval("RecurFri") %>'
+                        Enabled="false" />
+                </td>
+                <td>
+                    <asp:CheckBox ID="RecurSatCheckBox" runat="server" Checked='<%# Eval("RecurSat") %>'
+                        Enabled="false" />
+                </td>
+                <td>
+                    <asp:CheckBox ID="RecurSunCheckBox" runat="server" Checked='<%# Eval("RecurSun") %>'
+                        Enabled="false" />
+                </td>
+                <td>
+                    <asp:Label ID="EndDateLabel" runat="server" Text='<%# Eval("EndDate", "{0:d}") %>' />
+                </td>
+            </tr>
+        </ItemTemplate>
+    </asp:ListView>
 </asp:Content>
