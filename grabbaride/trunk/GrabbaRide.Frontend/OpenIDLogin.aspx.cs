@@ -11,10 +11,9 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 using ExtremeSwank.OpenId;
-using ExtremeSwank.OpenId.Plugins.Extensions;
 
 
-
+/*
 
 namespace GrabbaRide.Frontend
 {
@@ -61,7 +60,7 @@ namespace GrabbaRide.Frontend
 
        
 
-        private OpenIDConsumer GetConsumer()
+        private void GetConsumer()
         {
             // Initialize a new OpenIDConsumer, reading arguments
             // from the current request, and using Session and
@@ -79,7 +78,7 @@ namespace GrabbaRide.Frontend
             openid.SetupNeeded += new EventHandler();
 
             return openid;
-           openid.
+           
         }
 
         protected void LogInButton_Click(object sender, EventArgs e)
@@ -96,3 +95,4 @@ namespace GrabbaRide.Frontend
        
     }
 }
+*/
