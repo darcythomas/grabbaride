@@ -82,9 +82,6 @@ function showAddress(address) {
           alert(address + " not found");
         } else {
           map.setCenter(point, 13);
-          var marker = new GMarker(point);
-          map.addOverlay(marker);
-          marker.openInfoWindowHtml(address);
         }
       }
     );
