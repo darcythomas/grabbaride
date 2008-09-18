@@ -76,6 +76,20 @@ namespace GrabbaRide.Database
         /// <param name="newUser"></param>
         public void AttachNewUser(User newUser)
         {
+            if (GetUserByID(newUser.UserID) != null)
+            {
+                throw new InvalidOperationException("A user with id '{0}' already exists!");
+            }
+            else if (GetUserByUsername(newUser.Username) != null)
+            {
+                throw new InvalidOperationException("A user with username '{0}' already exists!");
+            }
+            else if (GetUserByEmail(newUser.Email) != null)
+            {
+                throw new InvalidOperationException("A user with email '{0}' already exists!");
+            }
+
+
             this.Users.InsertOnSubmit(newUser);
 
             // set the CreationDate to now
@@ -223,8 +237,7 @@ namespace GrabbaRide.Database
         public void AttachOpenID(string openid_url, int user_id)
         {
             //check if url is valid
-            if (!Regex.IsMatch("(([a-zA-Z][0-9a-zA-Z+\\-\\.]*:)?/{0,2}[0-9a-zA-Z;"
-                + "/?:@&=+$\\.\\-_!~*'()%]+)?(#[0-9a-zA-Z;/?:@&=+$\\.\\-_!~*'()%]+)?", openid_url))
+            if (!Uri.IsWellFormedUriString(openid_url, UriKind.Absolute))
             {
                 //throw some sweet exception
                 throw new ArgumentException("Not a valid Url provided for OpenID");
