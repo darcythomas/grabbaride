@@ -45,10 +45,10 @@ namespace GrabbaRide.Database
         /// <returns></returns>
         public IEnumerable<Ride> getRidesAfterDate(DateTime afterDate)
         {
-
             var rides = from r in Rides
                         where r.StartDate >= afterDate
                         select r;
+
             return rides;
         }
 
@@ -63,6 +63,7 @@ namespace GrabbaRide.Database
             var rides = from r in Rides
                         where r.EndDate <= beforeDate
                         select r;
+
             return rides;
         }
 
@@ -98,7 +99,7 @@ namespace GrabbaRide.Database
         /// </summary>
         /// <param name="userID"></param>
         /// <returns></returns>
-        public IEnumerable<Ride> getUserRides(int userID)
+        public IEnumerable<Ride> GetRidesByUserID(int userID)
         {
             var rides = from r in Rides
                         where r.UserID == userID
@@ -155,12 +156,24 @@ namespace GrabbaRide.Database
 
         #region UserMappings
 
+        /// <summary>
+        /// Inserts a new user into the database.
+        /// </summary>
+        /// <param name="newUser"></param>
         public void AttachNewUser(User newUser)
         {
             this.Users.InsertOnSubmit(newUser);
+
+            // set the CreationDate to now
+            newUser.CreationDate = DateTime.Now;
+
             this.SubmitChanges();
         }
 
+        /// <summary>
+        /// Removes an existing user from the database.
+        /// </summary>
+        /// <param name="deleteUser"></param>
         public void DetachUser(User deleteUser)
         {
             this.Users.DeleteOnSubmit(deleteUser);
@@ -251,13 +264,13 @@ namespace GrabbaRide.Database
         }
 
         public User GetUser_ByOpenID(String url)
-        { 
-            int id= GetOpenIDsByURL(url).UserID;
-            var user= from u in this.Users
-                   where u.UserID == id
-                   select u;
+        {
+            int id = GetOpenIDsByURL(url).UserID;
+            var user = from u in this.Users
+                       where u.UserID == id
+                       select u;
             return user.Single();
-                   
+
         }
 
         public IEnumerable<User> GetUser_SortByLastActvityDate()
@@ -300,8 +313,8 @@ namespace GrabbaRide.Database
         public OpenID GetOpenIDByUser(int user_id)
         {
             var user = from u in this.OpenIDs
-                              where u.UserID == user_id
-                              select u;
+                       where u.UserID == user_id
+                       select u;
             return user.Single();
         }
 
@@ -314,7 +327,7 @@ namespace GrabbaRide.Database
         {
             //check if url is valid
             if (!Regex.IsMatch("(([a-zA-Z][0-9a-zA-Z+\\-\\.]*:)?/{0,2}[0-9a-zA-Z;"
-                + "/?:@&=+$\\.\\-_!~*'()%]+)?(#[0-9a-zA-Z;/?:@&=+$\\.\\-_!~*'()%]+)?",openid_url))
+                + "/?:@&=+$\\.\\-_!~*'()%]+)?(#[0-9a-zA-Z;/?:@&=+$\\.\\-_!~*'()%]+)?", openid_url))
             {
                 //throw some sweet exception
                 throw new ArgumentException("Not a valid Url provided for OpenID");
@@ -368,12 +381,12 @@ namespace GrabbaRide.Database
         public OpenID GetOpenIDsByURL(string openid_url)
         {
             var id = from oid in this.OpenIDs
-                                where oid.OpenIDUrl == openid_url
-                                select oid;
+                     where oid.OpenIDUrl == openid_url
+                     select oid;
             return id.Single();
         }
-        
-        
+
+
 
 
 

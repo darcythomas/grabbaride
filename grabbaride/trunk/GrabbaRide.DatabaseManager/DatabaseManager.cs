@@ -51,7 +51,7 @@ namespace GrabbaRide.DatabaseManager
             Console.Write("Inputting sample data...");
             try
             {
-                TestDataGeneration.InputSampleData();
+                dc.InsertSampleData();
                 Console.WriteLine(" success!");
             }
             catch (Exception ex)
