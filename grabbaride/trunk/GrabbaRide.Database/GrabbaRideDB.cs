@@ -157,7 +157,7 @@ namespace GrabbaRide.Database
 
         public void AttachNewUser(User newUser)
         {
-            this.Users.Attach(newUser);
+            this.Users.InsertOnSubmit(newUser);
             this.SubmitChanges();
         }
 
