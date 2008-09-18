@@ -11,21 +11,17 @@
             width: 214px;
         }
     </style>
-<script language="javascript" type="text/javascript">
-// <!CDATA[
 
-function OpenIDLoginButton_onclick() {
-
-}
-
-// ]]>
-</script>
 </head>
 <body>
     <form id="form1" runat="server">
     <img alt="OpenID" src="Images/OpenIDSmall.jpeg" 
-        style="width: 166px; height: 44px" /><input id="OpenIDLoginInput" 
-        type="text" /><div>
+        style="width: 166px; height: 44px" /><asp:TextBox 
+        ID="textBox_openIDidentity" runat="server" AutoPostBack="True"></asp:TextBox>
+    <asp:Button ID="Bttn_OpenIDLogin" runat="server" 
+        onclick="Bttn_OpenIDLogin_Click" Text="LogIn" />
+    <asp:CheckBox ID="CheckBox1" runat="server" />
+    <div>
     
     </div>
     </form>
