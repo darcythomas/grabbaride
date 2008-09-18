@@ -1,3 +1,32 @@
 <publishData>
-  <publishTarget publishUrl="ftp://seat-projects1.massey.ac.nz/carpoolgp2/" />
+  <publishTarget publishUrl="ftp://seat-projects1.massey.ac.nz/carpoolgp2/">
+    <file relUrl="Login.aspx" publishTime="09/09/2008 21:32:19" />
+    <file relUrl="bin/GrabbaRide.Frontend.pdb" publishTime="09/18/2008 10:24:04" />
+    <file relUrl="Images/header.jpg" publishTime="09/09/2008 19:31:08" />
+    <file relUrl="Web.config" publishTime="09/16/2008 21:00:50" />
+    <file relUrl="User.aspx" publishTime="09/09/2008 21:32:18" />
+    <file relUrl="Terms.aspx" publishTime="09/09/2008 21:32:19" />
+    <file relUrl="bin/GrabbaRide.UserManagement.pdb" publishTime="09/18/2008 10:24:02" />
+    <file relUrl="Privacy.aspx" publishTime="09/09/2008 21:32:19" />
+    <file relUrl="bin/ExtremeSwank.OpenID.dll" publishTime="09/17/2008 14:11:06" />
+    <file relUrl="Images/logo.jpg" publishTime="09/09/2008 19:31:07" />
+    <file relUrl="bin/GrabbaRide.Database.dll" publishTime="09/18/2008 10:24:02" />
+    <file relUrl="bin/DotNetOpenId.dll" publishTime="09/09/2008 23:44:03" />
+    <file relUrl="Global.asax" publishTime="09/09/2008 19:31:09" />
+    <file relUrl="About.aspx" publishTime="09/09/2008 21:32:36" />
+    <file relUrl="Images/OpenIDSmall.jpeg" publishTime="09/17/2008 14:11:07" />
+    <file relUrl="bin/GrabbaRide.UserManagement.dll" publishTime="09/18/2008 10:24:03" />
+    <file relUrl="CreateRide.aspx" publishTime="09/16/2008 20:45:29" />
+    <file relUrl="OpenIDLibrary/ExtremeSwank.OpenID.dll" publishTime="09/17/2008 14:11:06" />
+    <file relUrl="GoogleMaps.js" publishTime="09/17/2008 14:11:07" />
+    <file relUrl="Default.aspx" publishTime="09/16/2008 22:30:53" />
+    <file relUrl="Global.css" publishTime="09/16/2008 22:28:48" />
+    <file relUrl="Search.aspx" publishTime="09/17/2008 18:31:57" />
+    <file relUrl="OpenIDLogin.aspx" publishTime="09/17/2008 14:11:07" />
+    <file relUrl="Register.aspx" publishTime="09/16/2008 21:52:51" />
+    <file relUrl="bin/GrabbaRide.Frontend.dll" publishTime="09/18/2008 10:24:05" />
+    <file relUrl="MasterPage.master" publishTime="09/16/2008 13:54:44" />
+    <file relUrl="bin/GrabbaRide.Database.pdb" publishTime="09/18/2008 10:24:02" />
+    <file relUrl="bin/Images/header.jpg" publishTime="09/09/2008 19:31:08" />
+  </publishTarget>
 </publishData>
