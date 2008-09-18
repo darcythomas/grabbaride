@@ -20,8 +20,15 @@
     </div>
     <br />
     <div id="otherinfo" style="float: left; width: 347px;">
-        <asp:ScriptManager ID="ScriptManager1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering ="true">
         </asp:ScriptManager>
+        <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+        <ContentTemplate>
+        <asp:Label ID="Label1" runat="server" Text="Label" Visible="False"></asp:Label>
+        <br />
+        </ContentTemplate>
+        </asp:UpdatePanel>
+        
         Create Ride:<br />
         <br />
         Start Date:<asp:UpdatePanel ID="UpdatePanel1" runat="server">
@@ -99,12 +106,9 @@
         <asp:CheckBox ID="chksun" runat="server" Text="Sunday" />
         <br />
         <br />
+        <asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="Button" />
         <br />
         <asp:Button ID="btnCreate" runat="server" OnClick="btnCreate_Click" Text="Create Ride" />
-        <asp:LinqDataSource ID="CreateRideSource" runat="server" ContextTypeName="GrabbaRide.Database.GrabbaRideDBDataContext"
-            Select="new (StartDate, CreationDate, NumSeats, EndDate, RecurMon, RecurTue, RecurWed, RecurThu, RecurFri, RecurSat, RecurSun, LocationFromLat, LocationFromLong, LocationToLat, LocationToLong, User)"
-            TableName="Rides" EnableInsert="True">
-        </asp:LinqDataSource>
         <br />
         <asp:HiddenField ID="hfend" runat="server" />
         <asp:HiddenField ID="hfstart" runat="server" />
