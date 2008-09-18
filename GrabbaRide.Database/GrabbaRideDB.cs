@@ -247,38 +247,19 @@ namespace GrabbaRide.Database
                    select u;
         }
 
-        public IEnumerable<User> GetUser_SortByUserName()
+        /// <summary>
+        /// Finds a user by their OpenID Url
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        public User GetUserByOpenIDUrl(string url)
         {
-            return from u in this.Users
-                   where u.ApplicationName == APPLICATION_NAME
-                   orderby u.Username
-                   select u;
-        }
-
-        public IEnumerable<User> GetUser_SortByOccupation()
-        {
-            return from u in this.Users
-                   where u.ApplicationName == APPLICATION_NAME
-                   orderby u.Occupation
-                   select u;
-        }
-
-        public User GetUser_ByOpenID(String url)
-        {
-            int id = GetOpenIDsByURL(url).UserID;
+            int id = GetOpenIDByUrl(url).UserID;
             var user = from u in this.Users
                        where u.UserID == id
                        select u;
             return user.Single();
 
-        }
-
-        public IEnumerable<User> GetUser_SortByLastActvityDate()
-        {
-            return from u in this.Users
-                   where u.ApplicationName == APPLICATION_NAME
-                   orderby u.LastActvityDate
-                   select u;
         }
 
         #endregion
@@ -290,19 +271,20 @@ namespace GrabbaRide.Database
         /// </summary>
         /// <param name="?">The url to search for</param>
         /// <returns>The unique user id mapped to the url </returns>
-        public int GetUserId(string openid_url)
+        public int GetUserIDByOpenIDUrl(string openIDUrl)
         {
-            var query = from url in this.OpenIDs
-                        where url.OpenIDUrl == openid_url
-                        select url.UserID;
-
-            return query.Single();
+            return GetOpenIDByUrl(openIDUrl).UserID;
         }
 
-
-        public Boolean IsOpenIDRegistered(string url)
+        /// <summary>
+        /// Checks whether a given OpenID Url exists in our database.
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        public bool IsOpenIDRegistered(string url)
         {
-            return (GetOpenIDsByURL(url) != null);
+            OpenID openID = GetOpenIDByUrl(url);
+            return openID != null;
         }
 
         /// <summary>
@@ -310,12 +292,13 @@ namespace GrabbaRide.Database
         /// </summary>
         /// <param name="user_id"></param>
         /// <returns></returns>
-        public OpenID GetOpenIDByUser(int user_id)
+        public IEnumerable<OpenID> GetOpenIDsByUserID(int userID)
         {
-            var user = from u in this.OpenIDs
-                       where u.UserID == user_id
-                       select u;
-            return user.Single();
+            var query = from o in OpenIDs
+                        where o.UserID == userID
+                        select o;
+
+            return query.AsEnumerable();
         }
 
         /// <summary>
@@ -340,7 +323,6 @@ namespace GrabbaRide.Database
             }
         }
 
-
         /// <summary>
         /// delete from user_openids where openid_url = openid_url and user_id = user_id 
         /// </summary>
@@ -349,48 +331,34 @@ namespace GrabbaRide.Database
         public void DetachOpenID(String openid_url, int user_id)
         {
             // not sure yet why userID is required for this ... just leave please
-            this.OpenIDs.DeleteOnSubmit(this.GetOpenIDsByURL(openid_url));
+            this.OpenIDs.DeleteOnSubmit(this.GetOpenIDByUrl(openid_url));
             this.SubmitChanges();
         }
-
 
         /// <summary>
         /// delete from user_openids where user_id = user_id
         /// </summary>
         /// <param name="user_id"></param>
-        public void DetachOpenIDsByUser(int user_id)
+        public void DetachOpenIDsByUser(int userID)
         {
-            this.OpenIDs.DeleteOnSubmit(this.GetOpenIDsByUser(user_id));
+            this.OpenIDs.DeleteAllOnSubmit(this.GetOpenIDsByUserID(userID));
             this.SubmitChanges();
         }
 
-        private OpenID GetOpenIDsByUser(int user_id)
-        {
-            var id = from oid in this.OpenIDs
-                     where oid.UserID == user_id
-                     select oid;
-            return id.Single();
-        }
-
-
         /// <summary>
-        /// 
+        /// Finds an OpenID by its Url
         /// </summary>
         /// <param name="openid_url"></param>
         /// <returns></returns>
-        public OpenID GetOpenIDsByURL(string openid_url)
+        public OpenID GetOpenIDByUrl(string url)
         {
-            var id = from oid in this.OpenIDs
-                     where oid.OpenIDUrl == openid_url
-                     select oid;
-            return id.Single();
+            var query = from o in OpenIDs
+                        where o.OpenIDUrl == url
+                        select o;
+
+            if (query.Count() == 0) { return null; }
+            else { return query.Single(); }
         }
-
-
-
-
-
-
 
         #endregion
     }

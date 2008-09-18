@@ -54,7 +54,7 @@ namespace GrabbaRide.UserManagement
 
         private Boolean IsUserAlreadySignedIn()
         {
-            return this.context.GetUser_ByOpenID(OpenIDURL).IsSignedIn;
+            return this.context.GetUserByOpenIDUrl(OpenIDURL).IsSignedIn;
         }
 
         private void QuerryProviderToRegister()

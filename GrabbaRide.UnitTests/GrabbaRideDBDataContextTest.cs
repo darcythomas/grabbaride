@@ -122,7 +122,7 @@ namespace GrabbaRide.UnitTests
         /// A test for GetUserByUsername
         /// </summary>
         [TestMethod()]
-        public void GetUserByUsernameTest1()
+        public void GetUserByUsernameTestValid()
         {
             GrabbaRideDBDataContext target = NewTestDataContext();
 
@@ -144,7 +144,7 @@ namespace GrabbaRide.UnitTests
         /// A test for GetUserByUsername when the username doesn't exist
         /// </summary>
         [TestMethod()]
-        public void GetUserByUsernameTest2()
+        public void GetUserByUsernameTestNull()
         {
             GrabbaRideDBDataContext target = NewTestDataContext();
 
@@ -158,7 +158,7 @@ namespace GrabbaRide.UnitTests
         ///A test for GetUserByID
         ///</summary>
         [TestMethod()]
-        public void GetUserByIDTest1()
+        public void GetUserByIDTestValid()
         {
             GrabbaRideDBDataContext target = NewTestDataContext();
 
@@ -180,7 +180,7 @@ namespace GrabbaRide.UnitTests
         ///A test for GetUserByID where the id doesn't exist
         ///</summary>
         [TestMethod()]
-        public void GetUserByIDTest2()
+        public void GetUserByIDTestNull()
         {
             GrabbaRideDBDataContext target = NewTestDataContext();
 
@@ -195,7 +195,7 @@ namespace GrabbaRide.UnitTests
         ///A test for GetUserByEmail
         ///</summary>
         [TestMethod()]
-        public void GetUserByEmailTest1()
+        public void GetUserByEmailTestValid()
         {
             GrabbaRideDBDataContext target = NewTestDataContext();
 
@@ -217,7 +217,7 @@ namespace GrabbaRide.UnitTests
         ///A test for GetUserByEmail
         ///</summary>
         [TestMethod()]
-        public void GetUserByEmailTest2()
+        public void GetUserByEmailTestNull()
         {
             GrabbaRideDBDataContext target = NewTestDataContext();
 
@@ -226,63 +226,6 @@ namespace GrabbaRide.UnitTests
 
             // check that the user can not be found
             Assert.IsNull(foundUser);
-        }
-
-        /// <summary>
-        ///A test for GetUser_SortByUserName
-        ///</summary>
-        [TestMethod()]
-        public void GetUser_SortByUserNameTest()
-        {
-            GrabbaRideDBDataContext target = new GrabbaRideDBDataContext(); // TODO: Initialize to an appropriate value
-            IEnumerable<User> expected = null; // TODO: Initialize to an appropriate value
-            IEnumerable<User> actual;
-            actual = target.GetUser_SortByUserName();
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
-
-        /// <summary>
-        ///A test for GetUser_SortByOccupation
-        ///</summary>
-        [TestMethod()]
-        public void GetUser_SortByOccupationTest()
-        {
-            GrabbaRideDBDataContext target = new GrabbaRideDBDataContext(); // TODO: Initialize to an appropriate value
-            IEnumerable<User> expected = null; // TODO: Initialize to an appropriate value
-            IEnumerable<User> actual;
-            actual = target.GetUser_SortByOccupation();
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
-
-        /// <summary>
-        ///A test for GetUser_SortByLastActvityDate
-        ///</summary>
-        [TestMethod()]
-        public void GetUser_SortByLastActvityDateTest()
-        {
-            GrabbaRideDBDataContext target = new GrabbaRideDBDataContext(); // TODO: Initialize to an appropriate value
-            IEnumerable<User> expected = null; // TODO: Initialize to an appropriate value
-            IEnumerable<User> actual;
-            actual = target.GetUser_SortByLastActvityDate();
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
-
-        /// <summary>
-        ///A test for GetUser_ByOpenID
-        ///</summary>
-        [TestMethod()]
-        public void GetUser_ByOpenIDTest()
-        {
-            GrabbaRideDBDataContext target = new GrabbaRideDBDataContext(); // TODO: Initialize to an appropriate value
-            string url = string.Empty; // TODO: Initialize to an appropriate value
-            User expected = null; // TODO: Initialize to an appropriate value
-            User actual;
-            actual = target.GetUser_ByOpenID(url);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
         }
 
         /// <summary>
@@ -342,52 +285,6 @@ namespace GrabbaRide.UnitTests
             Ride expected = null; // TODO: Initialize to an appropriate value
             Ride actual;
             actual = target.GetRideByID(rideID);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
-
-        /// <summary>
-        ///A test for GetOpenIDsByUser
-        ///</summary>
-        [TestMethod()]
-        [DeploymentItem("GrabbaRide.Database.dll")]
-        public void GetOpenIDsByUserTest()
-        {
-            GrabbaRideDBDataContext_Accessor target = new GrabbaRideDBDataContext_Accessor(); // TODO: Initialize to an appropriate value
-            int user_id = 0; // TODO: Initialize to an appropriate value
-            OpenID expected = null; // TODO: Initialize to an appropriate value
-            OpenID actual;
-            actual = target.GetOpenIDsByUser(user_id);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
-
-        /// <summary>
-        ///A test for GetOpenIDsByURL
-        ///</summary>
-        [TestMethod()]
-        public void GetOpenIDsByURLTest()
-        {
-            GrabbaRideDBDataContext target = new GrabbaRideDBDataContext(); // TODO: Initialize to an appropriate value
-            string openid_url = string.Empty; // TODO: Initialize to an appropriate value
-            OpenID expected = null; // TODO: Initialize to an appropriate value
-            OpenID actual;
-            actual = target.GetOpenIDsByURL(openid_url);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
-
-        /// <summary>
-        ///A test for GetOpenIDByUser
-        ///</summary>
-        [TestMethod()]
-        public void GetOpenIDByUserTest()
-        {
-            GrabbaRideDBDataContext target = new GrabbaRideDBDataContext(); // TODO: Initialize to an appropriate value
-            int user_id = 0; // TODO: Initialize to an appropriate value
-            OpenID expected = null; // TODO: Initialize to an appropriate value
-            OpenID actual;
-            actual = target.GetOpenIDByUser(user_id);
             Assert.AreEqual(expected, actual);
             Assert.Inconclusive("Verify the correctness of this test method.");
         }
