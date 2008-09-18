@@ -1,10 +1,10 @@
-﻿using GrabbaRide.Database;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Data.Linq.Mapping;
-using System.Data;
+﻿using System;
 using System.Collections.Generic;
-using System;
+using System.Data;
 using System.Data.Linq;
+using System.Data.Linq.Mapping;
+using GrabbaRide.Database;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace GrabbaRide.UnitTests
 {
@@ -15,17 +15,11 @@ namespace GrabbaRide.UnitTests
     [TestClass()]
     public class GrabbaRideDBDataContextTest
     {
-        private TestContext testContextInstance;
-
         /// <summary>
         ///Gets or sets the test context which provides
         ///information about and functionality for the current test run.
         ///</summary>
-        public TestContext TestContext
-        {
-            get { return testContextInstance; }
-            set { testContextInstance = value; }
-        }
+        public TestContext TestContext { get; set; }
 
         /// <summary>
         ///A test for GrabbaRideDBDataContext Constructor
@@ -37,7 +31,7 @@ namespace GrabbaRide.UnitTests
             if (target.DatabaseExists())
             {
                 Assert.Inconclusive("Cannot test database creation if database already exists!");
-               
+
             }
             else
             {

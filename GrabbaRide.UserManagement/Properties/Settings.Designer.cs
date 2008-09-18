@@ -73,7 +73,7 @@ namespace GrabbaRide.UserManagement.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(".+")]
+        [global::System.Configuration.DefaultSettingValueAttribute("^(?=.{8,})(?=.*\\d)(?=.*[a-zA-Z]).*$")]
         public string PasswordStrengthRegularExpression {
             get {
                 return ((string)(this["PasswordStrengthRegularExpression"]));

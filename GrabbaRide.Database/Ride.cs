@@ -4,8 +4,6 @@ namespace GrabbaRide.Database
 {
     public partial class Ride
     {
-        public double SearchRank { get; set; }
-
         public TimeSpan DepartureTime
         {
             get { return new TimeSpan(this.DepartureTimeSrc); }

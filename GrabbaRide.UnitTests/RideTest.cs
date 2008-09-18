@@ -1,6 +1,6 @@
-﻿using GrabbaRide.Database;
+﻿using System;
+using GrabbaRide.Database;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 
 namespace GrabbaRide.UnitTests
 {
@@ -11,23 +11,11 @@ namespace GrabbaRide.UnitTests
     [TestClass()]
     public class RideTest
     {
-        private TestContext testContextInstance;
-
         /// <summary>
         ///Gets or sets the test context which provides
         ///information about and functionality for the current test run.
         ///</summary>
-        public TestContext TestContext
-        {
-            get
-            {
-                return testContextInstance;
-            }
-            set
-            {
-                testContextInstance = value;
-            }
-        }
+        public TestContext TestContext { get; set; }
 
         #region Additional test attributes
         // 
@@ -58,7 +46,6 @@ namespace GrabbaRide.UnitTests
         //}
         //
         #endregion
-
 
         /// <summary>
         /// A test for JourneyLength
@@ -130,6 +117,25 @@ namespace GrabbaRide.UnitTests
 
             // expect a total distance of 15
             Assert.AreEqual(15, target.JourneyDistance);
+        }
+
+        /// <summary>
+        ///A test for Ride Constructor
+        ///</summary>
+        [TestMethod()]
+        public void RideConstructorTest()
+        {
+            double locFromLat = -40.3597654232865;
+            double locFromLong = 175.6179141998291;
+            double locToLat = -40.373694696239774;
+            double locToLong = 175.5977439880371;
+
+            Ride target = new Ride(locFromLat, locFromLong, locToLat, locToLong);
+
+            Assert.AreEqual(locFromLat, target.LocationFromLat);
+            Assert.AreEqual(locFromLong, target.LocationFromLong);
+            Assert.AreEqual(locToLat, target.LocationToLat);
+            Assert.AreEqual(locToLong, target.LocationToLong);
         }
     }
 }
