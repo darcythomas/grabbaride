@@ -24,6 +24,29 @@ namespace GrabbaRide.UnitTests
         public TestContext TestContext { get; set; }
 
         /// <summary>
+        /// Cleans up between each test in this class.
+        /// </summary>
+        [TestCleanupAttribute()]
+        public void TestCleanup()
+        {
+            GrabbaRideDBDataContext dc = NewTestDataContext();
+            
+            // check for test ride
+            Ride testRide = NewTestRide();
+            if (dc.GetRideByID(testRide.RideID) != null)
+            {
+                dc.DetachRide(testRide);
+            }
+
+            // check for test user
+            User testUser = NewTestUser();
+            if (dc.GetUserByID(testUser.UserID) != null)
+            {
+                dc.DetachUser(testUser);
+            }
+        }
+
+        /// <summary>
         /// Creates a new GrabbaRideDBDataContext, connected to a test database.
         /// </summary>
         /// <returns>A test GrabbaRideDBDataContext.</returns>
@@ -39,7 +62,7 @@ namespace GrabbaRide.UnitTests
         public User NewTestUser()
         {
             User u = new User();
-            u.Username = "sEri0uslyR4nd0mUs3rn4me";
+            u.Username = "sEri0uslyR4nd0m";
             u.Email = "sEri0uslyR4nd0m@rand0mma1l.com";
             u.Password = String.Empty;
             u.ApplicationName = "GrabbaRide";
@@ -231,8 +254,13 @@ namespace GrabbaRide.UnitTests
             Ride notExistRide = target.GetRideByID(45834903);
             Assert.IsNull(notExistRide);
 
+            // add a new user
+            User newUser = NewTestUser();
+            target.AttachNewUser(newUser);
+
             // add a new ride
-            Ride newRide = new Ride();
+            Ride newRide = NewTestRide();
+            newRide.User = newUser;
             target.AttachRide(newRide);
 
             // check that the ride can be found
@@ -329,32 +357,10 @@ namespace GrabbaRide.UnitTests
         }
 
         /// <summary>
-        ///A test for DetachUser
+        ///A test for AttachRide and DetachRide
         ///</summary>
         [TestMethod()]
-        public void DetachUserTest()
-        {
-            GrabbaRideDBDataContext target = NewTestDataContext();
-
-            // add a new user
-            User deleteUser = NewTestUser();
-            target.AttachNewUser(deleteUser);
-
-            // check that they exist
-            Assert.IsNotNull(target.GetUserByID(deleteUser.UserID));
-
-            // delete the user
-            target.DetachUser(deleteUser);
-
-            // check that they do not exist
-            Assert.IsNull(target.GetUserByID(deleteUser.UserID));
-        }
-
-        /// <summary>
-        ///A test for DetachRide
-        ///</summary>
-        [TestMethod()]
-        public void DetachRideTest()
+        public void AttachDetachRideTest()
         {
             GrabbaRideDBDataContext target = NewTestDataContext();
 
@@ -378,44 +384,10 @@ namespace GrabbaRide.UnitTests
         }
 
         /// <summary>
-        ///A test for DetachOpenID
+        ///A test for AttachOpenID and DetachOpenID
         ///</summary>
         [TestMethod()]
-        public void DetachOpenIDTest()
-        {
-            GrabbaRideDBDataContext target = NewTestDataContext(); // TODO: Initialize to an appropriate value
-            string openid_url = string.Empty; // TODO: Initialize to an appropriate value
-            int user_id = 0; // TODO: Initialize to an appropriate value
-            target.DetachOpenID(openid_url, user_id);
-            Assert.Inconclusive("A method that does not return a value cannot be verified.");
-        }
-
-        /// <summary>
-        ///A test for AttachRide
-        ///</summary>
-        [TestMethod()]
-        public void AttachRideTest()
-        {
-            GrabbaRideDBDataContext target = NewTestDataContext();
-
-            // create a user
-            User newUser = NewTestUser();
-            target.AttachNewUser(newUser);
-
-            // create a new ride
-            Ride newRide = NewTestRide();
-            newRide.User = newUser;
-            target.AttachRide(newRide);
-
-            // check that it exists
-            Assert.IsNotNull(target.GetRideByID(newRide.RideID));
-        }
-
-        /// <summary>
-        ///A test for AttachOpenID
-        ///</summary>
-        [TestMethod()]
-        public void AttachOpenIDTest()
+        public void AttachDetachOpenIDTest()
         {
             GrabbaRideDBDataContext target = NewTestDataContext(); // TODO: Initialize to an appropriate value
             string openid_url = string.Empty; // TODO: Initialize to an appropriate value
@@ -425,22 +397,25 @@ namespace GrabbaRide.UnitTests
         }
 
         /// <summary>
-        ///A test for AttachNewUser
+        ///A test for AttachNewUser and DetachUser
         ///</summary>
         [TestMethod()]
-        public void AttachNewUserTest()
+        public void AttachDetachNewUserTest()
         {
             GrabbaRideDBDataContext target = NewTestDataContext();
-            User newUser = NewTestUser();
 
-            // add the user to the db
-            target.AttachNewUser(newUser);
+            // add a new user
+            User deleteUser = NewTestUser();
+            target.AttachNewUser(deleteUser);
 
-            // check that the user can be found in the db
-            Assert.IsNotNull(target.GetUserByID(newUser.UserID));
+            // check that they exist
+            Assert.IsNotNull(target.GetUserByID(deleteUser.UserID));
 
-            // remove the user from db
-            target.DetachUser(newUser);
+            // delete the user
+            target.DetachUser(deleteUser);
+
+            // check that they do not exist
+            Assert.IsNull(target.GetUserByID(deleteUser.UserID));
         }
     }
 }

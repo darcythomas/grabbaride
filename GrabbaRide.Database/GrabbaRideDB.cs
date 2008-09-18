@@ -232,7 +232,7 @@ namespace GrabbaRide.Database
             else
             {
                 OpenID id = new OpenID(openid_url, user_id);
-                this.OpenIDs.Attach(id);
+                this.OpenIDs.InsertOnSubmit(id);
                 this.SubmitChanges();
             }
         }
