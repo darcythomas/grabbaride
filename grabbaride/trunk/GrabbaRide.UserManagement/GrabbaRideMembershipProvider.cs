@@ -10,6 +10,29 @@ namespace GrabbaRide.UserManagement
 {
     public sealed class GrabbaRideMembershipProvider : MembershipProvider
     {
+        /// <summary>
+        /// Converts a GrabbaRideDB User into a MembershipUser
+        /// </summary>
+        /// <returns></returns>
+        public MembershipUser GetMembershipUser(User databaseUser)
+        {
+            MembershipUser user = new MembershipUser("GrabbaRideMembershipProvider",
+                databaseUser.Username,
+                databaseUser.UserID,
+                databaseUser.Email,
+                databaseUser.PasswordQuestion,
+                databaseUser.Comment,
+                databaseUser.IsApproved,
+                databaseUser.IsLockedOut,
+                databaseUser.CreationDate,
+                databaseUser.LastLoginDate.GetValueOrDefault(),
+                databaseUser.LastActvityDate.GetValueOrDefault(),
+                databaseUser.LastPasswordChangedDate.GetValueOrDefault(),
+                databaseUser.LastLockoutDate.GetValueOrDefault());
+
+            return user;
+        }
+
         public override void Initialize(string name, NameValueCollection config)
         {
             if (String.IsNullOrEmpty(name))
@@ -122,7 +145,7 @@ namespace GrabbaRide.UserManagement
 
             // return the new user
             status = MembershipCreateStatus.Success;
-            return u.GetMembershipUser();
+            return GetMembershipUser(u);
         }
 
         public override bool DeleteUser(string username, bool deleteAllRelatedData)
@@ -167,7 +190,7 @@ namespace GrabbaRide.UserManagement
 
             foreach (User u in users.Skip(pageIndex * pageSize).Take(pageSize))
             {
-                result.Add(u.GetMembershipUser());
+                result.Add(GetMembershipUser(u));
             }
 
             return result;
@@ -188,7 +211,7 @@ namespace GrabbaRide.UserManagement
 
             foreach (User u in users.Skip(pageIndex * pageSize).Take(pageSize))
             {
-                result.Add(u.GetMembershipUser());
+                result.Add(GetMembershipUser(u));
             }
 
             return result;
@@ -208,7 +231,7 @@ namespace GrabbaRide.UserManagement
 
             foreach (User u in users.Skip(pageIndex * pageSize).Take(pageSize))
             {
-                result.Add(u.GetMembershipUser());
+                result.Add(GetMembershipUser(u));
             }
 
             return result;
@@ -236,7 +259,7 @@ namespace GrabbaRide.UserManagement
                 dataContext.SubmitChanges();
             }
 
-            return u.GetMembershipUser();
+            return GetMembershipUser(u);
         }
 
         public override MembershipUser GetUser(object providerUserKey, bool userIsOnline)
@@ -251,7 +274,7 @@ namespace GrabbaRide.UserManagement
                 dataContext.SubmitChanges();
             }
 
-            return u.GetMembershipUser();
+            return GetMembershipUser(u);
         }
 
         public override string GetUserNameByEmail(string email)

@@ -30,20 +30,5 @@ namespace GrabbaRide.Database
 
             return password;
         }
-
-        /// <summary>
-        /// Gets a MembershipUser object corresponding to this User.
-        /// </summary>
-        /// <returns></returns>
-        public MembershipUser GetMembershipUser()
-        {
-            MembershipUser user = new MembershipUser("GrabbaRideMembershipProvider", this.Username,
-                this.UserID, this.Email, this.PasswordQuestion, this.Comment, this.IsApproved,
-                this.IsLockedOut, this.CreationDate, this.LastLoginDate.GetValueOrDefault(),
-                this.LastActvityDate.GetValueOrDefault(), this.LastPasswordChangedDate.GetValueOrDefault(),
-                this.LastLockoutDate.GetValueOrDefault());
-
-            return user;
-        }
     }
 }

@@ -41,23 +41,6 @@ namespace GrabbaRide.UnitTests
         }
 
         /// <summary>
-        ///A test for GetMembershipUser
-        ///</summary>
-        [TestMethod()]
-        public void GetMembershipUserTest()
-        {
-            // fill in details for a fake target user
-            User targetUser = new User();
-            targetUser.Username = "sEri0uslyR4nd0mUs3rn4me";
-
-            // convert to a MembershipUser
-            MembershipUser membershipUser = targetUser.GetMembershipUser();
-
-            // check that the details have been transferred to the MembershipUser
-            Assert.AreEqual(targetUser.Username, membershipUser.UserName);
-        }
-
-        /// <summary>
         ///A test for User Constructor
         ///</summary>
         [TestMethod()]
