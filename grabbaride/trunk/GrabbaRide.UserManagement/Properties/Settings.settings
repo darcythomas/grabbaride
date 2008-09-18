@@ -1,5 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SystemManagement.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="GrabbaRide.UserManagement.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
     <Setting Name="MaxInvalidPasswordAttempts" Type="System.Int32" Scope="User">
@@ -15,7 +15,7 @@
       <Value Profile="(Default)">15</Value>
     </Setting>
     <Setting Name="PasswordStrengthRegularExpression" Type="System.String" Scope="User">
-      <Value Profile="(Default)">.+</Value>
+      <Value Profile="(Default)">^(?=.{8,})(?=.*\d)(?=.*[a-zA-Z]).*$</Value>
     </Setting>
   </Settings>
 </SettingsFile>

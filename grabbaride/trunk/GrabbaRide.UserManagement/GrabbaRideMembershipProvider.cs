@@ -32,8 +32,6 @@ namespace GrabbaRide.UserManagement
             base.Initialize(name, config);
         }
 
-        #region Implementation of MembershipProvider Methods
-
         public override string ApplicationName
         {
             get { return "GrabbaRide"; }
@@ -120,7 +118,7 @@ namespace GrabbaRide.UserManagement
 
             // add the user to the database
             dataContext.AttachNewUser(u);
-           
+
 
             // return the new user
             status = MembershipCreateStatus.Success;
@@ -407,7 +405,5 @@ namespace GrabbaRide.UserManagement
                 return false;
             }
         }
-
-        #endregion
     }
 }

@@ -1,12 +1,11 @@
-﻿using GrabbaRide.UserManagement;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Web.Security;
+﻿using System;
 using System.Collections.Specialized;
+using System.Web.Security;
+using GrabbaRide.UserManagement;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace GrabbaRide.UnitTests
 {
-    
-    
     /// <summary>
     ///This is a test class for GrabbaRideMembershipProviderTest and is intended
     ///to contain all GrabbaRideMembershipProviderTest Unit Tests
@@ -14,25 +13,11 @@ namespace GrabbaRide.UnitTests
     [TestClass()]
     public class GrabbaRideMembershipProviderTest
     {
-
-
-        private TestContext testContextInstance;
-
         /// <summary>
         ///Gets or sets the test context which provides
         ///information about and functionality for the current test run.
         ///</summary>
-        public TestContext TestContext
-        {
-            get
-            {
-                return testContextInstance;
-            }
-            set
-            {
-                testContextInstance = value;
-            }
-        }
+        public TestContext TestContext { get; set; }
 
         #region Additional test attributes
         // 
@@ -64,17 +49,14 @@ namespace GrabbaRide.UnitTests
         //
         #endregion
 
-
         /// <summary>
         ///A test for RequiresUniqueEmail
         ///</summary>
         [TestMethod()]
         public void RequiresUniqueEmailTest()
         {
-            GrabbaRideMembershipProvider target = new GrabbaRideMembershipProvider(); // TODO: Initialize to an appropriate value
-            bool actual;
-            actual = target.RequiresUniqueEmail;
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            GrabbaRideMembershipProvider target = new GrabbaRideMembershipProvider();
+            Assert.IsTrue(target.RequiresUniqueEmail);
         }
 
         /// <summary>
@@ -83,10 +65,8 @@ namespace GrabbaRide.UnitTests
         [TestMethod()]
         public void RequiresQuestionAndAnswerTest()
         {
-            GrabbaRideMembershipProvider target = new GrabbaRideMembershipProvider(); // TODO: Initialize to an appropriate value
-            bool actual;
-            actual = target.RequiresQuestionAndAnswer;
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            GrabbaRideMembershipProvider target = new GrabbaRideMembershipProvider();
+            Assert.IsTrue(target.RequiresQuestionAndAnswer);
         }
 
         /// <summary>
@@ -131,10 +111,8 @@ namespace GrabbaRide.UnitTests
         [TestMethod()]
         public void MinRequiredPasswordLengthTest()
         {
-            GrabbaRideMembershipProvider target = new GrabbaRideMembershipProvider(); // TODO: Initialize to an appropriate value
-            int actual;
-            actual = target.MinRequiredPasswordLength;
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            GrabbaRideMembershipProvider target = new GrabbaRideMembershipProvider();
+            Assert.IsTrue(target.MinRequiredPasswordLength >= 6);
         }
 
         /// <summary>
@@ -143,10 +121,8 @@ namespace GrabbaRide.UnitTests
         [TestMethod()]
         public void MinRequiredNonAlphanumericCharactersTest()
         {
-            GrabbaRideMembershipProvider target = new GrabbaRideMembershipProvider(); // TODO: Initialize to an appropriate value
-            int actual;
-            actual = target.MinRequiredNonAlphanumericCharacters;
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            GrabbaRideMembershipProvider target = new GrabbaRideMembershipProvider();
+            Assert.AreEqual(0, target.MinRequiredNonAlphanumericCharacters);
         }
 
         /// <summary>
@@ -191,13 +167,17 @@ namespace GrabbaRide.UnitTests
         [TestMethod()]
         public void ApplicationNameTest()
         {
-            GrabbaRideMembershipProvider target = new GrabbaRideMembershipProvider(); // TODO: Initialize to an appropriate value
-            string expected = string.Empty; // TODO: Initialize to an appropriate value
-            string actual;
-            target.ApplicationName = expected;
-            actual = target.ApplicationName;
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            GrabbaRideMembershipProvider target = new GrabbaRideMembershipProvider();
+            string expected = "GrabbaRide";
+
+            try
+            {
+                target.ApplicationName = "TestApplication";
+            }
+            catch (NotSupportedException) { }
+
+            // ApplicationName shouldn't have changed
+            Assert.AreEqual(expected, target.ApplicationName);
         }
 
         /// <summary>
