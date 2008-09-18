@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DotNetOpenId, Version=2.4.2.8248, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\GrabbaRide.UserManagement\lib\DotNetOpenId.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -52,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GrabbaRideDBDataContextTest.cs" />
+    <Compile Include="GrabbaRideMembershipProviderTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RideTest.cs" />
   </ItemGroup>
@@ -59,6 +64,10 @@
     <ProjectReference Include="..\GrabbaRide.Database\GrabbaRide.Database.csproj">
       <Project>{2C76E154-F418-4376-9101-BC61434623E7}</Project>
       <Name>GrabbaRide.Database</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GrabbaRide.UserManagement\GrabbaRide.UserManagement.csproj">
+      <Project>{E76DCFAC-D89A-4402-A1DB-0D921358C351}</Project>
+      <Name>GrabbaRide.UserManagement</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

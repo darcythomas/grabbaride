@@ -9,6 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrabbaRide.UnitTests", "Gra
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CFA4447C-017A-4DDF-8FEF-50F764881E45}"
 	ProjectSection(SolutionItems) = preProject
+		GrabbaRide.vsmdi = GrabbaRide.vsmdi
 		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
 	EndProjectSection
 EndProject
@@ -19,6 +20,9 @@ EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "GrabbaRideSetup", "GrabbaRideSetup\GrabbaRideSetup.vdproj", "{65363AE4-DA5B-4701-9316-2F0AE9CEE359}"
 EndProject
 Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = GrabbaRide.vsmdi
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
