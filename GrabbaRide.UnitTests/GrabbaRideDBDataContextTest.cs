@@ -5,6 +5,8 @@ using System.Data.Linq;
 using System.Data.Linq.Mapping;
 using GrabbaRide.Database;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Data.Common;
+using GrabbaRide.UnitTests.Properties;
 
 namespace GrabbaRide.UnitTests
 {
@@ -22,59 +24,83 @@ namespace GrabbaRide.UnitTests
         public TestContext TestContext { get; set; }
 
         /// <summary>
+        /// Creates a new GrabbaRideDBDataContext, connected to a test database.
+        /// </summary>
+        /// <returns>A test GrabbaRideDBDataContext.</returns>
+        public static GrabbaRideDBDataContext NewTestDataContext()
+        {
+            return new GrabbaRideDBDataContext(Settings.Default.GrabbaRideTestDBConnectionString);
+        }
+
+        /// <summary>
+        /// Creates a new User, initialised with valid test values.
+        /// </summary>
+        /// <returns></returns>
+        public static User NewTestUser()
+        {
+            User u = new User();
+            u.Username = "sEri0uslyR4nd0mUs3rn4me";
+            u.Email = "sEri0uslyR4nd0m@rand0mma1l.com";
+            u.Password = String.Empty;
+            u.ApplicationName = "GrabbaRide";
+
+            return u;
+        }
+
+        /// <summary>
+        /// Creates a test database to work on, complete with test data.
+        /// </summary>
+        /// <param name="testContext"></param>
+        [ClassInitialize()]
+        public static void MyClassInitialize(TestContext testContext)
+        {
+            GrabbaRideDBDataContext dc = NewTestDataContext();
+
+            // delete the test db if it exists
+            if (dc.DatabaseExists())
+            {
+                dc.DeleteDatabase();
+            }
+
+            // create the test db
+            dc.CreateDatabase();
+
+            // populate with test data
+            dc.InsertSampleData();
+        }
+
+        /// <summary>
+        /// Removes the test database we have been using.
+        /// </summary>
+        [ClassCleanup()]
+        public static void MyClassCleanup()
+        {
+            GrabbaRideDBDataContext dc = NewTestDataContext();
+            if (dc.DatabaseExists())
+            {
+                dc.DeleteDatabase();
+            }
+        }
+
+        /// <summary>
         ///A test for GrabbaRideDBDataContext Constructor
         ///</summary>
         [TestMethod()]
-        public void GrabbaRideDBDataContextCreateDatabaseTest()
+        public void CreateDatabaseTest()
         {
-            GrabbaRideDBDataContext target = new GrabbaRideDBDataContext();
+            GrabbaRideDBDataContext target = NewTestDataContext();
+
+            // make sure db doesn't already exist
             if (target.DatabaseExists())
             {
-                Assert.Inconclusive("Cannot test database creation if database already exists!");
-
+                Assert.Inconclusive("We can't test database creation when it already exists.");
             }
-            else
-            {
-                target.CreateDatabase();
-                Assert.IsTrue(target.DatabaseExists(), "The database could not be successfully created!");
-                target.DeleteDatabase();
-            }
-        }
 
-        /// <summary>
-        ///A test for Users
-        ///</summary>
-        [TestMethod()]
-        public void UsersTest()
-        {
-            GrabbaRideDBDataContext target = new GrabbaRideDBDataContext(); // TODO: Initialize to an appropriate value
-            Table<User> actual;
-            actual = target.Users;
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
+            // create the db
+            target.CreateDatabase();
 
-        /// <summary>
-        ///A test for Rides
-        ///</summary>
-        [TestMethod()]
-        public void RidesTest()
-        {
-            GrabbaRideDBDataContext target = new GrabbaRideDBDataContext(); // TODO: Initialize to an appropriate value
-            Table<Ride> actual;
-            actual = target.Rides;
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
-
-        /// <summary>
-        ///A test for OpenIDs
-        ///</summary>
-        [TestMethod()]
-        public void OpenIDsTest()
-        {
-            GrabbaRideDBDataContext target = new GrabbaRideDBDataContext(); // TODO: Initialize to an appropriate value
-            Table<OpenID> actual;
-            actual = target.OpenIDs;
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            // check that db exists
+            Assert.IsTrue(target.DatabaseExists());
         }
 
         /// <summary>
@@ -93,78 +119,113 @@ namespace GrabbaRide.UnitTests
         }
 
         /// <summary>
-        ///A test for getUserRides
-        ///</summary>
+        /// A test for GetUserByUsername
+        /// </summary>
         [TestMethod()]
-        public void getUserRidesTest()
+        public void GetUserByUsernameTest1()
         {
-            GrabbaRideDBDataContext target = new GrabbaRideDBDataContext(); // TODO: Initialize to an appropriate value
-            int userID = 0; // TODO: Initialize to an appropriate value
-            IEnumerable<Ride> expected = null; // TODO: Initialize to an appropriate value
-            IEnumerable<Ride> actual;
-            actual = target.getUserRides(userID);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            GrabbaRideDBDataContext target = NewTestDataContext();
+
+            // add a test user
+            User newUser = NewTestUser();
+            target.AttachNewUser(newUser);
+
+            // look for them in the db
+            User foundUser = target.GetUserByUsername(newUser.Username);
+
+            // check that the user has been found
+            Assert.AreEqual(newUser.UserID, foundUser.UserID);
+
+            // remove the test user
+            target.DetachUser(newUser);
         }
 
         /// <summary>
-        ///A test for GetUserId
-        ///</summary>
+        /// A test for GetUserByUsername when the username doesn't exist
+        /// </summary>
         [TestMethod()]
-        public void GetUserIdTest()
+        public void GetUserByUsernameTest2()
         {
-            GrabbaRideDBDataContext target = new GrabbaRideDBDataContext(); // TODO: Initialize to an appropriate value
-            string openid_url = string.Empty; // TODO: Initialize to an appropriate value
-            int expected = 0; // TODO: Initialize to an appropriate value
-            int actual;
-            actual = target.GetUserId(openid_url);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
+            GrabbaRideDBDataContext target = NewTestDataContext();
 
-        /// <summary>
-        ///A test for GetUserByUsername
-        ///</summary>
-        [TestMethod()]
-        public void GetUserByUsernameTest()
-        {
-            GrabbaRideDBDataContext target = new GrabbaRideDBDataContext(); // TODO: Initialize to an appropriate value
-            string username = string.Empty; // TODO: Initialize to an appropriate value
-            User expected = null; // TODO: Initialize to an appropriate value
-            User actual;
-            actual = target.GetUserByUsername(username);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            User foundUser = target.GetUserByUsername("th1susern4mesh0uldn0tex1st");
+
+            // check that the user can't be found
+            Assert.IsNull(foundUser);
         }
 
         /// <summary>
         ///A test for GetUserByID
         ///</summary>
         [TestMethod()]
-        public void GetUserByIDTest()
+        public void GetUserByIDTest1()
         {
-            GrabbaRideDBDataContext target = new GrabbaRideDBDataContext(); // TODO: Initialize to an appropriate value
-            int userID = 0; // TODO: Initialize to an appropriate value
-            User expected = null; // TODO: Initialize to an appropriate value
-            User actual;
-            actual = target.GetUserByID(userID);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            GrabbaRideDBDataContext target = NewTestDataContext();
+
+            // add a test user
+            User newUser = NewTestUser();
+            target.AttachNewUser(newUser);
+
+            // look for them in the db
+            User foundUser = target.GetUserByID(newUser.UserID);
+
+            // check that the user has been found
+            Assert.AreEqual(newUser.UserID, foundUser.UserID);
+
+            // remove the test user
+            target.DetachUser(newUser);
+        }
+
+        /// <summary>
+        ///A test for GetUserByID where the id doesn't exist
+        ///</summary>
+        [TestMethod()]
+        public void GetUserByIDTest2()
+        {
+            GrabbaRideDBDataContext target = NewTestDataContext();
+
+            // look for them in the db
+            User foundUser = target.GetUserByID(54235252);
+
+            // check that the user can not be found
+            Assert.IsNull(foundUser);
         }
 
         /// <summary>
         ///A test for GetUserByEmail
         ///</summary>
         [TestMethod()]
-        public void GetUserByEmailTest()
+        public void GetUserByEmailTest1()
         {
-            GrabbaRideDBDataContext target = new GrabbaRideDBDataContext(); // TODO: Initialize to an appropriate value
-            string email = string.Empty; // TODO: Initialize to an appropriate value
-            User expected = null; // TODO: Initialize to an appropriate value
-            User actual;
-            actual = target.GetUserByEmail(email);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            GrabbaRideDBDataContext target = NewTestDataContext();
+
+            // add a test user
+            User newUser = NewTestUser();
+            target.AttachNewUser(newUser);
+
+            // look for them in the db
+            User foundUser = target.GetUserByEmail(newUser.Email);
+
+            // check that the user has been found
+            Assert.AreEqual(newUser.UserID, foundUser.UserID);
+
+            // remove the test user
+            target.DetachUser(newUser);
+        }
+
+        /// <summary>
+        ///A test for GetUserByEmail
+        ///</summary>
+        [TestMethod()]
+        public void GetUserByEmailTest2()
+        {
+            GrabbaRideDBDataContext target = NewTestDataContext();
+
+            // look for them in the db
+            User foundUser = target.GetUserByEmail("th1s3ma1ld0esnt@n0ex1st.com");
+
+            // check that the user can not be found
+            Assert.IsNull(foundUser);
         }
 
         /// <summary>
@@ -469,66 +530,17 @@ namespace GrabbaRide.UnitTests
         [TestMethod()]
         public void AttachNewUserTest()
         {
-            GrabbaRideDBDataContext target = new GrabbaRideDBDataContext(); // TODO: Initialize to an appropriate value
-            User newUser = null; // TODO: Initialize to an appropriate value
+            GrabbaRideDBDataContext target = NewTestDataContext();
+            User newUser = NewTestUser();
+
+            // add the user to the db
             target.AttachNewUser(newUser);
-            Assert.Inconclusive("A method that does not return a value cannot be verified.");
-        }
 
-        /// <summary>
-        ///A test for GrabbaRideDBDataContext Constructor
-        ///</summary>
-        [TestMethod()]
-        public void GrabbaRideDBDataContextConstructorTest4()
-        {
-            string connection = string.Empty; // TODO: Initialize to an appropriate value
-            GrabbaRideDBDataContext target = new GrabbaRideDBDataContext(connection);
-            Assert.Inconclusive("TODO: Implement code to verify target");
-        }
+            // check that the user can be found in the db
+            Assert.IsNotNull(target.GetUserByID(newUser.UserID));
 
-        /// <summary>
-        ///A test for GrabbaRideDBDataContext Constructor
-        ///</summary>
-        [TestMethod()]
-        public void GrabbaRideDBDataContextConstructorTest3()
-        {
-            GrabbaRideDBDataContext target = new GrabbaRideDBDataContext();
-            Assert.Inconclusive("TODO: Implement code to verify target");
-        }
-
-        /// <summary>
-        ///A test for GrabbaRideDBDataContext Constructor
-        ///</summary>
-        [TestMethod()]
-        public void GrabbaRideDBDataContextConstructorTest2()
-        {
-            IDbConnection connection = null; // TODO: Initialize to an appropriate value
-            GrabbaRideDBDataContext target = new GrabbaRideDBDataContext(connection);
-            Assert.Inconclusive("TODO: Implement code to verify target");
-        }
-
-        /// <summary>
-        ///A test for GrabbaRideDBDataContext Constructor
-        ///</summary>
-        [TestMethod()]
-        public void GrabbaRideDBDataContextConstructorTest1()
-        {
-            IDbConnection connection = null; // TODO: Initialize to an appropriate value
-            MappingSource mappingSource = null; // TODO: Initialize to an appropriate value
-            GrabbaRideDBDataContext target = new GrabbaRideDBDataContext(connection, mappingSource);
-            Assert.Inconclusive("TODO: Implement code to verify target");
-        }
-
-        /// <summary>
-        ///A test for GrabbaRideDBDataContext Constructor
-        ///</summary>
-        [TestMethod()]
-        public void GrabbaRideDBDataContextConstructorTest()
-        {
-            string connection = string.Empty; // TODO: Initialize to an appropriate value
-            MappingSource mappingSource = null; // TODO: Initialize to an appropriate value
-            GrabbaRideDBDataContext target = new GrabbaRideDBDataContext(connection, mappingSource);
-            Assert.Inconclusive("TODO: Implement code to verify target");
+            // remove the user from db
+            target.DetachUser(newUser);
         }
     }
 }

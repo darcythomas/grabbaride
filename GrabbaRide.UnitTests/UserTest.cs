@@ -19,37 +19,6 @@ namespace GrabbaRide.UnitTests
         ///</summary>
         public TestContext TestContext { get; set; }
 
-        #region Additional test attributes
-        // 
-        //You can use the following additional attributes as you write your tests:
-        //
-        //Use ClassInitialize to run code before running the first test in the class
-        //[ClassInitialize()]
-        //public static void MyClassInitialize(TestContext testContext)
-        //{
-        //}
-        //
-        //Use ClassCleanup to run code after all tests in a class have run
-        //[ClassCleanup()]
-        //public static void MyClassCleanup()
-        //{
-        //}
-        //
-        //Use TestInitialize to run code before running each test
-        //[TestInitialize()]
-        //public void MyTestInitialize()
-        //{
-        //}
-        //
-        //Use TestCleanup to run code after each test has run
-        //[TestCleanup()]
-        //public void MyTestCleanup()
-        //{
-        //}
-        //
-        #endregion
-
-
         /// <summary>
         ///A test for GenerateRandomPassword
         ///</summary>
@@ -79,7 +48,7 @@ namespace GrabbaRide.UnitTests
         {
             // fill in details for a fake target user
             User targetUser = new User();
-            targetUser.Username = "sEri0uslyR4nd0mUs3rn@me";
+            targetUser.Username = "sEri0uslyR4nd0mUs3rn4me";
 
             // convert to a MembershipUser
             MembershipUser membershipUser = targetUser.GetMembershipUser();
@@ -94,7 +63,7 @@ namespace GrabbaRide.UnitTests
         [TestMethod()]
         public void UserConstructorTest()
         {
-            string username = "sEri0uslyR4nd0mUs3rn@me";
+            string username = "sEri0uslyR4nd0mUs3rn4me";
             User target = new User(username);
             Assert.AreEqual(username, target.Username);
         }

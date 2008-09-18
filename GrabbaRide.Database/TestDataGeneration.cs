@@ -12,10 +12,9 @@ using System;
 
 namespace GrabbaRide.Database
 {
-    public class TestDataGeneration
+    partial class GrabbaRideDBDataContext
     {
-        GrabbaRideDBDataContext _dataContext;
-        Random _random;
+        private Random _random;
 
         private string[] _testUsernames = { "badguy69", "sillylady", "pissman", "duffman", "benjiMan", "Dogbrain",
                                        "BeerBarron", "Flanders", "AlGore", "BushRIP", "FACERIP", "DEATHDIVE",
@@ -35,12 +34,6 @@ namespace GrabbaRide.Database
 
         private string[] _testLastNames = { "Murry", "Smith", "Camp", "Mcshit" };
 
-        private TestDataGeneration()
-        {
-            _dataContext = new GrabbaRideDBDataContext();
-            _random = new Random();
-        }
-
         private void AddUsers()
         {
             foreach (string username in _testUsernames)
@@ -55,9 +48,9 @@ namespace GrabbaRide.Database
                 u.Email = RandomEmail();
                 u.ApplicationName = "GrabbaRide";
 
-                _dataContext.Users.InsertOnSubmit(u);
+                this.Users.InsertOnSubmit(u);
             }
-            _dataContext.SubmitChanges();
+            this.SubmitChanges();
         }
 
         private string RandomEmail()
@@ -78,7 +71,7 @@ namespace GrabbaRide.Database
 
         private User RandomExistingUser()
         {
-            List<User> usersList = _dataContext.Users.ToList();
+            List<User> usersList = this.Users.ToList();
             int i = new Random().Next(usersList.Count);
             return usersList[i];
         }
@@ -144,9 +137,9 @@ namespace GrabbaRide.Database
             for (int i = 0; i < num; i++)
             {
                 Ride r = RandomRide();
-                _dataContext.Rides.InsertOnSubmit(r);
+                this.Rides.InsertOnSubmit(r);
             }
-            _dataContext.SubmitChanges();
+            this.SubmitChanges();
         }
 
         /// <summary>
@@ -162,20 +155,21 @@ namespace GrabbaRide.Database
                 r.LocationFromLong = 175.61147689819336;
                 r.LocationToLat = -40.38434352539335;
                 r.LocationToLong = 175.61705589294434;
-                _dataContext.Rides.InsertOnSubmit(r);
+                this.Rides.InsertOnSubmit(r);
             }
-            _dataContext.SubmitChanges();
+            this.SubmitChanges();
         }
 
         /// <summary>
         /// Fills up the database with some sample data for testing.
         /// </summary>
-        public static void InputSampleData()
+        public void InsertSampleData()
         {
-            TestDataGeneration dg = new TestDataGeneration();
-            dg.AddUsers();
-            dg.AddRides(500);
-            dg.AddFixedRides(50);
+            _random = new Random();
+
+            AddUsers();
+            AddRides(500);
+            AddFixedRides(50);
         }
     }
 }

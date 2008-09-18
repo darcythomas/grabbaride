@@ -1,7 +1,5 @@
-﻿using System.Linq;
-using System;
+﻿using System;
 using System.Web.Security;
-using System.Text.RegularExpressions;
 
 namespace GrabbaRide.Database
 {
