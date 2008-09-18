@@ -36,7 +36,7 @@ namespace GrabbaRide.UnitTests
         /// Creates a new User, initialised with valid test values.
         /// </summary>
         /// <returns></returns>
-        public static User NewTestUser()
+        public User NewTestUser()
         {
             User u = new User();
             u.Username = "sEri0uslyR4nd0mUs3rn4me";
@@ -45,6 +45,25 @@ namespace GrabbaRide.UnitTests
             u.ApplicationName = "GrabbaRide";
 
             return u;
+        }
+
+        /// <summary>
+        /// Creates a new Ride, initialised with valid test values (minus the ride's user).
+        /// </summary>
+        /// <returns></returns>
+        public Ride NewTestRide()
+        {
+            Ride r = new Ride();
+            r.LocationFromLat = -40.3597654232865;
+            r.LocationFromLong = 175.6179141998291;
+            r.LocationToLat = -40.373694696239774;
+            r.LocationToLong = 175.5977439880371;
+            r.StartDate = new DateTime(2007, 3, 17);
+            r.EndDate = new DateTime(2010, 6, 12);
+            r.DepartureTime = new TimeSpan(9, 30, 0);
+            r.JourneyLength = new TimeSpan(0, 40, 0);
+
+            return r;
         }
 
         /// <summary>
@@ -70,19 +89,6 @@ namespace GrabbaRide.UnitTests
         }
 
         /// <summary>
-        /// Removes the test database we have been using.
-        /// </summary>
-        [ClassCleanup()]
-        public static void MyClassCleanup()
-        {
-            GrabbaRideDBDataContext dc = NewTestDataContext();
-            if (dc.DatabaseExists())
-            {
-                dc.DeleteDatabase();
-            }
-        }
-
-        /// <summary>
         ///A test for GrabbaRideDBDataContext Constructor
         ///</summary>
         [TestMethod()]
@@ -101,21 +107,6 @@ namespace GrabbaRide.UnitTests
 
             // check that db exists
             Assert.IsTrue(target.DatabaseExists());
-        }
-
-        /// <summary>
-        ///A test for IsOpenIDRegistered
-        ///</summary>
-        [TestMethod()]
-        public void IsOpenIDRegisteredTest()
-        {
-            GrabbaRideDBDataContext target = new GrabbaRideDBDataContext(); // TODO: Initialize to an appropriate value
-            string url = string.Empty; // TODO: Initialize to an appropriate value
-            bool expected = false; // TODO: Initialize to an appropriate value
-            bool actual;
-            actual = target.IsOpenIDRegistered(url);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
         }
 
         /// <summary>
@@ -229,64 +220,24 @@ namespace GrabbaRide.UnitTests
         }
 
         /// <summary>
-        ///A test for getRidesBetween
-        ///</summary>
-        [TestMethod()]
-        public void getRidesBetweenTest()
-        {
-            GrabbaRideDBDataContext target = new GrabbaRideDBDataContext(); // TODO: Initialize to an appropriate value
-            DateTime beforeDate = new DateTime(); // TODO: Initialize to an appropriate value
-            DateTime afterDate = new DateTime(); // TODO: Initialize to an appropriate value
-            IEnumerable<Ride> expected = null; // TODO: Initialize to an appropriate value
-            IEnumerable<Ride> actual;
-            actual = target.getRidesBetween(beforeDate, afterDate);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
-
-        /// <summary>
-        ///A test for getRidesBeforeDate
-        ///</summary>
-        [TestMethod()]
-        public void getRidesBeforeDateTest()
-        {
-            GrabbaRideDBDataContext target = new GrabbaRideDBDataContext(); // TODO: Initialize to an appropriate value
-            DateTime beforeDate = new DateTime(); // TODO: Initialize to an appropriate value
-            IEnumerable<Ride> expected = null; // TODO: Initialize to an appropriate value
-            IEnumerable<Ride> actual;
-            actual = target.getRidesBeforeDate(beforeDate);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
-
-        /// <summary>
-        ///A test for getRidesAfterDate
-        ///</summary>
-        [TestMethod()]
-        public void getRidesAfterDateTest()
-        {
-            GrabbaRideDBDataContext target = new GrabbaRideDBDataContext(); // TODO: Initialize to an appropriate value
-            DateTime afterDate = new DateTime(); // TODO: Initialize to an appropriate value
-            IEnumerable<Ride> expected = null; // TODO: Initialize to an appropriate value
-            IEnumerable<Ride> actual;
-            actual = target.getRidesAfterDate(afterDate);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
-
-        /// <summary>
         ///A test for GetRideByID
         ///</summary>
         [TestMethod()]
         public void GetRideByIDTest()
         {
-            GrabbaRideDBDataContext target = new GrabbaRideDBDataContext(); // TODO: Initialize to an appropriate value
-            int rideID = 0; // TODO: Initialize to an appropriate value
-            Ride expected = null; // TODO: Initialize to an appropriate value
-            Ride actual;
-            actual = target.GetRideByID(rideID);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            GrabbaRideDBDataContext target = NewTestDataContext();
+
+            // look for a ride that doesn't exist
+            Ride notExistRide = target.GetRideByID(45834903);
+            Assert.IsNull(notExistRide);
+
+            // add a new ride
+            Ride newRide = new Ride();
+            target.AttachRide(newRide);
+
+            // check that the ride can be found
+            Ride foundRide = target.GetRideByID(newRide.RideID);
+            Assert.AreEqual(newRide.RideID, foundRide.RideID);
         }
 
         /// <summary>
@@ -295,41 +246,51 @@ namespace GrabbaRide.UnitTests
         [TestMethod()]
         public void GetAllUsersTest()
         {
-            GrabbaRideDBDataContext target = new GrabbaRideDBDataContext(); // TODO: Initialize to an appropriate value
-            IEnumerable<User> expected = null; // TODO: Initialize to an appropriate value
-            IEnumerable<User> actual;
-            actual = target.GetAllUsers();
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
+            GrabbaRideDBDataContext target = NewTestDataContext();
 
-        /// <summary>
-        ///A test for getAllRidesRecur
-        ///</summary>
-        [TestMethod()]
-        public void getAllRidesRecurTest()
-        {
-            GrabbaRideDBDataContext target = new GrabbaRideDBDataContext(); // TODO: Initialize to an appropriate value
-            DayOfWeek day = new DayOfWeek(); // TODO: Initialize to an appropriate value
-            IEnumerable<Ride> expected = null; // TODO: Initialize to an appropriate value
-            IEnumerable<Ride> actual;
-            actual = target.getAllRidesRecur(day);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            // check that we actually found some users
+            bool foundUsers = false;
+
+            // for every user that was returned by GetAllUsers
+            foreach (User u in target.GetAllUsers())
+            {
+                // check that the user can be found
+                Assert.IsNotNull(target.GetUserByID(u.UserID));
+                foundUsers = true;
+            }
+
+            if (!foundUsers)
+            {
+                Assert.Inconclusive("Can't test GetAllUsers(), because no users exist!");
+            }
         }
 
         /// <summary>
         ///A test for getAllAvalibleRides
         ///</summary>
         [TestMethod()]
-        public void getAllAvalibleRidesTest()
+        public void GetAllAvalibleRidesTest()
         {
-            GrabbaRideDBDataContext target = new GrabbaRideDBDataContext(); // TODO: Initialize to an appropriate value
-            IEnumerable<Ride> expected = null; // TODO: Initialize to an appropriate value
-            IEnumerable<Ride> actual;
-            actual = target.getAllAvalibleRides();
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            GrabbaRideDBDataContext target = NewTestDataContext();
+
+            // check that we actually found rides
+            bool foundRides = false;
+
+            foreach (Ride availableRide in target.GetAllAvalibleRides())
+            {
+                Ride foundRide = target.GetRideByID(availableRide.RideID);
+                Assert.IsNotNull(foundRide);
+                Assert.IsTrue(foundRide.Available);
+                Assert.IsTrue(foundRide.StartDate <= DateTime.Now);
+                Assert.IsTrue(foundRide.EndDate >= DateTime.Now);
+
+                foundRides = true;
+            }
+
+            if (!foundRides)
+            {
+                Assert.Inconclusive("Can't test GetAllAvailableRides(), because no rides exist!");
+            }
         }
 
         /// <summary>
@@ -338,13 +299,33 @@ namespace GrabbaRide.UnitTests
         [TestMethod()]
         public void FindSimilarRidesTest()
         {
-            GrabbaRideDBDataContext target = new GrabbaRideDBDataContext(); // TODO: Initialize to an appropriate value
-            Ride ride = null; // TODO: Initialize to an appropriate value
-            List<Ride> expected = null; // TODO: Initialize to an appropriate value
-            List<Ride> actual;
-            actual = target.FindSimilarRides(ride);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            GrabbaRideDBDataContext target = NewTestDataContext();
+
+            Ride ride = new Ride();
+            ride.RecurMon = true;
+            ride.DepartureTime = new TimeSpan(9, 0, 0);
+
+            List<Ride> similarRides = target.FindSimilarRides(ride);
+
+            if (similarRides.Count == 0)
+            {
+                Assert.Inconclusive("Can't test FindSimilarRides(), because no similar rides were found!");
+            }
+
+            // make sure that they are in fact similar
+            foreach (Ride similarRide in similarRides)
+            {
+                // no more than 30 mins apart
+                double minutesDifference = similarRide.DepartureTime.TotalMinutes -
+                    ride.DepartureTime.TotalMinutes;
+                Assert.IsTrue(Math.Abs(minutesDifference) <= 30);
+
+                // occurs on the right days
+                Assert.IsTrue(similarRide.RecurMon);
+
+                // TODO: test locations
+
+            }
         }
 
         /// <summary>
@@ -353,10 +334,20 @@ namespace GrabbaRide.UnitTests
         [TestMethod()]
         public void DetachUserTest()
         {
-            GrabbaRideDBDataContext target = new GrabbaRideDBDataContext(); // TODO: Initialize to an appropriate value
-            User deleteUser = null; // TODO: Initialize to an appropriate value
+            GrabbaRideDBDataContext target = NewTestDataContext();
+
+            // add a new user
+            User deleteUser = NewTestUser();
+            target.AttachNewUser(deleteUser);
+
+            // check that they exist
+            Assert.IsNotNull(target.GetUserByID(deleteUser.UserID));
+
+            // delete the user
             target.DetachUser(deleteUser);
-            Assert.Inconclusive("A method that does not return a value cannot be verified.");
+
+            // check that they do not exist
+            Assert.IsNull(target.GetUserByID(deleteUser.UserID));
         }
 
         /// <summary>
@@ -365,22 +356,25 @@ namespace GrabbaRide.UnitTests
         [TestMethod()]
         public void DetachRideTest()
         {
-            GrabbaRideDBDataContext target = new GrabbaRideDBDataContext(); // TODO: Initialize to an appropriate value
-            Ride oldRide = null; // TODO: Initialize to an appropriate value
-            target.DetachRide(oldRide);
-            Assert.Inconclusive("A method that does not return a value cannot be verified.");
-        }
+            GrabbaRideDBDataContext target = NewTestDataContext();
 
-        /// <summary>
-        ///A test for DetachOpenIDsByUser
-        ///</summary>
-        [TestMethod()]
-        public void DetachOpenIDsByUserTest()
-        {
-            GrabbaRideDBDataContext target = new GrabbaRideDBDataContext(); // TODO: Initialize to an appropriate value
-            int user_id = 0; // TODO: Initialize to an appropriate value
-            target.DetachOpenIDsByUser(user_id);
-            Assert.Inconclusive("A method that does not return a value cannot be verified.");
+            // create a user
+            User newUser = new User();
+            target.AttachNewUser(newUser);
+
+            // add a new ride
+            Ride oldRide = NewTestRide();
+            oldRide.User = newUser;
+            target.AttachRide(oldRide);
+
+            // check that it exists
+            Assert.IsNotNull(target.GetRideByID(oldRide.RideID));
+
+            // remove the ride
+            target.DetachRide(oldRide);
+
+            // check that it is gone
+            Assert.IsNull(target.GetRideByID(oldRide.RideID));
         }
 
         /// <summary>
@@ -389,7 +383,7 @@ namespace GrabbaRide.UnitTests
         [TestMethod()]
         public void DetachOpenIDTest()
         {
-            GrabbaRideDBDataContext target = new GrabbaRideDBDataContext(); // TODO: Initialize to an appropriate value
+            GrabbaRideDBDataContext target = NewTestDataContext(); // TODO: Initialize to an appropriate value
             string openid_url = string.Empty; // TODO: Initialize to an appropriate value
             int user_id = 0; // TODO: Initialize to an appropriate value
             target.DetachOpenID(openid_url, user_id);
@@ -402,10 +396,19 @@ namespace GrabbaRide.UnitTests
         [TestMethod()]
         public void AttachRideTest()
         {
-            GrabbaRideDBDataContext target = new GrabbaRideDBDataContext(); // TODO: Initialize to an appropriate value
-            Ride newRide = null; // TODO: Initialize to an appropriate value
+            GrabbaRideDBDataContext target = NewTestDataContext();
+
+            // create a user
+            User newUser = NewTestUser();
+            target.AttachNewUser(newUser);
+
+            // create a new ride
+            Ride newRide = NewTestRide();
+            newRide.User = newUser;
             target.AttachRide(newRide);
-            Assert.Inconclusive("A method that does not return a value cannot be verified.");
+
+            // check that it exists
+            Assert.IsNotNull(target.GetRideByID(newRide.RideID));
         }
 
         /// <summary>
@@ -414,7 +417,7 @@ namespace GrabbaRide.UnitTests
         [TestMethod()]
         public void AttachOpenIDTest()
         {
-            GrabbaRideDBDataContext target = new GrabbaRideDBDataContext(); // TODO: Initialize to an appropriate value
+            GrabbaRideDBDataContext target = NewTestDataContext(); // TODO: Initialize to an appropriate value
             string openid_url = string.Empty; // TODO: Initialize to an appropriate value
             int user_id = 0; // TODO: Initialize to an appropriate value
             target.AttachOpenID(openid_url, user_id);
