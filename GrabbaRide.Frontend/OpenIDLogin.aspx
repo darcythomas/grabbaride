@@ -1,5 +1,9 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="OpenIDLogin.aspx.cs" Inherits="GrabbaRide.Frontend.OpenIDLogin" %>
 
+<%@ Register assembly="DotNetOpenId" namespace="DotNetOpenId.RelyingParty" tagprefix="RP" %>
+<%@ Register assembly="DotNetOpenId" namespace="DotNetOpenId" tagprefix="openid" %>
+<%@ Register assembly="DotNetOpenId" namespace="DotNetOpenId.Provider" tagprefix="OP" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
@@ -15,13 +19,11 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <img alt="OpenID" src="Images/OpenIDSmall.jpeg" 
-        style="width: 166px; height: 44px" /><asp:TextBox 
-        ID="textBox_openIDidentity" runat="server" AutoPostBack="True"></asp:TextBox>
-    <asp:Button ID="Bttn_OpenIDLogin" runat="server" 
-        onclick="Bttn_OpenIDLogin_Click" Text="LogIn" />
-    <asp:CheckBox ID="CheckBox1" runat="server" />
     <div>
+    
+        <img alt="OpenID" src="Images/OpenIDSmall.jpeg" 
+            style="width: 119px; height: 71px" /><RP:OpenIdLogin ID="OpenIdLogin1" 
+            runat="server" />
     
     </div>
     </form>
