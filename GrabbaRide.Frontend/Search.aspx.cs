@@ -35,7 +35,9 @@ namespace GrabbaRide.Frontend
         /// </summary>
         protected void LoadQueryStringValues()
         {
-            // TODO: load the google map with a location
+            // load the google map with a location
+            hfstart.Value = Request.QueryString["fromloc"];
+            hfend.Value = Request.QueryString["toloc"];
 
             // update the time
             if (!String.IsNullOrEmpty(Request.QueryString["hours"]))
