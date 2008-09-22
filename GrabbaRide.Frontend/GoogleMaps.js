@@ -92,7 +92,7 @@ function DrawBoundingBoxes() {
     new GLatLng(xlat - Offset, xlng + Offset),
     new GLatLng(xlat - Offset, xlng - Offset),
     new GLatLng(xlat + Offset, xlng - Offset)
-    ], "#0000CC", 5, 1, "#006699", 0.2);
+    ], "#507cd1", 5, 1, "#e2f3ec", 0.2);
     if (endpoly)
         map.removeOverlay(endpoly);
     endpoly = new GPolygon([
@@ -101,10 +101,10 @@ function DrawBoundingBoxes() {
     new GLatLng(lat - Offset, lng + Offset),
     new GLatLng(lat - Offset, lng - Offset),
     new GLatLng(lat + Offset, lng - Offset)
-    ], "#0000CC", 5, 1, "#006699", 0.2);
+    ], "#507cd1", 5, 1, "#e2f3ec", 0.2);
     if (line)
         map.removeOverlay(line);
-    line = new GPolyline([xlatlng,latlng], "#66CC00", 4, 1);
+    line = new GPolyline([xlatlng,latlng], "#507cd1", 4, 1);
     map.addOverlay(line);
     map.addOverlay(startpoly);
     map.addOverlay(endpoly);
