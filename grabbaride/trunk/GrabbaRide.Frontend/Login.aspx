@@ -1,6 +1,8 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true"
     CodeBehind="Login.aspx.cs" Inherits="GrabbaRide.Frontend.WebForm3" Title="Untitled Page" %>
 
+<%@ Register assembly="DotNetOpenId" namespace="DotNetOpenId.RelyingParty" tagprefix="RP" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
@@ -14,4 +16,5 @@
         <InstructionTextStyle Font-Italic="True" ForeColor="Black" />
         <TitleTextStyle BackColor="#507CD1" Font-Bold="True" Font-Size="0.9em" ForeColor="White" />
     </asp:Login>
+    <RP:OpenIdLogin ID="OpenIdLogin1" runat="server" />
 </asp:Content>
