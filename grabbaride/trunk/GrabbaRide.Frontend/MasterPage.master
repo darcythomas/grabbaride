@@ -7,11 +7,10 @@
     <link href="Global.css" rel="stylesheet" type="text/css" />
     <asp:ContentPlaceHolder ID="HeadContentPlaceHolder" runat="server" />
 </head>
-<body id="grbody">
+<body id="body">
     <form id="form1" runat="server">
     <div id="header">
-        <h1>
-            GrabbaRide</h1>
+        <h1>GrabbaRide</h1>
         <div>
             <a href="Default.aspx">Home</a> - <a href="Search.aspx">Search</a> - <a href="CreateRide.aspx">
                 Create Ride</a> - <a href="User.aspx">My Profile</a> -
