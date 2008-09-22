@@ -48,38 +48,7 @@ function SetStart(lat, lng) {
   
   if (endMkr && startMkr)
   {
-    /*if (line)
-        map.removeOverlay(line);
-    else
-        line = new GPolyline(startMkr.getLatLng(), endMkr.getLatLng());
-    map.addOverlay(line);*/
-    var xlatlng = endMkr.getLatLng();
-    var xlat = xlatlng.lat();
-    var xlng = xlatlng.lng();
-    var lineardistance = Math.sqrt(Math.pow(xlat - lat,2) + Math.pow(xlng - lng,2));
-    var Offset = lineardistance * 0.1; //sets offset to be 10% of linear distance between points
-    if (endpoly)
-        map.removeOverlay(endpoly);
-    endpoly = new GPolygon([
-    new GLatLng(xlat + Offset, xlng - Offset),
-    new GLatLng(xlat + Offset, xlng + Offset),
-    new GLatLng(xlat - Offset, xlng + Offset),
-    new GLatLng(xlat - Offset, xlng - Offset),
-    new GLatLng(xlat + Offset, xlng - Offset)
-    ], "#f33f00", 5, 1, "#ff0000", 0.2);
-    if (startpoly)
-        map.removeOverlay(startpoly);
-    startpoly = new GPolygon([
-    new GLatLng(lat + Offset, lng - Offset),
-    new GLatLng(lat + Offset, lng + Offset),
-    new GLatLng(lat - Offset, lng + Offset),
-    new GLatLng(lat - Offset, lng - Offset),
-    new GLatLng(lat + Offset, lng - Offset)
-    ], "#f33f00", 5, 1, "#ff0000", 0.2);
-    map.addOverlay(startpoly);
-    map.addOverlay(endpoly);
-    GEvent.addListener(startpoly, "click", MapHandler);
-    GEvent.addListener(endpoly, "click", MapHandler);
+    DrawBoundingBoxes();
   }
 }
 
@@ -101,14 +70,18 @@ function SetEnd(lat, lng) {
   //+- 10% of the distance between the points, as well as a line to join the two
   if (endMkr && startMkr)
   {
-    /*if (line)
-        map.removeOverlay(line);
-    else
-        line = new GPolyline(startMkr.getLatLng(), endMkr.getLatLng());
-    map.addOverlay(line);*/
+    DrawBoundingBoxes();
+  }
+  
+}
+
+function DrawBoundingBoxes() {
     var xlatlng = startMkr.getLatLng();
     var xlat = xlatlng.lat();
     var xlng = xlatlng.lng();
+    var latlng = endMkr.getLatLng();
+    var lat = latlng.lat();
+    var lng = latlng.lng();
     var lineardistance = Math.sqrt(Math.pow(lat - xlat,2) + Math.pow(lng - xlng,2));
     var Offset = lineardistance * 0.1; //sets offset to be 10% of linear distance between points
     if (startpoly)
@@ -119,7 +92,7 @@ function SetEnd(lat, lng) {
     new GLatLng(xlat - Offset, xlng + Offset),
     new GLatLng(xlat - Offset, xlng - Offset),
     new GLatLng(xlat + Offset, xlng - Offset)
-    ], "#f33f00", 5, 1, "#ff0000", 0.2);
+    ], "#0000CC", 5, 1, "#006699", 0.2);
     if (endpoly)
         map.removeOverlay(endpoly);
     endpoly = new GPolygon([
@@ -128,13 +101,15 @@ function SetEnd(lat, lng) {
     new GLatLng(lat - Offset, lng + Offset),
     new GLatLng(lat - Offset, lng - Offset),
     new GLatLng(lat + Offset, lng - Offset)
-    ], "#f33f00", 5, 1, "#ff0000", 0.2);
+    ], "#0000CC", 5, 1, "#006699", 0.2);
+    if (line)
+        map.removeOverlay(line);
+    line = new GPolyline([xlatlng,latlng], "#66CC00", 4, 1);
+    map.addOverlay(line);
     map.addOverlay(startpoly);
     map.addOverlay(endpoly);
     GEvent.addListener(startpoly, "click", PolyHandler);
     GEvent.addListener(endpoly, "click", PolyHandler);
-  }
-  
 }
 
 //onclick handler for map
