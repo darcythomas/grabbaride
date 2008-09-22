@@ -38,28 +38,6 @@ namespace GrabbaRide.Frontend
             Ride newRide = new Ride();
 
             // ride owner and availability
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             newRide.Available = true;
             newRide.User = dataContext.GetUserByUsername(User.Identity.Name);
 
@@ -76,23 +54,6 @@ namespace GrabbaRide.Frontend
             newRide.RecurFri = chkfri.Checked;
             newRide.RecurSat = chksat.Checked;
             newRide.RecurSun = chksun.Checked;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
             // get the longitude and latitude data
             string[] fromLocation = hfstart.Value.Split(',');
