@@ -78,25 +78,23 @@
             <table runat="server">
                 <tr runat="server">
                     <td runat="server">
-                        <table id="itemPlaceholderContainer" runat="server" border="1" style="background-color: #FFFFFF;
-                            border-collapse: collapse; border-color: #999999; border-style: none; border-width: 1px;
-                            font-family: Verdana, Arial, Helvetica, sans-serif;">
-                            <tr runat="server" style="background-color: #E0FFFF; color: #333333;">
-                                <th runat="server">
+                        <table id="itemPlaceholderContainer" runat="server">
+                            <tr runat="server">
+                                <%-- <th runat="server">
                                     Ride ID
-                                </th>
+                                </th> --%>
                                 <th id="Th1" runat="server">
                                     User
-                                </th>
+                                </th> 
                                 <th id="Th4" runat="server">
                                     Seats
                                 </th>
                                 <th id="Th2" runat="server">
                                     Departing
                                 </th>
-                                <th id="Th3" runat="server">
+                                <%-- <th id="Th3" runat="server">
                                     Length
-                                </th>
+                                </th> --%>
                                 <th runat="server">
                                     Mon
                                 </th>
@@ -118,25 +116,19 @@
                                 <th runat="server">
                                     Sun
                                 </th>
-                                <th id="Th5" runat="server">
+                                <%-- <th id="Th5" runat="server">
                                     End Date
-                                </th>
+                                </th> --%>
                             </tr>
                             <tr id="itemPlaceholder" runat="server">
                             </tr>
                         </table>
                     </td>
                 </tr>
-                <tr runat="server">
-                    <td runat="server" style="text-align: center; background-color: #5D7B9D; font-family: Verdana, Arial, Helvetica, sans-serif;
-                        color: #FFFFFF">
-                    </td>
-                </tr>
             </table>
         </LayoutTemplate>
         <EmptyDataTemplate>
-            <table runat="server" style="background-color: #FFFFFF; border-collapse: collapse;
-                border-color: #999999; border-style: none; border-width: 1px;">
+            <table runat="server">
                 <tr>
                     <td>
                         No data was returned.
@@ -145,10 +137,10 @@
             </table>
         </EmptyDataTemplate>
         <ItemTemplate>
-            <tr style="background-color: #E0FFFF; color: #333333;">
-                <td>
-                    <asp:Label ID="RideIDLabel" runat="server" Text='<%# Eval("RideID") %>' />
-                </td>
+            <tr>
+                <%-- <td>
+                   <asp:Label ID="RideIDLabel" runat="server" Text='<%# Eval("RideID") %>' />
+                </td> --%>
                 <td>
                     <asp:Label ID="UserLabel" runat="server" Text='<%# Eval("User.Username") %>' />
                 </td>
@@ -158,9 +150,9 @@
                 <td>
                     <asp:Label ID="DepartureTimeLabel" runat="server" Text='<%# new DateTime((long)Eval("DepartureTime.Ticks")).ToString("t") %>' />
                 </td>
-                <td>
+                <%-- <td>
                     <asp:Label ID="JourneyLengthLabel" runat="server" Text='<%# new DateTime((long)Eval("JourneyLength.Ticks")).ToString("h:mm") %>' />
-                </td>
+                </td> --%>
                 <td>
                     <asp:CheckBox ID="RecurMonCheckBox" runat="server" Checked='<%# Eval("RecurMon") %>'
                         Enabled="false" />
@@ -189,9 +181,9 @@
                     <asp:CheckBox ID="RecurSunCheckBox" runat="server" Checked='<%# Eval("RecurSun") %>'
                         Enabled="false" />
                 </td>
-                <td>
+                <%-- <td>
                     <asp:Label ID="EndDateLabel" runat="server" Text='<%# Eval("EndDate", "{0:d}") %>' />
-                </td>
+                </td> --%>
             </tr>
         </ItemTemplate>
     </asp:ListView>
