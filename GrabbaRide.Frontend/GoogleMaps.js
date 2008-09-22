@@ -14,7 +14,7 @@ function doPageLoad() {
       map = new GMap2(document.getElementById("searchmap"));
       geocoder = new GClientGeocoder();
       
-      map.setCenter(new GLatLng(-40.364988693138365, 175.60242176055908), 15);
+      map.setCenter(new GLatLng(-40.35597197708292, 175.6116485595703), 13);
       GEvent.addListener(map, "click", MapHandler);
       map.addControl(new GSmallMapControl());
       map.addControl(new GMapTypeControl());

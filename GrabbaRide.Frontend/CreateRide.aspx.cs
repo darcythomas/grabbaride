@@ -22,69 +22,54 @@ namespace GrabbaRide.Frontend
             {
                 Response.Redirect("Login.aspx?RedirectUrl=CreateRide.aspx");
             }
-            else
+            else if (!Page.IsPostBack)
             {
-                
+                // preselect some sensible start and end dates
+                calstart.SelectedDate = DateTime.Now;
+                calEnd.SelectedDate = DateTime.Now.AddMonths(3);
+                calEnd.VisibleDate = calEnd.SelectedDate;
             }
         }
 
         protected void btnCreate_Click(object sender, EventArgs e)
         {
-
+            // all of our inputs get checked for validity client-side before this code gets run
             GrabbaRideDBDataContext dataContext = new GrabbaRideDBDataContext();
-            
             Ride newRide = new Ride();
-            String[] loctemp;    // temp location for location when splitting long/late up
-            String fromloc;
-            String toloc;
 
-            if (hfstart.Value == null)
-            {
-                // display message to user "enter a location(s)"
-                
-                return;
-            }
-            else
-            {
-                 fromloc = hfstart.Value;                 
-            }
+            // ride owner and availability
 
-            if (hfend.Value == null)
-            {
-                // display message to user "enter a location(s)"                
-                return;
-            }
-            else
-            {
-                toloc = hfend.Value;
-            }
-                          
-            //newRide.UserID = int.Parse(Request.QueryString["id"]);   // assumed to be a valid id string if the page_loads ^^^^
-            newRide.UserID = 1;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             newRide.Available = true;
-            newRide.CreationDate = DateTime.Now;
-            //newRide.DepartureTime = 0.0f;
-            if (calstart.SelectedDate == null)
-            {
-                
-                return;
-            }
-            else
-            {
-                newRide.StartDate = calstart.SelectedDate;
-            }
+            newRide.User = dataContext.GetUserByUsername(User.Identity.Name);
 
-            if (calEnd.SelectedDate == null)
-            {
-                //display error msg
-            }
-            else
-            {
-                newRide.EndDate = calEnd.SelectedDate;
-            }
-            
-            newRide.NumSeats = int.Parse(drpSeats.Text); // seats is at least 1 always
-            newRide.RecurMon = chkmon.Checked;  // safe inputs
+            // start and end dates
+            newRide.StartDate = calstart.SelectedDate;
+            newRide.EndDate = calEnd.SelectedDate;
+
+            // ride seats & days
+            newRide.NumSeats = int.Parse(drpSeats.Text);
+            newRide.RecurMon = chkmon.Checked;
             newRide.RecurTue = chktue.Checked;
             newRide.RecurWed = chkwed.Checked;
             newRide.RecurThu = chkthurs.Checked;
@@ -92,26 +77,47 @@ namespace GrabbaRide.Frontend
             newRide.RecurSat = chksat.Checked;
             newRide.RecurSun = chksun.Checked;
 
-            // get departure time in 24hr format
-            int hours = Int32.Parse(drphours.SelectedValue);
-            int minutes = Int32.Parse(drpmins.SelectedValue);
-            if (drpdayhalf.SelectedValue == "p.m.")
-            {
-                hours += 12;
-            }
-            newRide.DepartureTime = System.TimeSpan.Parse((hours.ToString() + minutes.ToString()));
-           
-            // add the longitude and latitude data
-            loctemp = fromloc.Split(',');         // formatting the from location into 2 strings in loctemp   
-            newRide.LocationFromLat = double.Parse(loctemp[0]);  // adding the location          
-            newRide.LocationFromLong = double.Parse(loctemp[1]);
-            loctemp = toloc.Split(',');         // formatting the to location into 2 strings in loctemp
-            newRide.LocationToLat = double.Parse(loctemp[0]);  
-            newRide.LocationToLong = double.Parse(loctemp[1]);              
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            // get the longitude and latitude data
+            string[] fromLocation = hfstart.Value.Split(',');
+            string[] toLocation = hfend.Value.Split(',');
+
+            newRide.LocationFromLat = Double.Parse(fromLocation[0]);
+            newRide.LocationFromLong = Double.Parse(fromLocation[1]);
+            newRide.LocationToLat = Double.Parse(toLocation[0]);
+            newRide.LocationToLong = Double.Parse(toLocation[1]);
 
             // finally, add the ride
-            dataContext.AttachRide(newRide);            
+            dataContext.AttachRide(newRide);
+
+            // redirect to the search results page ;)
+            Response.Redirect("Search.aspx" +
+                String.Format("?fromloc={0}&toloc={1}", hfstart.Value, hfend.Value) +
+                String.Format("&hours={0}&mins={1}", "9", "00") +
+                String.Format("&mon={0}&tue={1}&wed={2}&thu={3}&fri={4}&sat={5}&sun={6}",
+                newRide.RecurMon, newRide.RecurTue, newRide.RecurWed, newRide.RecurThu,
+                newRide.RecurFri, newRide.RecurSat, newRide.RecurSun));
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Label1.Visible = true;
         }
     }
 }
