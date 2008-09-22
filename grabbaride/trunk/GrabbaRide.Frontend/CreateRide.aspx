@@ -24,7 +24,6 @@
         </asp:ScriptManager>
         <asp:UpdatePanel ID="UpdatePanel3" runat="server">
         <ContentTemplate>
-        <asp:Label ID="Label1" runat="server" Text="Label" Visible="False"></asp:Label>
         <br />
         </ContentTemplate>
         </asp:UpdatePanel>
@@ -64,6 +63,41 @@
                 </asp:Calendar>
             </ContentTemplate>
         </asp:UpdatePanel>
+        <br />
+        Departure Time:<br />
+    <asp:DropDownList ID="drphours" runat="server">
+        <asp:ListItem Value="1" />
+        <asp:ListItem Value="2" />
+        <asp:ListItem Value="3" />
+        <asp:ListItem Value="4" />
+        <asp:ListItem Value="5" />
+        <asp:ListItem Value="6" />
+        <asp:ListItem Value="7" />
+        <asp:ListItem Value="8" />
+        <asp:ListItem Value="9" Selected="True" />
+        <asp:ListItem Value="10" />
+        <asp:ListItem Value="11" />
+        <asp:ListItem Value="12" />
+    </asp:DropDownList>
+    <asp:DropDownList ID="drpmins" runat="server">
+        <asp:ListItem Value="00" />
+        <asp:ListItem Value="05" />
+        <asp:ListItem Value="10" />
+        <asp:ListItem Value="15" />
+        <asp:ListItem Value="20" />
+        <asp:ListItem Value="25" />
+        <asp:ListItem Value="30" />
+        <asp:ListItem Value="35" />
+        <asp:ListItem Value="40" />
+        <asp:ListItem Value="45" />
+        <asp:ListItem Value="50" />
+        <asp:ListItem Value="55" />
+    </asp:DropDownList>
+    <asp:DropDownList ID="drpdayhalf" runat="server">
+        <asp:ListItem Value="am" Text="a.m." />
+        <asp:ListItem Value="pm" Text="p.m." />
+    </asp:DropDownList>
+        <br />
         <br />
         Number of Seats Available:<br />
         <asp:DropDownList ID="drpSeats" runat="server">
@@ -106,7 +140,6 @@
         <asp:CheckBox ID="chksun" runat="server" Text="Sunday" />
         <br />
         <br />
-        <asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="Button" />
         <br />
         <asp:Button ID="btnCreate" runat="server" OnClick="btnCreate_Click" Text="Create Ride" />
         <br />
