@@ -31,7 +31,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DotNetOpenId, Version=2.4.2.8248, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL" />
-    <Reference Include="ExtremeSwank.OpenID, Version=4.0.0.1, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core">
@@ -159,7 +158,8 @@
     <Content Include="Images\logo.jpg" />
     <Content Include="MasterPage.master" />
     <Content Include="Default.aspx" />
-    <Content Include="OpenIDLibrary\DotNetOpenId.dll" />
+    <Resource Include="OpenIDLibrary\DotNetOpenId.dll">
+    </Resource>
     <Content Include="Privacy.aspx" />
     <Content Include="Terms.aspx" />
     <Content Include="User.aspx" />
