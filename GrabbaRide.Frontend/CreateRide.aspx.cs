@@ -59,7 +59,8 @@ namespace GrabbaRide.Frontend
                 toloc = hfend.Value;
             }
                           
-            newRide.UserID = int.Parse(Request.QueryString["id"]);   // assumed to be a valid id string if the page_loads ^^^^
+            //newRide.UserID = int.Parse(Request.QueryString["id"]);   // assumed to be a valid id string if the page_loads ^^^^
+            newRide.UserID = 1;
             newRide.Available = true;
             newRide.CreationDate = DateTime.Now;
             //newRide.DepartureTime = 0.0f;
