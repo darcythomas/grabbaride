@@ -91,6 +91,15 @@ namespace GrabbaRide.Frontend
             newRide.RecurFri = chkfri.Checked;
             newRide.RecurSat = chksat.Checked;
             newRide.RecurSun = chksun.Checked;
+
+            // get departure time in 24hr format
+            int hours = Int32.Parse(drphours.SelectedValue);
+            int minutes = Int32.Parse(drpmins.SelectedValue);
+            if (drpdayhalf.SelectedValue == "p.m.")
+            {
+                hours += 12;
+            }
+            newRide.DepartureTime = System.TimeSpan.Parse((hours.ToString() + minutes.ToString()));
            
             // add the longitude and latitude data
             loctemp = fromloc.Split(',');         // formatting the from location into 2 strings in loctemp   
@@ -103,11 +112,6 @@ namespace GrabbaRide.Frontend
 
             // finally, add the ride
             dataContext.AttachRide(newRide);            
-        }
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            Label1.Visible = true;
         }
     }
 }
