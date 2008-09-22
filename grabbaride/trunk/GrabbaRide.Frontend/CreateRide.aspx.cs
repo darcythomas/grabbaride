@@ -38,6 +38,7 @@ namespace GrabbaRide.Frontend
             Ride newRide = new Ride();
 
             // ride owner and availability
+
             newRide.Available = true;
             newRide.User = dataContext.GetUserByUsername(User.Identity.Name);
 
