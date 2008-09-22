@@ -86,13 +86,6 @@
       <DependentUpon>MasterPage.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="OpenIDLogin.aspx.cs">
-      <DependentUpon>OpenIDLogin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="OpenIDLogin.aspx.designer.cs">
-      <DependentUpon>OpenIDLogin.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Privacy.aspx.cs">
       <DependentUpon>Privacy.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -167,7 +160,6 @@
     <Content Include="MasterPage.master" />
     <Content Include="Default.aspx" />
     <Content Include="OpenIDLibrary\DotNetOpenId.dll" />
-    <Content Include="OpenIDLogin.aspx" />
     <Content Include="Privacy.aspx" />
     <Content Include="Terms.aspx" />
     <Content Include="User.aspx" />
