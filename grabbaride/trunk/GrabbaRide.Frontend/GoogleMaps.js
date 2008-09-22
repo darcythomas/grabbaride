@@ -14,20 +14,33 @@ function doPageLoad() {
       map = new GMap2(document.getElementById("searchmap"));
       geocoder = new GClientGeocoder();
       
-      map.setCenter(new GLatLng(-40.35597197708292, 175.6116485595703), 13);
+      map.setCenter(new GLatLng(-40.356233600914656,175.61113357543945), 13);
       GEvent.addListener(map, "click", MapHandler);
       map.addControl(new GSmallMapControl());
       map.addControl(new GMapTypeControl());
+      var hfstart = document.getElementById("ctl00_MainContentPlaceHolder_hfstart");
+      var hfend = document.getElementById("ctl00_MainContentPlaceHolder_hfend");
+      if (hfstart.value != "") {
+        var temp = hfstart.value.split(',');
+        SetStart(temp[0],temp[1]);
+      }
+      if (hfend.value != "") {
+        var temp = hfend.value.split(',');
+        SetEnd(temp[0],temp[1]);
+      }
     }
   }
 }
 
 //Set the start location by transferring the lat,long to a hidden field
 function SetStart(lat, lng) {
+  lat = parseFloat(lat);
+  lng = parseFloat(lng);
   var hfstart = document.getElementById("ctl00_MainContentPlaceHolder_hfstart");
   hfstart.value = lat + "," + lng;
   if (!startMkr) {
     startMkr = new GMarker(new GLatLng(lat, lng));
+    GEvent.addListener(startMkr, "click", StartHandler);
     map.addOverlay(startMkr);
   } else {
     startMkr.setLatLng(new GLatLng(lat, lng));
@@ -72,10 +85,13 @@ function SetStart(lat, lng) {
 
 //Set the end location by transferring the lat,long to a hidden field
 function SetEnd(lat, lng) {
+  lat = parseFloat(lat);
+  lng = parseFloat(lng);
   var hfend = document.getElementById("ctl00_MainContentPlaceHolder_hfend");
   hfend.value = lat + "," + lng;
   if (!endMkr) {
     endMkr = new GMarker(new GLatLng(lat, lng));
+    GEvent.addListener(endMkr, "click", EndHandler);
     map.addOverlay(endMkr);
   } else {
     endMkr.setLatLng(new GLatLng(lat, lng));
@@ -135,6 +151,22 @@ function PolyHandler(latlng) {
     var myHtml = "<a onclick='SetStart(" + latlng.lat() + ", " + latlng.lng() + ");'>Set Start</a><br><a onclick='SetEnd(" + latlng.lat() + ", " + latlng.lng() + ");'>Set End</a>";
     map.openInfoWindow(latlng, myHtml);
   }
+}
+
+//onclick handler for Start Marker
+function StartHandler(latlng) { 
+  if (latlng) { 
+    var myHtml = "This is your set<br>start location";
+    map.openInfoWindow(latlng, myHtml);
+  } 
+}
+
+//onclick handler for End Marker
+function EndHandler(latlng) { 
+  if (latlng) { 
+    var myHtml = "This is your set<br>end location";
+    map.openInfoWindow(latlng, myHtml);
+  } 
 }
 
 //code pinched from http://code.google.com/apis/maps/documentation/examples/geocoding-simple.html
