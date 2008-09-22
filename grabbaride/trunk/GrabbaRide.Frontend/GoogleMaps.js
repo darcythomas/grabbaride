@@ -65,6 +65,8 @@ function SetStart(lat, lng) {
     ], "#f33f00", 5, 1, "#ff0000", 0.2);
     map.addOverlay(startpoly);
     map.addOverlay(endpoly);
+    GEvent.addListener(startpoly, "click", MapHandler);
+    GEvent.addListener(endpoly, "click", MapHandler);
   }
 }
 
@@ -113,12 +115,22 @@ function SetEnd(lat, lng) {
     ], "#f33f00", 5, 1, "#ff0000", 0.2);
     map.addOverlay(startpoly);
     map.addOverlay(endpoly);
+    GEvent.addListener(startpoly, "click", PolyHandler);
+    GEvent.addListener(endpoly, "click", PolyHandler);
   }
   
 }
 
 //onclick handler for map
 function MapHandler(overlay, latlng) {
+  if (latlng) { 
+    var myHtml = "<a onclick='SetStart(" + latlng.lat() + ", " + latlng.lng() + ");'>Set Start</a><br><a onclick='SetEnd(" + latlng.lat() + ", " + latlng.lng() + ");'>Set End</a>";
+    map.openInfoWindow(latlng, myHtml);
+  }
+}
+
+//onclick handler for  polygons
+function PolyHandler(latlng) {
   if (latlng) { 
     var myHtml = "<a onclick='SetStart(" + latlng.lat() + ", " + latlng.lng() + ");'>Set Start</a><br><a onclick='SetEnd(" + latlng.lat() + ", " + latlng.lng() + ");'>Set End</a>";
     map.openInfoWindow(latlng, myHtml);
