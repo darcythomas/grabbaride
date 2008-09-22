@@ -114,10 +114,5 @@ namespace GrabbaRide.Frontend
                 newRide.RecurMon, newRide.RecurTue, newRide.RecurWed, newRide.RecurThu,
                 newRide.RecurFri, newRide.RecurSat, newRide.RecurSun));
         }
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            Label1.Visible = true;
-        }
     }
 }
