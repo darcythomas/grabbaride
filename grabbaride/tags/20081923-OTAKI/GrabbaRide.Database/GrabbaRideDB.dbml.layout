@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="GrabbaRideDB">
+  <DataContextMoniker Name="/GrabbaRideDBDataContext" />
+  <nestedChildShapes>
+    <classShape Id="0a07dd2a-6ad3-4d87-b6a9-5200ac4d106b" absoluteBounds="0.75, 0.5, 2, 4.0544051106770826">
+      <DataClassMoniker Name="/GrabbaRideDBDataContext/Ride" />
+      <nestedChildShapes>
+        <elementListCompartment Id="12c986ba-7f51-42a3-b8e8-d9b6fd185351" absoluteBounds="0.7649999999999999, 0.96, 1.9700000000000002, 3.494405110677083" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="28260455-ec19-44b6-9779-f265ea37f299" absoluteBounds="3.625, 0.5, 2.5, 4.3830997721354166">
+      <DataClassMoniker Name="/GrabbaRideDBDataContext/User" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cf254ac2-ddd9-44a5-806a-fa2326d4c1ba" absoluteBounds="3.64, 0.96, 2.4699999999999998, 3.8230997721354165" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.625 : 2.52720255533854); (2.75 : 2.52720255533854)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/GrabbaRideDBDataContext/User/User_Ride" />
+      <nodes>
+        <classShapeMoniker Id="28260455-ec19-44b6-9779-f265ea37f299" />
+        <classShapeMoniker Id="0a07dd2a-6ad3-4d87-b6a9-5200ac4d106b" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="d7771722-b22f-495f-a928-8c349427aaf3" absoluteBounds="6.875, 1.5, 2, 1.0961531575520831">
+      <DataClassMoniker Name="/GrabbaRideDBDataContext/OpenID" />
+      <nestedChildShapes>
+        <elementListCompartment Id="04053c23-c61f-4316-aba8-c05c983a0202" absoluteBounds="6.89, 1.96, 1.9700000000000002, 0.53615315755208326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.125 : 2.04807657877604); (6.875 : 2.04807657877604)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/GrabbaRideDBDataContext/User/User_OpenID" />
+      <nodes>
+        <classShapeMoniker Id="28260455-ec19-44b6-9779-f265ea37f299" />
+        <classShapeMoniker Id="d7771722-b22f-495f-a928-8c349427aaf3" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

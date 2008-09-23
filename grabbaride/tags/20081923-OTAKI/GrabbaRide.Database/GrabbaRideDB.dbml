@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Class="GrabbaRideDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=LOCALHOST;Initial Catalog=GrabbaRideDB;Integrated Security=True" SettingsObjectName="GrabbaRide.Database.Properties.Settings" SettingsPropertyName="GrabbaRideDBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="Rides">
+    <Type Name="Ride">
+      <Column Name="RideID" Type="System.Int32" IsReadOnly="true" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" CanBeNull="false" />
+      <Column Name="DepartureTime" Member="DepartureTimeSrc" Storage="_DepartureTime" AccessModifier="Protected" Type="System.Int64" CanBeNull="false" />
+      <Column Name="JourneyLength" Member="JourneyLengthSrc" Storage="_ArrivalTime" AccessModifier="Protected" Type="System.Int64" CanBeNull="false" />
+      <Column Name="CreationDate" Type="System.DateTime" CanBeNull="false" />
+      <Column Name="StartDate" Type="System.DateTime" CanBeNull="false" />
+      <Column Name="EndDate" Type="System.DateTime" CanBeNull="false" />
+      <Column Name="NumSeats" Type="System.Int32" CanBeNull="false" />
+      <Column Name="RecurMon" Type="System.Boolean" CanBeNull="false" />
+      <Column Name="RecurTue" Type="System.Boolean" CanBeNull="false" />
+      <Column Name="RecurWed" Type="System.Boolean" CanBeNull="false" />
+      <Column Name="RecurThu" Type="System.Boolean" CanBeNull="false" />
+      <Column Name="RecurFri" Type="System.Boolean" CanBeNull="false" />
+      <Column Name="RecurSat" Type="System.Boolean" CanBeNull="false" />
+      <Column Name="RecurSun" Type="System.Boolean" CanBeNull="false" />
+      <Column Name="LocationFromLat" Type="System.Double" CanBeNull="false" />
+      <Column Name="LocationFromLong" Type="System.Double" CanBeNull="false" />
+      <Column Name="LocationToLat" Type="System.Double" CanBeNull="false" />
+      <Column Name="LocationToLong" Type="System.Double" CanBeNull="false" />
+      <Column Name="Available" Type="System.Boolean" CanBeNull="false" />
+      <Association Name="User_Ride" Member="User" ThisKey="UserID" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="Users">
+    <Type Name="User">
+      <Column Name="UserID" Type="System.Int32" IsReadOnly="true" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" CanBeNull="true" />
+      <Column Name="Gender" Type="Gender" CanBeNull="true" />
+      <Column Name="DateOfBirth" Storage="_DOB" Type="System.DateTime" CanBeNull="true" />
+      <Column Name="Occupation" Type="System.String" CanBeNull="true" />
+      <Column Name="Username" Type="System.String" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" CanBeNull="false" />
+      <Column Name="ApplicationName" Type="System.String" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="PasswordQuestion" Type="System.String" CanBeNull="true" />
+      <Column Name="PasswordAnswer" Type="System.String" CanBeNull="true" />
+      <Column Name="IsApproved" Type="System.Boolean" CanBeNull="false" />
+      <Column Name="LastActvityDate" Type="System.DateTime" CanBeNull="true" />
+      <Column Name="LastLoginDate" Storage="_LastLogIn" Type="System.DateTime" CanBeNull="true" />
+      <Column Name="LastPasswordChangedDate" Type="System.DateTime" CanBeNull="true" />
+      <Column Name="CreationDate" Type="System.DateTime" CanBeNull="false" />
+      <Column Name="IsLockedOut" Type="System.Boolean" CanBeNull="false" />
+      <Column Name="Comment" Type="System.String" CanBeNull="true" />
+      <Column Name="LastLockoutDate" Type="System.DateTime" CanBeNull="true" />
+      <Column Name="Location" Type="System.String" CanBeNull="true" />
+      <Column Member="IsSignedIn" Type="System.Boolean" CanBeNull="false" />
+      <Association Name="User_Ride" Member="Rides" OtherKey="UserID" Type="Ride" />
+      <Association Name="User_OpenID" Member="OpenIDs" OtherKey="UserID" Type="OpenID" />
+    </Type>
+  </Table>
+  <Table Name="OpenIDs">
+    <Type Name="OpenID">
+      <Column Name="OpenIDUrl" Type="System.String" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" CanBeNull="false" />
+      <Association Name="User_OpenID" Member="User" ThisKey="UserID" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

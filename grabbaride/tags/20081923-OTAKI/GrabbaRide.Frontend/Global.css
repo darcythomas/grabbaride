@@ -1,0 +1,63 @@
+﻿
+body
+{
+	font-family: Verdana, Arial;
+	background-color: #507cd1;
+}
+#resultsViewStyle td, #resultsViewStyle th
+{
+	border: solid 1px black;
+	background-color: #DCDCDC;
+	border-color: #000000;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+h1 
+{
+	line-height: 1;
+	}
+a, a:visited
+{
+	color: #3333ff;
+}
+a:hover
+{
+	text-decoration: underline;
+}
+#header, #header a
+{
+	color: #000;
+	background-color: #507cd1;
+	font-weight: bold;
+	text-align: center;
+	clear: both;
+	margin: 0px;
+	height: 80px;
+}
+/* #leftnav
+{
+	float: left;
+	width: 100px;
+	margin: 0px;
+	background-color: #507cd1; 
+	height: 500px;
+} */
+#maincontent
+{
+	background-color: #e2f3ec;
+	min-height: 500px;
+	width: 90%;
+	margin: 5px auto; 
+	padding: 15px 15px;
+}
+#footer
+{
+	clear: both;
+	margin: 0px;
+	background-color: #507cd1;
+	font-size: small;
+	text-align: center;
+}
+a
+{
+	text-decoration: none;
+}

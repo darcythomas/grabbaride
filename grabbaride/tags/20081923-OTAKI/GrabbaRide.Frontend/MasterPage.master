@@ -1,0 +1,33 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>GrabbaRide</title>
+    <link href="Global.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContentPlaceHolder" runat="server" />
+</head>
+<body id="body">
+    <form id="form1" runat="server">
+    <div id="header">
+        <h1>GrabbaRide</h1>
+        <div>
+            <a href="Default.aspx">Home</a> - <a href="Search.aspx">Search</a> - <a href="CreateRide.aspx">
+                Create Ride</a> - <a href="User.aspx">My Profile</a> -
+            <asp:LoginStatus ID="LoginStatus" runat="server" />
+        </div>
+    </div>
+    <div id="leftnav">
+        <asp:ContentPlaceHolder ID="LeftNavContentPlaceHolder" runat="server" />
+    </div>
+    <div id="maincontent">
+        <asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server" />
+    </div>
+    <div id="footer">
+        <p>
+            Copyright &copy; 2008 | GrabbaRide.co.nz - <a href="Terms.aspx">Terms of Use</a>
+            - <a href="Privacy.aspx">Privacy Policy</a> - <a href="About.aspx">About Us</a></p>
+    </div>
+    </form>
+</body>
+</html>
