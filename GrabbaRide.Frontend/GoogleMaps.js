@@ -39,8 +39,10 @@ function SetStart(lat, lng) {
   var hfstart = document.getElementById("ctl00_MainContentPlaceHolder_hfstart");
   hfstart.value = lat + "," + lng;
   if (!startMkr) {
-    startMkr = new GMarker(new GLatLng(lat, lng));
+    startMkr = new GMarker(new GLatLng(lat, lng),{draggable: true});
     GEvent.addListener(startMkr, "click", StartHandler);
+    GEvent.addListener(startMkr, "dragstart", BeginDrag);
+    GEvent.addListener(startMkr, "dragend", EndDrag);
     map.addOverlay(startMkr);
   } else {
     startMkr.setLatLng(new GLatLng(lat, lng));
@@ -52,6 +54,34 @@ function SetStart(lat, lng) {
   }
 }
 
+//marker dragstart hanlder
+function BeginDrag() {
+    //remove everything except the markers from the map
+    map.closeInfoWindow();
+    map.removeOverlay(line);
+    map.removeOverlay(startpoly);
+    map.removeOverlay(endpoly);
+    line = null;
+    startpoly = null;
+    endpoly = null;
+}
+
+//marker dragend handler
+function EndDrag() {
+    //update the hidden fields in case our marker positions have changed
+    var temp = startMkr.getLatLng();
+    var hftemp = document.getElementById("ctl00_MainContentPlaceHolder_hfstart");
+    hftemp.value = temp.lat() + "," + temp.lng();
+    temp = endMkr.getLatLng();
+    hftemp = document.getElementById("ctl00_MainContentPlaceHolder_hfend");
+    hftemp.value = temp.lat() + "," + temp.lng();
+    //redraw the bounding boxes and lines
+    if (endMkr && startMkr)
+    {
+        DrawBoundingBoxes();
+    }
+}
+
 //Set the end location by transferring the lat,long to a hidden field
 function SetEnd(lat, lng) {
   lat = parseFloat(lat);
@@ -59,8 +89,10 @@ function SetEnd(lat, lng) {
   var hfend = document.getElementById("ctl00_MainContentPlaceHolder_hfend");
   hfend.value = lat + "," + lng;
   if (!endMkr) {
-    endMkr = new GMarker(new GLatLng(lat, lng));
+    endMkr = new GMarker(new GLatLng(lat, lng), {draggable: true});
     GEvent.addListener(endMkr, "click", EndHandler);
+    GEvent.addListener(endMkr, "dragstart", BeginDrag);
+    GEvent.addListener(endMkr, "dragend", EndDrag);
     map.addOverlay(endMkr);
   } else {
     endMkr.setLatLng(new GLatLng(lat, lng));
