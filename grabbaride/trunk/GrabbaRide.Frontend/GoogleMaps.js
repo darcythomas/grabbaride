@@ -39,7 +39,10 @@ function SetStart(lat, lng) {
   var hfstart = document.getElementById("ctl00_MainContentPlaceHolder_hfstart");
   hfstart.value = lat + "," + lng;
   if (!startMkr) {
-    startMkr = new GMarker(new GLatLng(lat, lng),{draggable: true});
+    var starticon = new GIcon(G_DEFAULT_ICON);
+    starticon.image = "Images/starticon.png";
+
+    startMkr = new GMarker(new GLatLng(lat, lng), { icon:starticon, draggable: true });
     GEvent.addListener(startMkr, "click", StartHandler);
     GEvent.addListener(startMkr, "dragstart", BeginDrag);
     GEvent.addListener(startMkr, "dragend", EndDrag);
@@ -89,7 +92,10 @@ function SetEnd(lat, lng) {
   var hfend = document.getElementById("ctl00_MainContentPlaceHolder_hfend");
   hfend.value = lat + "," + lng;
   if (!endMkr) {
-    endMkr = new GMarker(new GLatLng(lat, lng), {draggable: true});
+    var endicon = new GIcon(G_DEFAULT_ICON);
+    endicon.image = "Images/endicon.png";
+    
+    endMkr = new GMarker(new GLatLng(lat, lng), { icon:endicon, draggable: true });
     GEvent.addListener(endMkr, "click", EndHandler);
     GEvent.addListener(endMkr, "dragstart", BeginDrag);
     GEvent.addListener(endMkr, "dragend", EndDrag);
