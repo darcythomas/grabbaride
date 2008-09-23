@@ -23,15 +23,6 @@ namespace GrabbaRide.Frontend {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
-
-
-
-
-
-
-
-
-
         /// UpdatePanel1 control.
         /// </summary>
         /// <remarks>
@@ -75,6 +66,33 @@ namespace GrabbaRide.Frontend {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList drpSeats;
+        
+        /// <summary>
+        /// drphours control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList drphours;
+        
+        /// <summary>
+        /// drpmins control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList drpmins;
+        
+        /// <summary>
+        /// drpdayhalf control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList drpdayhalf;
         
         /// <summary>
         /// chkmon control.
