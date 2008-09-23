@@ -58,6 +58,12 @@ namespace GrabbaRide.Frontend
             newRide.RecurSat = chksat.Checked;
             newRide.RecurSun = chksun.Checked;
 
+            // get time
+            int hrs = Int32.Parse(drphours.SelectedValue);
+            if (drpdayhalf.SelectedValue == "pm") { hrs += 12; }
+            int mins = Int32.Parse(drpmins.SelectedValue);
+            newRide.DepartureTime = new TimeSpan(hrs, mins, 0);
+
             // get the longitude and latitude data
             string[] fromLocation = hfstart.Value.Split(',');
             string[] toLocation = hfend.Value.Split(',');
@@ -73,7 +79,7 @@ namespace GrabbaRide.Frontend
             // redirect to the search results page ;)
             Response.Redirect("Search.aspx" +
                 String.Format("?fromloc={0}&toloc={1}", hfstart.Value, hfend.Value) +
-                String.Format("&hours={0}&mins={1}", "9", "00") +
+                String.Format("&hours={0}&mins={1}", newRide.DepartureTime.Hours, newRide.DepartureTime.Minutes) +
                 String.Format("&mon={0}&tue={1}&wed={2}&thu={3}&fri={4}&sat={5}&sun={6}",
                 newRide.RecurMon, newRide.RecurTue, newRide.RecurWed, newRide.RecurThu,
                 newRide.RecurFri, newRide.RecurSat, newRide.RecurSun));
