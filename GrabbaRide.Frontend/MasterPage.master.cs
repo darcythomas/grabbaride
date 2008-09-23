@@ -15,6 +15,9 @@ public partial class MasterPage : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (Request.Url.Host == "seat-projects1")
+        {
+            Response.Redirect("http://seat-projects1.massey.ac.nz/carpoolgp2/");
+        }
     }
 }

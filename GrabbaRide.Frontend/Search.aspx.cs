@@ -15,8 +15,13 @@ namespace GrabbaRide.Frontend
              */
             if (!Page.IsPostBack)
             {
+                // dynamically choose which google maps script to load
+                GoogleMaps.LoadGoogleMapsScripts(this.Page);
+
+                // redisplay the values that the user searched for
                 LoadQueryStringValues();
 
+                // display the results?
                 if (String.IsNullOrEmpty(Request.QueryString["fromloc"]) &&
                     String.IsNullOrEmpty(Request.QueryString["toloc"]))
                 {

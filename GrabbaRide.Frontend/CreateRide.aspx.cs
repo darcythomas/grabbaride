@@ -24,6 +24,9 @@ namespace GrabbaRide.Frontend
             }
             else if (!Page.IsPostBack)
             {
+                // dynamically choose which google maps script to load
+                GoogleMaps.LoadGoogleMapsScripts(this.Page);
+
                 // preselect some sensible start and end dates
                 calstart.SelectedDate = DateTime.Now;
                 calEnd.SelectedDate = DateTime.Now.AddMonths(3);
@@ -38,7 +41,6 @@ namespace GrabbaRide.Frontend
             Ride newRide = new Ride();
 
             // ride owner and availability
-
             newRide.Available = true;
             newRide.User = dataContext.GetUserByUsername(User.Identity.Name);
 
