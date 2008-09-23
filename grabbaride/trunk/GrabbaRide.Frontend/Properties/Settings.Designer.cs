@@ -22,5 +22,25 @@ namespace GrabbaRide.Frontend.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://maps.google.com/maps?file=api&v=2&key=ABQIAAAAdzIHDEcQlKVK0ZsLXgw7AxT2yXp_" +
+            "ZAY8_ufC3CFXhHIE1NvwkxTe_yeQBDaUEW7-M67E9zLbOak5Xw")]
+        public string GoogleMapsLocalhost {
+            get {
+                return ((string)(this["GoogleMapsLocalhost"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://maps.google.com/maps?file=api&v=2&key=ABQIAAAAmBMhkNSPbbTHc6LEiun6YhRPor4V" +
+            "WM5LzoGwBgXAWqULyD2x4hTVI09jBVUievTae8wlB8zmee4aMg")]
+        public string GoogleMapsSeatProjects1 {
+            get {
+                return ((string)(this["GoogleMapsSeatProjects1"]));
+            }
+        }
     }
 }

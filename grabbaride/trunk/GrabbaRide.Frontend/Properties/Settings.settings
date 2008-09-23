@@ -1,6 +1,12 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="GrabbaRide.Frontend.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="GoogleMapsLocalhost" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAdzIHDEcQlKVK0ZsLXgw7AxT2yXp_ZAY8_ufC3CFXhHIE1NvwkxTe_yeQBDaUEW7-M67E9zLbOak5Xw</Value>
+    </Setting>
+    <Setting Name="GoogleMapsSeatProjects1" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAmBMhkNSPbbTHc6LEiun6YhRPor4VWM5LzoGwBgXAWqULyD2x4hTVI09jBVUievTae8wlB8zmee4aMg</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>
