@@ -112,33 +112,50 @@ namespace GrabbaRide.Frontend
             Ride searchedRide = new Ride();
 
             // location searched for
-            string[] fromLoc = Request.QueryString["fromloc"].Split(',');
-            if (fromLoc.Length == 2)
+            if (!String.IsNullOrEmpty(Request.QueryString["fromloc"]))
             {
-                searchedRide.LocationFromLat = Double.Parse(fromLoc[0]);
-                searchedRide.LocationFromLong = Double.Parse(fromLoc[1]);
+                string[] fromLoc = Request.QueryString["fromloc"].Split(',');
+                if (fromLoc.Length == 2)
+                {
+                    searchedRide.LocationFromLat = Double.Parse(fromLoc[0]);
+                    searchedRide.LocationFromLong = Double.Parse(fromLoc[1]);
+                }
             }
 
-            string[] toLoc = Request.QueryString["toloc"].Split(',');
-            if (toLoc.Length == 2)
+            if (!String.IsNullOrEmpty(Request.QueryString["toloc"]))
             {
-                searchedRide.LocationToLat = Double.Parse(toLoc[0]);
-                searchedRide.LocationToLong = Double.Parse(toLoc[1]);
+                string[] toLoc = Request.QueryString["toloc"].Split(',');
+                if (toLoc.Length == 2)
+                {
+                    searchedRide.LocationToLat = Double.Parse(toLoc[0]);
+                    searchedRide.LocationToLong = Double.Parse(toLoc[1]);
+                }
             }
 
             // days of the week searched for
-            searchedRide.RecurMon = Boolean.Parse(Request.QueryString["mon"]);
-            searchedRide.RecurTue = Boolean.Parse(Request.QueryString["tue"]);
-            searchedRide.RecurWed = Boolean.Parse(Request.QueryString["wed"]);
-            searchedRide.RecurThu = Boolean.Parse(Request.QueryString["thu"]);
-            searchedRide.RecurFri = Boolean.Parse(Request.QueryString["fri"]);
-            searchedRide.RecurSat = Boolean.Parse(Request.QueryString["sat"]);
-            searchedRide.RecurSun = Boolean.Parse(Request.QueryString["sun"]);
+            if (!String.IsNullOrEmpty(Request.QueryString["mon"]))
+                searchedRide.RecurMon = Boolean.Parse(Request.QueryString["mon"]);
+            if (!String.IsNullOrEmpty(Request.QueryString["tue"]))
+                searchedRide.RecurTue = Boolean.Parse(Request.QueryString["tue"]);
+            if (!String.IsNullOrEmpty(Request.QueryString["wed"]))
+                searchedRide.RecurWed = Boolean.Parse(Request.QueryString["wed"]);
+            if (!String.IsNullOrEmpty(Request.QueryString["thu"]))
+                searchedRide.RecurThu = Boolean.Parse(Request.QueryString["thu"]);
+            if (!String.IsNullOrEmpty(Request.QueryString["fri"]))
+                searchedRide.RecurFri = Boolean.Parse(Request.QueryString["fri"]);
+            if (!String.IsNullOrEmpty(Request.QueryString["sat"]))
+                searchedRide.RecurSat = Boolean.Parse(Request.QueryString["sat"]);
+            if (!String.IsNullOrEmpty(Request.QueryString["sun"]))
+                searchedRide.RecurSun = Boolean.Parse(Request.QueryString["sun"]);
 
             // time searched for
-            searchedRide.DepartureTime = new TimeSpan(
-                Int32.Parse(Request.QueryString["hours"]),
-                Int32.Parse(Request.QueryString["mins"]), 0);
+            if (!String.IsNullOrEmpty(Request.QueryString["hours"]) &&
+                !String.IsNullOrEmpty(Request.QueryString["mins"]))
+            {
+                searchedRide.DepartureTime = new TimeSpan(
+                    Int32.Parse(Request.QueryString["hours"]),
+                    Int32.Parse(Request.QueryString["mins"]), 0);
+            }
 
             // search for the ride & display results
             GrabbaRideDBDataContext dc = new GrabbaRideDBDataContext();

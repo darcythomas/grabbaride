@@ -4,10 +4,9 @@ body
 	font-family: Verdana, Arial;
 	background-color: #507cd1;
 }
-td, th 
+#resultsViewStyle td, #resultsViewStyle th
 {
 	border: solid 1px black;
-	
 	background-color: #DCDCDC;
 	border-color: #000000;
 	font-family: Verdana, Arial, Helvetica, sans-serif;

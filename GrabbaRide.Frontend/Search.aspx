@@ -2,7 +2,6 @@
     CodeBehind="Search.aspx.cs" Inherits="GrabbaRide.Frontend.WebForm5" Title="GrabbaRide Search" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server" />
@@ -68,118 +67,114 @@
     <br />
     <asp:Button ID="btnSearch" runat="server" OnClick="btnSearch_Click" Text="Search Rides" />
     <br />
-    <asp:ListView ID="ResultsListView" runat="server" DataKeyNames="RideID">
-        <LayoutTemplate>
-            <table runat="server">
-                <tr runat="server">
-                    <td runat="server">
-                        <table id="itemPlaceholderContainer" runat="server">
-                            <tr runat="server">
-                                <%-- <th runat="server">
+    <div id="resultsViewStyle">
+        <asp:ListView ID="ResultsListView" runat="server" DataKeyNames="RideID">
+            <LayoutTemplate>
+                <table runat="server" cellspacing="0">
+                    <tr runat="server">
+                        <%-- <th runat="server">
                                     Ride ID
                                 </th> --%>
-                                <th id="Th1" runat="server">
-                                    User
-                                </th> 
-                                <th id="Th4" runat="server">
-                                    Seats
-                                </th>
-                                <th id="Th2" runat="server">
-                                    Departing
-                                </th>
-                                <%-- <th id="Th3" runat="server">
+                        <th id="Th1" runat="server">
+                            User
+                        </th>
+                        <th id="Th4" runat="server">
+                            Seats
+                        </th>
+                        <th id="Th2" runat="server">
+                            Departing
+                        </th>
+                        <%-- <th id="Th3" runat="server">
                                     Length
                                 </th> --%>
-                                <th runat="server">
-                                    Mon
-                                </th>
-                                <th runat="server">
-                                    Tue
-                                </th>
-                                <th runat="server">
-                                    Wed
-                                </th>
-                                <th runat="server">
-                                    Thu
-                                </th>
-                                <th runat="server">
-                                    Fri
-                                </th>
-                                <th runat="server">
-                                    Sat
-                                </th>
-                                <th runat="server">
-                                    Sun
-                                </th>
-                                <%-- <th id="Th5" runat="server">
+                        <th runat="server">
+                            Mon
+                        </th>
+                        <th runat="server">
+                            Tue
+                        </th>
+                        <th runat="server">
+                            Wed
+                        </th>
+                        <th runat="server">
+                            Thu
+                        </th>
+                        <th runat="server">
+                            Fri
+                        </th>
+                        <th runat="server">
+                            Sat
+                        </th>
+                        <th runat="server">
+                            Sun
+                        </th>
+                        <%-- <th id="Th5" runat="server">
                                     End Date
                                 </th> --%>
-                            </tr>
-                            <tr id="itemPlaceholder" runat="server">
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>
-        </LayoutTemplate>
-        <EmptyDataTemplate>
-            <table runat="server">
+                    </tr>
+                    <tr id="itemPlaceholder" runat="server">
+                    </tr>
+                </table>
+            </LayoutTemplate>
+            <EmptyDataTemplate>
+                <table runat="server">
+                    <tr>
+                        <td>
+                            No rides found!
+                        </td>
+                    </tr>
+                </table>
+            </EmptyDataTemplate>
+            <ItemTemplate>
                 <tr>
-                    <td>
-                        No data was returned.
-                    </td>
-                </tr>
-            </table>
-        </EmptyDataTemplate>
-        <ItemTemplate>
-            <tr>
-                <%-- <td>
+                    <%-- <td>
                    <asp:Label ID="RideIDLabel" runat="server" Text='<%# Eval("RideID") %>' />
                 </td> --%>
-                <td>
-                    <asp:Label ID="UserLabel" runat="server" Text='<%# Eval("User.Username") %>' />
-                </td>
-                <td>
-                    <asp:Label ID="NumSeatsLabel" runat="server" Text='<%# Eval("NumSeats") %>' />
-                </td>
-                <td>
-                    <asp:Label ID="DepartureTimeLabel" runat="server" Text='<%# new DateTime((long)Eval("DepartureTime.Ticks")).ToString("t") %>' />
-                </td>
-                <%-- <td>
+                    <td>
+                        <asp:Label ID="UserLabel" runat="server" Text='<%# Eval("User.Username") %>' />
+                    </td>
+                    <td>
+                        <asp:Label ID="NumSeatsLabel" runat="server" Text='<%# Eval("NumSeats") %>' />
+                    </td>
+                    <td>
+                        <asp:Label ID="DepartureTimeLabel" runat="server" Text='<%# new DateTime((long)Eval("DepartureTime.Ticks")).ToString("t") %>' />
+                    </td>
+                    <%-- <td>
                     <asp:Label ID="JourneyLengthLabel" runat="server" Text='<%# new DateTime((long)Eval("JourneyLength.Ticks")).ToString("h:mm") %>' />
                 </td> --%>
-                <td>
-                    <asp:CheckBox ID="RecurMonCheckBox" runat="server" Checked='<%# Eval("RecurMon") %>'
-                        Enabled="false" />
-                </td>
-                <td>
-                    <asp:CheckBox ID="RecurTueCheckBox" runat="server" Checked='<%# Eval("RecurTue") %>'
-                        Enabled="false" />
-                </td>
-                <td>
-                    <asp:CheckBox ID="RecurWedCheckBox" runat="server" Checked='<%# Eval("RecurWed") %>'
-                        Enabled="false" />
-                </td>
-                <td>
-                    <asp:CheckBox ID="RecurThuCheckBox" runat="server" Checked='<%# Eval("RecurThu") %>'
-                        Enabled="false" />
-                </td>
-                <td>
-                    <asp:CheckBox ID="RecurFriCheckBox" runat="server" Checked='<%# Eval("RecurFri") %>'
-                        Enabled="false" />
-                </td>
-                <td>
-                    <asp:CheckBox ID="RecurSatCheckBox" runat="server" Checked='<%# Eval("RecurSat") %>'
-                        Enabled="false" />
-                </td>
-                <td>
-                    <asp:CheckBox ID="RecurSunCheckBox" runat="server" Checked='<%# Eval("RecurSun") %>'
-                        Enabled="false" />
-                </td>
-                <%-- <td>
+                    <td>
+                        <asp:CheckBox ID="RecurMonCheckBox" runat="server" Checked='<%# Eval("RecurMon") %>'
+                            Enabled="false" />
+                    </td>
+                    <td>
+                        <asp:CheckBox ID="RecurTueCheckBox" runat="server" Checked='<%# Eval("RecurTue") %>'
+                            Enabled="false" />
+                    </td>
+                    <td>
+                        <asp:CheckBox ID="RecurWedCheckBox" runat="server" Checked='<%# Eval("RecurWed") %>'
+                            Enabled="false" />
+                    </td>
+                    <td>
+                        <asp:CheckBox ID="RecurThuCheckBox" runat="server" Checked='<%# Eval("RecurThu") %>'
+                            Enabled="false" />
+                    </td>
+                    <td>
+                        <asp:CheckBox ID="RecurFriCheckBox" runat="server" Checked='<%# Eval("RecurFri") %>'
+                            Enabled="false" />
+                    </td>
+                    <td>
+                        <asp:CheckBox ID="RecurSatCheckBox" runat="server" Checked='<%# Eval("RecurSat") %>'
+                            Enabled="false" />
+                    </td>
+                    <td>
+                        <asp:CheckBox ID="RecurSunCheckBox" runat="server" Checked='<%# Eval("RecurSun") %>'
+                            Enabled="false" />
+                    </td>
+                    <%-- <td>
                     <asp:Label ID="EndDateLabel" runat="server" Text='<%# Eval("EndDate", "{0:d}") %>' />
                 </td> --%>
-            </tr>
-        </ItemTemplate>
-    </asp:ListView>
+                </tr>
+            </ItemTemplate>
+        </asp:ListView>
+    </div>
 </asp:Content>
