@@ -2,12 +2,27 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using GrabbaRide.Database.Properties;
 
 namespace GrabbaRide.Database
 {
     partial class GrabbaRideDBDataContext
     {
         protected const string APPLICATION_NAME = "GrabbaRide";
+
+        /// <summary>
+        /// Default constructor which will choose a connection string
+        /// based on whether it is a debug or release build
+        /// </summary>
+        public GrabbaRideDBDataContext() :
+#if (DEBUG)
+            base(Settings.Default.GrabbaRideDBConnectionStringLocalhost, mappingSource)
+#else
+            base(Settings.Default.GrabbaRideDBConnectionStringMassey, mappingSource)
+#endif
+        {
+            OnCreated();
+        }
 
         #region RideMappings
 

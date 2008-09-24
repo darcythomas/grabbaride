@@ -30,5 +30,20 @@ namespace GrabbaRide.Database
 
             return password;
         }
+
+        public bool IsSignedIn
+        {
+            get
+            {
+                // if there is no last activity date
+                if (!this.LastActvityDate.HasValue)
+                    return false;
+                // if their last activity was more than 15 minutes ago
+                else if (DateTime.Now.Subtract(this.LastActvityDate.Value).TotalMinutes > 15)
+                    return false;
+                // otherwise, must be logged in
+                else return true;
+            }
+        }
     }
 }

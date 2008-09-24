@@ -25,16 +25,14 @@ namespace GrabbaRide.Frontend
             // check for the google maps api script
             if (!currentPage.ClientScript.IsClientScriptIncludeRegistered("googleMapsApi"))
             {
-                if (currentPage.Request.Url.Host == "localhost")
-                {
-                    currentPage.ClientScript.RegisterClientScriptInclude("googleMapsApi",
-                        Settings.Default.GoogleMapsLocalhost);
-                }
-                else
-                {
-                    currentPage.ClientScript.RegisterClientScriptInclude("googleMapsApi",
-                        Settings.Default.GoogleMapsSeatProjects1);
-                }
+                // decide which server we are running on
+#if (DEBUG)
+                currentPage.ClientScript.RegisterClientScriptInclude("googleMapsApi",
+                    Settings.Default.GoogleMapsLocalhost);
+#else
+                currentPage.ClientScript.RegisterClientScriptInclude("googleMapsApi",
+                    Settings.Default.GoogleMapsSeatProjects1);
+#endif
             }
 
             // check for our google maps script
