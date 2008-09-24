@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Database Class="GrabbaRideDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=LOCALHOST;Initial Catalog=GrabbaRideDB;Integrated Security=True" SettingsObjectName="GrabbaRide.Database.Properties.Settings" SettingsPropertyName="GrabbaRideDBConnectionStringLocalhost" Provider="System.Data.SqlClient" />
   <Table Name="Rides">
     <Type Name="Ride">
       <Column Name="RideID" Type="System.Int32" IsReadOnly="true" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -23,6 +22,8 @@
       <Column Name="LocationToLat" Type="System.Double" CanBeNull="false" />
       <Column Name="LocationToLong" Type="System.Double" CanBeNull="false" />
       <Column Name="Available" Type="System.Boolean" CanBeNull="false" />
+      <Column Name="Details" Type="System.String" CanBeNull="true" />
+      <Association Name="Ride_FavouriteRide" Member="FavouriteRides" OtherKey="RideID" Type="FavouriteRide" />
       <Association Name="User_Ride" Member="User" ThisKey="UserID" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
@@ -49,9 +50,11 @@
       <Column Name="Comment" Type="System.String" CanBeNull="true" />
       <Column Name="LastLockoutDate" Type="System.DateTime" CanBeNull="true" />
       <Column Name="Location" Type="System.String" CanBeNull="true" />
-      <Column Member="IsSignedIn" Type="System.Boolean" CanBeNull="false" />
       <Association Name="User_Ride" Member="Rides" OtherKey="UserID" Type="Ride" />
       <Association Name="User_OpenID" Member="OpenIDs" OtherKey="UserID" Type="OpenID" />
+      <Association Name="User_FeedbackRating" Member="FeedbackRatingsPlaced" OtherKey="UserRaterID" Type="FeedbackRating" />
+      <Association Name="User_FeedbackRating1" Member="FeedbackRatingsReceived" OtherKey="UserRatedID" Type="FeedbackRating" />
+      <Association Name="User_FavouriteRide" Member="FavouriteRides" OtherKey="UserID" Type="FavouriteRide" />
     </Type>
   </Table>
   <Table Name="OpenIDs">
@@ -59,6 +62,24 @@
       <Column Name="OpenIDUrl" Type="System.String" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="UserID" Type="System.Int32" CanBeNull="false" />
       <Association Name="User_OpenID" Member="User" ThisKey="UserID" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="" Member="FeedbackRatings">
+    <Type Name="FeedbackRating">
+      <Column Name="UserRaterID" Type="System.Int32" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserRatedID" Type="System.Int32" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Rating" Type="System.Int16" CanBeNull="false" />
+      <Association Name="User_FeedbackRating" Member="UserRater" ThisKey="UserRaterID" Type="User" IsForeignKey="true" />
+      <Association Name="User_FeedbackRating1" Member="UserRated" ThisKey="UserRatedID" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="" Member="FavouriteRides">
+    <Type Name="FavouriteRide">
+      <Column Name="UserID" Type="System.Int32" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RideID" Type="System.Int32" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DateAdded" Type="System.DateTime" CanBeNull="false" />
+      <Association Name="Ride_FavouriteRide" Member="Ride" ThisKey="RideID" Type="Ride" IsForeignKey="true" />
+      <Association Name="User_FavouriteRide" Member="User" ThisKey="UserID" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

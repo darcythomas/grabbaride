@@ -9,7 +9,6 @@ namespace GrabbaRide.UserManagement
 {
     class OpenIDAuthentication
     {
-
         private GrabbaRideDBDataContext context;
         private string OpenIDURL;
         private string ReturnURL;
@@ -19,7 +18,7 @@ namespace GrabbaRide.UserManagement
         /// Constructor for openID authentication
         /// </summary>
         /// <param name="url"></param>
-        public OpenIDAuthentication(string OpenIDurl,string returnURL)
+        public OpenIDAuthentication(string OpenIDurl, string returnURL)
         {
             //open a db contex
             this.context = new GrabbaRideDBDataContext();
@@ -34,7 +33,8 @@ namespace GrabbaRide.UserManagement
                     // then log them in
 
                 }
-                else {
+                else
+                {
                     ///f the user is already signed in but the OpenID belongs to a different user, 
                     ///show an error message saying that this OpenID has already been claimed by another user.
                     ///You can also provide the user the option to sign out and try again. This is an edge case.
@@ -59,9 +59,7 @@ namespace GrabbaRide.UserManagement
 
         private void QuerryProviderToRegister()
         {
-           // DotNetOpenId.
+            // DotNetOpenId.
         }
-
-
     }
 }
