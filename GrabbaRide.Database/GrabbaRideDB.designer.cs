@@ -41,7 +41,7 @@ namespace GrabbaRide.Database
     #endregion
 		
 		public GrabbaRideDBDataContext() : 
-				base(global::GrabbaRide.Database.Properties.Settings.Default.GrabbaRideDBConnectionString, mappingSource)
+				base(global::GrabbaRide.Database.Properties.Settings.Default.GrabbaRideDBConnectionStringLocalhost, mappingSource)
 		{
 			OnCreated();
 		}
