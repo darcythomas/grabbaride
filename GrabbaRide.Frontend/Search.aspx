@@ -72,9 +72,6 @@
             <LayoutTemplate>
                 <table runat="server" cellspacing="0">
                     <tr runat="server">
-                        <%-- <th runat="server">
-                                    Ride ID
-                                </th> --%>
                         <th id="Th1" runat="server">
                             User
                         </th>
@@ -84,9 +81,6 @@
                         <th id="Th2" runat="server">
                             Departing
                         </th>
-                        <%-- <th id="Th3" runat="server">
-                                    Length
-                                </th> --%>
                         <th runat="server">
                             Mon
                         </th>
@@ -108,9 +102,9 @@
                         <th runat="server">
                             Sun
                         </th>
-                        <%-- <th id="Th5" runat="server">
-                                    End Date
-                                </th> --%>
+                        <th>
+                            Details
+                        </th>
                     </tr>
                     <tr id="itemPlaceholder" runat="server">
                     </tr>
@@ -127,9 +121,6 @@
             </EmptyDataTemplate>
             <ItemTemplate>
                 <tr>
-                    <%-- <td>
-                   <asp:Label ID="RideIDLabel" runat="server" Text='<%# Eval("RideID") %>' />
-                </td> --%>
                     <td>
                         <asp:Label ID="UserLabel" runat="server" Text='<%# Eval("User.Username") %>' />
                     </td>
@@ -139,9 +130,6 @@
                     <td>
                         <asp:Label ID="DepartureTimeLabel" runat="server" Text='<%# new DateTime((long)Eval("DepartureTime.Ticks")).ToString("t") %>' />
                     </td>
-                    <%-- <td>
-                    <asp:Label ID="JourneyLengthLabel" runat="server" Text='<%# new DateTime((long)Eval("JourneyLength.Ticks")).ToString("h:mm") %>' />
-                </td> --%>
                     <td>
                         <asp:CheckBox ID="RecurMonCheckBox" runat="server" Checked='<%# Eval("RecurMon") %>'
                             Enabled="false" />
@@ -170,9 +158,10 @@
                         <asp:CheckBox ID="RecurSunCheckBox" runat="server" Checked='<%# Eval("RecurSun") %>'
                             Enabled="false" />
                     </td>
-                    <%-- <td>
-                    <asp:Label ID="EndDateLabel" runat="server" Text='<%# Eval("EndDate", "{0:d}") %>' />
-                </td> --%>
+                    <td>
+                        <a id="viewdetails1" runat="server" href='<%# String.Format("RideDetails.aspx?id={0}", Eval("RideID")) %>'>
+                            details -> </a>
+                    </td>
                 </tr>
             </ItemTemplate>
         </asp:ListView>

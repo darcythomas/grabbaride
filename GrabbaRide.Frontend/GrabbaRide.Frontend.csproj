@@ -106,6 +106,13 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="RideDetails.aspx.cs">
+      <DependentUpon>RideDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RideDetails.aspx.designer.cs">
+      <DependentUpon>RideDetails.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Terms.aspx.cs">
       <DependentUpon>Terms.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -172,6 +179,7 @@
     <Resource Include="OpenIDLibrary\DotNetOpenId.dll">
     </Resource>
     <Content Include="Privacy.aspx" />
+    <Content Include="RideDetails.aspx" />
     <Content Include="Terms.aspx" />
     <Content Include="User.aspx" />
     <Content Include="Login.aspx" />
