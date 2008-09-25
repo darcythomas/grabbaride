@@ -12,6 +12,7 @@
 	font-size: x-large;
 	color: #000080;
 	text-align: justify;
+	margin-bottom: 0px;
 }
 .style8 {
 	font-family: Arial;
@@ -27,7 +28,7 @@
 	text-align: justify;
 }
 .style11 {
-	text-align: justify;
+	text-align: center;
 }
 .style12 {
 	font-family: Arial;
@@ -51,11 +52,11 @@
 	users of the site. </p>
 	<p class="style9" style="width: 885px">The project team 
         consisted of six members and they are: </p>
-	<table style="width: 96%">
+	<table style="background-position: center center; width: 96%; position: static;" align="center">
 		<tr>
-			<td class="style12" style="width: 320px">
+			<td class="style12" style="background-position: center center; width: 320px">
 			<img class="style6" height="250" src="Images/Adrian.jpg" width="250" /></td>
-			<td class="style8"><strong>Adrian James Macneil</strong><br />
+			<td class="style8" style="background-position: center center"><strong>Adrian James Macneil</strong><br />
 			<strong>Team Leader</strong><br />
 			<span class="style4">Degree Studying:<br />
 			<br />
@@ -63,7 +64,7 @@
 			project:</span></td>
 		</tr>
 	</table>
-	<table style="width: 96%">
+	<table style="background-position: center center; width: 96%" align="center">
 		<tr>
 			<td class="style12" style="width: 320px"><br class="style6" />
 			<span class="style4">
@@ -73,11 +74,11 @@
 			<span class="style6">Bachelor of Engineering (Honours)</span></td>
 		</tr>
 	</table>
-	<table style="width: 96%">
+	<table style="width: 96%" align="center">
 		<tr>
 			<td class="style11" style="width: 320px"><br class="style6" />
 			<span class="style4">
-			<img class="style6" height="227" src="Autumn%20Leaves.jpg" width="303" /></span></td>
+			<img class="style6" height="187" src="Autumn%20Leaves.jpg" width="250" /></span></td>
 			<td class="style10" style="width: 520px"><span class="style6">
 			<strong>Amy Elizabeth Palamountain</strong></span><br class="style6" />
 			<span class="style4"><span class="style6">Degree Studying:</span><br class="style6" />
@@ -85,9 +86,9 @@
 			experience with this software project:</span></span></td>
 		</tr>
 	</table>
-	<table style="width: 96%">
+	<table style="width: 96%" align="center">
 		<tr>
-			<td class="style10" style="width: 320px"><br class="style6" />
+			<td class="style12" style="width: 320px"><br class="style6" />
 			<img class="style6" height="250" src="Images/Darcy.jpg" width="250" /></td>
 			<td class="style10"><span class="style6"><strong>Thomas James Burge</strong></span><br class="style6" />
 			<span class="style6">Degree:</span><br class="style6" />
@@ -95,20 +96,20 @@
 			experience with this software project:</span></td>
 		</tr>
 	</table>
-	<table style="width: 96%">
+	<table style="width: 96%" align="center">
 		<tr>
-			<td class="style10" style="width: 320px"><br class="style6" />
-			<img class="style6" height="227" src="Autumn%20Leaves.jpg" width="303" /></td>
+			<td class="style12" style="width: 320px"><br class="style6" />
+			<img class="style6" height="250" src="Images/Nick.JPG" width="250" /></td>
 			<td class="style10"><span class="style6"><strong>Nicholas James Sarten</strong></span><br class="style6" />
 			<span class="style6">Degree:</span><br class="style6" />
 			<span class="style6">Write something about your self or your 
 			experience with this software project:</span></td>
 		</tr>
 	</table>
-	<p class="style6">&nbsp;<span class="style4"><table style="width: 96%">
+	<p class="style6">&nbsp;<span class="style4"><table style="width: 96%" align="center">
 		<tr>
-			<td class="style10" style="width: 320px">
-			<img height="227" src="Autumn%20Leaves.jpg" width="303" /></td>
+			<td class="style12" style="width: 320px">
+			<img height="187" src="Autumn%20Leaves.jpg" width="250" /></td>
 			<td class="style10"><strong>Thomas William Scott Satherley</strong><br />
 			<span class="style4"><span class="style6">Bachelor of Engineering (Honours)<br />
 			</span></span><br />

@@ -45,13 +45,13 @@
 	color: #000000;
 }
 .style14 {
-	margin-left: 32px;
+	margin-left: 0px;
 }
 .style15 {
 	text-align: center;
 }
 .style16 {
-	text-align: center;
+	text-align: left;
 	font-weight: normal;
 	color: #000000;
 }
@@ -62,31 +62,36 @@
 	margin-bottom: 0px;
 }
 .style18 {
-	font-size: small;
-	color: #000066;
+	text-align: left;
+}
+    .style19 {
+	margin-top: 0px;
+}
+.style20 {
+	text-align: left;
 	font-family: Arial;
 }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
-    <div id="otherinfo" style="float: left; width: 865px; " class="style10">
+	<div id="otherinfo" style="float: left; width: 865px; " class="style10">
         <div class="style15">
 			<span class="style5"><span class="style6">
+        	<br />
         <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true">
         </asp:ScriptManager>
         	</span></span>
         <span class="style9">Create A Ride</span><br />
 			<br />
-			<br />
 		</div>
-		<table align="center" class="style14" style="width: 72%">
+		<table align="center" class="style14" style="background-position: left center; width: 72%">
 			<tr>
 				<td style="height: 238px">
-				<div class="style15">
+				<div class="style18">
 					<span class="style13">1) Please select starting date:</span><span class="style2"></div>
                     <asp:Calendar ID="calstart" runat="server" BackColor="White" BorderColor="Black"
                         DayNameFormat="Shortest" Font-Names="Times New Roman" Font-Size="10pt" ForeColor="Black"
-                        Height="220px" Width="270px" NextPrevFormat="FullMonth" TitleFormat="Month">
+                        Height="220px" Width="400px" NextPrevFormat="FullMonth" TitleFormat="Month" CssClass="style19">
                         <SelectedDayStyle BackColor="#CC3333" ForeColor="White" />
                         <SelectorStyle BackColor="#CCCCCC" Font-Bold="True" Font-Names="Verdana" Font-Size="8pt"
                             ForeColor="#333333" Width="1%" />
@@ -105,7 +110,7 @@
 					2) Please select finishing date:</div>
                     <asp:Calendar ID="calEnd" runat="server" BackColor="White" BorderColor="Black" DayNameFormat="Shortest"
                         Font-Names="Times New Roman" Font-Size="10pt" ForeColor="Black" Height="220px"
-                        Width="271px" NextPrevFormat="FullMonth" TitleFormat="Month">
+                        Width="400px" NextPrevFormat="FullMonth" TitleFormat="Month">
                         <SelectedDayStyle BackColor="#CC3333" ForeColor="White" />
                         <SelectorStyle BackColor="#CCCCCC" Font-Bold="True" Font-Names="Verdana" Font-Size="8pt"
                             ForeColor="#333333" Width="1%" />
@@ -123,7 +128,7 @@
 		</table>
 		<div class="style15" style="width: 885px">
 			<br />
-        </span><span class="style13"><span class="style18">3) Please select 
+        </span><span class="style13"><span class="style7">3) Please select 
 			location:</span><span class="style2"><p class="style17" style="width: 413px">
             <input id="txtgeo" type="text" size="60" name="address" value="Palmerston North" class="style7" />
             <input id="btngeocode" type="button" value="Find" onclick="var address = document.getElementById('txtgeo'); showAddress(address.value); return false" class="style7" /><span class="style5"><span class="style6">
@@ -203,7 +208,9 @@
         </asp:DropDownList>
         <br />
 		<br />
-		5) Please select the day(s):</span><br class="style6" />
+		5) Please select the day(s):<br />
+		<br />
+		<div class="style20" style="width: 100px">
         <span class="style6">
         <asp:CheckBox ID="chkmon" runat="server" Text="Monday" />
         </span>
@@ -226,6 +233,12 @@
         <br class="style6" />
         <span class="style6">
         <asp:CheckBox ID="chksat" runat="server" Text="Saturday" />
+        	<br />
+        <asp:CheckBox ID="chksat0" runat="server" Text="Sunday" />
+        </span>
+        </div>
+		</span><br class="style6" />
+        <span class="style6">
         <br />
 		<br />
         <asp:Button ID="btnCreate" runat="server" OnClick="btnCreate_Click" Text="Create Ride"
