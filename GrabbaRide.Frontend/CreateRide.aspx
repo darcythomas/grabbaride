@@ -10,43 +10,80 @@
         }
         .style2
         {
-            font-size: xx-large;
+            font-size: small;
             font-weight: bold;
             color: #000066;
-        }
-        .style3
-        {
-            color: #000000;
-        }
-        .style4
-        {
-            font-family: Cambria;
-            font-size: medium;
-        }
+	font-family: Arial;
+}
         #txtgeo
         {
             width: 345px;
         }
+    .style5 {
+	font-family: Arial;
+}
+.style6 {
+	font-size: small;
+}
+.style7 {
+	font-family: Arial;
+	font-size: small;
+}
+.style9 {
+	font-size: x-large;
+	font-weight: bold;
+	color: #000080;
+	font-family: Arial;
+}
+.style10 {
+	text-align: center;
+	margin-left: 3px;
+}
+.style13 {
+	font-family: Arial;
+	font-size: small;
+	color: #000000;
+}
+.style14 {
+	margin-left: 32px;
+}
+.style15 {
+	text-align: center;
+}
+.style16 {
+	text-align: center;
+	font-weight: normal;
+	color: #000000;
+}
+.style17 {
+	margin-left: 59px;
+	margin-right: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+.style18 {
+	font-size: small;
+	color: #000066;
+	font-family: Arial;
+}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
-    <div id="gdiv" style="float: right; margin-top: 128px;">
-        <p>
-            <input id="txtgeo" type="text" size="60" name="address" value="Palmerston North" />
-            <input id="btngeocode" type="button" value="Find" onclick="var address = document.getElementById('txtgeo'); showAddress(address.value); return false" />
-            <div id="searchmap" style="width: 400px; height: 400px; margin-top: 30px;">
-            </div>
-    </div>
-    <br />
-    <div id="otherinfo" style="float: left; width: 275px; margin-left: 18px;">
+    <div id="otherinfo" style="float: left; width: 865px; " class="style10">
+        <div class="style15">
+			<span class="style5"><span class="style6">
         <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true">
         </asp:ScriptManager>
-        <span class="style2">Create A Ride<br />
-            <br />
-        </span><span class="style3"><span class="style4">1) Please select <b>start date</b>
-            (the date that the ride will appear on the website):</span></span><asp:UpdatePanel
-                ID="UpdatePanel1" runat="server">
-                <ContentTemplate>
+        	</span></span>
+        <span class="style9">Create A Ride</span><br />
+			<br />
+			<br />
+		</div>
+		<table align="center" class="style14" style="width: 72%">
+			<tr>
+				<td style="height: 238px">
+				<div class="style15">
+					<span class="style13">1) Please select starting date:</span><span class="style2"></div>
                     <asp:Calendar ID="calstart" runat="server" BackColor="White" BorderColor="Black"
                         DayNameFormat="Shortest" Font-Names="Times New Roman" Font-Size="10pt" ForeColor="Black"
                         Height="220px" Width="270px" NextPrevFormat="FullMonth" TitleFormat="Month">
@@ -62,12 +99,10 @@
                         <TitleStyle BackColor="Black" Font-Bold="True" Font-Size="13pt" ForeColor="White"
                             Height="14pt" />
                     </asp:Calendar>
-                </ContentTemplate>
-            </asp:UpdatePanel>
-        <br />
-        <span class="style1">2) Please select <b>end date</b> (the date the ride will be taken
-            off the website):</span><asp:UpdatePanel ID="UpdatePanel2" runat="server">
-                <ContentTemplate>
+                </td>
+				<td class="style2" style="height: 238px">
+				<div class="style16">
+					2) Please select finishing date:</div>
                     <asp:Calendar ID="calEnd" runat="server" BackColor="White" BorderColor="Black" DayNameFormat="Shortest"
                         Font-Names="Times New Roman" Font-Size="10pt" ForeColor="Black" Height="220px"
                         Width="271px" NextPrevFormat="FullMonth" TitleFormat="Month">
@@ -83,14 +118,29 @@
                         <TitleStyle BackColor="Black" Font-Bold="True" Font-Size="13pt" ForeColor="White"
                             Height="14pt" />
                     </asp:Calendar>
-                </ContentTemplate>
-            </asp:UpdatePanel>
+                </td>
+			</tr>
+		</table>
+		<div class="style15" style="width: 885px">
+			<br />
+        </span><span class="style13"><span class="style18">3) Please select 
+			location:</span><span class="style2"><p class="style17" style="width: 413px">
+            <input id="txtgeo" type="text" size="60" name="address" value="Palmerston North" class="style7" />
+            <input id="btngeocode" type="button" value="Find" onclick="var address = document.getElementById('txtgeo'); showAddress(address.value); return false" class="style7" /><span class="style5"><span class="style6">
+			</span></span>
+        </span>
+        </span></div>
+		<span class="style2"><span class="style5">
+            <div id="searchmap" style="width: 400px; height: 400px; margin-top: 30px;">
+            </div>
+    	</span><br />
+        </span><span class="style5">
+            <span class="style6">3) Please select number of seats available:&nbsp;<br />
+		</span>
+        </span>
         <span class="style1">
-            <br />
-            3) Please specific the total <b>number of seats</b> available:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:DropDownList ID="drpSeats" runat="server" Height="43px">
+            <span class="style5"><span class="style6">
+            <asp:DropDownList ID="drpSeats" runat="server" Height="43px" Width="32px">
                 <asp:ListItem Value="1"></asp:ListItem>
                 <asp:ListItem Value="2"></asp:ListItem>
                 <asp:ListItem Value="3"></asp:ListItem>
@@ -112,9 +162,13 @@
                 <asp:ListItem Value="19"></asp:ListItem>
                 <asp:ListItem Value="20"></asp:ListItem>
             </asp:DropDownList>
-        </span>
         <br />
-        <span class="style1">4) Please select the <b>day(s)</b> the ride is available for:</span><br />
+		</span></span>
+        </span>
+        <br class="style7" />
+        <span class="style5"><span class="style6">4) Please select starting 
+		time:</span></span><br class="style7" />
+        <span class="style5"><span class="style6">
         <asp:DropDownList ID="drphours" runat="server">
             <asp:ListItem Value="1"></asp:ListItem>
             <asp:ListItem Value="2"></asp:ListItem>
@@ -148,29 +202,46 @@
             <asp:ListItem Value="p.m."></asp:ListItem>
         </asp:DropDownList>
         <br />
+		<br />
+		5) Please select the day(s):</span><br class="style6" />
+        <span class="style6">
         <asp:CheckBox ID="chkmon" runat="server" Text="Monday" />
-        <br />
+        </span>
+        <br class="style6" />
+        <span class="style6">
         <asp:CheckBox ID="chktue" runat="server" Text="Tuesday" />
-        <br />
+        </span>
+        <br class="style6" />
+        <span class="style6">
         <asp:CheckBox ID="chkwed" runat="server" Text="Wednesday" />
-        <br />
+        </span>
+        <br class="style6" />
+        <span class="style6">
         <asp:CheckBox ID="chkthurs" runat="server" Text="Thursday" />
-        <br />
+        </span>
+        <br class="style6" />
+        <span class="style6">
         <asp:CheckBox ID="chkfri" runat="server" Text="Friday" />
-        <br />
+        </span>
+        <br class="style6" />
+        <span class="style6">
         <asp:CheckBox ID="chksat" runat="server" Text="Saturday" />
         <br />
-        <asp:CheckBox ID="chksun" runat="server" Text="Sunday" />
-        <br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<br />
         <asp:Button ID="btnCreate" runat="server" OnClick="btnCreate_Click" Text="Create Ride"
             Width="112px" />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+        </span>
+        <br class="style6" />
+        <br class="style6" />
+        <br class="style6" />
+        <br class="style6" />
+        <br class="style6" />
+        <span class="style6">
         <asp:HiddenField ID="hfend" runat="server" />
         <asp:HiddenField ID="hfstart" runat="server" />
+    	</span></span>
     </div>
+	<span class="style5">
+    <br class="style6" />
+    </span>
 </asp:Content>
