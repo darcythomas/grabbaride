@@ -5,21 +5,36 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">
 
     <script type="text/javascript">
-        function Hide(divId)
-        {
-            var control = document.getElementById(controlId);
-            control.style.visibility = "hidden";
-        }
-        function Show(divId)
-        {
-            var control = document.getElementById(controlId);
-            control.style.visibility = "visible";
-        }
 
 
-    function Radio_NormalLogIn_onclick() {
+       
     
-    }
+            function showHideContent(id, show) {
+            var elem = document.getElementById(id);
+            if (elem) {
+                if (show) {
+                    elem.style.display = 'block';
+                    elem.style.visibility = 'visible';
+                }
+                else {
+                    elem.style.display = 'none';
+                    elem.style.visibility = 'hidden';
+                }
+            }
+        }
+
+        function Radio_NormalLogIn_onclick() {
+            document.getElementById("Radio_OpenID").checked = false;
+            showHideContent("openIDDiv", false);
+            showHideContent("NormalLogInDiv", true);
+            
+        }
+
+        function Radio_OpenID_onclick() {
+            document.getElementById("Radio_NormalLogIn").checked = false;
+            showHideContent("openIDDiv", true);
+            showHideContent("NormalLogInDiv",false);
+        }
 
     </script>
 
@@ -27,11 +42,15 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server">
     </asp:ScriptManager>
-    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <input id="Radio_NormalLogIn"  checked="checked" type="radio"  
+                onclick="return Radio_NormalLogIn_onclick()" />
+                Log In To GrabbaRide
+                <br />
+                <input 
+                id="Radio_OpenID" type="radio" ; onclick="return Radio_OpenID_onclick()" /> OR...Log In With OpenID
+                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-            <input id="Radio_NormalLogIn"  checked="checked" type="radio" onclick="return Radio_NormalLogIn_onclick()" /><input 
-                ID="Radio_OpenID" type="radio" />
-            <div id="NormalLogInDiv" style="visibility: visible">
+            &nbsp;<div id="NormalLogInDiv" >
                 <asp:Login ID="GrabbaRideLogin" runat="server" BackColor="#EFF3FB" BorderColor="#B5C7DE"
                     BorderPadding="4" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana"
                     Font-Size="0.8em" ForeColor="#333333" Style="text-align: center" Width="291px"
@@ -44,7 +63,7 @@
                 </asp:Login>
             </div>
      
-                <div id="openIDDiv" style="visibility: hidden">
+              <div id="openIDDiv"  style="visibility:hidden ">
                     <RP:OpenIdLogin ID="OpenIdLogin1" runat="server" />
                 </div>
     
