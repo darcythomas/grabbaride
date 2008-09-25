@@ -54,7 +54,7 @@
 	<table style="width: 96%">
 		<tr>
 			<td class="style12" style="width: 320px">
-			<img class="style6" height="250" src="1e.jpg" width="250" /></td>
+			<img class="style6" height="250" src="Images/Adrian.jpg" width="250" /></td>
 			<td class="style8"><strong>Adrian James Macneil</strong><br />
 			<strong>Team Leader</strong><br />
 			<span class="style4">Degree Studying:<br />
@@ -67,7 +67,7 @@
 		<tr>
 			<td class="style12" style="width: 320px"><br class="style6" />
 			<span class="style4">
-			<img class="style6" height="250" src="Michelle04.JPG" width="250" /></span></td>
+			<img class="style6" height="250" src="Images/Michelle.JPG" width="250" /></span></td>
 			<td class="style10"><span class="style6"><strong>Michelle Cho 
 			</strong></span><br class="style6" />
 			<span class="style6">Bachelor of Engineering (Honours)</span></td>
@@ -88,7 +88,7 @@
 	<table style="width: 96%">
 		<tr>
 			<td class="style10" style="width: 320px"><br class="style6" />
-			<img class="style6" height="227" src="Autumn%20Leaves.jpg" width="303" /></td>
+			<img class="style6" height="250" src="Images/Darcy.jpg" width="250" /></td>
 			<td class="style10"><span class="style6"><strong>Thomas James Burge</strong></span><br class="style6" />
 			<span class="style6">Degree:</span><br class="style6" />
 			<span class="style6">Write something about your self or your 
