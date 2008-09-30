@@ -36,8 +36,8 @@ namespace GrabbaRide.Database
             get
             {
                 var query = from f in FeedbackRatingsReceived
-                            select f.Rating;
-                return query.Cast<int>().Sum();
+                            select Convert.ToInt32(f.Rating);
+                return query.Sum();
             }
         }
 

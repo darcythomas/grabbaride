@@ -39,6 +39,10 @@ namespace GrabbaRide.UnitTests
                 dc.Rides.DeleteAllOnSubmit<Ride>(foundUser.Rides);
                 dc.SubmitChanges();
 
+                // delete their feedback
+                dc.FeedbackRatings.DeleteAllOnSubmit<FeedbackRating>(foundUser.FeedbackRatingsPlaced);
+                dc.FeedbackRatings.DeleteAllOnSubmit<FeedbackRating>(foundUser.FeedbackRatingsReceived);
+
                 // remove the test user
                 dc.DetachUser(foundUser);
             }
@@ -402,6 +406,82 @@ namespace GrabbaRide.UnitTests
 
             // check that they do not exist
             Assert.IsNull(target.GetUserByID(deleteUser.UserID));
+        }
+
+        /// <summary>
+        ///A test for PlaceFeedbackRating
+        ///</summary>
+        [TestMethod()]
+        public void PlaceFeedbackRatingTest()
+        {
+            GrabbaRideDBDataContext target = NewTestDataContext();
+            User userRater = NewTestUser();
+            target.AttachNewUser(userRater);
+
+            User userRated = NewTestUser();
+            userRated.Username = "r4nd0mratedus3r";
+            userRated.Email = "r4nd0mratedus3r@highway.com";
+            target.AttachNewUser(userRated);
+
+            // try placing with the same user
+            try
+            {
+                target.PlaceFeedbackRating(userRater, userRater, 1);
+                Assert.Fail("Shouldn't be able to rate yourself!");
+            }
+            catch (ArgumentException) { }
+
+            // try placing stupid ratings
+            try
+            {
+                target.PlaceFeedbackRating(userRater, userRated, 2);
+                Assert.Fail("Shouldn't be able to place ratings above 1!");
+            }
+            catch (ArgumentOutOfRangeException) { }
+
+            try
+            {
+                target.PlaceFeedbackRating(userRater, userRated, -2);
+                Assert.Fail("Shouldn't be able to place ratings below -1!");
+            }
+            catch (ArgumentOutOfRangeException) { }
+
+            // place the rating
+            short rating = 1;
+            target.PlaceFeedbackRating(userRater, userRated, rating);
+
+            // check that the rating exists
+            Assert.AreEqual(1, userRater.FeedbackRatingsPlaced.Count);
+            Assert.AreEqual(0, userRater.FeedbackRatingsReceived.Count);
+            Assert.AreEqual(1, userRated.FeedbackRatingsReceived.Count);
+            Assert.AreEqual(0, userRated.FeedbackRatingsPlaced.Count);
+
+            // check that the count is correct
+            Assert.AreEqual(userRated.FeedbackRatingsReceived.Count, userRated.FeedbackScoreCount);
+            Assert.AreEqual(userRater.FeedbackRatingsReceived.Count, userRater.FeedbackScoreCount);
+
+            // check that totals are correct
+            Assert.AreEqual(1, userRated.FeedbackScoreTotal);
+            Assert.AreEqual(0, userRater.FeedbackScoreTotal);
+
+            // try adding an existing rating
+            try
+            {
+                target.PlaceFeedbackRating(userRater, userRated, 1);
+                Assert.Fail("Shouldn't be able to rate a user twice!");
+            }
+            catch (ArgumentException) { }
+
+            // add another user and rating
+            User userRater2 = NewTestUser();
+            userRater2.Username = "anotherr4andomrat3duser";
+            userRater2.Email = "anotherr4andomrat3duser@hiyou.com";
+            target.AttachNewUser(userRater2);
+            target.PlaceFeedbackRating(userRater2, userRated, -1);
+
+            // check that the counts and totals have updated
+            Assert.AreEqual(2, userRated.FeedbackScoreCount);
+            Assert.AreEqual(0, userRated.FeedbackScoreTotal);
         }
     }
 }
