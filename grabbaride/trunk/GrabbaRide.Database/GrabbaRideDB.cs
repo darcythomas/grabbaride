@@ -181,9 +181,21 @@ namespace GrabbaRide.Database
 
         public void PlaceFeedbackRating(User userRater, User userRated, short rating)
         {
+            // check that the rating is valid
             if (rating < -1 || rating > 1)
             {
                 throw new ArgumentOutOfRangeException("Rating must be between -1 and 1!");
+            }
+
+            // check whether a rating for this combination of users already exists
+            var query = from f in FeedbackRatings
+                        where f.UserRater == userRater &&
+                              f.UserRated == userRated
+                        select f;
+
+            if (query.Count() > 0)
+            {
+                throw new ArgumentException("A rating already exists for this user.");
             }
 
             FeedbackRating feedback = new FeedbackRating();
