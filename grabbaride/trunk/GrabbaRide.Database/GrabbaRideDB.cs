@@ -38,7 +38,7 @@ namespace GrabbaRide.Database
             this.Rides.DeleteOnSubmit(oldRide);
             this.SubmitChanges();
         }
-
+        
         /// <summary>
         /// Gets the ride owned by the id
         /// </summary>
@@ -177,6 +177,22 @@ namespace GrabbaRide.Database
                 if (query.Count() == 0) { return null; }
                 else { return query.Single(); }
             }
+        }
+
+        public void PlaceFeedbackRating(User userRater, User userRated, short rating)
+        {
+            if (rating < -1 || rating > 1)
+            {
+                throw new ArgumentOutOfRangeException("Rating must be between -1 and 1!");
+            }
+
+            FeedbackRating feedback = new FeedbackRating();
+            feedback.UserRater = userRater;
+            feedback.UserRated = userRated;
+            feedback.Rating = rating;
+
+            this.FeedbackRatings.InsertOnSubmit(feedback);
+            this.SubmitChanges();
         }
 
         /// <summary>
