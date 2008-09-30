@@ -27,9 +27,6 @@
 	font-family: Arial;
 	text-align: justify;
 }
-.style11 {
-	text-align: center;
-}
 .style12 {
 	font-family: Arial;
 	text-align: center;
@@ -41,7 +38,7 @@
 <asp:Content id="Content3" runat="server" contentplaceholderid="MainContentPlaceHolder">
 	<h2 class="style7">About Us</h2>
     <span class="style4">
-    <p class="style9">T<span class="style4">he website was established in 2008 as Palmerston North-based 
+    <p class="style9">&nbsp;T<span class="style4">he website was established in 2008 as Palmerston North-based 
         GrabbaRide by the .NET team at Massey University. The site was developed by a 
         team of students as part of their third year studies for the paper 
 	159.356 Software Engineering C.</span></p>
@@ -64,21 +61,21 @@
 			project:</span></td>
 		</tr>
 	</table>
-	<table style="background-position: center center; width: 96%" align="center">
+	<br />
+	<table style="background-position: center center; width: 96%; height: 256px;" align="center">
 		<tr>
-			<td class="style12" style="width: 320px"><br class="style6" />
-			<span class="style4">
+			<td class="style12" style="width: 320px"><span class="style4">
 			<img class="style6" height="250" src="Images/Michelle.JPG" width="250" /></span></td>
 			<td class="style10"><span class="style6"><strong>Michelle Cho 
 			</strong></span><br class="style6" />
 			<span class="style6">Bachelor of Engineering (Honours)</span></td>
 		</tr>
 	</table>
+	<br />
 	<table style="width: 96%" align="center">
 		<tr>
-			<td class="style11" style="width: 320px"><br class="style6" />
-			<span class="style4">
-			<img class="style6" height="187" src="Autumn%20Leaves.jpg" width="250" /></span></td>
+			<td class="style12" style="width: 320px">
+			<img class="style6" height="209" src="Images/Amy.jpg" width="250" /></td>
 			<td class="style10" style="width: 520px"><span class="style6">
 			<strong>Amy Elizabeth Palamountain</strong></span><br class="style6" />
 			<span class="style4"><span class="style6">Degree Studying:</span><br class="style6" />
@@ -86,9 +83,10 @@
 			experience with this software project:</span></span></td>
 		</tr>
 	</table>
+	<br />
 	<table style="width: 96%" align="center">
 		<tr>
-			<td class="style12" style="width: 320px"><br class="style6" />
+			<td class="style12" style="width: 320px">
 			<img class="style6" height="250" src="Images/Darcy.jpg" width="250" /></td>
 			<td class="style10"><span class="style6"><strong>Thomas James Burge</strong></span><br class="style6" />
 			<span class="style6">Degree:</span><br class="style6" />
@@ -96,9 +94,10 @@
 			experience with this software project:</span></td>
 		</tr>
 	</table>
+	<br />
 	<table style="width: 96%" align="center">
 		<tr>
-			<td class="style12" style="width: 320px"><br class="style6" />
+			<td class="style12" style="width: 320px">
 			<img class="style6" height="250" src="Images/Nick.JPG" width="250" /></td>
 			<td class="style10"><span class="style6"><strong>Nicholas James Sarten</strong></span><br class="style6" />
 			<span class="style6">Degree:</span><br class="style6" />
@@ -106,7 +105,8 @@
 			experience with this software project:</span></td>
 		</tr>
 	</table>
-	<p class="style6">&nbsp;<span class="style4"><table style="width: 96%" align="center">
+	<br />
+	<p class="style6"><span class="style4"><table style="width: 96%" align="center">
 		<tr>
 			<td class="style12" style="width: 320px">
 			<img height="187" src="Autumn%20Leaves.jpg" width="250" /></td>
