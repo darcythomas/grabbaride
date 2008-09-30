@@ -23,13 +23,13 @@ namespace GrabbaRide.Frontend {
         protected global::System.Web.UI.WebControls.ObjectDataSource UserDataSource;
         
         /// <summary>
-        /// ScriptManager1 control.
+        /// UserScriptManager control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        protected global::System.Web.UI.ScriptManager UserScriptManager;
         
         /// <summary>
         /// UserDetailsUpdatePanel control.
@@ -48,5 +48,50 @@ namespace GrabbaRide.Frontend {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DetailsView UserDetailsView;
+        
+        /// <summary>
+        /// lblScore control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblScore;
+        
+        /// <summary>
+        /// lblNoRatings control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNoRatings;
+        
+        /// <summary>
+        /// rateButtons control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl rateButtons;
+        
+        /// <summary>
+        /// ibtnRateNeg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ibtnRateNeg;
+        
+        /// <summary>
+        /// ibtnRatePos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ibtnRatePos;
     }
 }
