@@ -187,6 +187,12 @@ namespace GrabbaRide.Database
                 throw new ArgumentOutOfRangeException("Rating must be between -1 and 1!");
             }
 
+            // users can't rate themselves
+            if (userRater.UserID == userRated.UserID)
+            {
+                throw new ArgumentException("User's can't rate themselves!");
+            }
+
             // check whether a rating for this combination of users already exists
             var query = from f in FeedbackRatings
                         where f.UserRater == userRater &&

@@ -22,7 +22,6 @@ namespace GrabbaRide.Frontend
                 if (String.IsNullOrEmpty(Request.QueryString["id"]))
                 {
                     // redirect to "my profile" page
-                    UserDetailsView.AutoGenerateEditButton = true;
                     Response.Redirect("User.aspx?id=" + User.Identity.Name);
                 }
                 else if (Request.QueryString["id"] == User.Identity.Name) {
