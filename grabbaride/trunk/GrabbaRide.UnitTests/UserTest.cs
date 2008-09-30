@@ -50,5 +50,26 @@ namespace GrabbaRide.UnitTests
             User target = new User(username);
             Assert.AreEqual(username, target.Username);
         }
+
+        /// <summary>
+        ///A test for SendMessage
+        ///</summary>
+        [TestMethod()]
+        public void SendMessageTest()
+        {
+            User target = new User();
+            target.Email = "adrian.macneil@gmail.com";
+            target.FirstName = "Adrian";
+            target.LastName = "Is Fake";
+
+            User from = new User();
+            from.Email = "darcy@darcythomas.com";
+            from.FirstName = "Darcy";
+            from.LastName = "Is Also Fake";
+
+            target.SendMessage("I hate you", from);
+
+            Assert.Inconclusive("A method that does not return a value cannot be verified.");
+        }
     }
 }
