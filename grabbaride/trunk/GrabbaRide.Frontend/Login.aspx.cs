@@ -23,7 +23,7 @@ namespace GrabbaRide.Frontend
             if (Page.IsPostBack)
             {
 
-
+                ShowOpenIDSettingsScript();
                 //determine who done the post back
 
                 // OpenIdLogin1.LoggingIn()
@@ -82,7 +82,7 @@ namespace GrabbaRide.Frontend
          StringBuilder script =new System.Text.StringBuilder();
 
         script.Append("<script language=\"javascript\">\n");
-        script.AppendFormat("Radio_NormalLogIn_onclick()");
+        script.AppendFormat("Radio_NormalLogIn_onclick();");
         script.Append("</script>\n");
 
         Type type = this.GetType();
@@ -98,7 +98,8 @@ namespace GrabbaRide.Frontend
             StringBuilder script = new System.Text.StringBuilder();
 
             script.Append("<script language=\"javascript\">\n");
-            script.AppendFormat("Radio_OpenID_onclick()");
+            script.AppendFormat("Radio_OpenID_onclick();");
+  
             script.Append("</script>\n");
 
             Type type = this.GetType();
