@@ -42,7 +42,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server">
     </asp:ScriptManager>
-            <asp:TextBox ID="testbox" runat="server"></asp:TextBox>
             <input id="Radio_NormalLogIn"  checked="checked" type="radio"  
                 onclick="return Radio_NormalLogIn_onclick()" />
                 Log In To GrabbaRide
@@ -51,7 +50,7 @@
                 id="Radio_OpenID" type="radio" ; onclick="return Radio_OpenID_onclick()" /> OR...Log In With OpenID
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-            &nbsp;<div id="NormalLogInDiv" >
+            &nbsp;<div id="NormalLogInDiv" runat="server" >
                 <asp:Login ID="GrabbaRideLogin" runat="server" BackColor="#EFF3FB" BorderColor="#B5C7DE"
                     BorderPadding="4" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana"
                     Font-Size="0.8em" ForeColor="#333333" Style="text-align: center" Width="291px"
@@ -64,8 +63,11 @@
                 </asp:Login>
             </div>
      
-              <div id="openIDDiv"  style="visibility:hidden ">
-                    <RP:OpenIdLogin ID="OpenIdLogin1" runat="server" />
+              <div id="openIDDiv" style="visibility:hidden" >
+                    <RP:OpenIdLogin ID="OpenIdLogin1" runat="server" OnFailed="OpenIdLogin1_Failed" />
+                    <asp:Label ID="loginFailedLabel" runat="server" EnableViewState="False" Text="Login failed" Visible="False" />
+	                <asp:Label ID="loginCanceledLabel" runat="server" EnableViewState="False" Text="Login canceled"
+	        	Visible="False" />
                 </div>
     
         </ContentTemplate>
