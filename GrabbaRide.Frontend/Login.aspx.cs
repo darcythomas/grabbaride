@@ -12,6 +12,7 @@ using System.Web.UI.HtmlControls;
 using System.Xml.Linq;
 using DotNetOpenId.RelyingParty;
 using DotNetOpenId.Extensions.SimpleRegistration;
+using System.Text;
 
 namespace GrabbaRide.Frontend
 {
@@ -22,9 +23,10 @@ namespace GrabbaRide.Frontend
             if (Page.IsPostBack)
             {
 
+
                 //determine who done the post back
-             
-              // OpenIdLogin1.LoggingIn()
+
+                // OpenIdLogin1.LoggingIn()
                 string redirectUrl = Request.QueryString["RedirectUrl"];
 
                 if (String.IsNullOrEmpty(redirectUrl))
@@ -51,23 +53,60 @@ namespace GrabbaRide.Frontend
         /// </summary>
         protected void OpenIdLogin1_LoggedIn(object sender, OpenIdEventArgs e)
         {
-            testbox.Text = "Logged in " + e.Response.FriendlyIdentifierForDisplay;
+
         }
         protected void OpenIdLogin1_Failed(object sender, OpenIdEventArgs e)
         {
-           
+            loginFailedLabel.Visible = true;
+            loginFailedLabel.Text += ": " + e.Response.Exception.Message;
+            ShowOpenIDSettingsScript();
+
+
         }
         protected void OpenIdLogin1_Canceled(object sender, OpenIdEventArgs e)
         {
-           
+            loginCanceledLabel.Visible = true;
+            loginCanceledLabel.Text = ": " + e.Response.Exception.Message;
         }
         protected void OpenIdLogin1_SetupRequired(object sender, OpenIdEventArgs e)
         {
-           
+            loginFailedLabel.Text = "It seems you need to set up an openID account";
+            loginFailedLabel.Visible = true;
+
         }
 
-       
 
-     
+
+        private void ShowNormalSettingsScript()
+        {
+         StringBuilder script =new System.Text.StringBuilder();
+
+        script.Append("<script language=\"javascript\">\n");
+        script.AppendFormat("Radio_NormalLogIn_onclick()");
+        script.Append("</script>\n");
+
+        Type type = this.GetType();
+
+       if(!ClientScript.IsClientScriptBlockRegistered(type, "divToggleSwitch"))
+           ClientScript.RegisterClientScriptBlock(type, "divToggleSwitch",
+            script.ToString());
+          }
+
+
+        private void ShowOpenIDSettingsScript()
+        {
+            StringBuilder script = new System.Text.StringBuilder();
+
+            script.Append("<script language=\"javascript\">\n");
+            script.AppendFormat("Radio_OpenID_onclick()");
+            script.Append("</script>\n");
+
+            Type type = this.GetType();
+
+            if (!ClientScript.IsClientScriptBlockRegistered(type, "divToggleSwitch"))
+                ClientScript.RegisterClientScriptBlock(type, "divToggleSwitch",
+                 script.ToString());
+        }
+
     }
 }
