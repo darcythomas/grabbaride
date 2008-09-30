@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true"
-    CodeBehind="Login.aspx.cs" Inherits="GrabbaRide.Frontend.WebForm3" Title="Untitled Page" %>
+    CodeBehind="Login.aspx.cs" Inherits="GrabbaRide.Frontend.WebForm3" Title="Login to GrabbaRide"  %>
 
 <%@ Register Assembly="DotNetOpenId" Namespace="DotNetOpenId.RelyingParty" TagPrefix="RP" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">
@@ -7,7 +7,7 @@
     <script type="text/javascript">
 
 
-       
+    
     
             function showHideContent(id, show) {
             var elem = document.getElementById(id);
@@ -42,6 +42,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server">
     </asp:ScriptManager>
+            <asp:TextBox ID="testbox" runat="server"></asp:TextBox>
             <input id="Radio_NormalLogIn"  checked="checked" type="radio"  
                 onclick="return Radio_NormalLogIn_onclick()" />
                 Log In To GrabbaRide
