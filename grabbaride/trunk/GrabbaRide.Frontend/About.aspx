@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeBehind="About.aspx.cs" Inherits="GrabbaRide.Frontend.About" Title="Untitled Page" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">
-    <style type="text/css">
+	<style type="text/css">
         .style4 {
 	font-family: Arial;
 }
@@ -38,8 +38,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="LeftNavContentPlaceHolder" runat="server">
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
-<h2 class="style7">About Us</h2>
+<asp:Content id="Content3" runat="server" contentplaceholderid="MainContentPlaceHolder">
+	<h2 class="style7">About Us</h2>
     <span class="style4">
     <p class="style9">T<span class="style4">he website was established in 2008 as Palmerston North-based 
         GrabbaRide by the .NET team at Massey University. The site was developed by a 
@@ -121,3 +121,4 @@
 	<p class="style9">&nbsp;</p>
     </span>
 </asp:Content>
+
