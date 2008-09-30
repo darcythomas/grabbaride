@@ -1,23 +1,54 @@
 ﻿using System;
-using System.Web.Security;
-using System.Net.Mail;
+using System.Linq;
 using System.Net;
+using System.Net.Mail;
 
 namespace GrabbaRide.Database
 {
     public partial class User
     {
+        /// <summary>
+        /// A constructor for the User class, which takes a username.
+        /// </summary>
+        /// <param name="username">The username of the new user.</param>
         public User(string username)
             : this()
         {
             this.Username = username;
         }
 
+        /// <summary>
+        /// The FirstName and LastName.
+        /// </summary>
         public string FullName
         {
             get
             {
                 return String.Format("{0} {1}", FirstName, LastName);
+            }
+        }
+
+        /// <summary>
+        /// The sum of feedback ratings placed for this user.
+        /// </summary>
+        public int FeedbackScoreTotal
+        {
+            get
+            {
+                var query = from f in FeedbackRatingsReceived
+                            select f.Rating;
+                return query.Cast<int>().Sum();
+            }
+        }
+
+        /// <summary>
+        /// The number of feedback ratings placed for this user.
+        /// </summary>
+        public int FeedbackScoreCount
+        {
+            get
+            {
+                return FeedbackRatingsReceived.Count;
             }
         }
 
