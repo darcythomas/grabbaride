@@ -25,15 +25,15 @@
 
         function Radio_NormalLogIn_onclick() {
             document.getElementById("Radio_OpenID").checked = false;
-            showHideContent("openIDDiv", false);
-            showHideContent("NormalLogInDiv", true);
+     //       showHideContent("openIDDiv", false);
+      //      showHideContent("NormalLogInDiv", true);
             
         }
 
         function Radio_OpenID_onclick() {
             document.getElementById("Radio_NormalLogIn").checked = false;
-            showHideContent("openIDDiv", true);
-            showHideContent("NormalLogInDiv",false);
+       //     showHideContent("openIDDiv", true);
+        //    showHideContent("NormalLogInDiv",false);
         }
 
     </script>
@@ -63,7 +63,7 @@
                 </asp:Login>
             </div>
      
-              <div id="openIDDiv" style="visibility:hidden" >
+              <div id="openIDDiv"  >
                     <RP:OpenIdLogin ID="OpenIdLogin1" runat="server" OnFailed="OpenIdLogin1_Failed" />
                     <asp:Label ID="loginFailedLabel" runat="server" EnableViewState="False" Text="Login failed" Visible="False" />
 	                <asp:Label ID="loginCanceledLabel" runat="server" EnableViewState="False" Text="Login canceled"
