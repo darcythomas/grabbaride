@@ -58,7 +58,17 @@
 			<span class="style4">Degree Studying:<br />
 			<br />
 			Team&#39;s resident Stud-muffin. Also doubles as the team&#39;s illustrious 
-			leader. </span></td>
+			leader. 
+                <br />
+                <br />
+                industrious... incurious, injurious, unserious, incestuous, injudicious, 
+                lustrous, uncurious, infusions, indecorous, inauspicious, intuitions, 
+                infectious, insidious, incautious, usurious, inglorious, spurious, salubrious, 
+                censorious, interiors, inducts, neutrinos, nostrils, notorious, inferiors, 
+                reductions, invasions, monstrous, penurious, estrous, irruptions, tendentious, 
+                uxorious, delirious,<b> dustbins, instills, pincushions, indigenous, nefarious, 
+                adulterous, desirous, imperious, intrigues, seductions, inducers, lugubrious, 
+                detritus, nutritious, instils</b></span></td>
 		</tr>
 	</table>
 	<br />
