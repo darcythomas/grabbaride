@@ -11,7 +11,7 @@
 namespace GrabbaRide.Frontend {
     
     
-    public partial class WebForm3 {
+    public partial class Login {
         
         /// <summary>
         /// ScriptManager1 control.
@@ -75,5 +75,23 @@ namespace GrabbaRide.Frontend {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label loginCanceledLabel;
+        
+        /// <summary>
+        /// LogginInLable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LogginInLable;
+        
+        /// <summary>
+        /// LoggedInLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LoggedInLabel;
     }
 }

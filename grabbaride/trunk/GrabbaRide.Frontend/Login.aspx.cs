@@ -13,37 +13,16 @@ using System.Xml.Linq;
 using DotNetOpenId.RelyingParty;
 using DotNetOpenId.Extensions.SimpleRegistration;
 using System.Text;
+using GrabbaRide.UserManagement;
+
 
 namespace GrabbaRide.Frontend
 {
-    public partial class WebForm3 : System.Web.UI.Page
+    public partial class Login : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Page.IsPostBack)
-            {
-
-                ShowOpenIDSettingsScript();
-                //determine who done the post back
-
-                // OpenIdLogin1.LoggingIn()
-                string redirectUrl = Request.QueryString["RedirectUrl"];
-
-                if (String.IsNullOrEmpty(redirectUrl))
-                {
-                    redirectUrl = "Default.aspx";
-                }
-
-                if (Request.IsAuthenticated)
-                {
-                    Response.Redirect(redirectUrl);
-                }
-                else
-                {
-                    GrabbaRideLogin.DestinationPageUrl = redirectUrl;
-                    GrabbaRideLogin.CreateUserUrl += "?RedirectUrl=" + redirectUrl;
-                }
-            }
+           
         }
 
 
@@ -54,12 +33,34 @@ namespace GrabbaRide.Frontend
         protected void OpenIdLogin1_LoggedIn(object sender, OpenIdEventArgs e)
         {
 
+            LoggedInLabel.Visible = true;
+            LoggedInLabel.Text += " WELCOME" + e.Response.FriendlyIdentifierForDisplay;
+            OpenIDUserResponseState response = new OpenIDUserResponseState();
+        
+         
+           
+         
         }
+
+        
+       
+
+    
+
+        protected void OpenIDLogin1_LogginIn(object sender, OpenIdEventArgs e)
+        {
+            LogginInLable.Visible = true;
+      //      LogginInLable.Text +=": " + e.Response.Exception.Message;
+            
+           
+        }
+
+
         protected void OpenIdLogin1_Failed(object sender, OpenIdEventArgs e)
         {
             loginFailedLabel.Visible = true;
             loginFailedLabel.Text += ": " + e.Response.Exception.Message;
-            ShowOpenIDSettingsScript();
+           
 
 
         }
@@ -77,37 +78,7 @@ namespace GrabbaRide.Frontend
 
 
 
-        private void ShowNormalSettingsScript()
-        {
-         StringBuilder script =new System.Text.StringBuilder();
-
-        script.Append("<script language=\"javascript\">\n");
-        script.AppendFormat("Radio_NormalLogIn_onclick();");
-        script.Append("</script>\n");
-
-        Type type = this.GetType();
-
-       if(!ClientScript.IsClientScriptBlockRegistered(type, "divToggleSwitch"))
-           ClientScript.RegisterClientScriptBlock(type, "divToggleSwitch",
-            script.ToString());
-          }
-
-
-        private void ShowOpenIDSettingsScript()
-        {
-            StringBuilder script = new System.Text.StringBuilder();
-
-            script.Append("<script language=\"javascript\">\n");
-            script.AppendFormat("Radio_OpenID_onclick();");
-  
-            script.Append("</script>\n");
-
-            Type type = this.GetType();
-
-            if (!ClientScript.IsClientScriptBlockRegistered(type, "divToggleSwitch"))
-                ClientScript.RegisterClientScriptBlock(type, "divToggleSwitch",
-                 script.ToString());
-        }
+       
 
     }
 }

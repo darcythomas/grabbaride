@@ -5,6 +5,7 @@ using System.Text;
 using System.Web.Security;
 using GrabbaRide.Database;
 using GrabbaRide.UserManagement.Properties;
+using DotNetOpenId.Extensions.SimpleRegistration;
 
 namespace GrabbaRide.UserManagement
 {
@@ -427,6 +428,11 @@ namespace GrabbaRide.UserManagement
             {
                 return false;
             }
+        }
+
+        public void OpenIDlogin(ClaimsResponse response)
+        {
+            
         }
     }
 }
