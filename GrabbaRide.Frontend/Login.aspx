@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true"
-    CodeBehind="Login.aspx.cs" Inherits="GrabbaRide.Frontend.WebForm3" Title="Login to GrabbaRide"  %>
+    CodeBehind="Login.aspx.cs" Inherits="GrabbaRide.Frontend.Login" Title="Login to GrabbaRide"  %>
 
 <%@ Register Assembly="DotNetOpenId" Namespace="DotNetOpenId.RelyingParty" TagPrefix="RP" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">
@@ -64,10 +64,13 @@
             </div>
      
               <div id="openIDDiv"  >
-                    <RP:OpenIdLogin ID="OpenIdLogin1" runat="server" OnFailed="OpenIdLogin1_Failed" />
+                    <RP:OpenIdLogin ID="OpenIdLogin1" runat="server" OnFailed="OpenIdLogin1_Failed" OnCanceled="OpenIdLogin1_Canceled" 
+                    OnLoggedIn="OpenIdLogin1_LoggedIn"  OnSetupRequired="OpenIdLogin1_SetupRequired" OnLoggingIn="OpenIDLogin1_LogginIn"
+                     RequestBirthDate="Require" RequestEmail="Require" RequestFullName="Require" RequestGender="Require"/>
                     <asp:Label ID="loginFailedLabel" runat="server" EnableViewState="False" Text="Login failed" Visible="False" />
-	                <asp:Label ID="loginCanceledLabel" runat="server" EnableViewState="False" Text="Login canceled"
-	        	Visible="False" />
+	                <asp:Label ID="loginCanceledLabel" runat="server" EnableViewState="False" Text="Login canceled" Visible="False" />
+                    <asp:Label ID="LogginInLable" runat="server" Text="Contacting your OpenID provider...." Visible="False"></asp:Label>
+                    <asp:Label ID="LoggedInLabel" runat="server" Text="Login Sucsessful!!" Visible="False"></asp:Label>
                 </div>
     
         </ContentTemplate>
