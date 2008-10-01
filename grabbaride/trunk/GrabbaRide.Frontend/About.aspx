@@ -68,7 +68,14 @@
 			<img class="style6" height="250" src="Images/Michelle.JPG" width="250" /></span></td>
 			<td class="style10"><span class="style6"><strong>Michelle Cho 
 			</strong></span><br class="style6" />
-			<span class="style6">Bachelor of Engineering (Honours)</span></td>
+			<span class="style6">Bachelor of Engineering (Honours)<br />
+                This lady is seriously like... the most like... amazing... um...... lady like i 
+                have ever laied !!!!!!!!!!!!!!<br />
+                <br />
+                <br />
+                eyes on<br />
+                <br />
+                got ya xoxox</span></td>
 		</tr>
 	</table>
 	<br />
@@ -79,10 +86,12 @@
 			<td class="style10">
     		<span class="style6">
 			<strong>Amy Elizabeth Palamountain</strong></span><br class="style6" />
-			<span class="style6">Degree Studying:</span><br class="style6" />
+			<span class="style6">Bachelor of Science: Computer Science and Genetics</span><br class="style6" />
 			<span class="style6"><br />
-			Write something about yourself or your 
-			experience with this software project:</span></td>
+			    Give me a long winded simulation problem any day and im in heaven!! Lets face it 
+                we probably live in some kind of twisted large scale simulation where upon we 
+                are all mearly droids being hurld through the mathematics of space and time, at 
+                the whim of .... ooooo im going cross eyed. Who am I??</span></td>
 		</tr>
 	</table>
 	<br />
@@ -125,7 +134,8 @@
 			<td class="style12" style="width: 320px">
 			<img class="style6" /></td>
 			<td class="style10"><span class="style4">
-			<span class="style6"><strong>Thomas William Scott Satherley</strong><br />
+			<span class="style6"><strong>Thomas William Scott Satherley<br />
+                ALL THESE MA-UKAs UKing With MA SHIIT</strong><br />
 			</span></span></td>
 		</tr>
 	</table>
