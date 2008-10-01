@@ -213,6 +213,45 @@ namespace GrabbaRide.Database
             this.SubmitChanges();
         }
 
+        public FeedbackRating GetFeedbackRating(User userRater, User userRated)
+        {
+            //return an existing feedbackrating
+            // users can't rate themselves
+            if (userRater.UserID == userRated.UserID)
+            {
+                throw new ArgumentException("User's can't rate themselves!");
+            }
+
+            // check whether a rating for this combination of users already exists
+            var query = from f in FeedbackRatings
+                        where f.UserRater == userRater &&
+                              f.UserRated == userRated
+                        select f;
+            IEnumerator<FeedbackRating> ratings = query.GetEnumerator();
+            ratings.MoveNext();
+            return ratings.Current;
+        }
+
+        public void RemoveFeedbackRating(User userRater, User userRated)
+        {
+            // users can't rate themselves
+            if (userRater.UserID == userRated.UserID)
+            {
+                throw new ArgumentException("User's can't rate themselves!");
+            }
+
+            // check whether a rating for this combination of users already exists
+            var query = from f in FeedbackRatings
+                        where f.UserRater == userRater &&
+                              f.UserRated == userRated
+                        select f;
+
+            IEnumerator<FeedbackRating> ratings = query.GetEnumerator();
+            ratings.MoveNext();
+            this.FeedbackRatings.DeleteOnSubmit(ratings.Current);
+            this.SubmitChanges();
+        }
+
         /// <summary>
         /// Gets a list of all users.
         /// </summary>

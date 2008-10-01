@@ -54,6 +54,13 @@
                     <asp:ImageButton ID="ibtnRatePos" runat="server" ImageUrl="~/Images/ratepositive.png"
                         OnClick="ibtnRatePos_Click" />
                 </div>
+                <div id="currentRating" runat="server">
+                    You have already rated this user<br />
+                    <asp:Image ID="imgRating" runat="server" />
+                    <br />
+                    <asp:Button ID="btnDelete" runat="server" onclick="btnDelete_Click" 
+                        Text="Delete this rating" />
+                </div>
             </div>
         </ContentTemplate>
     </asp:UpdatePanel>
