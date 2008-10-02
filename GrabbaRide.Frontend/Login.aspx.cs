@@ -16,6 +16,7 @@ using System.Text;
 using GrabbaRide.UserManagement;
 
 
+
 namespace GrabbaRide.Frontend
 {
     public partial class Login : System.Web.UI.Page
@@ -35,8 +36,18 @@ namespace GrabbaRide.Frontend
 
             LoggedInLabel.Visible = true;
             LoggedInLabel.Text += " WELCOME" + e.Response.FriendlyIdentifierForDisplay;
-            OpenIDUserResponseState response = new OpenIDUserResponseState();
-        
+            // WHERE THE HELL IS MY RESPONSE FEILDS... .. using this for testing at the mo.... 
+            // back in 5 haha going to read more about sessions and why my session is being
+            // garbage collected...
+            ClaimsResponse profile =HttpContext.Current.Session["ProfileFields"] as ClaimsResponse;
+
+            
+            OpenIDUserResponseState response = new OpenIDUserResponseState(e);
+            // currently this line bugged coz profile feilds lost in response...
+            //aids leave this if your at massey youll do more harm than good trying to fuck around
+            //blind behind a proxy... you shouldnt even enter this method coz
+            //it just times out... ending at OpenIdLogin1_Failed()
+            //System.Diagnostics.Debug.WriteLine(response.Profile.Email);
          
            
          

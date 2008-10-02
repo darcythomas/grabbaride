@@ -10,12 +10,12 @@ using DotNetOpenId.RelyingParty;
 
 namespace GrabbaRide.UserManagement
 {
-    class OpenIDUserResponseState
+    public class OpenIDUserResponseState
     {
-        public OpenIDUserResponseState(IAuthenticationResponse response)
-        {
-            LoginName = response.FriendlyIdentifierForDisplay;
-            Profile = response.GetExtension<ClaimsResponse>();
+        public OpenIDUserResponseState(OpenIdEventArgs e)
+        { 
+            LoginName = e.Response.FriendlyIdentifierForDisplay;
+            Profile = e.Response.GetExtension<ClaimsResponse>();
         }
 
      
