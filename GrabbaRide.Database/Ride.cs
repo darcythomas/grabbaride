@@ -17,7 +17,7 @@ namespace GrabbaRide.Database
         }
 
         /// <summary>
-        /// The distance of the journey, calcuated with sweet pythagoras.
+        /// The distance of the journey, in degrees, calcuated using sweet pythagoras.
         /// </summary>
         public double JourneyDistance
         {
@@ -29,6 +29,18 @@ namespace GrabbaRide.Database
                 double c2 = Math.Pow(a,2) + Math.Pow(b,2);
 
                 return Math.Sqrt(c2);
+            }
+        }
+
+        /// <summary>
+        /// The distance of the journey, in kilometers.
+        /// </summary>
+        public double JourneyDistanceKm
+        {
+            get
+            {
+                // this is pretty approximate
+                return JourneyDistance * 111;
             }
         }
 

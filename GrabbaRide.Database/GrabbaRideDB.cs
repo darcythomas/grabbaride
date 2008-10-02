@@ -38,7 +38,7 @@ namespace GrabbaRide.Database
             this.Rides.DeleteOnSubmit(oldRide);
             this.SubmitChanges();
         }
-        
+
         /// <summary>
         /// Gets the ride owned by the id
         /// </summary>
@@ -179,6 +179,23 @@ namespace GrabbaRide.Database
             }
         }
 
+        /// <summary>
+        /// Updates a user's last activity date to now, based on their username.
+        /// </summary>
+        /// <param name="username"></param>
+        public void UpdateLastActivityByUsername(string username)
+        {
+            User u = GetUserByUsername(username);
+            u.LastActvityDate = DateTime.Now;
+            SubmitChanges();
+        }
+
+        /// <summary>
+        /// Places feedback for a user.
+        /// </summary>
+        /// <param name="userRater">The user placing the feedback.</param>
+        /// <param name="userRated">The user that is being rated.</param>
+        /// <param name="rating">The rating for the user. Must be between -1 and 1.</param>
         public void PlaceFeedbackRating(User userRater, User userRated, short rating)
         {
             // check that the rating is valid
@@ -193,26 +210,40 @@ namespace GrabbaRide.Database
                 throw new ArgumentException("User's can't rate themselves!");
             }
 
+            // the feedback we are going to place
+            FeedbackRating feedback;
+
             // check whether a rating for this combination of users already exists
             var query = from f in FeedbackRatings
                         where f.UserRater == userRater &&
                               f.UserRated == userRated
                         select f;
 
-            if (query.Count() > 0)
+            if (query.Count() == 0)
             {
-                throw new ArgumentException("A rating already exists for this user.");
+                // no rating exists, create a new one
+                feedback = new FeedbackRating();
+                feedback.UserRater = userRater;
+                feedback.UserRated = userRated;
+            }
+            else
+            {
+                // overwrite the existing rating
+                feedback = query.Single();
             }
 
-            FeedbackRating feedback = new FeedbackRating();
-            feedback.UserRater = userRater;
-            feedback.UserRated = userRated;
+            // set the rating & submit to database
             feedback.Rating = rating;
-
             this.FeedbackRatings.InsertOnSubmit(feedback);
             this.SubmitChanges();
         }
 
+        /// <summary>
+        /// Gets a FeedbackRating placed on a user.
+        /// </summary>
+        /// <param name="userRater">The user placing the feedback.</param>
+        /// <param name="userRated">The user that is being rated.</param>
+        /// <returns>The FeedbackRating if found, otherwise null.</returns>
         public FeedbackRating GetFeedbackRating(User userRater, User userRated)
         {
             //return an existing feedbackrating
@@ -227,11 +258,16 @@ namespace GrabbaRide.Database
                         where f.UserRater == userRater &&
                               f.UserRated == userRated
                         select f;
-            IEnumerator<FeedbackRating> ratings = query.GetEnumerator();
-            ratings.MoveNext();
-            return ratings.Current;
+
+            if (query.Count() == 0) { return null; }
+            else { return query.Single(); }
         }
 
+        /// <summary>
+        /// Removes feedback placed on a user. If no feedback exists, do nothing.
+        /// </summary>
+        /// <param name="userRater">The user placing the feedback.</param>
+        /// <param name="userRated">The user that is being rated.</param>
         public void RemoveFeedbackRating(User userRater, User userRated)
         {
             // users can't rate themselves
@@ -246,10 +282,13 @@ namespace GrabbaRide.Database
                               f.UserRated == userRated
                         select f;
 
-            IEnumerator<FeedbackRating> ratings = query.GetEnumerator();
-            ratings.MoveNext();
-            this.FeedbackRatings.DeleteOnSubmit(ratings.Current);
-            this.SubmitChanges();
+            // if there is no feedback for these users, no need to worry
+            if (query.Count() > 0)
+            {
+                FeedbackRating feedback = query.Single();
+                FeedbackRatings.DeleteOnSubmit(feedback);
+                SubmitChanges();
+            }
         }
 
         /// <summary>
