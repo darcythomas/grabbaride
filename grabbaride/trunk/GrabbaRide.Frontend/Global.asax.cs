@@ -18,11 +18,13 @@ namespace GrabbaRide.Frontend
     {
         /// <summary>
         /// Contains rules that define how we rewrite urls to make nice-looking addresses.
+        /// We can't do url rewriting because it requires our application to be running on the
+        /// root of the server.
         /// </summary>
         private static readonly Dictionary<string, string> UrlRewriteRules =
             new Dictionary<string, string>() {
                 // pattern: { regular expression, replacement string }
-                { "^/user/([^/]+)/?$", "/User.aspx?id={1}" },
+                // { "^/user/([^/]+)/?$", "/User.aspx?id={1}" },
             };
 
         protected void Application_Start(object sender, EventArgs e)

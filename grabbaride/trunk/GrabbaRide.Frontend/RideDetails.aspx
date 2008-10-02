@@ -10,35 +10,44 @@
         <asp:Label ID="NoRideIDLabel" runat="server" Text="Error: Invalid ride ID or no ride ID selected!" />
     </div>
     <div id="RideDetailsDiv" runat="server">
-        <div id="searchmap" style="width: 400px; height: 400px; float:right;">
+        <div id="searchmap" style="width: 400px; height: 400px; float: right;">
         </div>
         <asp:DetailsView ID="DetailsView1" runat="server" AutoGenerateRows="False">
             <Fields>
-                <asp:BoundField DataField="RideID" HeaderText="RideID" ReadOnly="True" SortExpression="RideID" />
-                <asp:BoundField DataField="UserID" HeaderText="UserID" SortExpression="UserID" />
-                <asp:BoundField DataField="CreationDate" HeaderText="CreationDate" SortExpression="CreationDate" />
-                <asp:BoundField DataField="StartDate" HeaderText="StartDate" SortExpression="StartDate" />
-                <asp:BoundField DataField="EndDate" HeaderText="EndDate" SortExpression="EndDate" />
-                <asp:BoundField DataField="NumSeats" HeaderText="NumSeats" SortExpression="NumSeats" />
-                <asp:CheckBoxField DataField="RecurMon" HeaderText="RecurMon" SortExpression="RecurMon" />
-                <asp:CheckBoxField DataField="RecurTue" HeaderText="RecurTue" SortExpression="RecurTue" />
-                <asp:CheckBoxField DataField="RecurWed" HeaderText="RecurWed" SortExpression="RecurWed" />
-                <asp:CheckBoxField DataField="RecurThu" HeaderText="RecurThu" SortExpression="RecurThu" />
-                <asp:CheckBoxField DataField="RecurFri" HeaderText="RecurFri" SortExpression="RecurFri" />
-                <asp:CheckBoxField DataField="RecurSat" HeaderText="RecurSat" SortExpression="RecurSat" />
-                <asp:CheckBoxField DataField="RecurSun" HeaderText="RecurSun" SortExpression="RecurSun" />
-                <asp:BoundField DataField="LocationFromLat" HeaderText="LocationFromLat" SortExpression="LocationFromLat"
-                    Visible="False" />
-                <asp:BoundField DataField="LocationFromLong" HeaderText="LocationFromLong" SortExpression="LocationFromLong"
-                    Visible="False" />
-                <asp:BoundField DataField="LocationToLat" HeaderText="LocationToLat" SortExpression="LocationToLat"
-                    Visible="False" />
-                <asp:BoundField DataField="LocationToLong" HeaderText="LocationToLong" SortExpression="LocationToLong"
-                    Visible="False" />
-                <asp:CheckBoxField DataField="Available" HeaderText="Available" SortExpression="Available" />
-                <asp:BoundField DataField="Details" HeaderText="Details" SortExpression="Details" />
-                <asp:BoundField DataField="JourneyDistance" HeaderText="JourneyDistance" ReadOnly="True"
-                    SortExpression="JourneyDistance" />
+                <asp:TemplateField HeaderText="User" SortExpression="User">
+                    <ItemTemplate>
+                        <asp:HyperLink ID="Label1" runat="server" Text='<%# Eval("User.Username") %>' NavigateUrl='<%# String.Format("User.aspx?id={0}", Eval("User.Username")) %>'></asp:HyperLink>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:BoundField DataField="CreationDate" HeaderText="Created" 
+                    SortExpression="CreationDate" />
+                <asp:BoundField DataField="StartDate" HeaderText="Available From" 
+                    SortExpression="StartDate" />
+                <asp:BoundField DataField="EndDate" HeaderText="Available Until" 
+                    SortExpression="EndDate" />
+                <asp:BoundField DataField="NumSeats" HeaderText="Seats" 
+                    SortExpression="NumSeats" />
+                <asp:TemplateField HeaderText="Distance" SortExpression="JourneyDistance">
+                    <ItemTemplate>
+                        <asp:Label ID="DistanceLabel" runat="server" Text='<%# String.Format("{0:f} km", Eval("JourneyDistanceKm")) %>' />
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:CheckBoxField DataField="RecurMon" HeaderText="Monday" 
+                    SortExpression="RecurMon" />
+                <asp:CheckBoxField DataField="RecurTue" HeaderText="Tuesday" 
+                    SortExpression="RecurTue" />
+                <asp:CheckBoxField DataField="RecurWed" HeaderText="Wednesday" 
+                    SortExpression="RecurWed" />
+                <asp:CheckBoxField DataField="RecurThu" HeaderText="Thursday" 
+                    SortExpression="RecurThu" />
+                <asp:CheckBoxField DataField="RecurFri" HeaderText="Friday" 
+                    SortExpression="RecurFri" />
+                <asp:CheckBoxField DataField="RecurSat" HeaderText="Saturday" 
+                    SortExpression="RecurSat" />
+                <asp:CheckBoxField DataField="RecurSun" HeaderText="Sunday" 
+                    SortExpression="RecurSun" />
+                <asp:BoundField DataField="Details" HeaderText="More Info" 
+                    SortExpression="Details" />
             </Fields>
         </asp:DetailsView>
         <asp:HiddenField ID="hfstart" runat="server" />

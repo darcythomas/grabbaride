@@ -53,7 +53,8 @@
 		<tr>
 			<td class="style12" style="background-position: center center; width: 320px">
 			<img class="style6" height="250" src="Images/Adrian.jpg" width="250" /></td>
-			<td class="style8" style="background-position: center center"><strong>Adrian James Macneil</strong><br />
+			<td class="style8" style="background-position: center center"><strong>Adrian James 
+                &quot;Jesus&quot; Macneil</strong><br />
 			<strong>Team Leader</strong><br />
 			<span class="style4">Degree Studying:<br />
 			<br />
@@ -76,7 +77,7 @@
 		<tr>
 			<td class="style12" style="width: 320px"><span class="style4">
 			<img class="style6" height="250" src="Images/Michelle.JPG" width="250" /></span></td>
-			<td class="style10"><span class="style6"><strong>Michelle Cho 
+			<td class="style10"><span class="style6"><strong>Michelle &quot;Scribe&quot; Cho 
 			</strong></span><br class="style6" />
 			<span class="style6">Bachelor of Engineering (Honours)<br />
                 This lady is seriously like... the most like... amazing... um...... lady like i 
@@ -95,7 +96,7 @@
 			<img class="style6" height="209" src="Images/Amy.jpg" width="250" /></td>
 			<td class="style10">
     		<span class="style6">
-			<strong>Amy Elizabeth Palamountain</strong></span><br class="style6" />
+			<strong>Amy Elizabeth &quot;Seductive&quot; Palamountain</strong></span><br class="style6" />
 			<span class="style6">Bachelor of Science: Computer Science and Genetics</span><br class="style6" />
 			<span class="style6"><br />
 			    Give me a long winded simulation problem any day and im in heaven!! Lets face it 
@@ -111,7 +112,7 @@
 			<img class="style6" height="250" src="Images/Darcy.jpg" width="250" /></td>
 			<td class="style8">
     <span class="style4">
-    		<span class="style6"><strong>Thomas James Burge</strong></span><br class="style6" />
+    		<span class="style6"><strong>Thomas James &quot;Darcy-Darce&quot; Burge</strong></span><br class="style6" />
 			<span class="style6"><strong>Bachelor of Applied Science (Medical Imaging 
 			Technology)</strong><br />
 			<strong>Graduate Diploma of Science (Software Engineering)</strong><br />
@@ -128,7 +129,7 @@
 		<tr>
 			<td class="style12" style="width: 320px">
 			<img class="style6" height="250" src="Images/Nick.JPG" width="250" /></td>
-			<td class="style10"><span class="style6"><strong>Nicholas James Sarten</strong></span><br class="style6" />
+			<td class="style10"><span class="style6"><strong>Nicholas James &quot;AJAX&quot; Sarten</strong></span><br class="style6" />
     		<span class="style4">
 			<span class="style6"><strong>Bachelor of Engineering (Honours)</strong><br />
 			<br />
@@ -144,7 +145,7 @@
 			<td class="style12" style="width: 320px">
 			<img class="style6" /></td>
 			<td class="style10"><span class="style4">
-			<span class="style6"><strong>Thomas William Scott Satherley<br />
+			<span class="style6"><strong>Thomas William Scott &quot;Ghost&quot; Satherley<br />
                 ALL THESE MA-UKAs UKing With MA SHIIT</strong><br />
 			</span></span></td>
 		</tr>
