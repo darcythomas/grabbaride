@@ -72,6 +72,10 @@ namespace GrabbaRide.Database
             return password;
         }
 
+        /// <summary>
+        /// Calculates whether the user is currently signed in, based on whether their last activity
+        /// was in the last 15 minutes.
+        /// </summary>
         public bool IsSignedIn
         {
             get

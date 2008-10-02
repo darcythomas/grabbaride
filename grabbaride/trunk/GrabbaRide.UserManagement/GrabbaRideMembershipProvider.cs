@@ -415,17 +415,26 @@ namespace GrabbaRide.UserManagement
 
         public override bool ValidateUser(string username, string password)
         {
+            // find the user in the database
             GrabbaRideDBDataContext dataContext = new GrabbaRideDBDataContext();
             User u = dataContext.GetUserByUsername(username);
             if (u == null) { return false; }
 
+            // decrypt and check the password
             byte[] decryptedPwd = DecryptPassword(Convert.FromBase64String(u.Password));
             if (password == Encoding.Unicode.GetString(decryptedPwd))
             {
+                // update the last login date
+                u.LastLoginDate = DateTime.Now;
+                u.LastActvityDate = u.LastLoginDate;
+                dataContext.SubmitChanges();
+
+                // success
                 return true;
             }
             else
             {
+                // incorrect password
                 return false;
             }
         }
