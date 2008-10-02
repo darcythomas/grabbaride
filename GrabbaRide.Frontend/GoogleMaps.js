@@ -11,6 +11,7 @@ var line = null;
 function doPageLoad() {
   if (GBrowserIsCompatible()) {
     var maptype = null;
+    //determine the map type based on the div present
     if (document.getElementById("searchmap")) {
         maptype = "normal";
     } else if (document.getElementById("searchmapread")) {
@@ -28,10 +29,12 @@ function doPageLoad() {
         GEvent.addListener(map, "click", MapHandler);
       map.addControl(new GSmallMapControl());
       map.addControl(new GMapTypeControl());
+      //if the hidden fields have values, display them on the map
       var hfstart = document.getElementById("ctl00_MainContentPlaceHolder_hfstart");
       var hfend = document.getElementById("ctl00_MainContentPlaceHolder_hfend");
       if (hfstart.value != "") {
         var temp = hfstart.value.split(',');
+        map.setCenter(new GLatLng(parseFloat(temp[0]),parseFloat(temp[1])), 13);
         SetStart(temp[0],temp[1], maptype);
       }
       if (hfend.value != "") {
@@ -50,7 +53,7 @@ function SetStart(lat, lng, maptype) {
   hfstart.value = lat + "," + lng;
   if (!startMkr) {
     var starticon = new GIcon(G_DEFAULT_ICON);
-    starticon.image = "Images/starticon.png";
+    starticon.image = "Images/starticon.png"; //custom icon
 
     if (maptype == "normal") {
         startMkr = new GMarker(new GLatLng(lat, lng), { icon:starticon, draggable: true });
@@ -108,7 +111,7 @@ function SetEnd(lat, lng, maptype) {
   hfend.value = lat + "," + lng;
   if (!endMkr) {
     var endicon = new GIcon(G_DEFAULT_ICON);
-    endicon.image = "Images/endicon.png";
+    endicon.image = "Images/endicon.png"; //custom icon
     
     if (maptype == "normal") {
         endMkr = new GMarker(new GLatLng(lat, lng), { icon:endicon, draggable: true });
@@ -133,6 +136,7 @@ function SetEnd(lat, lng, maptype) {
   
 }
 
+//draws the bounding boxes around the start and end points, as well as a line between them
 function DrawBoundingBoxes() {
     var xlatlng = startMkr.getLatLng();
     var xlat = xlatlng.lat();
@@ -166,6 +170,7 @@ function DrawBoundingBoxes() {
     map.addOverlay(line);
     map.addOverlay(startpoly);
     map.addOverlay(endpoly);
+    //allow click events on the polys to flow through to the map.
     GEvent.addListener(startpoly, "click", PolyHandler);
     GEvent.addListener(endpoly, "click", PolyHandler);
 }
@@ -178,7 +183,7 @@ function MapHandler(overlay, latlng) {
   }
 }
 
-//onclick handler for  polygons
+//onclick handler for polygons, needed because polys fire different event arguments to the map
 function PolyHandler(latlng) {
   if (latlng) { 
     var myHtml = "<a onclick='SetStart(" + latlng.lat() + ", " + latlng.lng() + ");'>Set Start</a><br><a onclick='SetEnd(" + latlng.lat() + ", " + latlng.lng() + ");'>Set End</a>";
@@ -219,5 +224,5 @@ function showAddress(address) {
   }
 }
 
-
+//sets init to occur on page load
 window.onload = doPageLoad;
