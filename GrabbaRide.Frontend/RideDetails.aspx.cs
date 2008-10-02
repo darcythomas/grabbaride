@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web.UI;
+using System.Data.Linq;
 using GrabbaRide.Database;
 
 namespace GrabbaRide.Frontend
@@ -11,8 +12,15 @@ namespace GrabbaRide.Frontend
         {
             if (!Page.IsPostBack)
             {
+                // must be logged in to view this page
+                if (!Request.IsAuthenticated)
+                {
+                    Response.Redirect("Login.aspx?RedirectUrl=RideDetails.aspx");
+                }
+
                 try
                 {
+                    
                     int rideID = Int32.Parse(Request.QueryString["id"]);
                     GrabbaRideDBDataContext dataContext = new GrabbaRideDBDataContext();
                     Ride ride = dataContext.GetRideByID(rideID);

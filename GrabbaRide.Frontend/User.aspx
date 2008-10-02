@@ -19,26 +19,27 @@
             <asp:DetailsView ID="UserDetailsView" runat="server" AutoGenerateRows="False" DataSourceID="UserDataSource"
                 AutoGenerateEditButton="True">
                 <Fields>
-                    <asp:BoundField DataField="Username" HeaderText="Username" SortExpression="Username">
+                    <asp:BoundField DataField="Username" HeaderText="User" 
+                        SortExpression="Username">
                         <ControlStyle Font-Bold="False" />
                         <ItemStyle Font-Bold="True" Font-Size="Large" />
                     </asp:BoundField>
-                    <asp:BoundField DataField="FirstName" HeaderText="FirstName" SortExpression="FirstName" />
-                    <asp:BoundField DataField="LastName" HeaderText="LastName" SortExpression="LastName" />
-                    <asp:BoundField DataField="DateOfBirth" HeaderText="DateOfBirth" SortExpression="DateOfBirth" />
+                    <asp:BoundField DataField="FirstName" HeaderText="First Name" 
+                        SortExpression="FirstName" />
+                    <asp:BoundField DataField="LastName" HeaderText="Last Name" 
+                        SortExpression="LastName" />
+                    <asp:BoundField DataField="DateOfBirth" HeaderText="Date of Birth" 
+                        SortExpression="DateOfBirth" ReadOnly="True" />
                     <asp:BoundField DataField="Occupation" HeaderText="Occupation" SortExpression="Occupation" />
                     <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
-                    <asp:BoundField DataField="PasswordQuestion" HeaderText="PasswordQuestion" SortExpression="PasswordQuestion" />
-                    <asp:BoundField DataField="PasswordAnswer" HeaderText="PasswordAnswer" SortExpression="PasswordAnswer" />
-                    <asp:BoundField DataField="CreationDate" HeaderText="CreationDate" SortExpression="CreationDate" />
-                    <asp:BoundField DataField="LastActvityDate" HeaderText="LastActvityDate" SortExpression="LastActvityDate" />
-                    <asp:BoundField DataField="LastLoginDate" HeaderText="LastLoginDate" SortExpression="LastLoginDate" />
-                    <asp:CheckBoxField DataField="IsApproved" HeaderText="IsApproved" SortExpression="IsApproved" />
-                    <asp:CheckBoxField DataField="IsLockedOut" HeaderText="IsLockedOut" SortExpression="IsLockedOut" />
-                    <asp:BoundField DataField="LastLockoutDate" HeaderText="LastLockoutDate" SortExpression="LastLockoutDate" />
-                    <asp:BoundField DataField="LastPasswordChangedDate" HeaderText="LastPasswordChangedDate"
-                        SortExpression="LastPasswordChangedDate" />
-                    <asp:BoundField DataField="Comment" HeaderText="Comment" SortExpression="Comment" />
+                    <asp:BoundField DataField="CreationDate" HeaderText="Member Since" 
+                        SortExpression="CreationDate" />
+                    <asp:BoundField DataField="LastLoginDate" HeaderText="Last Login" 
+                        SortExpression="LastLoginDate" ReadOnly="True" />
+                    <asp:BoundField DataField="LastActvityDate" HeaderText="Last Seen" 
+                        SortExpression="LastActvityDate" ReadOnly="True" />
+                    <asp:BoundField DataField="Comment" HeaderText="About Me" 
+                        SortExpression="Comment" />
                 </Fields>
             </asp:DetailsView>
             <div>
