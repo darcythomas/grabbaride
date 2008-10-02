@@ -10,30 +10,40 @@ var line = null;
 //init stuff
 function doPageLoad() {
   if (GBrowserIsCompatible()) {
+    var maptype = null;
     if (document.getElementById("searchmap")) {
-      map = new GMap2(document.getElementById("searchmap"));
-      geocoder = new GClientGeocoder();
+        maptype = "normal";
+    } else if (document.getElementById("searchmapread")) {
+        maptype = "readonly";
+    }
       
+    if (maptype) {
+      if (maptype == "normal")
+        map = new GMap2(document.getElementById("searchmap"));
+      else if (maptype == "readonly")
+        map = new GMap2(document.getElementById("searchmapread"));
+      geocoder = new GClientGeocoder();
       map.setCenter(new GLatLng(-40.356233600914656,175.61113357543945), 13);
-      GEvent.addListener(map, "click", MapHandler);
+      if (maptype == "normal")
+        GEvent.addListener(map, "click", MapHandler);
       map.addControl(new GSmallMapControl());
       map.addControl(new GMapTypeControl());
       var hfstart = document.getElementById("ctl00_MainContentPlaceHolder_hfstart");
       var hfend = document.getElementById("ctl00_MainContentPlaceHolder_hfend");
       if (hfstart.value != "") {
         var temp = hfstart.value.split(',');
-        SetStart(temp[0],temp[1]);
+        SetStart(temp[0],temp[1], maptype);
       }
       if (hfend.value != "") {
         var temp = hfend.value.split(',');
-        SetEnd(temp[0],temp[1]);
+        SetEnd(temp[0],temp[1], maptype);
       }
     }
   }
 }
 
-//Set the start location by transferring the lat,long to a hidden field
-function SetStart(lat, lng) {
+//Set the start location by transferring the lat,long to a hidden field and making a marker on the map
+function SetStart(lat, lng, maptype) {
   lat = parseFloat(lat);
   lng = parseFloat(lng);
   var hfstart = document.getElementById("ctl00_MainContentPlaceHolder_hfstart");
@@ -42,10 +52,15 @@ function SetStart(lat, lng) {
     var starticon = new GIcon(G_DEFAULT_ICON);
     starticon.image = "Images/starticon.png";
 
-    startMkr = new GMarker(new GLatLng(lat, lng), { icon:starticon, draggable: true });
-    GEvent.addListener(startMkr, "click", StartHandler);
-    GEvent.addListener(startMkr, "dragstart", BeginDrag);
-    GEvent.addListener(startMkr, "dragend", EndDrag);
+    if (maptype == "normal") {
+        startMkr = new GMarker(new GLatLng(lat, lng), { icon:starticon, draggable: true });
+        GEvent.addListener(startMkr, "click", StartHandler);
+        GEvent.addListener(startMkr, "dragstart", BeginDrag);
+        GEvent.addListener(startMkr, "dragend", EndDrag);
+    } else {
+        startMkr = new GMarker(new GLatLng(lat, lng), { icon:starticon, draggable: false });
+        GEvent.addListener(startMkr, "click", StartHandler);
+    }
     map.addOverlay(startMkr);
   } else {
     startMkr.setLatLng(new GLatLng(lat, lng));
@@ -85,8 +100,8 @@ function EndDrag() {
     }
 }
 
-//Set the end location by transferring the lat,long to a hidden field
-function SetEnd(lat, lng) {
+//Set the end location by transferring the lat,long to a hidden field and making a marker on the map
+function SetEnd(lat, lng, maptype) {
   lat = parseFloat(lat);
   lng = parseFloat(lng);
   var hfend = document.getElementById("ctl00_MainContentPlaceHolder_hfend");
@@ -95,10 +110,15 @@ function SetEnd(lat, lng) {
     var endicon = new GIcon(G_DEFAULT_ICON);
     endicon.image = "Images/endicon.png";
     
-    endMkr = new GMarker(new GLatLng(lat, lng), { icon:endicon, draggable: true });
-    GEvent.addListener(endMkr, "click", EndHandler);
-    GEvent.addListener(endMkr, "dragstart", BeginDrag);
-    GEvent.addListener(endMkr, "dragend", EndDrag);
+    if (maptype == "normal") {
+        endMkr = new GMarker(new GLatLng(lat, lng), { icon:endicon, draggable: true });
+        GEvent.addListener(endMkr, "click", EndHandler);
+        GEvent.addListener(endMkr, "dragstart", BeginDrag);
+        GEvent.addListener(endMkr, "dragend", EndDrag);
+    } else {
+        endMkr = new GMarker(new GLatLng(lat, lng), { icon:endicon, draggable: false });
+        GEvent.addListener(endMkr, "click", EndHandler);
+    }
     map.addOverlay(endMkr);
   } else {
     endMkr.setLatLng(new GLatLng(lat, lng));
@@ -198,5 +218,6 @@ function showAddress(address) {
     );
   }
 }
+
 
 window.onload = doPageLoad;
