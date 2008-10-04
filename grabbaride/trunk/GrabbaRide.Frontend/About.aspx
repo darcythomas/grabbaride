@@ -9,7 +9,7 @@
 }
 .style7 {
 	font-family: Arial;
-	font-size: x-large;
+	font-size: xx-large;
 	color: #000080;
 	text-align: justify;
 	margin-bottom: 0px;
@@ -79,10 +79,10 @@
 			<img class="style6" height="250" src="Images/Michelle.JPG" width="250" /></span></td>
 			<td class="style10"><span class="style6"><strong>Michelle &quot;Scribe&quot; Cho 
 			</strong></span><br class="style6" />
-			<span class="style6">Bachelor of Engineering (Honours)<br />
+			<span class="style6"><strong>Bachelor of Engineering (Honours)</strong><br />
+                <br />
                 This lady is seriously like... the most like... amazing... um...... lady like i 
                 have ever laied !!!!!!!!!!!!!!<br />
-                <br />
                 <br />
                 eyes on<br />
                 <br />
@@ -97,7 +97,7 @@
 			<td class="style10">
     		<span class="style6">
 			<strong>Amy Elizabeth &quot;Seductive&quot; Palamountain</strong></span><br class="style6" />
-			<span class="style6">Bachelor of Science: Computer Science and Genetics</span><br class="style6" />
+			<span class="style6"><strong>Bachelor of Science: Computer Science and Genetics</strong></span><br class="style6" />
 			<span class="style6"><br />
 			    Give me a long winded simulation problem any day and im in heaven!! Lets face it 
                 we probably live in some kind of twisted large scale simulation where upon we 
