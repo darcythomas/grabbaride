@@ -38,17 +38,28 @@
 
     </script>
 
+	<style type="text/css">
+.style1 {
+	font-family: Arial;
+	font-size: xx-large;
+	color: #000080;
+}
+</style>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
-    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    <span class="style1">Login</span><asp:ScriptManager ID="ScriptManager1" runat="server">
     </asp:ScriptManager>
+            <br />
+	<br />
             <input id="Radio_NormalLogIn"  checked="checked" type="radio"  
                 onclick="return Radio_NormalLogIn_onclick()" />
                 Log In To GrabbaRide
                 <br />
                 <input 
-                id="Radio_OpenID" type="radio" ; onclick="return Radio_OpenID_onclick()" /> OR...Log In With OpenID
-                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                id="Radio_OpenID" type="radio" ; onclick="return Radio_OpenID_onclick()" /> 
+	OR...Log In With OpenID<br />
+&nbsp;<asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             &nbsp;<div id="NormalLogInDiv" runat="server" >
                 <asp:Login ID="GrabbaRideLogin" runat="server" BackColor="#EFF3FB" BorderColor="#B5C7DE"
@@ -64,9 +75,11 @@
             </div>
      
               <div id="openIDDiv"  >
+                    <br />
                     <RP:OpenIdLogin ID="OpenIdLogin1" runat="server" OnFailed="OpenIdLogin1_Failed" OnCanceled="OpenIdLogin1_Canceled" 
                     OnLoggedIn="OpenIdLogin1_LoggedIn"  OnSetupRequired="OpenIdLogin1_SetupRequired" OnLoggingIn="OpenIDLogin1_LogginIn"
                      RequestBirthDate="Require" RequestEmail="Require" RequestFullName="Require" RequestGender="Require"/>
+                    <br />
                     <asp:Label ID="loginFailedLabel" runat="server" EnableViewState="False" Text="Login failed" Visible="False" />
 	                <asp:Label ID="loginCanceledLabel" runat="server" EnableViewState="False" Text="Login canceled" Visible="False" />
                     <asp:Label ID="LogginInLable" runat="server" Text="Contacting your OpenID provider...." Visible="False"></asp:Label>
