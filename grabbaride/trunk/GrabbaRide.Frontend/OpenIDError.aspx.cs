@@ -59,10 +59,14 @@ namespace GrabbaRide.Frontend
             //get any data we do have
          //   ClaimsRequest request = HttpContext.Current.Session["MissingClaimsRequest"] as ClaimsRequest;
             ClaimsResponse response;
-            if(claimsRequest==null)
-                response= new ClaimsResponse();
+            if (claimsRequest == null)
+            {
+                ClaimsRequest r = new ClaimsRequest();
+                response = r.CreateResponse();
+            }
+
             else
-               response = claimsRequest.CreateResponse();
+                response = claimsRequest.CreateResponse();
 
             //fill in the response
 
