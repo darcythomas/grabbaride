@@ -30,6 +30,30 @@ namespace GrabbaRide.UserManagement
             set { HttpContext.Current.Session["FriendlyUsername"] = value; }
         }
 
+        public Boolean AllRequiredFeilds()
+        {
+           return ((Profile.FullName==null)||(Profile.Gender==null)||(Profile.BirthDate==null)||
+               (Profile.Email==null));
+        }
+
+        public ClaimsRequest ClaimsRequestMissing()
+        {
+            
+            ClaimsRequest request = new ClaimsRequest();
+            if(Profile.BirthDate==null)
+                request.BirthDate = DemandLevel.Require;
+            if (Profile.Email == null)
+                request.Email = DemandLevel.Require;
+            if (Profile.Gender == null)
+                request.Gender = DemandLevel.Require;
+            if (Profile.FullName == null)
+                request.FullName = DemandLevel.Require;
+
+            return request;
+        }
+
+
+
 
        
        
