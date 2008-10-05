@@ -36,4 +36,7 @@
     <asp:TextBox ID="TxtBox_Email" runat="server" Visible=" false"></asp:TextBox>
     <br />
     <br />
+    <asp:Button ID="SubmitBttn" runat="server" onclick="SubmitBttn_Click" 
+        Text="Submit" />
+    <br />
 </asp:Content>
