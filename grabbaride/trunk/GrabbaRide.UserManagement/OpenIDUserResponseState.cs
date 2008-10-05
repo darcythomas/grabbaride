@@ -41,33 +41,7 @@ namespace GrabbaRide.UserManagement
             }
         }
 
-        public ClaimsRequest ClaimsRequestMissing()
-        {
-            
-            ClaimsRequest request = new ClaimsRequest();
-            if (Profile == null)
-            {
-                request.FullName = DemandLevel.Require;
-                request.Gender = DemandLevel.Require;
-                request.Email = DemandLevel.Require;
-            }
-            else
-            {
-
-                if (Profile.BirthDate == null)
-                    request.BirthDate = DemandLevel.Require;
-                if (Profile.Email == null)
-                    request.Email = DemandLevel.Require;
-                if (Profile.Gender == null)
-                    request.Gender = DemandLevel.Require;
-                if (Profile.FullName == null)
-                    request.FullName = DemandLevel.Require;
-
-               
-            }
-            return request;
-        }
-
+        
 
 
 

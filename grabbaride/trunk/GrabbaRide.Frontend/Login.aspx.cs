@@ -51,15 +51,15 @@ namespace GrabbaRide.Frontend
         {
             if (response.AllRequiredFeilds())
             {
-               Response.Redirect("Defult.aspx");
+               Response.Redirect("Default.aspx");
               
 
             }
             else
             {
                 //add the missing request to the session and redirect
-             Session.Add("MissingClaimsRequest",response.ClaimsRequestMissing());
-             Response.Redirect("OpenIDError.aspx?RedirectUrl=Defult.aspx");
+             Session.Add("MissingClaims",response);
+             Response.Redirect("OpenIDError.aspx?RedirectUrl=Default.aspx");
              
             }
         }

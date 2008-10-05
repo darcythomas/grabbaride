@@ -5,18 +5,19 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using DotNetOpenId.Extensions.SimpleRegistration;
+using GrabbaRide.UserManagement;
 
 namespace GrabbaRide.Frontend
 {
     public partial class OpenIDError : System.Web.UI.Page
 
     {
-        private  ClaimsRequest claimsRequest;
+        private OpenIDUserResponseState claimsRequest;
 
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            this.claimsRequest = HttpContext.Current.Session["MissingClaimsRequest"] as ClaimsRequest;
+            this.claimsRequest = HttpContext.Current.Session["MissingClaims"] as OpenIDUserResponseState;
              //build the page around the claims request
              SetVisablePageLoad();
 
@@ -26,7 +27,8 @@ namespace GrabbaRide.Frontend
 
         private void SetVisablePageLoad()
         {
-            if ( claimsRequest==null || (claimsRequest.FullName == DemandLevel.Require) )
+            if (this.claimsRequest==null|| claimsRequest.Profile==null || 
+                        (claimsRequest.Profile.FullName == null) )
             {
                 TxtBox_First.Visible = true;
                 TxtBox_Last.Visible = true;
@@ -35,15 +37,14 @@ namespace GrabbaRide.Frontend
 
             }
 
-
-            if (claimsRequest == null || (claimsRequest.Gender == DemandLevel.Require))
+            if (claimsRequest.Profile == null || (claimsRequest.Profile.Gender == null))
             {
                 GenderList.Visible = true;
                 GenderLbl.Visible = true;
             }
 
 
-            if (claimsRequest == null || (claimsRequest.Email == DemandLevel.Require) )
+            if (claimsRequest.Profile == null || (claimsRequest.Profile.Email == null) )
             {
 
                 TxtBox_Email.Visible = true;
@@ -58,31 +59,43 @@ namespace GrabbaRide.Frontend
         {
             //get any data we do have
          //   ClaimsRequest request = HttpContext.Current.Session["MissingClaimsRequest"] as ClaimsRequest;
-            ClaimsResponse response;
-            if (claimsRequest == null)
+           
+            if (claimsRequest == null || !AllRequiredFeildsSet())
             {
-                ClaimsRequest r = new ClaimsRequest();
-                response = r.CreateResponse();
+
+                claimsRequest.Profile = new ClaimsRequest().CreateResponse();
+                Session.Add("ProfileFields", RespondToClaim(claimsRequest));
             }
 
             else
-                response = claimsRequest.CreateResponse();
+            {
+                Boolean test =  AllRequiredFeildsSet();
+              
+                Session.Add("ProfileFields", RespondToClaim(claimsRequest));
+          
+            }
 
-            //fill in the response
+          
 
-            if(EmailLbl.Visible==true&&TxtBox_Email.Visible==true)
-                response.Email = sanitiseEmail(TxtBox_Email.Text);
-            if (GenderLbl.Visible == true && GenderList.Visible == true)
-                response.Gender = getGender();
-            if (FristNameLbl.Visible = true && TxtBox_First.Visible == true)
-                response.FullName = getFullName(TxtBox_First.Text, TxtBox_Last.Text);
-            //save to sesion and redirect
+          
 
-            Session.Add("ProfileFields", response);
+         
 
             //or redirect to login to inject into db????
-            Response.Redirect("Defult.aspx");
+            Response.Redirect("Default.aspx");
           
+        }
+
+        private OpenIDUserResponseState RespondToClaim(OpenIDUserResponseState response)
+        { 
+          if(EmailLbl.Visible==true&&TxtBox_Email.Visible==true)
+                response.Profile.Email = sanitiseEmail(TxtBox_Email.Text);
+            if (GenderLbl.Visible == true && GenderList.Visible == true)
+                response.Profile.Gender = getGender();
+            if (FristNameLbl.Visible = true && TxtBox_First.Visible == true)
+                response.Profile.FullName = getFullName(TxtBox_First.Text, TxtBox_Last.Text);
+
+            return response;
         }
 
         private Gender getGender()
@@ -90,6 +103,12 @@ namespace GrabbaRide.Frontend
             if (GenderList.SelectedItem.Value == "Male")
                 return Gender.Male;
             else return Gender.Female;
+        }
+
+        private Boolean AllRequiredFeildsSet()
+        {
+            return claimsRequest.AllRequiredFeilds();
+
         }
 
 
