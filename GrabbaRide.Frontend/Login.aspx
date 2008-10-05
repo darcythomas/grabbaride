@@ -78,7 +78,7 @@
                     <br />
                     <RP:OpenIdLogin ID="OpenIdLogin1" runat="server" OnFailed="OpenIdLogin1_Failed" OnCanceled="OpenIdLogin1_Canceled" 
                     OnLoggedIn="OpenIdLogin1_LoggedIn"  OnSetupRequired="OpenIdLogin1_SetupRequired" OnLoggingIn="OpenIDLogin1_LogginIn"
-                     RequestBirthDate="Require" RequestEmail="Require" RequestFullName="Require" RequestGender="Require"/>
+                     RequestBirthDate="Require" RequestEmail="Require" RequestFullName="Require" RequestGender="Require" a/>
                     <br />
                     <asp:Label ID="loginFailedLabel" runat="server" EnableViewState="False" Text="Login failed" Visible="False" />
 	                <asp:Label ID="loginCanceledLabel" runat="server" EnableViewState="False" Text="Login canceled" Visible="False" />

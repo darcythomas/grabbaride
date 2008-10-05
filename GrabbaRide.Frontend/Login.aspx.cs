@@ -33,24 +33,33 @@ namespace GrabbaRide.Frontend
         /// </summary>
         protected void OpenIdLogin1_LoggedIn(object sender, OpenIdEventArgs e)
         {
-
+            
             LoggedInLabel.Visible = true;
             LoggedInLabel.Text += " WELCOME" + e.Response.FriendlyIdentifierForDisplay;
-            // WHERE THE HELL IS MY RESPONSE FEILDS... .. using this for testing at the mo.... 
-            // back in 5 haha going to read more about sessions and why my session is being
-            // garbage collected...
-            ClaimsResponse profile =HttpContext.Current.Session["ProfileFields"] as ClaimsResponse;
+       
 
             
-            OpenIDUserResponseState response = new OpenIDUserResponseState(e);
-            // currently this line bugged coz profile feilds lost in response...
-            //aids leave this if your at massey youll do more harm than good trying to fuck around
-            //blind behind a proxy... you shouldnt even enter this method coz
-            //it just times out... ending at OpenIdLogin1_Failed()
-            //System.Diagnostics.Debug.WriteLine(response.Profile.Email);
+           processResponse( new OpenIDUserResponseState(e));
+           
+         
          
            
          
+        }
+
+        private void processResponse(OpenIDUserResponseState response)
+        {
+            if (response.AllRequiredFeilds())
+            {
+                //continue as normal
+            }
+            else
+            {
+                //add the missing request to the session and redirect
+             Session.Add("MissingClaimsRequest",response.ClaimsRequestMissing());
+             Response.Redirect("OpenIDError.aspx?RedirectUrl=Defult.aspx");
+             
+            }
         }
 
         
