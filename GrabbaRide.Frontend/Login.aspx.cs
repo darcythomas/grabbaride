@@ -23,6 +23,13 @@ namespace GrabbaRide.Frontend
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            // detect session data and respond acordingly
+            OpenIDUserResponseState state = HttpContext.Current.Session["MissingClaims"] as OpenIDUserResponseState;
+            //if there is a current login session, and that login session has all required feilds 
+            if (state != null && state.AllRequiredFeilds())
+            {
+                //inject into database
+            }
            
         }
 
@@ -59,7 +66,7 @@ namespace GrabbaRide.Frontend
             {
                 //add the missing request to the session and redirect
              Session.Add("MissingClaims",response);
-             Response.Redirect("OpenIDError.aspx?RedirectUrl=Default.aspx");
+             Response.Redirect("OpenIDError.aspx?RedirectUrl=Login.aspx");
              
             }
         }
