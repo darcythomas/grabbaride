@@ -23,6 +23,13 @@ namespace GrabbaRide.Frontend
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Page.IsPostBack)
+            {
+                // need to remember view state
+                setDisplay(false, true);
+                LoginSelect.SelectedIndex = 0;
+            }
+
             // detect session data and respond acordingly
             OpenIDUserResponseState state = HttpContext.Current.Session["MissingClaims"] as OpenIDUserResponseState;
             //if there is a current login session, and that login session has all required feilds 
@@ -31,6 +38,33 @@ namespace GrabbaRide.Frontend
                 //inject into database
             }
            
+        }
+
+        private void setDisplay(Boolean openIDshow, Boolean normalShow)
+        {
+            if (openIDshow)
+            {
+                OpenIDPanel.Visible = true;
+                NormalLoginPanel.Visible = false;
+               
+            
+                
+            }
+            else
+            {
+                OpenIDPanel.Visible = false;
+                NormalLoginPanel.Visible = true;
+              
+            }
+           
+        }
+
+        protected void LoginSelect_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (LoginSelect.SelectedItem.Value == "GrabbaRide")
+                setDisplay(false, true);
+            else
+                setDisplay(true, false);
         }
 
 
@@ -76,13 +110,7 @@ namespace GrabbaRide.Frontend
 
     
 
-        protected void OpenIDLogin1_LogginIn(object sender, OpenIdEventArgs e)
-        {
-            LogginInLable.Visible = true;
-      //      LogginInLable.Text +=": " + e.Response.Exception.Message;
-            
-           
-        }
+      
 
 
         protected void OpenIdLogin1_Failed(object sender, OpenIdEventArgs e)
@@ -104,6 +132,10 @@ namespace GrabbaRide.Frontend
             loginFailedLabel.Visible = true;
 
         }
+
+      
+
+      
 
 
 

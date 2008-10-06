@@ -14,31 +14,22 @@ namespace GrabbaRide.Frontend {
     public partial class Login {
         
         /// <summary>
-        /// ScriptManager1 control.
+        /// LoginSelect control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        protected global::System.Web.UI.WebControls.RadioButtonList LoginSelect;
         
         /// <summary>
-        /// UpdatePanel1 control.
+        /// NormalLoginPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
-        
-        /// <summary>
-        /// NormalLogInDiv control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl NormalLogInDiv;
+        protected global::System.Web.UI.WebControls.Panel NormalLoginPanel;
         
         /// <summary>
         /// GrabbaRideLogin control.
@@ -48,6 +39,15 @@ namespace GrabbaRide.Frontend {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Login GrabbaRideLogin;
+        
+        /// <summary>
+        /// OpenIDPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel OpenIDPanel;
         
         /// <summary>
         /// OpenIdLogin1 control.
