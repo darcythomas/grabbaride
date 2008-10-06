@@ -12,22 +12,32 @@ namespace GrabbaRide.Frontend
     public partial class OpenIDError : System.Web.UI.Page
 
     {
-        private OpenIDUserResponseState claimsRequest;
+        
 
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            this.claimsRequest = HttpContext.Current.Session["MissingClaims"] as OpenIDUserResponseState;
-             //build the page around the claims request
-             SetVisablePageLoad();
+           if(getResponse()!=null)
+                 SetVisablePageLoad();
+           else
+           {
+               Response.Redirect("Default.aspx");
+           }
 
         
 
         }
 
+        private OpenIDUserResponseState getResponse()
+        { 
+            return HttpContext.Current.Session["MissingClaims"] as OpenIDUserResponseState;
+        }
+
         private void SetVisablePageLoad()
         {
-            if (this.claimsRequest==null|| claimsRequest.Profile==null || 
+            OpenIDUserResponseState claimsRequest = getResponse();
+
+            if (claimsRequest.Profile==null || 
                         (claimsRequest.Profile.FullName == null) )
             {
                 TxtBox_First.Visible = true;
@@ -57,13 +67,14 @@ namespace GrabbaRide.Frontend
 
         protected void SubmitBttn_Click(object sender, EventArgs e)
         {
-            //get any data we do have
-         //   ClaimsRequest request = HttpContext.Current.Session["MissingClaimsRequest"] as ClaimsRequest;
            
+            OpenIDUserResponseState claimsRequest = getResponse();
             if (claimsRequest == null || !AllRequiredFeildsSet())
             {
-
-                claimsRequest.Profile = new ClaimsRequest().CreateResponse();
+                //testing
+                Boolean allfeildsset = AllRequiredFeildsSet();
+                Boolean isnull= claimsRequest==null;
+                claimsRequest = RespondToClaim(claimsRequest);
                 Session.Add("ProfileFields", RespondToClaim(claimsRequest));
             }
 
@@ -87,7 +98,10 @@ namespace GrabbaRide.Frontend
         }
 
         private OpenIDUserResponseState RespondToClaim(OpenIDUserResponseState response)
-        { 
+        {
+            if (response.Profile == null)
+                response.Profile = new ClaimsResponse(); // yes i know this throws a warning, but 
+            // if i create a request and then a response it throws a null hissy... temp solution
           if(EmailLbl.Visible==true&&TxtBox_Email.Visible==true)
                 response.Profile.Email = sanitiseEmail(TxtBox_Email.Text);
             if (GenderLbl.Visible == true && GenderList.Visible == true)
@@ -107,7 +121,7 @@ namespace GrabbaRide.Frontend
 
         private Boolean AllRequiredFeildsSet()
         {
-            return claimsRequest.AllRequiredFeilds();
+            return getResponse().AllRequiredFeilds();
 
         }
 
