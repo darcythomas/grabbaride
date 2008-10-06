@@ -50,6 +50,15 @@ namespace GrabbaRide.Frontend {
         protected global::System.Web.UI.WebControls.DetailsView DetailsView1;
         
         /// <summary>
+        /// addToGcalender control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton addToGcalender;
+        
+        /// <summary>
         /// hfstart control.
         /// </summary>
         /// <remarks>
