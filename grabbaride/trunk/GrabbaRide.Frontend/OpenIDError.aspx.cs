@@ -86,14 +86,14 @@ namespace GrabbaRide.Frontend
           
             }
 
-          
 
-          
 
-         
+
+
+            Session.Remove("MissingClaims");// remove missing claims 
 
             //or redirect to login to inject into db????
-            Response.Redirect("Default.aspx");
+            Response.Redirect("Login.aspx");
           
         }
 
