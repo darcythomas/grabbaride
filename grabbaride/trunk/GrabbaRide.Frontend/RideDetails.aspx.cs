@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Web.UI;
 using System.Data.Linq;
 using GrabbaRide.Database;
+using Google.GData.Calendar;
+using Google.GData.Client;
+using Google.GData.Extensions;
 
 namespace GrabbaRide.Frontend
 {
@@ -45,6 +48,18 @@ namespace GrabbaRide.Frontend
                     RideDetailsDiv.Visible = false;
                 }
             }
+        }
+
+        protected void hfstart_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void addToGcalender_Click(object sender, ImageClickEventArgs e)
+        {
+
+            Response.Redirect("https://www.google.com/accounts/AuthSubRequest?" + "next=" + Request.Url.AbsoluteUri + "&scope=http%3A%2F%2Fwww.google.com%2fcalendar%2Ffeeds%2F&session=0&secure=0");
+
         }
     }
 }
