@@ -440,16 +440,43 @@ namespace GrabbaRide.UserManagement
             }
         }
 
-      //  public MembershipUser OpenIDCreateUser(OpenIDUserResponseState response)
-       // {
-        //    GrabbaRideDBDataContext context = new GrabbaRideDBDataContext();
-        //    if(context.IsOpenIDRegistered(response.LoginName))
-         //   {
+       public MembershipUser OpenIDCreateUser(OpenIDUserResponseState response)
+        {
+            GrabbaRideDBDataContext context = new GrabbaRideDBDataContext();
+            if (context.IsOpenIDRegistered(response.GrabbaRideLoginName))
+            {
+                return null;
+                //dont need to create a new user
+            }
+            else
+            {
+                Random random = new Random();
+                MembershipCreateStatus status;
 
-
-    //        }
+                 return this.CreateUser(response.GrabbaRideLoginName,this.generateRandomString(random),
+                   response.Profile.Email, this.generateRandomString(random), this.generateRandomString(random), true, null, out status);
+            }
             
           
-     //   }
+        }
+
+        /// <summary>
+        /// Only generate random string so that we can create a new openID user
+        /// eg they dont need to know about an internally generated password
+        /// </summary>
+        /// <returns></returns>
+       private string generateRandomString(Random random)
+       {
+           StringBuilder str= new StringBuilder();
+           for (int i=0;i<50;i++){
+               str.Append(GenrateRandomChar(random));
+           }
+          return str.ToString();
+       }
+
+       private char GenrateRandomChar(Random random)
+       {
+           return Convert.ToChar(Convert.ToInt32(26 * random.NextDouble()) + 65);
+       }
     }
 }

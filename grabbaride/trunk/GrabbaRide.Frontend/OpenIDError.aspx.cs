@@ -99,15 +99,21 @@ namespace GrabbaRide.Frontend
 
         private OpenIDUserResponseState RespondToClaim(OpenIDUserResponseState response)
         {
+
+            // also need to check user name avali.. maybe javascript
+            response.GrabbaRideLoginName = NewUserNameText.Text;
+
             if (response.Profile == null)
                 response.Profile = new ClaimsResponse(); // yes i know this throws a warning, but 
-            // if i create a request and then a response it throws a null hissy... temp solution
-          if(EmailLbl.Visible==true&&TxtBox_Email.Visible==true)
+            // if i create a request and then a response it throws a null hissy 
+           
+            if(EmailLbl.Visible==true&&TxtBox_Email.Visible==true)
                 response.Profile.Email = sanitiseEmail(TxtBox_Email.Text);
             if (GenderLbl.Visible == true && GenderList.Visible == true)
                 response.Profile.Gender = getGender();
             if (FristNameLbl.Visible = true && TxtBox_First.Visible == true)
                 response.Profile.FullName = getFullName(TxtBox_First.Text, TxtBox_Last.Text);
+            
 
             return response;
         }
