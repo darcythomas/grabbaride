@@ -18,9 +18,11 @@ namespace GrabbaRide.Frontend
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            // must be logged in to view this page
             if (!Request.IsAuthenticated)
             {
-                Response.Redirect("Login.aspx?RedirectUrl=CreateRide.aspx");
+                string me = Uri.EscapeDataString(Request.Url.PathAndQuery);
+                Response.Redirect(String.Format("Login.aspx?RedirectUrl={0}", me));
             }
             else if (!Page.IsPostBack)
             {

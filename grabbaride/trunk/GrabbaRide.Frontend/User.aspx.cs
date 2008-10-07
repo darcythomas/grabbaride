@@ -21,7 +21,13 @@ namespace GrabbaRide.Frontend
         {
             if (!Page.IsPostBack)
             {
-                if (Request.IsAuthenticated)
+                // must be logged in to view this page
+                if (!Request.IsAuthenticated)
+                {
+                    string me = Uri.EscapeDataString(Request.Url.PathAndQuery);
+                    Response.Redirect(String.Format("Login.aspx?RedirectUrl={0}", me));
+                }
+                else
                 {
                     if (String.IsNullOrEmpty(Request.QueryString["id"]))
                     {
@@ -69,11 +75,6 @@ namespace GrabbaRide.Frontend
                     // display feedback totals for this user
                     lblScore.Text = thisuser.FeedbackScoreTotal.ToString();
                     lblNoRatings.Text = thisuser.FeedbackScoreCount.ToString();
-                }
-                else
-                {
-                    // must be logged in to view this page
-                    Response.Redirect("Login.aspx?RedirectUrl=User.aspx");
                 }
             }
         }

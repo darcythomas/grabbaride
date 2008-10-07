@@ -18,12 +18,13 @@ namespace GrabbaRide.Frontend
                 // must be logged in to view this page
                 if (!Request.IsAuthenticated)
                 {
-                    Response.Redirect("Login.aspx?RedirectUrl=RideDetails.aspx");
+                    string me = Uri.EscapeDataString(Request.Url.PathAndQuery);
+                    Response.Redirect(String.Format("Login.aspx?RedirectUrl={0}", me));
                 }
 
                 try
                 {
-                    
+
                     int rideID = Int32.Parse(Request.QueryString["id"]);
                     GrabbaRideDBDataContext dataContext = new GrabbaRideDBDataContext();
                     Ride ride = dataContext.GetRideByID(rideID);
