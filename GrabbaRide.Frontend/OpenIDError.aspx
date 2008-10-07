@@ -3,7 +3,8 @@
 
 <%@ Register Assembly="DotNetOpenId" Namespace="DotNetOpenId.RelyingParty" TagPrefix="RP" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
-    Opps. It seems either you have refused, or your provider doesnt support, attribute
+    <div id="OpenIDErrorDiv" runat="server" visible="false">
+     Opps. It seems either you have refused, or your provider doesnt support, attribute
     exchange.
     <br />
     To allow you to log on using your openID, we need to know a few things about you.
@@ -16,9 +17,20 @@
     Ok so just fill in this form, and then you will be able to log in to grabbaride
     using your
     <br />
-    openID.<br />
+    openID.<div> 
+    </div>
+    <br />
    
     <br />
+    </div>
+    
+    <div id="ChangeUserName" runat="server" visible="true">
+        What would you like to be known as on this site
+        
+    </div>
+      <asp:Label ID="newUserName" Text="New user name:" Visable= "true" runat="server" />
+      <asp:TextBox ID="NewUserNameText" runat="server"></asp:TextBox>
+   
     <asp:Label ID="FristNameLbl" Text="First Name" Visible="false" runat="server"/>
     
     <asp:TextBox ID="TxtBox_First" runat="server" Visible="false"></asp:TextBox>

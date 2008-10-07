@@ -14,6 +14,42 @@ namespace GrabbaRide.Frontend {
     public partial class OpenIDError {
         
         /// <summary>
+        /// OpenIDErrorDiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl OpenIDErrorDiv;
+        
+        /// <summary>
+        /// ChangeUserName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ChangeUserName;
+        
+        /// <summary>
+        /// newUserName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label newUserName;
+        
+        /// <summary>
+        /// NewUserNameText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox NewUserNameText;
+        
+        /// <summary>
         /// FristNameLbl control.
         /// </summary>
         /// <remarks>

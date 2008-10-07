@@ -44,7 +44,7 @@ namespace GrabbaRide.Database
                 u.Gender = RandomGender();
                 u.DateOfBirth = RandomDate(1955, 1990);
                 u.CreationDate = RandomDate(2006, 2007);
-                u.Password = String.Empty;
+                u.Password = "password";// cant test if i dont have a password
                 u.Email = RandomEmail();
                 u.ApplicationName = "GrabbaRide";
 
