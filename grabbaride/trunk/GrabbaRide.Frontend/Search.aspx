@@ -7,8 +7,9 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server" />
     <div id="gdiv" style="float: right;">
         <p>
-            <input id="txtgeo" type="text" size="60" name="address" value="Palmerston North" />
-            <input id="btngeocode" type="button" value="Find" onclick="var address = document.getElementById('txtgeo'); showAddress(address.value); return false" />
+            <input id="txtgeo" type="text" size="60" name="address" value="Palmerston North" /><br />
+            <input id="btnsetstart" type="button" value="Set Start" onclick="var address = document.getElementById('txtgeo'); setAddress(address.value, 'start'); return false" />
+            <input id="btnsetend" type="button" value="Set End" onclick="var address = document.getElementById('txtgeo'); setAddress(address.value, 'end'); return false" />
         </p>
         <div id="searchmap" style="width: 400px; height: 400px;">
         </div>

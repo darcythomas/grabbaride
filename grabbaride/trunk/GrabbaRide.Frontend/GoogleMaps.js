@@ -90,12 +90,16 @@ function BeginDrag() {
 //marker dragend handler
 function EndDrag() {
     //update the hidden fields in case our marker positions have changed
-    var temp = startMkr.getLatLng();
-    var hftemp = document.getElementById("ctl00_MainContentPlaceHolder_hfstart");
-    hftemp.value = temp.lat() + "," + temp.lng();
-    temp = endMkr.getLatLng();
-    hftemp = document.getElementById("ctl00_MainContentPlaceHolder_hfend");
-    hftemp.value = temp.lat() + "," + temp.lng();
+    if (startMkr) {
+        var temp = startMkr.getLatLng();
+        var hftemp = document.getElementById("ctl00_MainContentPlaceHolder_hfstart");
+        hftemp.value = temp.lat() + "," + temp.lng();
+    }
+    if (endMkr) {
+        temp = endMkr.getLatLng();
+        hftemp = document.getElementById("ctl00_MainContentPlaceHolder_hfend");
+        hftemp.value = temp.lat() + "," + temp.lng();
+    }
     //redraw the bounding boxes and lines
     if (endMkr && startMkr)
     {
@@ -209,18 +213,44 @@ function EndHandler(latlng) {
 
 //code pinched from http://code.google.com/apis/maps/documentation/examples/geocoding-simple.html
 //executed when someone uses the geocoder search
-function showAddress(address) {
+function setAddress(address, marker) {
   if (geocoder) {
-    geocoder.getLatLng(
-      address,
-      function(point) {
-        if (!point) {
-          alert(address + " not found");
-        } else {
-          map.setCenter(point, 13);
-        }
-      }
-    );
+    if (marker == "start") {
+        geocoder.getLatLng(
+          address,
+          function(point) {
+            if (!point) {
+              alert(address + " not found");
+            } else {
+              map.setCenter(point, 13);
+              SetStart(point.lat(), point.lng(), "normal");
+            }
+          }
+        );
+    } else if (marker == "end") {
+        geocoder.getLatLng(
+          address,
+          function(point) {
+            if (!point) {
+              alert(address + " not found");
+            } else {
+              map.setCenter(point, 13);
+              SetEnd(point.lat(), point.lng(), "normal");
+            }
+          }
+        );
+    } else {
+        geocoder.getLatLng(
+          address,
+          function(point) {
+            if (!point) {
+              alert(address + " not found");
+            } else {
+              map.setCenter(point, 13);
+            }
+          }
+        );
+    }
   }
 }
 
