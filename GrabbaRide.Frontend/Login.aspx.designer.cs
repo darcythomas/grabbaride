@@ -14,33 +14,6 @@ namespace GrabbaRide.Frontend {
     public partial class Login {
         
         /// <summary>
-        /// GrabbaRideRadio control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton GrabbaRideRadio;
-        
-        /// <summary>
-        /// OpenIDRadio control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton OpenIDRadio;
-        
-        /// <summary>
-        /// NormalLoginPanel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel NormalLoginPanel;
-        
-        /// <summary>
         /// GrabbaRideLogin control.
         /// </summary>
         /// <remarks>
