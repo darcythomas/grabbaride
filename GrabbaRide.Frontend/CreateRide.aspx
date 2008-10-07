@@ -368,10 +368,9 @@
             
     <div id="gdiv" class="style27">
             <input id="txtgeo" name="address" size="60" type="text" 
-                value="Palmerston North" class="style8" />
-            <input id="btngeocode" 
-                onclick="var address = document.getElementById('txtgeo'); showAddress(address.value); return false" 
-                type="button" value="Find" class="style8" />
+                value="Palmerston North"/><br />
+            <input id="btnsetstart" type="button" value="Set Start" onclick="var address = document.getElementById('txtgeo'); setAddress(address.value, 'start'); return false" />
+            <input id="btnsetend" type="button" value="Set End" onclick="var address = document.getElementById('txtgeo'); setAddress(address.value, 'end'); return false" />
         <div id="searchmap" style="width: 394px; height: 340px; margin-top: 30px; float: none;" class="style17">
         </div>
     </div>
