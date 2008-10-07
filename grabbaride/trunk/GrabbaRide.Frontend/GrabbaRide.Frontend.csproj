@@ -168,6 +168,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="GdataLibrarys\Google.GData.Calendar.dll" />
+    <Content Include="GdataLibrarys\Google.GData.Client.DLL" />
+    <Content Include="GdataLibrarys\Google.GData.Extensions.dll" />
     <Content Include="Images\endicon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -199,7 +202,6 @@
     <Content Include="Register.aspx" />
     <Content Include="Search.aspx" />
     <Content Include="CreateRide.aspx" />
-    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -23,22 +23,39 @@ namespace GrabbaRide.Frontend
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+          
             if (!Page.IsPostBack)
             {
-                // need to remember view state
-                setDisplay(false, true);
-                LoginSelect.SelectedIndex = 0;
+                
+               
+
+                // detect session data and respond acordingly
+                OpenIDUserResponseState state = HttpContext.Current.Session["MissingClaims"] as OpenIDUserResponseState;
+                //if there is a current login session, and that login session has all required feilds 
+
+                if (state != null && state.AllRequiredFeilds())
+                {
+
+                    //inject into database
+                 AuthenticateResponse(state);
+
+                }
+                 setDisplay(true, false);
+            }
+            else
+            { 
+
+                Boolean[] view = Session["LoginDisplay"] as Boolean[];
+                setDisplay(view[0], view[1]);
+               
             }
 
-            // detect session data and respond acordingly
-            OpenIDUserResponseState state = HttpContext.Current.Session["MissingClaims"] as OpenIDUserResponseState;
-            //if there is a current login session, and that login session has all required feilds 
-            if (state != null && state.AllRequiredFeilds())
-            {
-                //inject into database
-            }
+               
+            
+     
            
         }
+
 
         private void setDisplay(Boolean openIDshow, Boolean normalShow)
         {
@@ -46,27 +63,54 @@ namespace GrabbaRide.Frontend
             {
                 OpenIDPanel.Visible = true;
                 NormalLoginPanel.Visible = false;
-               
-            
-                
+                OpenIDRadio.Checked = true;
+                GrabbaRideRadio.Checked = false;
+
+
+
             }
             else
             {
                 OpenIDPanel.Visible = false;
                 NormalLoginPanel.Visible = true;
-              
+                OpenIDRadio.Checked = false;
+                GrabbaRideRadio.Checked = true;
+
             }
-           
+
+            //add to session  to remember next time
+
+            Session.Add("LoginDisplay", new Boolean[] { openIDshow, normalShow });
+
+
         }
 
-        protected void LoginSelect_SelectedIndexChanged(object sender, EventArgs e)
+        public void GrabbaRideRadio_checkGrabbaRideLogin(Object sender, EventArgs e)
         {
-            if (LoginSelect.SelectedItem.Value == "GrabbaRide")
-                setDisplay(false, true);
-            else
-                setDisplay(true, false);
+            OpenIDRadio.Checked = false;
+            setDisplay(false, true);
+        }
+        public void checkOpenIDLogin(Object sender, EventArgs e)
+        {
+            GrabbaRideRadio.Checked = false;
+            setDisplay(true, false);
+        }
+       
+
+        public void AuthenticateResponse(OpenIDUserResponseState state)
+        {
+            //steps for authenication
+
+            // do we have this user already?
+            // if so log them in
+            // if not
+            //add them
+            //log them in
+
+            Response.Redirect("Default.aspx");
         }
 
+       
 
         /// <summary>
         /// Fired upon login.
@@ -90,11 +134,16 @@ namespace GrabbaRide.Frontend
 
         private void processResponse(OpenIDUserResponseState response)
         {
+
+            /// first should check if we have this user?????
+            /// 
+             // if not then do the rest.....
+
             if (response.AllRequiredFeilds())
             {
-               Response.Redirect("Default.aspx");
-              
-
+              //inject
+                AuthenticateResponse(response);
+            
             }
             else
             {
