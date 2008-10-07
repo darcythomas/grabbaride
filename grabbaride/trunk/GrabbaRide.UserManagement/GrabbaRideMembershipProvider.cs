@@ -453,8 +453,15 @@ namespace GrabbaRide.UserManagement
                 Random random = new Random();
                 MembershipCreateStatus status;
 
-                 return this.CreateUser(response.GrabbaRideLoginName,this.generateRandomString(random),
+                  MembershipUser u= CreateUser(response.GrabbaRideLoginName,this.generateRandomString(random),
                    response.Profile.Email, this.generateRandomString(random), this.generateRandomString(random), true, null, out status);
+                 // MAKE A RECORD OF OPENID IN TABLE
+                  GrabbaRideDBDataContext db = new GrabbaRideDBDataContext();
+                  int userID = context.GetUserByUsername(u.UserName).UserID;
+                  db.AttachOpenID(u.UserName, userID);
+                
+
+                  return u;
             }
             
           
