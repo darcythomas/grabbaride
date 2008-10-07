@@ -421,6 +421,7 @@ namespace GrabbaRide.UserManagement
             if (u == null) { return false; }
 
             // decrypt and check the password
+           
             byte[] decryptedPwd = DecryptPassword(Convert.FromBase64String(u.Password));
             if (password == Encoding.Unicode.GetString(decryptedPwd))
             {
@@ -439,9 +440,16 @@ namespace GrabbaRide.UserManagement
             }
         }
 
-        public void OpenIDlogin(ClaimsResponse response)
-        {
+      //  public MembershipUser OpenIDCreateUser(OpenIDUserResponseState response)
+       // {
+        //    GrabbaRideDBDataContext context = new GrabbaRideDBDataContext();
+        //    if(context.IsOpenIDRegistered(response.LoginName))
+         //   {
+
+
+    //        }
             
-        }
+          
+     //   }
     }
 }
