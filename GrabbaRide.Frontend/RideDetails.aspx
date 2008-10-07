@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true"
+<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true"
     CodeBehind="RideDetails.aspx.cs" Inherits="GrabbaRide.Frontend.RideDetails" Title="GrabbaRide: Ride Details" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">
@@ -50,7 +50,13 @@
                     SortExpression="Details" />
             </Fields>
         </asp:DetailsView>
-        <asp:HiddenField ID="hfstart" runat="server" />
+        
+        <asp:ImageButton ID="addToGcalender" runat="server" style="padding: 5px" 
+            ImageUrl="http://www.google.com/calendar/images/ext/gc_button2_en-GB.gif" 
+            ToolTip="Add to your Google calendar" onclick="addToGcalender_Click"/>
+        
+        <asp:HiddenField ID="hfstart" runat="server" 
+            onvaluechanged="hfstart_ValueChanged" />
         <asp:HiddenField ID="hfend" runat="server" />
     </div>
 </asp:Content>
