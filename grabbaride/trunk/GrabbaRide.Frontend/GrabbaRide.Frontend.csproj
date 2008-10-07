@@ -101,6 +101,9 @@
       <DependentUpon>MasterPage.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="MasterPage.master.designer.cs">
+      <DependentUpon>MasterPage.master</DependentUpon>
+    </Compile>
     <Compile Include="OpenIDError.aspx.cs">
       <DependentUpon>OpenIDError.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
