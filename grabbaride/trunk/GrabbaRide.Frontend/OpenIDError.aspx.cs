@@ -47,14 +47,14 @@ namespace GrabbaRide.Frontend
 
             }
 
-            if (claimsRequest.Profile == null || (claimsRequest.Profile.Gender == null))
+            if (true) //claimsRequest.Profile == null || (claimsRequest.Profile.Gender == null))
             {
                 GenderList.Visible = true;
                 GenderLbl.Visible = true;
             }
 
 
-            if (claimsRequest.Profile == null || (claimsRequest.Profile.Email == null) )
+            if (true)//claimsRequest.Profile == null || (claimsRequest.Profile.Email == null) )
             {
 
                 TxtBox_Email.Visible = true;
