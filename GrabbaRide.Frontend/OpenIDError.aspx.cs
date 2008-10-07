@@ -47,14 +47,14 @@ namespace GrabbaRide.Frontend
 
             }
 
-            if (true) //claimsRequest.Profile == null || (claimsRequest.Profile.Gender == null))
+            if (claimsRequest.Profile == null || (claimsRequest.Profile.Gender == null))
             {
                 GenderList.Visible = true;
                 GenderLbl.Visible = true;
             }
 
 
-            if (true)//claimsRequest.Profile == null || (claimsRequest.Profile.Email == null) )
+            if (claimsRequest.Profile == null || (claimsRequest.Profile.Email == null) )
             {
 
                 TxtBox_Email.Visible = true;
@@ -75,14 +75,14 @@ namespace GrabbaRide.Frontend
                 Boolean allfeildsset = AllRequiredFeildsSet();
                 Boolean isnull= claimsRequest==null;
                 claimsRequest = RespondToClaim(claimsRequest);
-                Session.Add("ProfileFields", RespondToClaim(claimsRequest));
+                Session.Add("MissingClaims", RespondToClaim(claimsRequest));
             }
 
             else
             {
                 Boolean test =  AllRequiredFeildsSet();
-              
-                Session.Add("ProfileFields", RespondToClaim(claimsRequest));
+
+                Session.Add("MissingClaims", RespondToClaim(claimsRequest));
           
             }
 
@@ -90,9 +90,9 @@ namespace GrabbaRide.Frontend
 
 
 
-            Session.Remove("MissingClaims");// remove missing claims 
+        
 
-            //or redirect to login to inject into db????
+  
             Response.Redirect("Login.aspx");
           
         }

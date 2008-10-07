@@ -1,10 +1,21 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true"
+<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true"
     CodeBehind="Login.aspx.cs" Inherits="GrabbaRide.Frontend.Login" Title="Login to GrabbaRide"  %>
 
 <%@ Register Assembly="DotNetOpenId" Namespace="DotNetOpenId.RelyingParty" TagPrefix="RP" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">
 
+   <script language="C#" runat="server">
+ 
+       
+     
+
+     
+       
+
    
+    
+     </script>
+
 	<style type="text/css">
 .style1 {
 	font-family: Arial;
@@ -15,17 +26,18 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
-    <span class="style1">Login<asp:RadioButtonList ID="LoginSelect" runat="server" 
-        onselectedindexchanged="LoginSelect_SelectedIndexChanged" 
-        AutoPostBack="True">
-        <asp:ListItem Value="GrabbaRide">Log In with GrabbaRide</asp:ListItem>
-        <asp:ListItem Value="OpenID">Log In with OpenID</asp:ListItem>
-    </asp:RadioButtonList>
+    <span class="style1">Login
     </span>
     
     
     
     <br />
+
+    
+        <br />
+    <asp:RadioButton ID="GrabbaRideRadio" Text="Login with grabbaRide"  OnCheckedChanged="GrabbaRideRadio_checkGrabbaRideLogin" AutoPostBack="true" runat="server" />
+    <br />
+    <asp:RadioButton ID="OpenIDRadio"  Text=" OR... Login with OpenID " OnCheckedChanged= "checkOpenIDLogin" AutoPostBack="true" runat="server" />
 
     
         <asp:Panel ID="NormalLoginPanel" runat="server">

@@ -36,9 +36,8 @@ namespace GrabbaRide.UserManagement
                 return false;
             else
             {
-                Boolean allrequired = ((Profile.FullName != null) && (Profile.Gender != null) && (Profile.BirthDate != null) &&
-                    (Profile.Email != null));
-                return ((Profile.FullName != null) && (Profile.Gender != null) && (Profile.BirthDate != null) &&
+              
+                return ((Profile.FullName != null) && (Profile.Gender != null) && 
                     (Profile.Email != null));
             }
         }
