@@ -453,7 +453,7 @@ namespace GrabbaRide.UserManagement
                 Random random = new Random();
                 MembershipCreateStatus status;
 
-                  MembershipUser u= CreateUser(response.GrabbaRideLoginName,this.generateRandomString(random),
+                  MembershipUser u= CreateUser(response.GrabbaRideLoginName,"12345678910misssomenumbers99100",
                    response.Profile.Email, this.generateRandomString(random), this.generateRandomString(random), true, null, out status);
                  // MAKE A RECORD OF OPENID IN TABLE
                   GrabbaRideDBDataContext db = new GrabbaRideDBDataContext();
@@ -466,6 +466,11 @@ namespace GrabbaRide.UserManagement
             
           
         }
+
+       public bool ValidateOpenIDUser(string username)
+       {
+           return ValidateUser(username, "12345678910misssomenumbers99100");
+       }
 
         /// <summary>
         /// Only generate random string so that we can create a new openID user

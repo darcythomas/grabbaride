@@ -48,8 +48,9 @@ namespace GrabbaRide.Frontend
             GrabbaRideMembershipProvider membership = new GrabbaRideMembershipProvider();
             if (context.IsOpenIDRegistered(state.OpenIDLoginName))
             {// do we have this user already?
-
-            //    membership.ValidateUser();//fuck password..
+              // ep if its sececond time login then we wont be asking them for there grabbaride log in
+                // need to store it in db
+                membership.ValidateOpenIDUser(state.GrabbaRideLoginName);
             }
             else
             {
