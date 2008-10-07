@@ -44,15 +44,23 @@ namespace GrabbaRide.Frontend
         public void AuthenticateResponse(OpenIDUserResponseState state)
         {
             // steps for authenication
-
-            // do we have this user already?
-            // if so log them in
-            // if not
-            // add them
+            GrabbaRideDBDataContext context = new GrabbaRideDBDataContext(); 
             GrabbaRideMembershipProvider membership = new GrabbaRideMembershipProvider();
-            membership.OpenIDCreateUser(state);
-            // log them in
+            if (context.IsOpenIDRegistered(state.OpenIDLoginName))
+            {// do we have this user already?
 
+            //    membership.ValidateUser();//fuck password..
+            }
+            else
+            {
+
+                // if so log them in
+                // if not
+                // add them
+               
+                membership.OpenIDCreateUser(state);
+                // log them in
+            }
             Response.Redirect("Default.aspx");
         }
 
@@ -85,12 +93,12 @@ namespace GrabbaRide.Frontend
                     // inject
                     AuthenticateResponse(response);
                 }
-                
+
             }
             else
             {
 
-               // check that openid has autheticated then login the user from our records
+                // check that openid has autheticated then login the user from our records
             }
         }
 
