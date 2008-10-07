@@ -12,19 +12,27 @@ namespace GrabbaRide.UserManagement
 {
     public class OpenIDUserResponseState
     {
+    
+
         public OpenIDUserResponseState(OpenIdEventArgs e)
         { 
-            LoginName = e.Response.FriendlyIdentifierForDisplay;
+            OpenIDLoginName = e.Response.FriendlyIdentifierForDisplay;
             Profile = e.Response.GetExtension<ClaimsResponse>();
+            
         }
 
-     
+        public String GrabbaRideLoginName
+        {
+            get { return HttpContext.Current.Session["GrabbaRideLoginName"] as String; }
+            set { HttpContext.Current.Session["GrabbaRideLoginName"] = value; }
+        }
+
         public  ClaimsResponse Profile
         {
             get { return HttpContext.Current.Session["ProfileFields"] as ClaimsResponse; }
             set { HttpContext.Current.Session["ProfileFields"] = value; }
         }
-        public string LoginName
+        public string  OpenIDLoginName
         {
             get { return HttpContext.Current.Session["FriendlyUsername"] as string; }
             set { HttpContext.Current.Session["FriendlyUsername"] = value; }
@@ -38,7 +46,7 @@ namespace GrabbaRide.UserManagement
             {
               
                 return ((Profile.FullName != null) && (Profile.Gender != null) && 
-                    (Profile.Email != null));
+                    (Profile.Email != null)&&(!String.IsNullOrEmpty(this.GrabbaRideLoginName)));
             }
         }
 

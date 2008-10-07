@@ -14,6 +14,7 @@ using DotNetOpenId.RelyingParty;
 using DotNetOpenId.Extensions.SimpleRegistration;
 using System.Text;
 using GrabbaRide.UserManagement;
+using GrabbaRide.Database;
 
 namespace GrabbaRide.Frontend
 {
@@ -48,6 +49,8 @@ namespace GrabbaRide.Frontend
             // if so log them in
             // if not
             // add them
+            GrabbaRideMembershipProvider membership = new GrabbaRideMembershipProvider();
+            membership.OpenIDCreateUser(state);
             // log them in
 
             Response.Redirect("Default.aspx");
@@ -68,21 +71,35 @@ namespace GrabbaRide.Frontend
         private void processResponse(OpenIDUserResponseState response)
         {
             // first should check if we have this user?????
-            // if not then do the rest.....
+            if (!OpenIDSignInPrevious(response))
+            { // if not then do the rest.....
 
-            if (response.AllRequiredFeilds())
-            {
-                // inject
-                AuthenticateResponse(response);
+                if (!response.AllRequiredFeilds())
+                {
+                    // add the missing request to the session and redirect
+                    Session.Add("MissingClaims", response);
+                    Response.Redirect("OpenIDError.aspx?RedirectUrl=Login.aspx");
+                }
+                else
+                {
+                    // inject
+                    AuthenticateResponse(response);
+                }
+                
             }
             else
             {
-                // add the missing request to the session and redirect
-                Session.Add("MissingClaims", response);
-                Response.Redirect("OpenIDError.aspx?RedirectUrl=Login.aspx");
+
+               // check that openid has autheticated then login the user from our records
             }
         }
-        
+
+        private Boolean OpenIDSignInPrevious(OpenIDUserResponseState response)
+        {
+            GrabbaRideDBDataContext context = new GrabbaRideDBDataContext();
+            return context.IsOpenIDRegistered(response.OpenIDLoginName);
+        }
+
         protected void OpenIdLogin1_Failed(object sender, OpenIdEventArgs e)
         {
             loginFailedLabel.Visible = true;
