@@ -59,6 +59,15 @@ namespace GrabbaRide.Frontend {
         protected global::System.Web.UI.WebControls.ImageButton addToGcalender;
         
         /// <summary>
+        /// EmailUserDiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl EmailUserDiv;
+        
+        /// <summary>
         /// EmailMessage control.
         /// </summary>
         /// <remarks>

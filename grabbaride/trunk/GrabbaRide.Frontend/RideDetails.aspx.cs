@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web.UI;
-using System.Data.Linq;
 using GrabbaRide.Database;
-using Google.GData.Calendar;
-using Google.GData.Client;
-using Google.GData.Extensions;
 
 namespace GrabbaRide.Frontend
 {
@@ -22,9 +18,9 @@ namespace GrabbaRide.Frontend
                     Response.Redirect(String.Format("Login.aspx?RedirectUrl={0}", me));
                 }
 
+                // get the ride details
                 try
                 {
-
                     int rideID = Int32.Parse(Request.QueryString["id"]);
                     GrabbaRideDBDataContext dataContext = new GrabbaRideDBDataContext();
                     Ride ride = dataContext.GetRideByID(rideID);
@@ -41,6 +37,12 @@ namespace GrabbaRide.Frontend
                         ride.LocationToLat, ride.LocationToLong);
 
                     GoogleMaps.LoadGoogleMapsScripts(this.Page);
+
+                    // check if this ride belongs to the logged in user
+                    if (ride.User.Username == Page.User.Identity.Name)
+                    {
+                        EmailUserDiv.Visible = false;
+                    }
                 }
                 catch (ArgumentNullException)
                 {
@@ -58,9 +60,7 @@ namespace GrabbaRide.Frontend
 
         protected void addToGcalender_Click(object sender, ImageClickEventArgs e)
         {
-
             Response.Redirect("https://www.google.com/accounts/AuthSubRequest?" + "next=" + Request.Url.AbsoluteUri + "&scope=http%3A%2F%2Fwww.google.com%2fcalendar%2Ffeeds%2F&session=0&secure=0");
-
         }
 
         /// <summary>
