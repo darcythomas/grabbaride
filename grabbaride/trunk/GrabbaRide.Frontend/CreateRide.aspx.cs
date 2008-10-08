@@ -67,13 +67,21 @@ namespace GrabbaRide.Frontend
             newRide.DepartureTime = new TimeSpan(hrs, mins, 0);
 
             // get the longitude and latitude data
-            string[] fromLocation = hfstart.Value.Split(',');
-            string[] toLocation = hfend.Value.Split(',');
+            String[] fromLocation = hfstart.Value.Split(',');
+            String[] toLocation = hfend.Value.Split(',');
 
-            newRide.LocationFromLat = Double.Parse(fromLocation[0]);
-            newRide.LocationFromLong = Double.Parse(fromLocation[1]);
-            newRide.LocationToLat = Double.Parse(toLocation[0]);
-            newRide.LocationToLong = Double.Parse(toLocation[1]);
+            if (fromLocation.Length > 1)
+            {
+                newRide.LocationFromLat = Double.Parse(fromLocation[0]);
+                newRide.LocationFromLong = Double.Parse(fromLocation[1]);
+            }
+            if (toLocation.Length > 1)
+            {
+                newRide.LocationToLat = Double.Parse(toLocation[0]);
+                newRide.LocationToLong = Double.Parse(toLocation[1]);
+            }
+
+            newRide.Details = txtDescription.Text;
 
             // finally, add the ride
             dataContext.AttachRide(newRide);
