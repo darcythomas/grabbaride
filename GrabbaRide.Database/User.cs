@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Net.Sockets;
 
 namespace GrabbaRide.Database
 {
@@ -113,8 +114,14 @@ namespace GrabbaRide.Database
             email.Body = String.Format(MESSAGE_TEMPLATE, fromUser.Username, message);
 
             // send the message
-            SmtpClient client = new SmtpClient("smtp.massey.ac.nz");
-            client.Send(email);
+            try
+            {
+                // if we are outside massey, won't be able to send email!
+                SmtpClient client = new SmtpClient("smtp.massey.ac.nz");
+                client.Send(email);
+            }
+            catch (SmtpException) { }
+            catch (SocketException) { }
         }
 
         /// <summary>
@@ -141,8 +148,14 @@ namespace GrabbaRide.Database
                 this.PasswordQuestion, this.PasswordAnswer);
 
             // send the message
-            SmtpClient client = new SmtpClient("smtp.massey.ac.nz");
-            client.Send(email);
+            try
+            {
+                // if we are outside massey, won't be able to send email!
+                SmtpClient client = new SmtpClient("smtp.massey.ac.nz");
+                client.Send(email);
+            }
+            catch (SmtpException) { }
+            catch (SocketException) { }
         }
     }
 }
