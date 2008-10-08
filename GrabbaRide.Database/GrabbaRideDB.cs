@@ -39,6 +39,15 @@ namespace GrabbaRide.Database
             this.SubmitChanges();
         }
 
+        //update a ride record
+        public void ReattachRide(Ride newRide)
+        {
+            Ride oldrecord = GetRideByID(newRide.RideID);
+            Rides.DeleteOnSubmit(oldrecord);
+            Rides.InsertOnSubmit(newRide);
+            SubmitChanges();
+        }
+
         /// <summary>
         /// Gets the ride owned by the id
         /// </summary>
