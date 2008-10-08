@@ -1,20 +1,9 @@
 ﻿using System;
-using System.Collections;
-using System.Configuration;
-using System.Data;
-using System.Linq;
 using System.Web;
-using System.Web.Security;
 using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
-using System.Xml.Linq;
 using DotNetOpenId.RelyingParty;
-using DotNetOpenId.Extensions.SimpleRegistration;
-using System.Text;
-using GrabbaRide.UserManagement;
 using GrabbaRide.Database;
+using GrabbaRide.UserManagement;
 
 namespace GrabbaRide.Frontend
 {
@@ -26,6 +15,7 @@ namespace GrabbaRide.Frontend
             {
                 // set the returnurl
                 GrabbaRideLogin.DestinationPageUrl = Request.QueryString["RedirectUrl"];
+                GrabbaRideLogin.CreateUserUrl += Request.Url.Query;
 
                 // detect session data and respond acordingly
                 OpenIDUserResponseState state = HttpContext.Current.Session["MissingClaims"] as OpenIDUserResponseState;
@@ -36,7 +26,6 @@ namespace GrabbaRide.Frontend
                 {
                     //inject into database
                     AuthenticateResponse(state);
-
                 }
             }
         }

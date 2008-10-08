@@ -62,5 +62,16 @@ namespace GrabbaRide.Frontend
             Response.Redirect("https://www.google.com/accounts/AuthSubRequest?" + "next=" + Request.Url.AbsoluteUri + "&scope=http%3A%2F%2Fwww.google.com%2fcalendar%2Ffeeds%2F&session=0&secure=0");
 
         }
+
+        /// <summary>
+        /// Sends an email to this user.
+        /// </summary>
+        protected void EmailMessageSend_Click(object sender, EventArgs e)
+        {
+            GrabbaRideDBDataContext dataContext = new GrabbaRideDBDataContext();
+            User userSend = dataContext.GetUserByUsername(Page.User.Identity.Name);
+            User userRecv = dataContext.GetRideByID(Int32.Parse(Request.QueryString["id"])).User;
+            userRecv.SendMessage(EmailMessage.Text, userSend);
+        }
     }
 }

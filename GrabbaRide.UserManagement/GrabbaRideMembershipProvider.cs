@@ -143,6 +143,8 @@ namespace GrabbaRide.UserManagement
             // add the user to the database
             dataContext.AttachNewUser(u);
 
+            // send them a registration email
+            u.SendRegistrationEmail();
 
             // return the new user
             status = MembershipCreateStatus.Success;
@@ -421,7 +423,7 @@ namespace GrabbaRide.UserManagement
             if (u == null) { return false; }
 
             // decrypt and check the password
-           
+
             byte[] decryptedPwd = DecryptPassword(Convert.FromBase64String(u.Password));
             if (password == Encoding.Unicode.GetString(decryptedPwd))
             {
@@ -440,7 +442,7 @@ namespace GrabbaRide.UserManagement
             }
         }
 
-       public MembershipUser OpenIDCreateUser(OpenIDUserResponseState response)
+        public MembershipUser OpenIDCreateUser(OpenIDUserResponseState response)
         {
             GrabbaRideDBDataContext context = new GrabbaRideDBDataContext();
             if (context.IsOpenIDRegistered(response.GrabbaRideLoginName))
@@ -453,42 +455,43 @@ namespace GrabbaRide.UserManagement
                 Random random = new Random();
                 MembershipCreateStatus status;
 
-                  MembershipUser u= CreateUser(response.GrabbaRideLoginName,"12345678910misssomenumbers99100",
-                   response.Profile.Email, this.generateRandomString(random), this.generateRandomString(random), true, null, out status);
-                 // MAKE A RECORD OF OPENID IN TABLE
-                  GrabbaRideDBDataContext db = new GrabbaRideDBDataContext();
-                  int userID = context.GetUserByUsername(u.UserName).UserID;
-                  db.AttachOpenID(u.UserName, userID);
-                
+                MembershipUser u = CreateUser(response.GrabbaRideLoginName, "12345678910misssomenumbers99100",
+                 response.Profile.Email, this.generateRandomString(random), this.generateRandomString(random), true, null, out status);
+                // MAKE A RECORD OF OPENID IN TABLE
+                GrabbaRideDBDataContext db = new GrabbaRideDBDataContext();
+                int userID = context.GetUserByUsername(u.UserName).UserID;
+                db.AttachOpenID(u.UserName, userID);
 
-                  return u;
+
+                return u;
             }
-            
-          
+
+
         }
 
-       public bool ValidateOpenIDUser(string username)
-       {
-           return ValidateUser(username, "12345678910misssomenumbers99100");
-       }
+        public bool ValidateOpenIDUser(string username)
+        {
+            return ValidateUser(username, "12345678910misssomenumbers99100");
+        }
 
         /// <summary>
         /// Only generate random string so that we can create a new openID user
         /// eg they dont need to know about an internally generated password
         /// </summary>
         /// <returns></returns>
-       private string generateRandomString(Random random)
-       {
-           StringBuilder str= new StringBuilder();
-           for (int i=0;i<50;i++){
-               str.Append(GenrateRandomChar(random));
-           }
-          return str.ToString();
-       }
+        private string generateRandomString(Random random)
+        {
+            StringBuilder str = new StringBuilder();
+            for (int i = 0; i < 50; i++)
+            {
+                str.Append(GenrateRandomChar(random));
+            }
+            return str.ToString();
+        }
 
-       private char GenrateRandomChar(Random random)
-       {
-           return Convert.ToChar(Convert.ToInt32(26 * random.NextDouble()) + 65);
-       }
+        private char GenrateRandomChar(Random random)
+        {
+            return Convert.ToChar(Convert.ToInt32(26 * random.NextDouble()) + 65);
+        }
     }
 }
