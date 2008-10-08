@@ -14,9 +14,8 @@
     </asp:ScriptManager>
     <h2 title="User Profile Page">
         User Page</h2>
-    <asp:UpdatePanel ID="UserDetailsUpdatePanel" runat="server">
-        <ContentTemplate>
-            <asp:DetailsView ID="UserDetailsView" runat="server" AutoGenerateRows="False" DataSourceID="UserDataSource"
+            <asp:DetailsView ID="UserDetailsView" runat="server" 
+        AutoGenerateRows="False" DataSourceID="UserDataSource"
                 AutoGenerateEditButton="True">
                 <Fields>
                     <asp:BoundField DataField="Username" HeaderText="User" 
@@ -30,7 +29,8 @@
                         SortExpression="LastName" />
                     <asp:BoundField DataField="DateOfBirth" HeaderText="Date of Birth" 
                         SortExpression="DateOfBirth" ReadOnly="True" />
-                    <asp:BoundField DataField="Occupation" HeaderText="Occupation" SortExpression="Occupation" />
+                    <asp:BoundField DataField="Occupation" HeaderText="Occupation" 
+                        SortExpression="Occupation" />
                     <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
                     <asp:BoundField DataField="CreationDate" HeaderText="Member Since" 
                         SortExpression="CreationDate" />
@@ -42,6 +42,8 @@
                         SortExpression="Comment" />
                 </Fields>
             </asp:DetailsView>
+    <asp:UpdatePanel ID="UserDetailsUpdatePanel" runat="server">
+        <ContentTemplate>
             <div>
                 Social Score:<br />
                 This user&#39;s social score is
