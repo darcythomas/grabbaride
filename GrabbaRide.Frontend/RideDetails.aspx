@@ -40,7 +40,7 @@
         </asp:DetailsView>
         <asp:ImageButton ID="addToGcalender" runat="server" Style="padding: 5px" ImageUrl="http://www.google.com/calendar/images/ext/gc_button2_en-GB.gif"
             ToolTip="Add to your Google calendar" OnClick="addToGcalender_Click" />
-        <div>
+        <div id="EmailUserDiv" runat="server">
             <p>
                 Email this user:</p>
             <asp:TextBox ID="EmailMessage" runat="server" Rows="10" Columns="60" TextMode="MultiLine" />
