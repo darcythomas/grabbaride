@@ -99,7 +99,8 @@ namespace GrabbaRide.Database
         {
             const string MESSAGE_TEMPLATE = "You have recieved a new message from GrabbaRide user {0}:\r\n" +
                 "{1}\r\nThank you for using GrabbaRide!\r\nIf you have any queries, feel free to contact us " +
-                "at grabbaride@gmail.com\r\n";
+                "at grabbaride@gmail.com\r\nYou can reply to the user simply by selecting the \"Reply\"" +
+                "option in your email client.";
 
             // get the from and to addresses
             MailAddress grabbarideAddress = new MailAddress("grabbaride@gmail.com", "GrabbaRide Team");
@@ -112,9 +113,35 @@ namespace GrabbaRide.Database
             email.Body = String.Format(MESSAGE_TEMPLATE, fromUser.Username, message);
 
             // send the message
-            SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
-            client.EnableSsl = true;
-            client.Credentials = new NetworkCredential("grabbaride@gmail.com", "letmeinplease");
+            SmtpClient client = new SmtpClient("smtp.massey.ac.nz");
+            client.Send(email);
+        }
+
+        /// <summary>
+        /// Sends a thank you for signing up email to the user.
+        /// </summary>
+        public void SendRegistrationEmail()
+        {
+            const string MESSAGE_TEMPLATE = "Thank you for signing up for GrabbaRide!\r\n" +
+                "You're account details are as follows:\r\n\r\n" +
+                "Username: {0}\r\n" +
+                "Password: {1}\r\n" +
+                "Security Question: {2}\r\n" +
+                "Security Answer: {3}\r\n\r\n" +
+                "If you have any queries, feel free to contact us at grabbaride@gmail.com\r\n";
+
+            // get the from and to addresses
+            MailAddress grabbarideAddress = new MailAddress("grabbaride@gmail.com", "GrabbaRide Team");
+            MailAddress userAddress = new MailAddress(this.Email, this.FullName);
+
+            // create the email
+            MailMessage email = new MailMessage(grabbarideAddress, userAddress);
+            email.Subject = "GrabbaRide Signup";
+            email.Body = String.Format(MESSAGE_TEMPLATE, this.Username, "********",
+                this.PasswordQuestion, this.PasswordAnswer);
+
+            // send the message
+            SmtpClient client = new SmtpClient("smtp.massey.ac.nz");
             client.Send(email);
         }
     }
