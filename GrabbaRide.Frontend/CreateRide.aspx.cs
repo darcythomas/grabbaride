@@ -24,15 +24,14 @@ namespace GrabbaRide.Frontend
                 string me = Uri.EscapeDataString(Request.Url.PathAndQuery);
                 Response.Redirect(String.Format("Login.aspx?RedirectUrl={0}", me));
             }
-            else if (!Page.IsPostBack)
+
+            if (!Page.IsPostBack)
             {
                 // dynamically choose which google maps script to load
                 GoogleMaps.LoadGoogleMapsScripts(this.Page);
 
-                // preselect some sensible start and end dates
+                // preselect a sensible start date
                 calstart.SelectedDate = DateTime.Now;
-                calEnd.SelectedDate = DateTime.Now.AddMonths(3);
-                calEnd.VisibleDate = calEnd.SelectedDate;
             }
         }
 
@@ -48,7 +47,8 @@ namespace GrabbaRide.Frontend
 
             // start and end dates
             newRide.StartDate = calstart.SelectedDate;
-            newRide.EndDate = calEnd.SelectedDate;
+            int advLengthDays = Int32.Parse(AdvLengthDropDown.SelectedValue);
+            newRide.EndDate = newRide.StartDate.AddDays(advLengthDays);
 
             // ride seats & days
             newRide.NumSeats = int.Parse(drpSeats.Text);
