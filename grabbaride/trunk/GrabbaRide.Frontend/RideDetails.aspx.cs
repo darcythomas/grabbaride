@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Web.UI;
 using GrabbaRide.Database;
+
 using Google.GData.Calendar;
 using Google.GData.Client;
 using Google.GData.Extensions;
@@ -12,7 +13,6 @@ namespace GrabbaRide.Frontend
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
             if (!Page.IsPostBack)
             {
                 // must be logged in to view this page
@@ -24,11 +24,17 @@ namespace GrabbaRide.Frontend
 
                 // make sure we have a ride id
                 if (String.IsNullOrEmpty(Request.QueryString["id"]))
+                {
+                    Response.Redirect("Search.aspx");
+                }
+
+
+                // If this is a redirect back from the google authentation 
                 if (Request.QueryString["token"] != null)
                 {
                     try
                     {
-                         this.Session["sessionToken"] =   AuthSubUtil.exchangeForSessionToken(Request.QueryString["token"], null);
+                        this.Session["sessionToken"] = AuthSubUtil.exchangeForSessionToken(Request.QueryString["token"], null);
                     }
                     catch (Exception ex)
                     {
@@ -71,13 +77,6 @@ namespace GrabbaRide.Frontend
                 }
 
 
-                try
-                {
-                    Response.Redirect("Search.aspx");
-
-                    int rideID = Int32.Parse(Request.QueryString["id"]);
-                    GrabbaRideDBDataContext dataContext = new GrabbaRideDBDataContext();
-                    Ride ride = dataContext.GetRideByID(rideID);
 
                 // get the ride details
                 GoogleMaps.LoadGoogleMapsScripts(this.Page);
@@ -125,6 +124,8 @@ namespace GrabbaRide.Frontend
                                                         false));
             //  Response.Redirect("https://www.google.com/accounts/AuthSubRequest?scope=http%3A%2F%2Fwww.google.com%2fcalendar%2Ffeeds%2F" 
             //  + "&next=" + Uri.EscapeDataString(Request.Url.AbsoluteUri) + "&session=0&secure=0");
+
+        }
 
         /// <summary>
         /// Sends an email to this user.
