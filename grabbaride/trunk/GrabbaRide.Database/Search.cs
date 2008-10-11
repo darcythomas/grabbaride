@@ -45,7 +45,8 @@ namespace GrabbaRide.Database
                              (r.RecurFri || !searchedRide.RecurFri) &&
                              (r.RecurSat || !searchedRide.RecurSat) &&
                              (r.RecurSun || !searchedRide.RecurSun)
-
+                           //Where ride is set to avalable
+                          && (r.Available == true)
                         select r;
 
             // cut out rides that aren't similar in time (the DepartureTime field doesn't
