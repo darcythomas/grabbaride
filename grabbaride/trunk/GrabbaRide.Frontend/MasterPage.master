@@ -9,7 +9,8 @@
 </head>
 <body id="body">
     <div id="head-top-grey">
-        <p id="header-time"><asp:Label ID="FooterDateLabel" runat="server">[datetime]</asp:Label></p>
+        <p id="header-time">
+            <asp:Label ID="FooterDateLabel" runat="server">[datetime]</asp:Label></p>
     </div>
     <form id="form1" runat="server">
     <div id="maxwidth">
@@ -37,6 +38,12 @@
                     </td>
                 </tr>
             </table>
+        </div>
+        <div id="ad-bar">
+            <p>
+                insert<br />
+                ads<br />
+                here</p>
         </div>
         <div id="main-content">
             <asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server" />
