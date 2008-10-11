@@ -23,8 +23,8 @@
       <Column Name="LocationToLong" Type="System.Double" CanBeNull="false" />
       <Column Name="Available" Type="System.Boolean" CanBeNull="false" />
       <Column Name="Details" Type="System.String" CanBeNull="true" />
-      <Association Name="Ride_FavouriteRide" Member="FavouriteRides" OtherKey="RideID" Type="FavouriteRide" />
-      <Association Name="User_Ride" Member="User" ThisKey="UserID" Type="User" IsForeignKey="true" />
+      <Association Name="Ride_FavouriteRide" Member="FavouriteRides" ThisKey="RideID" OtherKey="RideID" Type="FavouriteRide" />
+      <Association Name="User_Ride" Member="User" ThisKey="UserID" OtherKey="UserID" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="Users">
@@ -50,18 +50,19 @@
       <Column Name="Comment" Type="System.String" CanBeNull="true" />
       <Column Name="LastLockoutDate" Type="System.DateTime" CanBeNull="true" />
       <Column Name="Location" Type="System.String" CanBeNull="true" />
-      <Association Name="User_Ride" Member="Rides" OtherKey="UserID" Type="Ride" />
-      <Association Name="User_OpenID" Member="OpenIDs" OtherKey="UserID" Type="OpenID" />
-      <Association Name="User_FeedbackRating" Member="FeedbackRatingsPlaced" OtherKey="UserRaterID" Type="FeedbackRating" />
-      <Association Name="User_FeedbackRating1" Member="FeedbackRatingsReceived" OtherKey="UserRatedID" Type="FeedbackRating" />
-      <Association Name="User_FavouriteRide" Member="FavouriteRides" OtherKey="UserID" Type="FavouriteRide" />
+      <Column Member="GAuthToken" Type="System.String" CanBeNull="true" />
+      <Association Name="User_Ride" Member="Rides" ThisKey="UserID" OtherKey="UserID" Type="Ride" />
+      <Association Name="User_OpenID" Member="OpenIDs" ThisKey="UserID" OtherKey="UserID" Type="OpenID" />
+      <Association Name="User_FeedbackRating" Member="FeedbackRatingsPlaced" ThisKey="UserID" OtherKey="UserRaterID" Type="FeedbackRating" />
+      <Association Name="User_FeedbackRating1" Member="FeedbackRatingsReceived" ThisKey="UserID" OtherKey="UserRatedID" Type="FeedbackRating" />
+      <Association Name="User_FavouriteRide" Member="FavouriteRides" ThisKey="UserID" OtherKey="UserID" Type="FavouriteRide" />
     </Type>
   </Table>
   <Table Name="OpenIDs">
     <Type Name="OpenID">
       <Column Name="OpenIDUrl" Type="System.String" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="UserID" Type="System.Int32" CanBeNull="false" />
-      <Association Name="User_OpenID" Member="User" ThisKey="UserID" Type="User" IsForeignKey="true" />
+      <Association Name="User_OpenID" Member="User" ThisKey="UserID" OtherKey="UserID" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="" Member="FeedbackRatings">
@@ -69,8 +70,9 @@
       <Column Name="UserRaterID" Type="System.Int32" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="UserRatedID" Type="System.Int32" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Rating" Type="System.Int16" CanBeNull="false" />
-      <Association Name="User_FeedbackRating" Member="UserRater" ThisKey="UserRaterID" Type="User" IsForeignKey="true" />
-      <Association Name="User_FeedbackRating1" Member="UserRated" ThisKey="UserRatedID" Type="User" IsForeignKey="true" />
+      <Column Member="DatePlaced" Type="System.DateTime" CanBeNull="false" />
+      <Association Name="User_FeedbackRating" Member="UserRater" ThisKey="UserRaterID" OtherKey="UserID" Type="User" IsForeignKey="true" />
+      <Association Name="User_FeedbackRating1" Member="UserRated" ThisKey="UserRatedID" OtherKey="UserID" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="" Member="FavouriteRides">
@@ -78,8 +80,8 @@
       <Column Name="UserID" Type="System.Int32" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="RideID" Type="System.Int32" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="DateAdded" Type="System.DateTime" CanBeNull="false" />
-      <Association Name="Ride_FavouriteRide" Member="Ride" ThisKey="RideID" Type="Ride" IsForeignKey="true" />
-      <Association Name="User_FavouriteRide" Member="User" ThisKey="UserID" Type="User" IsForeignKey="true" />
+      <Association Name="Ride_FavouriteRide" Member="Ride" ThisKey="RideID" OtherKey="RideID" Type="Ride" IsForeignKey="true" />
+      <Association Name="User_FavouriteRide" Member="User" ThisKey="UserID" OtherKey="UserID" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
