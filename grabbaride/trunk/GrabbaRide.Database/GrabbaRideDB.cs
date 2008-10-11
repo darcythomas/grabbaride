@@ -1,11 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
-using GrabbaRide.Database.Properties;
+﻿
 
 namespace GrabbaRide.Database
 {
+
+    //There is a bug with VS2008 SP1 which means that the GrabbaRideDB.designer.cs file gets deleted
+    //See here for details on the workaround: http://connect.live.com/VisualStudio/feedback/Workaround.aspx?FeedbackID=361577
+    // That is the reason why the using statements are in this weird place
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text.RegularExpressions;
+    using GrabbaRide.Database.Properties;
+
+
     partial class GrabbaRideDBDataContext
     {
         protected const string APPLICATION_NAME = "GrabbaRide";
