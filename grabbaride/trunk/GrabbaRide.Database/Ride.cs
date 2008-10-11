@@ -17,6 +17,20 @@ namespace GrabbaRide.Database
         }
 
         /// <summary>
+        /// Returns whether the ride is available, has seats, and has good start and end dates.
+        /// </summary>
+        public bool IsValidAndAvailable
+        {
+            get
+            {
+                return this.Available &&
+                    this.StartDate <= DateTime.Now &&
+                    this.EndDate >= DateTime.Now &&
+                    this.NumSeats > 0;
+            }
+        }
+
+        /// <summary>
         /// The distance of the journey, in degrees, calcuated using sweet pythagoras.
         /// </summary>
         public double JourneyDistance
@@ -26,7 +40,7 @@ namespace GrabbaRide.Database
                 // a^2 + b^2 = c^2
                 double a = this.LocationToLat - this.LocationFromLat;
                 double b = this.LocationToLong - this.LocationFromLong;
-                double c2 = Math.Pow(a,2) + Math.Pow(b,2);
+                double c2 = Math.Pow(a, 2) + Math.Pow(b, 2);
 
                 return Math.Sqrt(c2);
             }

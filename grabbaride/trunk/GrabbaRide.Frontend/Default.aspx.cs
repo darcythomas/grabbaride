@@ -17,7 +17,12 @@ namespace GrabbaRide.Frontend
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+        }
 
+        public void RecentRidesDataSourceObjectDisposing(object sender, ObjectDataSourceDisposingEventArgs e)
+        {
+            // don't dispose of our linq datacontext!
+            e.Cancel = true;
         }
     }
 }
