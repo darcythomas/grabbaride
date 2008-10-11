@@ -22,6 +22,15 @@ public partial class MasterPage {
     protected global::System.Web.UI.WebControls.ContentPlaceHolder HeadContentPlaceHolder;
     
     /// <summary>
+    /// FooterDateLabel control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label FooterDateLabel;
+    
+    /// <summary>
     /// form1 control.
     /// </summary>
     /// <remarks>
@@ -38,15 +47,6 @@ public partial class MasterPage {
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
     protected global::System.Web.UI.WebControls.LoginStatus LoginStatus;
-    
-    /// <summary>
-    /// LeftNavContentPlaceHolder control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.ContentPlaceHolder LeftNavContentPlaceHolder;
     
     /// <summary>
     /// MainContentPlaceHolder control.
