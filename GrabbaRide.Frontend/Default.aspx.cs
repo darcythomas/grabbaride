@@ -19,11 +19,5 @@ namespace GrabbaRide.Frontend
         {
 
         }
-
-        protected void btnSearch_Click(object sender, EventArgs e)
-        {
-            string search = "Search.aspx";
-            Response.Redirect(search);
-        }
     }
 }
