@@ -36,6 +36,10 @@ body
 	font-family: Verdana, Arial;
 	margin: 0px;
 }
+h2
+{
+	color: #0066ff;
+}
 
 /*
  *  MAIN CONTENT PANEL
@@ -67,7 +71,7 @@ body
 }
 #nav-bar a, #nav-bar a:visited
 {
-	color: Blue;
+	color: #0066ff;
 }
 #nav-bar tr
 {
@@ -147,6 +151,7 @@ body
 	text-align: center;
 	background-image: url('Images/adbar-bg.gif');
 	background-repeat: repeat-y;
+	border: 1px solid #74f230;
 	height: 300px;
 	width: 200px;
 	margin: 10px 0px;
