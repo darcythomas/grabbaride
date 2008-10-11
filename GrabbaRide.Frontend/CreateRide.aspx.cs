@@ -29,9 +29,17 @@ namespace GrabbaRide.Frontend
             {
                 // dynamically choose which google maps script to load
                 GoogleMaps.LoadGoogleMapsScripts(this.Page);
+            }
 
-                // preselect a sensible start date
+            // hide or show the calendar?
+            if (StartDateRadioList.SelectedIndex == 0)
+            {
+                calstart.Visible = false;
                 calstart.SelectedDate = DateTime.Now;
+            }
+            else
+            {
+                calstart.Visible = true;
             }
         }
 

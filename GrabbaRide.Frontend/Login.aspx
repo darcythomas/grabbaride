@@ -3,18 +3,9 @@
 
 <%@ Register Assembly="DotNetOpenId" Namespace="DotNetOpenId.RelyingParty" TagPrefix="RP" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">
-    <style type="text/css">
-        .style1
-        {
-            font-family: Arial;
-            font-size: xx-large;
-            color: #000080;
-        }
-    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
-    <span class="style1">Login </span>
-    <br />
+    <h2>Login </h2>
     <p>
         <strong>Login with your GrabbaRide details</strong></p>
     <asp:Login ID="GrabbaRideLogin" runat="server" BackColor="#EFF3FB" BorderColor="#B5C7DE"
