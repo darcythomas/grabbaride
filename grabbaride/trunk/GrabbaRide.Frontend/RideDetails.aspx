@@ -26,9 +26,10 @@
             <Fields>
                 <asp:BoundField DataField="RideID" HeaderText="Ride ID" SortExpression="RideID" 
                     ReadOnly="True" />
-                <asp:BoundField DataField="UserID" HeaderText="User" SortExpression="UserID" />
+                <asp:BoundField DataField="UserID" HeaderText="User" SortExpression="UserID" 
+                    ReadOnly="True" />
                 <asp:BoundField DataField="CreationDate" HeaderText="Created" 
-                    SortExpression="CreationDate" />
+                    SortExpression="CreationDate" ReadOnly="True" />
                 <asp:BoundField DataField="StartDate" HeaderText="Start Date" 
                     SortExpression="StartDate" />
                 <asp:BoundField DataField="EndDate" HeaderText="End Date" 
@@ -42,8 +43,6 @@
                 <asp:CheckBoxField DataField="RecurFri" HeaderText="Friday" SortExpression="RecurFri" />
                 <asp:CheckBoxField DataField="RecurSat" HeaderText="Saturday" SortExpression="RecurSat" />
                 <asp:CheckBoxField DataField="RecurSun" HeaderText="Sunday" SortExpression="RecurSun" />
-                <asp:CheckBoxField DataField="Available" HeaderText="Available" 
-                    SortExpression="Available" />
                 <asp:BoundField DataField="Details" HeaderText="Details" 
                     SortExpression="Details" />
             </Fields>

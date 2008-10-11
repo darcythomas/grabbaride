@@ -19,7 +19,7 @@
                 AutoGenerateEditButton="True">
                 <Fields>
                     <asp:BoundField DataField="Username" HeaderText="User" 
-                        SortExpression="Username">
+                        SortExpression="Username" ReadOnly="True">
                         <ControlStyle Font-Bold="False" />
                         <ItemStyle Font-Bold="True" Font-Size="Large" />
                     </asp:BoundField>
@@ -33,7 +33,7 @@
                         SortExpression="Occupation" />
                     <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
                     <asp:BoundField DataField="CreationDate" HeaderText="Member Since" 
-                        SortExpression="CreationDate" />
+                        SortExpression="CreationDate" ReadOnly="True" />
                     <asp:BoundField DataField="LastLoginDate" HeaderText="Last Login" 
                         SortExpression="LastLoginDate" ReadOnly="True" />
                     <asp:BoundField DataField="LastActvityDate" HeaderText="Last Seen" 
