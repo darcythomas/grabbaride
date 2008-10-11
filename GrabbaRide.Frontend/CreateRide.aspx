@@ -181,7 +181,7 @@
                 ride cost and special conditions on the ride:
             </td>
             <td>
-                <asp:TextBox ID="txtDescription" runat="server" Rows="10" Columns="80" TextMode="MultiLine"></asp:TextBox>
+                <asp:TextBox ID="txtDescription" runat="server" Rows="10" Width="400" TextMode="MultiLine"></asp:TextBox>
             </td>
         </tr>
         <tr>
