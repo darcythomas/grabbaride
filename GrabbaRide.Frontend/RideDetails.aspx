@@ -3,8 +3,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="LeftNavContentPlaceHolder" runat="server">
-</asp:Content>
+
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <div id="RideInvalidDiv" runat="server" visible="false">
         <asp:ObjectDataSource ID="RideObjectDataSource" runat="server" 
@@ -56,7 +55,7 @@
             <asp:Button ID="EmailMessageSend" runat="server" Text="Send!" 
                 onclick="EmailMessageSend_Click" />
         </div>
-        <asp:HiddenField ID="hfstart" runat="server" OnValueChanged="hfstart_ValueChanged" />
+        <asp:HiddenField ID="hfstart" runat="server"  />
         <asp:HiddenField ID="hfend" runat="server" />
     </div>
 </asp:Content>
