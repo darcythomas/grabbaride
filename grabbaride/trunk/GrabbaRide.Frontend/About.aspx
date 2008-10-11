@@ -33,12 +33,11 @@
 }
     </style>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="LeftNavContentPlaceHolder" runat="server">
-</asp:Content>
+
 <asp:Content id="Content3" runat="server" contentplaceholderid="MainContentPlaceHolder">
 	<h2 class="style7">About Us</h2>
     <span class="style4">
-    <p class="style9">T<span class="style4">he website was established in 2008 as Palmerston North-based 
+    <p class="style9">T<span class="style4">This website was established in 2008 as Palmerston North-based 
         GrabbaRide by the .NET team at Massey University. The site was developed by a 
         team of students as part of their third year studies for the paper 
 	159.356 Software Engineering C.</span></p>
