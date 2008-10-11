@@ -40,12 +40,11 @@ body
 /*
  *  MAIN CONTENT PANEL
  */
-
 #maxwidth
 {
-	width: 90%;
-	margin-left: 5%;
-	margin-right: 5%;
+	width: 80%;
+	margin-left: 10%;
+	margin-right: 10%;
 }
 #main-content
 {
@@ -60,6 +59,7 @@ body
 	height: 53px;
 	width: 100%;
 	margin: 0px;
+	font-size: large;
 }
 #nav-bar a, #nav-bar a:visited
 {
@@ -70,13 +70,16 @@ body
 	background-image: url('Images/header_bg.gif');
 	background-position: top center;
 	background-repeat: repeat-x;
+	vertical-align: middle;
 }
 #nav-bar td
 {
+	margin: 0px;
+	padding: 0px;
 }
 #nav-bar-left
 {
-	width: 10px;
+	width: 7px;
 	background-color: Transparent;
 	background-image: url('Images/header_left.gif');
 	background-position: left top;
@@ -89,7 +92,7 @@ body
 }
 #nav-bar-right
 {
-	width: 10px;
+	width: 7px;
 	background-color: Transparent;
 	background-image: url('Images/header_right.gif');
 	background-position: right top;

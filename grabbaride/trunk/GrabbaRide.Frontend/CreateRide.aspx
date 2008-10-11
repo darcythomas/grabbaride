@@ -17,48 +17,27 @@
     <table id="createridetable">
         <tr>
             <td>
-                1) Please select <strong>start</strong> date:
+                <img src="Images/1_off.gif" alt="1." />
             </td>
             <td>
-                <asp:UpdatePanel ID="UpdatePanel1" runat="server" RenderMode="Inline">
-                    <ContentTemplate>
-                        <asp:Calendar ID="calstart" runat="server" BackColor="White" BorderColor="Black"
-                            CaptionAlign="Left" DayNameFormat="Shortest" Font-Names="Times New Roman" Font-Size="10pt"
-                            ForeColor="Black" Height="220px" NextPrevFormat="FullMonth" TitleFormat="Month"
-                            Width="400px">
-                            <SelectedDayStyle BackColor="#CC3333" ForeColor="White" />
-                            <SelectorStyle BackColor="#CCCCCC" Font-Bold="True" Font-Names="Verdana" Font-Size="8pt"
-                                ForeColor="#333333" Width="1%" />
-                            <TodayDayStyle BackColor="#CCCC99" />
-                            <OtherMonthDayStyle ForeColor="#999999" />
-                            <DayStyle Width="14%" />
-                            <NextPrevStyle Font-Size="8pt" ForeColor="White" />
-                            <DayHeaderStyle BackColor="#CCCCCC" Font-Bold="True" Font-Size="7pt" ForeColor="#333333"
-                                Height="10pt" />
-                            <TitleStyle BackColor="Black" Font-Bold="True" Font-Size="13pt" ForeColor="White"
-                                Height="14pt" />
-                        </asp:Calendar>
-                    </ContentTemplate>
-                </asp:UpdatePanel>
+                Please select your <strong>start</strong> and <strong>end locations</strong>:
+            </td>
+            <td>
+                <div id="geodiv">
+                    <input id="txtgeo" name="address" size="60" type="text" value="Palmerston North" /><br />
+                    <input id="btnsetstart" type="button" value="Set Start" onclick="var address = document.getElementById('txtgeo'); setAddress(address.value, 'start'); return false" />
+                    <input id="btnsetend" type="button" value="Set End" onclick="var address = document.getElementById('txtgeo'); setAddress(address.value, 'end'); return false" />
+                    <div id="searchmap" style="width: 400px; height: 350px;">
+                    </div>
+                </div>
             </td>
         </tr>
         <tr>
             <td>
-                2) How long would you like to <strong>run the advertisment for</strong>?
+                <img src="Images/2_off.gif" alt="2." />
             </td>
             <td>
-                <asp:DropDownList ID="AdvLengthDropDown" runat="server">
-                    <asp:ListItem Text="1 week" Value="7" />
-                    <asp:ListItem Text="2 weeks" Value="14" />
-                    <asp:ListItem Text="1 month" Value="30" Selected="True" />
-                    <asp:ListItem Text="3 months" Value="90" />
-                    <asp:ListItem Text="6 months" Value="180" />
-                </asp:DropDownList>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                3) Please select <strong>number</strong> of seats
+                Please select <strong>number of seats</strong>
             </td>
             <td>
                 <asp:DropDownList ID="drpSeats" runat="server">
@@ -75,7 +54,10 @@
         </tr>
         <tr>
             <td>
-                4) Please select <strong>time</strong> and <strong>day(s)</strong>:
+                <img src="Images/3_off.gif" alt="4." />
+            </td>
+            <td>
+                Please select the <strong>time</strong>
             </td>
             <td>
                 <asp:DropDownList ID="drphours" runat="server">
@@ -114,7 +96,9 @@
         </tr>
         <tr>
             <td>
-                5) Please select the <strong>days of the week</strong>:
+            </td>
+            <td>
+                and <strong>days of the week</strong>:
             </td>
             <td>
                 <asp:CheckBox ID="chkmon" runat="server" Text="Monday" Font-Names="Arial" Checked="true" />
@@ -134,28 +118,75 @@
         </tr>
         <tr>
             <td>
-                6) Please select your <strong>start</strong> and <strong>end locations</strong>:
+                <img src="Images/4_off.gif" alt="4." />
             </td>
             <td>
-                <div id="geodiv">
-                    <input id="txtgeo" name="address" size="60" type="text" value="Palmerston North" /><br />
-                    <input id="btnsetstart" type="button" value="Set Start" onclick="var address = document.getElementById('txtgeo'); setAddress(address.value, 'start'); return false" />
-                    <input id="btnsetend" type="button" value="Set End" onclick="var address = document.getElementById('txtgeo'); setAddress(address.value, 'end'); return false" />
-                    <div id="searchmap" style="width: 400px; height: 350px;">
-                    </div>
-                </div>
+                When should the listing to become available?
+            </td>
+            <td>
+                <asp:UpdatePanel ID="UpdatePanel1" runat="server" RenderMode="Inline">
+                    <ContentTemplate>
+                        <table cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td>
+                                    <asp:RadioButtonList ID="StartDateRadioList" runat="server" AutoPostBack="true" CellPadding="0"
+                                        CellSpacing="0">
+                                        <asp:ListItem Selected="True">Now</asp:ListItem>
+                                        <asp:ListItem>Custom Date -&gt;</asp:ListItem>
+                                    </asp:RadioButtonList>
+                                </td>
+                                <td>
+                                    <asp:Calendar ID="calstart" runat="server" BackColor="White" BorderColor="Black"
+                                        CaptionAlign="Right" DayNameFormat="Shortest" Font-Size="8pt" ForeColor="Black"
+                                        NextPrevFormat="ShortMonth" TitleFormat="Month" Width="200px">
+                                        <SelectedDayStyle BackColor="#CC3333" ForeColor="White" />
+                                        <SelectorStyle BackColor="#CCCCCC" Font-Bold="True" Font-Size="8pt" ForeColor="#333333" />
+                                        <TodayDayStyle BackColor="#CCCC99" />
+                                        <OtherMonthDayStyle ForeColor="#999999" />
+                                        <NextPrevStyle Font-Size="8pt" ForeColor="White" />
+                                        <DayHeaderStyle BackColor="#CCCCCC" Font-Bold="True" Font-Size="7pt" ForeColor="#333333"
+                                            Height="10pt" />
+                                        <TitleStyle BackColor="Black" Font-Bold="True" Font-Size="13pt" ForeColor="White"
+                                            Height="14pt" />
+                                    </asp:Calendar>
+                                </td>
+                            </tr>
+                        </table>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
             </td>
         </tr>
         <tr>
             <td>
-                7) Please enter any <strong>extra information</strong> in the box below, such as
-                the ride cost and special conditions on the ride:
+            </td>
+            <td>
+                How long would you like to run the advertisment for?
+            </td>
+            <td>
+                <asp:DropDownList ID="AdvLengthDropDown" runat="server">
+                    <asp:ListItem Text="1 week" Value="7" />
+                    <asp:ListItem Text="2 weeks" Value="14" />
+                    <asp:ListItem Text="1 month" Value="30" Selected="True" />
+                    <asp:ListItem Text="3 months" Value="90" />
+                    <asp:ListItem Text="6 months" Value="180" />
+                </asp:DropDownList>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <img src="Images/5_off.gif" alt="5." />
+            </td>
+            <td>
+                Please enter any <strong>extra information</strong> in the box below, such as the
+                ride cost and special conditions on the ride:
             </td>
             <td>
                 <asp:TextBox ID="txtDescription" runat="server" Rows="10" Columns="80" TextMode="MultiLine"></asp:TextBox>
             </td>
         </tr>
         <tr>
+            <td>
+            </td>
             <td>
             </td>
             <td>
