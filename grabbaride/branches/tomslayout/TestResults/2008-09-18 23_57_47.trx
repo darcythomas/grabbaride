@@ -1,0 +1,806 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="67377cd6-6047-4e07-ac18-b782cd3ab6f5" name="Adrian@ADRIAN-LAPTOP 2008-09-18 23:57:47" runUser="Adrian-Laptop\Adrian" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2006">
+  <TestRunConfiguration name="Local Test Run" id="3e618621-4ae7-42e5-8007-529530b8123e">
+    <Description>This is a default test run configuration for a local test run.</Description>
+    <Deployment runDeploymentRoot="D:\Dev\GrabbaRide\grabbaride\trunk\TestResults\Adrian_ADRIAN-LAPTOP 2008-09-18 23_57_47">
+      <DeploymentItem filename="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UserManagement\lib\DotNetOpenId.dll" />
+      <DeploymentItem filename="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UserManagement\bin\Debug\GrabbaRide.UserManagement.dll" />
+      <DeploymentItem filename="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.Database\bin\Debug\GrabbaRide.Database.dll" />
+    </Deployment>
+    <TestTypeSpecific />
+  </TestRunConfiguration>
+  <ResultSummary outcome="Failed">
+    <Counters total="50" executed="50" passed="26" error="0" failed="11" timeout="0" aborted="0" inconclusive="13" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <Times creation="2008-09-18T23:57:47.7846000+12:00" queuing="2008-09-18T23:57:48.4786000+12:00" start="2008-09-18T23:57:48.8866000+12:00" finish="2008-09-18T23:58:04.0386000+12:00" />
+  <TestDefinitions>
+    <UnitTest name="PasswordFormatTest" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="3bf3191c-e563-4ae3-3c95-e61038a6456a">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="b156c15c-661a-40e0-8bec-e4f7fcb081b8" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest, GrabbaRide.UnitTests" name="PasswordFormatTest" />
+    </UnitTest>
+    <UnitTest name="DeleteUserTest" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="2474be98-7b56-ae57-91fa-a13c443623e9">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="e7abc397-7c69-47a3-8059-bb1b210f4d65" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest, GrabbaRide.UnitTests" name="DeleteUserTest" />
+    </UnitTest>
+    <UnitTest name="GetAllUsersTest" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="f4984bd3-beb6-ed47-005c-91468d9e3496">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="4059b42a-ee04-46e6-a6c3-7d4a0c7ea0d6" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.GrabbaRideDBDataContextTest, GrabbaRide.UnitTests" name="GetAllUsersTest" />
+    </UnitTest>
+    <UnitTest name="GetAllUsersTest" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="65030bed-1ba2-d923-3acc-a1a5108ed125">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="04792ead-7e70-4ac7-85ac-f62c4cd1e461" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest, GrabbaRide.UnitTests" name="GetAllUsersTest" />
+    </UnitTest>
+    <UnitTest name="OpenIDConstructorTest" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="4a3de6a3-67b5-706e-c492-d0bcfdfeb130">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="b0a5f8df-3cc7-449a-8af9-c157f8e6451e" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.OpenIDTest, GrabbaRide.UnitTests" name="OpenIDConstructorTest" />
+    </UnitTest>
+    <UnitTest name="GetUserByEmailTestNull" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="f496d897-9da8-25d0-0f6c-16c7a68bcbab">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="cb7cd061-6330-4eb4-aa41-eabfb8f93154" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.GrabbaRideDBDataContextTest, GrabbaRide.UnitTests" name="GetUserByEmailTestNull" />
+    </UnitTest>
+    <UnitTest name="GetUserNameByEmailTest" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="1591563f-d2e9-622d-a731-62c1f3839ade">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="9e4e3150-64d8-4c14-82ce-3b49ddc19438" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest, GrabbaRide.UnitTests" name="GetUserNameByEmailTest" />
+    </UnitTest>
+    <UnitTest name="MinRequiredNonAlphanumericCharactersTest" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="86c5885c-7d59-4ed0-80e8-382639614930">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="07ccbb1a-1ae9-4287-9e33-ca2f39f6327e" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest, GrabbaRide.UnitTests" name="MinRequiredNonAlphanumericCharactersTest" />
+    </UnitTest>
+    <UnitTest name="CreateUserTest" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="253c0ea7-bdf3-73a7-b608-716c64063968">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="6f80c4f1-c3f3-4906-af6b-9c8641b93121" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest, GrabbaRide.UnitTests" name="CreateUserTest" />
+    </UnitTest>
+    <UnitTest name="GenerateRandomPasswordTest" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="4016a2fc-de16-87dc-b44a-4bc17035ecd6">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="5be438e6-55f9-4aaa-a916-276ba32f981d" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.UserTest, GrabbaRide.UnitTests" name="GenerateRandomPasswordTest" />
+    </UnitTest>
+    <UnitTest name="RequiresUniqueEmailTest" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="d79d029e-c1b2-e0ec-bfed-28e9fe10a24a">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="79d170a8-2197-4f77-84e4-59b826ec43c6" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest, GrabbaRide.UnitTests" name="RequiresUniqueEmailTest" />
+    </UnitTest>
+    <UnitTest name="AttachDetachOpenIDTest" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="93054e56-b043-93b6-fc6a-db850c09734e">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="f2ad82f5-94ed-41d8-ab14-35c571a3bcf0" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.GrabbaRideDBDataContextTest, GrabbaRide.UnitTests" name="AttachDetachOpenIDTest" />
+    </UnitTest>
+    <UnitTest name="MinRequiredPasswordLengthTest" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="1e223d07-860b-2b0a-9d2b-db51bcc6204c">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="931044c4-37b7-40c6-8c8a-f84776360d83" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest, GrabbaRide.UnitTests" name="MinRequiredPasswordLengthTest" />
+    </UnitTest>
+    <UnitTest name="RideConstructorTest" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="aef425bd-2eab-c6f3-c07a-7e29dd0dce17">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="47e7ac71-cd37-4f8d-91d4-95a3c2345066" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.RideTest, GrabbaRide.UnitTests" name="RideConstructorTest" />
+    </UnitTest>
+    <UnitTest name="GetUserByIDTestNull" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="70cae2f7-85eb-1a2e-3f0c-a8253d33d6ab">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="57966d0d-c4ec-47dc-9551-dc76a9d35a33" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.GrabbaRideDBDataContextTest, GrabbaRide.UnitTests" name="GetUserByIDTestNull" />
+    </UnitTest>
+    <UnitTest name="GrabbaRideMembershipProviderConstructorTest" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="e86237af-5c13-29a1-a872-5890d41faba6">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="d37eaf01-7087-4824-9651-6f84b4fda63e" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest, GrabbaRide.UnitTests" name="GrabbaRideMembershipProviderConstructorTest" />
+    </UnitTest>
+    <UnitTest name="EnablePasswordResetTest" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="b8530562-0405-7168-8fcd-5511bec549ed">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="e92243c7-814a-4f9b-b3f1-fdc386c63f88" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest, GrabbaRide.UnitTests" name="EnablePasswordResetTest" />
+    </UnitTest>
+    <UnitTest name="ValidateUserTest" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="ef320c25-9519-a727-36ab-a4e14fc808ab">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="9bba0d36-b8f0-489a-a71d-7a143124335b" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest, GrabbaRide.UnitTests" name="ValidateUserTest" />
+    </UnitTest>
+    <UnitTest name="InitializeTest" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="91f4da68-007c-3330-d97e-1778a3c86ff6">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="45d77bcb-b7cc-42b2-89d4-43740bc73107" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest, GrabbaRide.UnitTests" name="InitializeTest" />
+    </UnitTest>
+    <UnitTest name="AttachDetachRideTest" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="65e3c915-a80a-c7a0-1073-5efcbbe1b6bf">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="cfa194ad-93be-450c-b492-97dba2df7666" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.GrabbaRideDBDataContextTest, GrabbaRide.UnitTests" name="AttachDetachRideTest" />
+    </UnitTest>
+    <UnitTest name="AttachDetachNewUserTest" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="a34f3f60-504f-3cda-d6be-f7d484d7c305">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="4a78e5f4-64b2-4a60-894c-6e503454a0cd" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.GrabbaRideDBDataContextTest, GrabbaRide.UnitTests" name="AttachDetachNewUserTest" />
+    </UnitTest>
+    <UnitTest name="UpdateUserTest" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="4170c8ab-61df-00b9-5958-87fb52e53cc5">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="34dcd184-325e-4f4d-96e2-b4f6c4a87e8f" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest, GrabbaRide.UnitTests" name="UpdateUserTest" />
+    </UnitTest>
+    <UnitTest name="ChangePasswordQuestionAndAnswerTest" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="3b1d2d20-cfdf-9e5d-5b64-835fec20a00a">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="6cf1006c-c9fc-46d4-8dee-2fbeb4cd4e76" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest, GrabbaRide.UnitTests" name="ChangePasswordQuestionAndAnswerTest" />
+    </UnitTest>
+    <UnitTest name="JourneyDistanceTest1" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="cae2a875-e749-96da-1b97-c01a83bdd139">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="69aac058-6a94-433a-94d7-748b71059c1e" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.RideTest, GrabbaRide.UnitTests" name="JourneyDistanceTest1" />
+    </UnitTest>
+    <UnitTest name="ResetPasswordTest" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="ce12b165-014e-77a3-5d60-7dfb938464f8">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="29471d6a-4206-4bb7-b489-baf95243d450" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest, GrabbaRide.UnitTests" name="ResetPasswordTest" />
+    </UnitTest>
+    <UnitTest name="UnlockUserTest" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="5ac2581e-fe0f-ca65-90c1-87a571bd8332">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="40473674-ad57-4dba-83a3-d1887421bd57" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest, GrabbaRide.UnitTests" name="UnlockUserTest" />
+    </UnitTest>
+    <UnitTest name="GetPasswordTest" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="f43f48f2-d820-adb3-6362-e0cc7620e862">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="d3ee29e5-1bd0-487e-ae7c-2577a24e9123" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest, GrabbaRide.UnitTests" name="GetPasswordTest" />
+    </UnitTest>
+    <UnitTest name="GetNumberOfUsersOnlineTest" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="55321523-1b2f-8b45-81b8-8d9e22ebd4a1">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="36edebd6-80ad-42ae-baa5-55a3766c2d1a" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest, GrabbaRide.UnitTests" name="GetNumberOfUsersOnlineTest" />
+    </UnitTest>
+    <UnitTest name="ChangePasswordTest" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="d16d58aa-c640-5abe-a688-1a146a203f8b">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="5eca81b9-6ff2-44ff-b2c9-173d373581ab" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest, GrabbaRide.UnitTests" name="ChangePasswordTest" />
+    </UnitTest>
+    <UnitTest name="MaxInvalidPasswordAttemptsTest" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="53174b29-3f07-ba25-3da5-a4dd26dd3d3f">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="1febaf55-295b-415f-9ecd-7743a0501562" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest, GrabbaRide.UnitTests" name="MaxInvalidPasswordAttemptsTest" />
+    </UnitTest>
+    <UnitTest name="EnablePasswordRetrievalTest" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="225cb7b4-a287-d1d6-99a4-e6f2902bf00e">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="4fbbca0f-dcb1-45b5-b6cf-30088259fee8" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest, GrabbaRide.UnitTests" name="EnablePasswordRetrievalTest" />
+    </UnitTest>
+    <UnitTest name="PasswordStrengthRegularExpressionTest" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="8b4f7f68-213a-780b-b30e-1843e1d856e1">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="ee39f9a0-f791-48eb-aacf-b4940bb8a22c" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest, GrabbaRide.UnitTests" name="PasswordStrengthRegularExpressionTest" />
+    </UnitTest>
+    <UnitTest name="GetRideByIDTest" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="267f40f4-d890-2bea-12e4-ab2900de3aed">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="70e477c0-3a4c-44b5-b00d-d18155c9c279" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.GrabbaRideDBDataContextTest, GrabbaRide.UnitTests" name="GetRideByIDTest" />
+    </UnitTest>
+    <UnitTest name="GetUserTest" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="a74eb90e-9d8b-f22f-e428-3053d131a224">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="db8b596c-0f31-4507-b9f5-1756a5ddc213" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest, GrabbaRide.UnitTests" name="GetUserTest" />
+    </UnitTest>
+    <UnitTest name="JourneyDistanceTest2" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="4ba3ca4e-fbe4-8600-252a-6c0b90eed55f">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="583b2559-a6ae-4d00-9202-87a217b94430" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.RideTest, GrabbaRide.UnitTests" name="JourneyDistanceTest2" />
+    </UnitTest>
+    <UnitTest name="ApplicationNameTest" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="b3a57e4c-b805-a4fc-7df1-a182576f7b06">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="f5a4e1be-dd06-4036-8463-16051d6127c5" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest, GrabbaRide.UnitTests" name="ApplicationNameTest" />
+    </UnitTest>
+    <UnitTest name="FindUsersByEmailTest" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="b5daef91-9da8-cb3b-d9ac-fd5b12ac8814">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="b1b76d69-060f-437d-b705-80a454a757a0" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest, GrabbaRide.UnitTests" name="FindUsersByEmailTest" />
+    </UnitTest>
+    <UnitTest name="RequiresQuestionAndAnswerTest" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="49bb59da-f4b8-9b9f-7e24-cf8c575e9ef8">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="63364322-850c-4a7d-a85b-bec7f3eb834f" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest, GrabbaRide.UnitTests" name="RequiresQuestionAndAnswerTest" />
+    </UnitTest>
+    <UnitTest name="PasswordAttemptWindowTest" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="ad4429b9-9475-889f-2d5d-460e64943a4d">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="2b5e3e2e-d1fe-4931-aa49-f5a837b8f720" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest, GrabbaRide.UnitTests" name="PasswordAttemptWindowTest" />
+    </UnitTest>
+    <UnitTest name="FindSimilarRidesTest" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="73900894-df5d-78c4-fbc1-ad3eb8f3672f">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="4e7b003b-9a7e-4f54-8125-8130ae80af0a" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.GrabbaRideDBDataContextTest, GrabbaRide.UnitTests" name="FindSimilarRidesTest" />
+    </UnitTest>
+    <UnitTest name="GetUserByEmailTestValid" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="6a015540-45c9-ed2c-6374-940c79118acc">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="7762f584-c1f6-43c8-96c1-d389e1bf6d7a" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.GrabbaRideDBDataContextTest, GrabbaRide.UnitTests" name="GetUserByEmailTestValid" />
+    </UnitTest>
+    <UnitTest name="GetUserByUsernameTestValid" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="53a1c745-5495-cc99-6a21-7d65e1e29cf7">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="37e8a455-8e87-4a93-a061-55446b9e9fc9" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.GrabbaRideDBDataContextTest, GrabbaRide.UnitTests" name="GetUserByUsernameTestValid" />
+    </UnitTest>
+    <UnitTest name="FindUsersByNameTest" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="2361c0a5-c424-7bf2-38c0-a8601f6ffee1">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="9ed79eea-b5e9-4593-aa0c-5aeb076aec0c" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest, GrabbaRide.UnitTests" name="FindUsersByNameTest" />
+    </UnitTest>
+    <UnitTest name="GetUserByIDTestValid" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="098c2df0-27bf-a596-5392-92a6a210a1e9">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="c298b64d-385f-4273-89e4-484f87ced415" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.GrabbaRideDBDataContextTest, GrabbaRide.UnitTests" name="GetUserByIDTestValid" />
+    </UnitTest>
+    <UnitTest name="JourneyLengthTest" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="fe7ddfe1-020e-2c9c-4f33-ef63d1ac0d9d">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="57f0d6f4-53d0-4359-8fe9-3b9000d33d37" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.RideTest, GrabbaRide.UnitTests" name="JourneyLengthTest" />
+    </UnitTest>
+    <UnitTest name="GetAllAvalibleRidesTest" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="21bba794-77c4-6cd9-fc50-69847e8383f4">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="2d54a5aa-4354-43db-b3b4-dde117b88ab4" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.GrabbaRideDBDataContextTest, GrabbaRide.UnitTests" name="GetAllAvalibleRidesTest" />
+    </UnitTest>
+    <UnitTest name="UserConstructorTest" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="d3e583cb-4224-e728-8d18-0d4b0930f13c">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="b8114ecc-2a87-4cbe-a60d-16e54d0c8759" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.UserTest, GrabbaRide.UnitTests" name="UserConstructorTest" />
+    </UnitTest>
+    <UnitTest name="GetUserTest1" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="d80a6679-bda1-f7f0-639c-83286c110bf8">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="2b30f3a7-51cf-4218-8a5a-612f5de09a44" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest, GrabbaRide.UnitTests" name="GetUserTest1" />
+    </UnitTest>
+    <UnitTest name="GetUserByUsernameTestNull" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="18369f2b-22e2-f173-b796-71d00c0d148a">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="94bb4ca9-8ee7-45c9-a9a2-fef09e0d3900" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.GrabbaRideDBDataContextTest, GrabbaRide.UnitTests" name="GetUserByUsernameTestNull" />
+    </UnitTest>
+    <UnitTest name="DepartureTimeTest" storage="d:\dev\grabbaride\grabbaride\trunk\grabbaride.unittests\bin\debug\grabbaride.unittests.dll" id="abf7a480-1a79-81c9-f364-a8f8317d4836">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="a1ede40f-f0b3-4b45-91bf-2e6ed45c3295" />
+      <TestMethod codeBase="D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\bin\Debug\GrabbaRide.UnitTests.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GrabbaRide.UnitTests.RideTest, GrabbaRide.UnitTests" name="DepartureTimeTest" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="098c2df0-27bf-a596-5392-92a6a210a1e9" executionId="c298b64d-385f-4273-89e4-484f87ced415" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1591563f-d2e9-622d-a731-62c1f3839ade" executionId="9e4e3150-64d8-4c14-82ce-3b49ddc19438" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="18369f2b-22e2-f173-b796-71d00c0d148a" executionId="94bb4ca9-8ee7-45c9-a9a2-fef09e0d3900" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1e223d07-860b-2b0a-9d2b-db51bcc6204c" executionId="931044c4-37b7-40c6-8c8a-f84776360d83" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="21bba794-77c4-6cd9-fc50-69847e8383f4" executionId="2d54a5aa-4354-43db-b3b4-dde117b88ab4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="225cb7b4-a287-d1d6-99a4-e6f2902bf00e" executionId="4fbbca0f-dcb1-45b5-b6cf-30088259fee8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2361c0a5-c424-7bf2-38c0-a8601f6ffee1" executionId="9ed79eea-b5e9-4593-aa0c-5aeb076aec0c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2474be98-7b56-ae57-91fa-a13c443623e9" executionId="e7abc397-7c69-47a3-8059-bb1b210f4d65" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="253c0ea7-bdf3-73a7-b608-716c64063968" executionId="6f80c4f1-c3f3-4906-af6b-9c8641b93121" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="267f40f4-d890-2bea-12e4-ab2900de3aed" executionId="70e477c0-3a4c-44b5-b00d-d18155c9c279" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3b1d2d20-cfdf-9e5d-5b64-835fec20a00a" executionId="6cf1006c-c9fc-46d4-8dee-2fbeb4cd4e76" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3bf3191c-e563-4ae3-3c95-e61038a6456a" executionId="b156c15c-661a-40e0-8bec-e4f7fcb081b8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4016a2fc-de16-87dc-b44a-4bc17035ecd6" executionId="5be438e6-55f9-4aaa-a916-276ba32f981d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4170c8ab-61df-00b9-5958-87fb52e53cc5" executionId="34dcd184-325e-4f4d-96e2-b4f6c4a87e8f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="49bb59da-f4b8-9b9f-7e24-cf8c575e9ef8" executionId="63364322-850c-4a7d-a85b-bec7f3eb834f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4a3de6a3-67b5-706e-c492-d0bcfdfeb130" executionId="b0a5f8df-3cc7-449a-8af9-c157f8e6451e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4ba3ca4e-fbe4-8600-252a-6c0b90eed55f" executionId="583b2559-a6ae-4d00-9202-87a217b94430" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="53174b29-3f07-ba25-3da5-a4dd26dd3d3f" executionId="1febaf55-295b-415f-9ecd-7743a0501562" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="53a1c745-5495-cc99-6a21-7d65e1e29cf7" executionId="37e8a455-8e87-4a93-a061-55446b9e9fc9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="55321523-1b2f-8b45-81b8-8d9e22ebd4a1" executionId="36edebd6-80ad-42ae-baa5-55a3766c2d1a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5ac2581e-fe0f-ca65-90c1-87a571bd8332" executionId="40473674-ad57-4dba-83a3-d1887421bd57" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="65030bed-1ba2-d923-3acc-a1a5108ed125" executionId="04792ead-7e70-4ac7-85ac-f62c4cd1e461" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="65e3c915-a80a-c7a0-1073-5efcbbe1b6bf" executionId="cfa194ad-93be-450c-b492-97dba2df7666" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6a015540-45c9-ed2c-6374-940c79118acc" executionId="7762f584-c1f6-43c8-96c1-d389e1bf6d7a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="70cae2f7-85eb-1a2e-3f0c-a8253d33d6ab" executionId="57966d0d-c4ec-47dc-9551-dc76a9d35a33" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="73900894-df5d-78c4-fbc1-ad3eb8f3672f" executionId="4e7b003b-9a7e-4f54-8125-8130ae80af0a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="86c5885c-7d59-4ed0-80e8-382639614930" executionId="07ccbb1a-1ae9-4287-9e33-ca2f39f6327e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8b4f7f68-213a-780b-b30e-1843e1d856e1" executionId="ee39f9a0-f791-48eb-aacf-b4940bb8a22c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="91f4da68-007c-3330-d97e-1778a3c86ff6" executionId="45d77bcb-b7cc-42b2-89d4-43740bc73107" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="93054e56-b043-93b6-fc6a-db850c09734e" executionId="f2ad82f5-94ed-41d8-ab14-35c571a3bcf0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a34f3f60-504f-3cda-d6be-f7d484d7c305" executionId="4a78e5f4-64b2-4a60-894c-6e503454a0cd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a74eb90e-9d8b-f22f-e428-3053d131a224" executionId="db8b596c-0f31-4507-b9f5-1756a5ddc213" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="abf7a480-1a79-81c9-f364-a8f8317d4836" executionId="a1ede40f-f0b3-4b45-91bf-2e6ed45c3295" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ad4429b9-9475-889f-2d5d-460e64943a4d" executionId="2b5e3e2e-d1fe-4931-aa49-f5a837b8f720" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="aef425bd-2eab-c6f3-c07a-7e29dd0dce17" executionId="47e7ac71-cd37-4f8d-91d4-95a3c2345066" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b3a57e4c-b805-a4fc-7df1-a182576f7b06" executionId="f5a4e1be-dd06-4036-8463-16051d6127c5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b5daef91-9da8-cb3b-d9ac-fd5b12ac8814" executionId="b1b76d69-060f-437d-b705-80a454a757a0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b8530562-0405-7168-8fcd-5511bec549ed" executionId="e92243c7-814a-4f9b-b3f1-fdc386c63f88" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cae2a875-e749-96da-1b97-c01a83bdd139" executionId="69aac058-6a94-433a-94d7-748b71059c1e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ce12b165-014e-77a3-5d60-7dfb938464f8" executionId="29471d6a-4206-4bb7-b489-baf95243d450" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d16d58aa-c640-5abe-a688-1a146a203f8b" executionId="5eca81b9-6ff2-44ff-b2c9-173d373581ab" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d3e583cb-4224-e728-8d18-0d4b0930f13c" executionId="b8114ecc-2a87-4cbe-a60d-16e54d0c8759" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d79d029e-c1b2-e0ec-bfed-28e9fe10a24a" executionId="79d170a8-2197-4f77-84e4-59b826ec43c6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d80a6679-bda1-f7f0-639c-83286c110bf8" executionId="2b30f3a7-51cf-4218-8a5a-612f5de09a44" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e86237af-5c13-29a1-a872-5890d41faba6" executionId="d37eaf01-7087-4824-9651-6f84b4fda63e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ef320c25-9519-a727-36ab-a4e14fc808ab" executionId="9bba0d36-b8f0-489a-a71d-7a143124335b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f43f48f2-d820-adb3-6362-e0cc7620e862" executionId="d3ee29e5-1bd0-487e-ae7c-2577a24e9123" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f496d897-9da8-25d0-0f6c-16c7a68bcbab" executionId="cb7cd061-6330-4eb4-aa41-eabfb8f93154" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f4984bd3-beb6-ed47-005c-91468d9e3496" executionId="4059b42a-ee04-46e6-a6c3-7d4a0c7ea0d6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fe7ddfe1-020e-2c9c-4f33-ef63d1ac0d9d" executionId="57f0d6f4-53d0-4359-8fe9-3b9000d33d37" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="c298b64d-385f-4273-89e4-484f87ced415" testId="098c2df0-27bf-a596-5392-92a6a210a1e9" testName="GetUserByIDTestValid" computerName="ADRIAN-LAPTOP" duration="00:00:00.5061892" startTime="2008-09-18T23:57:49.0066000+12:00" endTime="2008-09-18T23:57:55.3146000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="9e4e3150-64d8-4c14-82ce-3b49ddc19438" testId="1591563f-d2e9-622d-a731-62c1f3839ade" testName="GetUserNameByEmailTest" computerName="ADRIAN-LAPTOP" duration="00:00:00.0460485" startTime="2008-09-18T23:57:55.3186000+12:00" endTime="2008-09-18T23:57:55.3696000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest.GetUserNameByEmailTest threw exception:  System.ArgumentException: Not a valid email address: emails must be "user@host.something".</Message>
+          <StackTrace>    at GrabbaRide.Database.GrabbaRideDBDataContext.GetUserByEmail(String email) in D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.Database\GrabbaRideDB.cs:line 153
+   at GrabbaRide.UserManagement.GrabbaRideMembershipProvider.GetUserNameByEmail(String email) in D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UserManagement\GrabbaRideMembershipProvider.cs:line 283
+   at GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest.GetUserNameByEmailTest() in D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\GrabbaRideMembershipProviderTest.cs:line 235
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="94bb4ca9-8ee7-45c9-a9a2-fef09e0d3900" testId="18369f2b-22e2-f173-b796-71d00c0d148a" testName="GetUserByUsernameTestNull" computerName="ADRIAN-LAPTOP" duration="00:00:00.0136494" startTime="2008-09-18T23:57:55.3716000+12:00" endTime="2008-09-18T23:57:55.4046000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="931044c4-37b7-40c6-8c8a-f84776360d83" testId="1e223d07-860b-2b0a-9d2b-db51bcc6204c" testName="MinRequiredPasswordLengthTest" computerName="ADRIAN-LAPTOP" duration="00:00:00.0067103" startTime="2008-09-18T23:57:55.4106000+12:00" endTime="2008-09-18T23:57:55.4236000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="2d54a5aa-4354-43db-b3b4-dde117b88ab4" testId="21bba794-77c4-6cd9-fc50-69847e8383f4" testName="GetAllAvalibleRidesTest" computerName="ADRIAN-LAPTOP" duration="00:00:04.2791556" startTime="2008-09-18T23:57:55.4246000+12:00" endTime="2008-09-18T23:57:59.7416000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="4fbbca0f-dcb1-45b5-b6cf-30088259fee8" testId="225cb7b4-a287-d1d6-99a4-e6f2902bf00e" testName="EnablePasswordRetrievalTest" computerName="ADRIAN-LAPTOP" duration="00:00:00.0118669" startTime="2008-09-18T23:57:59.7456000+12:00" endTime="2008-09-18T23:57:59.7676000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Inconclusive" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Inconclusive failed. Verify the correctness of this test method.</Message>
+          <StackTrace>   at GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest.EnablePasswordRetrievalTest() in D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\GrabbaRideMembershipProviderTest.cs:line 119
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="9ed79eea-b5e9-4593-aa0c-5aeb076aec0c" testId="2361c0a5-c424-7bf2-38c0-a8601f6ffee1" testName="FindUsersByNameTest" computerName="ADRIAN-LAPTOP" duration="00:00:00.1765465" startTime="2008-09-18T23:57:59.7706000+12:00" endTime="2008-09-18T23:57:59.9666000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.AreEqual failed. Expected:&lt;0&gt;. Actual:&lt;61&gt;. </Message>
+          <StackTrace>   at GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest.FindUsersByNameTest() in D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\GrabbaRideMembershipProviderTest.cs:line 336
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="e7abc397-7c69-47a3-8059-bb1b210f4d65" testId="2474be98-7b56-ae57-91fa-a13c443623e9" testName="DeleteUserTest" computerName="ADRIAN-LAPTOP" duration="00:00:00.0133747" startTime="2008-09-18T23:57:59.9696000+12:00" endTime="2008-09-18T23:57:59.9996000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Inconclusive" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Inconclusive failed. Verify the correctness of this test method.</Message>
+          <StackTrace>   at GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest.DeleteUserTest() in D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\GrabbaRideMembershipProviderTest.cs:line 374
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="6f80c4f1-c3f3-4906-af6b-9c8641b93121" testId="253c0ea7-bdf3-73a7-b608-716c64063968" testName="CreateUserTest" computerName="ADRIAN-LAPTOP" duration="00:00:00.0112997" startTime="2008-09-18T23:58:00.0056000+12:00" endTime="2008-09-18T23:58:00.0306000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest.CreateUserTest threw exception:  System.ArgumentException: Not a valid email address: emails must be "user@host.something".</Message>
+          <StackTrace>    at GrabbaRide.Database.GrabbaRideDBDataContext.GetUserByEmail(String email) in D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.Database\GrabbaRideDB.cs:line 153
+   at GrabbaRide.UserManagement.GrabbaRideMembershipProvider.CreateUser(String username, String password, String email, String passwordQuestion, String passwordAnswer, Boolean isApproved, Object providerUserKey, MembershipCreateStatus&amp; status) in D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UserManagement\GrabbaRideMembershipProvider.cs:line 113
+   at GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest.CreateUserTest() in D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\GrabbaRideMembershipProviderTest.cs:line 395
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="70e477c0-3a4c-44b5-b00d-d18155c9c279" testId="267f40f4-d890-2bea-12e4-ab2900de3aed" testName="GetRideByIDTest" computerName="ADRIAN-LAPTOP" duration="00:00:00.2649944" startTime="2008-09-18T23:58:00.0356000+12:00" endTime="2008-09-18T23:58:00.3166000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="6cf1006c-c9fc-46d4-8dee-2fbeb4cd4e76" testId="3b1d2d20-cfdf-9e5d-5b64-835fec20a00a" testName="ChangePasswordQuestionAndAnswerTest" computerName="ADRIAN-LAPTOP" duration="00:00:00.0100790" startTime="2008-09-18T23:58:00.3186000+12:00" endTime="2008-09-18T23:58:00.3396000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Inconclusive" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Inconclusive failed. Verify the correctness of this test method.</Message>
+          <StackTrace>   at GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest.ChangePasswordQuestionAndAnswerTest() in D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\GrabbaRideMembershipProviderTest.cs:line 416
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="b156c15c-661a-40e0-8bec-e4f7fcb081b8" testId="3bf3191c-e563-4ae3-3c95-e61038a6456a" testName="PasswordFormatTest" computerName="ADRIAN-LAPTOP" duration="00:00:00.0016528" startTime="2008-09-18T23:58:00.3406000+12:00" endTime="2008-09-18T23:58:00.3616000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Inconclusive" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Inconclusive failed. Verify the correctness of this test method.</Message>
+          <StackTrace>   at GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest.PasswordFormatTest() in D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\GrabbaRideMembershipProviderTest.cs:line 63
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="5be438e6-55f9-4aaa-a916-276ba32f981d" testId="4016a2fc-de16-87dc-b44a-4bc17035ecd6" testName="GenerateRandomPasswordTest" computerName="ADRIAN-LAPTOP" duration="00:00:00.0040730" startTime="2008-09-18T23:58:00.3636000+12:00" endTime="2008-09-18T23:58:00.3856000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="34dcd184-325e-4f4d-96e2-b4f6c4a87e8f" testId="4170c8ab-61df-00b9-5958-87fb52e53cc5" testName="UpdateUserTest" computerName="ADRIAN-LAPTOP" duration="00:00:00.0056281" startTime="2008-09-18T23:58:00.3876000+12:00" endTime="2008-09-18T23:58:00.4036000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest.UpdateUserTest threw exception:  System.NullReferenceException: Object reference not set to an instance of an object..</Message>
+          <StackTrace>    at GrabbaRide.UserManagement.GrabbaRideMembershipProvider.UpdateUser(MembershipUser mUser) in D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UserManagement\GrabbaRideMembershipProvider.cs:line 375
+   at GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest.UpdateUserTest() in D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\GrabbaRideMembershipProviderTest.cs:line 177
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="63364322-850c-4a7d-a85b-bec7f3eb834f" testId="49bb59da-f4b8-9b9f-7e24-cf8c575e9ef8" testName="RequiresQuestionAndAnswerTest" computerName="ADRIAN-LAPTOP" duration="00:00:00.0007385" startTime="2008-09-18T23:58:00.4176000+12:00" endTime="2008-09-18T23:58:00.4246000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="b0a5f8df-3cc7-449a-8af9-c157f8e6451e" testId="4a3de6a3-67b5-706e-c492-d0bcfdfeb130" testName="OpenIDConstructorTest" computerName="ADRIAN-LAPTOP" duration="00:00:00.0043776" startTime="2008-09-18T23:58:00.4256000+12:00" endTime="2008-09-18T23:58:00.4406000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="583b2559-a6ae-4d00-9202-87a217b94430" testId="4ba3ca4e-fbe4-8600-252a-6c0b90eed55f" testName="JourneyDistanceTest2" computerName="ADRIAN-LAPTOP" duration="00:00:00.0031253" startTime="2008-09-18T23:58:00.4416000+12:00" endTime="2008-09-18T23:58:00.4546000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="1febaf55-295b-415f-9ecd-7743a0501562" testId="53174b29-3f07-ba25-3da5-a4dd26dd3d3f" testName="MaxInvalidPasswordAttemptsTest" computerName="ADRIAN-LAPTOP" duration="00:00:00.0018269" startTime="2008-09-18T23:58:00.4566000+12:00" endTime="2008-09-18T23:58:00.4696000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Inconclusive" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Inconclusive failed. Verify the correctness of this test method.</Message>
+          <StackTrace>   at GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest.MaxInvalidPasswordAttemptsTest() in D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\GrabbaRideMembershipProviderTest.cs:line 107
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="37e8a455-8e87-4a93-a061-55446b9e9fc9" testId="53a1c745-5495-cc99-6a21-7d65e1e29cf7" testName="GetUserByUsernameTestValid" computerName="ADRIAN-LAPTOP" duration="00:00:00.0705574" startTime="2008-09-18T23:58:00.4706000+12:00" endTime="2008-09-18T23:58:00.5606000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="36edebd6-80ad-42ae-baa5-55a3766c2d1a" testId="55321523-1b2f-8b45-81b8-8d9e22ebd4a1" testName="GetNumberOfUsersOnlineTest" computerName="ADRIAN-LAPTOP" duration="00:00:00.0017824" startTime="2008-09-18T23:58:00.5626000+12:00" endTime="2008-09-18T23:58:00.5746000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest.GetNumberOfUsersOnlineTest threw exception:  System.NotImplementedException: The method or operation is not implemented..</Message>
+          <StackTrace>    at GrabbaRide.UserManagement.GrabbaRideMembershipProvider.GetNumberOfUsersOnline() in D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UserManagement\GrabbaRideMembershipProvider.cs:line 242
+   at GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest.GetNumberOfUsersOnlineTest() in D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\GrabbaRideMembershipProviderTest.cs:line 297
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="40473674-ad57-4dba-83a3-d1887421bd57" testId="5ac2581e-fe0f-ca65-90c1-87a571bd8332" testName="UnlockUserTest" computerName="ADRIAN-LAPTOP" duration="00:00:00.0090252" startTime="2008-09-18T23:58:00.5756000+12:00" endTime="2008-09-18T23:58:00.6076000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Inconclusive" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Inconclusive failed. Verify the correctness of this test method.</Message>
+          <StackTrace>   at GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest.UnlockUserTest() in D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\GrabbaRideMembershipProviderTest.cs:line 193
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="04792ead-7e70-4ac7-85ac-f62c4cd1e461" testId="65030bed-1ba2-d923-3acc-a1a5108ed125" testName="GetAllUsersTest" computerName="ADRIAN-LAPTOP" duration="00:00:00.0396678" startTime="2008-09-18T23:58:00.6086000+12:00" endTime="2008-09-18T23:58:00.6686000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.AreEqual failed. Expected:&lt;0&gt;. Actual:&lt;61&gt;. </Message>
+          <StackTrace>   at GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest.GetAllUsersTest() in D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\GrabbaRideMembershipProviderTest.cs:line 316
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="cfa194ad-93be-450c-b492-97dba2df7666" testId="65e3c915-a80a-c7a0-1073-5efcbbe1b6bf" testName="AttachDetachRideTest" computerName="ADRIAN-LAPTOP" duration="00:00:00.1141164" startTime="2008-09-18T23:58:00.6776000+12:00" endTime="2008-09-18T23:58:00.8056000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="7762f584-c1f6-43c8-96c1-d389e1bf6d7a" testId="6a015540-45c9-ed2c-6374-940c79118acc" testName="GetUserByEmailTestValid" computerName="ADRIAN-LAPTOP" duration="00:00:00.0719327" startTime="2008-09-18T23:58:00.8066000+12:00" endTime="2008-09-18T23:58:00.8896000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="57966d0d-c4ec-47dc-9551-dc76a9d35a33" testId="70cae2f7-85eb-1a2e-3f0c-a8253d33d6ab" testName="GetUserByIDTestNull" computerName="ADRIAN-LAPTOP" duration="00:00:00.0116346" startTime="2008-09-18T23:58:00.8926000+12:00" endTime="2008-09-18T23:58:00.9146000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="4e7b003b-9a7e-4f54-8125-8130ae80af0a" testId="73900894-df5d-78c4-fbc1-ad3eb8f3672f" testName="FindSimilarRidesTest" computerName="ADRIAN-LAPTOP" duration="00:00:00.0886059" startTime="2008-09-18T23:58:00.9186000+12:00" endTime="2008-09-18T23:58:01.0156000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="07ccbb1a-1ae9-4287-9e33-ca2f39f6327e" testId="86c5885c-7d59-4ed0-80e8-382639614930" testName="MinRequiredNonAlphanumericCharactersTest" computerName="ADRIAN-LAPTOP" duration="00:00:00.0008154" startTime="2008-09-18T23:58:01.0176000+12:00" endTime="2008-09-18T23:58:01.0296000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="ee39f9a0-f791-48eb-aacf-b4940bb8a22c" testId="8b4f7f68-213a-780b-b30e-1843e1d856e1" testName="PasswordStrengthRegularExpressionTest" computerName="ADRIAN-LAPTOP" duration="00:00:00.0015475" startTime="2008-09-18T23:58:01.0326000+12:00" endTime="2008-09-18T23:58:01.0456000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Inconclusive" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Inconclusive failed. Verify the correctness of this test method.</Message>
+          <StackTrace>   at GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest.PasswordStrengthRegularExpressionTest() in D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\GrabbaRideMembershipProviderTest.cs:line 51
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="45d77bcb-b7cc-42b2-89d4-43740bc73107" testId="91f4da68-007c-3330-d97e-1778a3c86ff6" testName="InitializeTest" computerName="ADRIAN-LAPTOP" duration="00:00:00.0026870" startTime="2008-09-18T23:58:01.0616000+12:00" endTime="2008-09-18T23:58:01.0706000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest.InitializeTest threw exception:  System.NullReferenceException: Object reference not set to an instance of an object..</Message>
+          <StackTrace>    at GrabbaRide.UserManagement.GrabbaRideMembershipProvider.Initialize(String name, NameValueCollection config) in D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UserManagement\GrabbaRideMembershipProvider.cs:line 43
+   at GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest.InitializeTest() in D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\GrabbaRideMembershipProviderTest.cs:line 221
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="f2ad82f5-94ed-41d8-ab14-35c571a3bcf0" testId="93054e56-b043-93b6-fc6a-db850c09734e" testName="AttachDetachOpenIDTest" computerName="ADRIAN-LAPTOP" duration="00:00:00.2003403" startTime="2008-09-18T23:58:01.0716000+12:00" endTime="2008-09-18T23:58:01.2906000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="4a78e5f4-64b2-4a60-894c-6e503454a0cd" testId="a34f3f60-504f-3cda-d6be-f7d484d7c305" testName="AttachDetachNewUserTest" computerName="ADRIAN-LAPTOP" duration="00:00:00.0718365" startTime="2008-09-18T23:58:01.2936000+12:00" endTime="2008-09-18T23:58:01.3756000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="db8b596c-0f31-4507-b9f5-1756a5ddc213" testId="a74eb90e-9d8b-f22f-e428-3053d131a224" testName="GetUserTest" computerName="ADRIAN-LAPTOP" duration="00:00:00.0027184" startTime="2008-09-18T23:58:01.3766000+12:00" endTime="2008-09-18T23:58:01.3916000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest.GetUserTest threw exception:  System.NullReferenceException: Object reference not set to an instance of an object..</Message>
+          <StackTrace>    at GrabbaRide.UserManagement.GrabbaRideMembershipProvider.GetUser(Object providerUserKey, Boolean userIsOnline) in D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UserManagement\GrabbaRideMembershipProvider.cs:line 268
+   at GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest.GetUserTest() in D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\GrabbaRideMembershipProviderTest.cs:line 267
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="a1ede40f-f0b3-4b45-91bf-2e6ed45c3295" testId="abf7a480-1a79-81c9-f364-a8f8317d4836" testName="DepartureTimeTest" computerName="ADRIAN-LAPTOP" duration="00:00:00.0026629" startTime="2008-09-18T23:58:01.4056000+12:00" endTime="2008-09-18T23:58:01.4166000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="2b5e3e2e-d1fe-4931-aa49-f5a837b8f720" testId="ad4429b9-9475-889f-2d5d-460e64943a4d" testName="PasswordAttemptWindowTest" computerName="ADRIAN-LAPTOP" duration="00:00:00.0017920" startTime="2008-09-18T23:58:01.4246000+12:00" endTime="2008-09-18T23:58:01.4316000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Inconclusive" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Inconclusive failed. Verify the correctness of this test method.</Message>
+          <StackTrace>   at GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest.PasswordAttemptWindowTest() in D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\GrabbaRideMembershipProviderTest.cs:line 75
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="47e7ac71-cd37-4f8d-91d4-95a3c2345066" testId="aef425bd-2eab-c6f3-c07a-7e29dd0dce17" testName="RideConstructorTest" computerName="ADRIAN-LAPTOP" duration="00:00:00.0009170" startTime="2008-09-18T23:58:01.4346000+12:00" endTime="2008-09-18T23:58:01.4556000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="f5a4e1be-dd06-4036-8463-16051d6127c5" testId="b3a57e4c-b805-a4fc-7df1-a182576f7b06" testName="ApplicationNameTest" computerName="ADRIAN-LAPTOP" duration="00:00:00.0010008" startTime="2008-09-18T23:58:01.4566000+12:00" endTime="2008-09-18T23:58:01.4676000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="b1b76d69-060f-437d-b705-80a454a757a0" testId="b5daef91-9da8-cb3b-d9ac-fd5b12ac8814" testName="FindUsersByEmailTest" computerName="ADRIAN-LAPTOP" duration="00:00:00.0490189" startTime="2008-09-18T23:58:01.4696000+12:00" endTime="2008-09-18T23:58:01.5276000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.AreEqual failed. Expected:&lt;0&gt;. Actual:&lt;61&gt;. </Message>
+          <StackTrace>   at GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest.FindUsersByEmailTest() in D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\GrabbaRideMembershipProviderTest.cs:line 356
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="e92243c7-814a-4f9b-b3f1-fdc386c63f88" testId="b8530562-0405-7168-8fcd-5511bec549ed" testName="EnablePasswordResetTest" computerName="ADRIAN-LAPTOP" duration="00:00:00.0018932" startTime="2008-09-18T23:58:01.5326000+12:00" endTime="2008-09-18T23:58:01.5536000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Inconclusive" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Inconclusive failed. Verify the correctness of this test method.</Message>
+          <StackTrace>   at GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest.EnablePasswordResetTest() in D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\GrabbaRideMembershipProviderTest.cs:line 131
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="69aac058-6a94-433a-94d7-748b71059c1e" testId="cae2a875-e749-96da-1b97-c01a83bdd139" testName="JourneyDistanceTest1" computerName="ADRIAN-LAPTOP" duration="00:00:00.0005079" startTime="2008-09-18T23:58:01.5686000+12:00" endTime="2008-09-18T23:58:01.5746000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="29471d6a-4206-4bb7-b489-baf95243d450" testId="ce12b165-014e-77a3-5d60-7dfb938464f8" testName="ResetPasswordTest" computerName="ADRIAN-LAPTOP" duration="00:00:00.0098509" startTime="2008-09-18T23:58:01.5756000+12:00" endTime="2008-09-18T23:58:01.5976000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest.ResetPasswordTest threw exception:  System.NullReferenceException: Object reference not set to an instance of an object..</Message>
+          <StackTrace>    at GrabbaRide.UserManagement.GrabbaRideMembershipProvider.ResetPassword(String username, String answer) in D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UserManagement\GrabbaRideMembershipProvider.cs:line 339
+   at GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest.ResetPasswordTest() in D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\GrabbaRideMembershipProviderTest.cs:line 207
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="5eca81b9-6ff2-44ff-b2c9-173d373581ab" testId="d16d58aa-c640-5abe-a688-1a146a203f8b" testName="ChangePasswordTest" computerName="ADRIAN-LAPTOP" duration="00:00:00.0093782" startTime="2008-09-18T23:58:01.6006000+12:00" endTime="2008-09-18T23:58:01.6296000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Inconclusive" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Inconclusive failed. Verify the correctness of this test method.</Message>
+          <StackTrace>   at GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest.ChangePasswordTest() in D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\GrabbaRideMembershipProviderTest.cs:line 433
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="b8114ecc-2a87-4cbe-a60d-16e54d0c8759" testId="d3e583cb-4224-e728-8d18-0d4b0930f13c" testName="UserConstructorTest" computerName="ADRIAN-LAPTOP" duration="00:00:00.0005368" startTime="2008-09-18T23:58:01.6326000+12:00" endTime="2008-09-18T23:58:01.6496000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="79d170a8-2197-4f77-84e4-59b826ec43c6" testId="d79d029e-c1b2-e0ec-bfed-28e9fe10a24a" testName="RequiresUniqueEmailTest" computerName="ADRIAN-LAPTOP" duration="00:00:00.0006642" startTime="2008-09-18T23:58:01.6506000+12:00" endTime="2008-09-18T23:58:01.6626000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="2b30f3a7-51cf-4218-8a5a-612f5de09a44" testId="d80a6679-bda1-f7f0-639c-83286c110bf8" testName="GetUserTest1" computerName="ADRIAN-LAPTOP" duration="00:00:00.0094820" startTime="2008-09-18T23:58:01.6646000+12:00" endTime="2008-09-18T23:58:01.6826000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Inconclusive" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Inconclusive failed. Verify the correctness of this test method.</Message>
+          <StackTrace>   at GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest.GetUserTest1() in D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\GrabbaRideMembershipProviderTest.cs:line 253
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="d37eaf01-7087-4824-9651-6f84b4fda63e" testId="e86237af-5c13-29a1-a872-5890d41faba6" testName="GrabbaRideMembershipProviderConstructorTest" computerName="ADRIAN-LAPTOP" duration="00:00:00.0012373" startTime="2008-09-18T23:58:01.6866000+12:00" endTime="2008-09-18T23:58:01.7046000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Inconclusive" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Inconclusive failed. TODO: Implement code to verify target</Message>
+          <StackTrace>   at GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest.GrabbaRideMembershipProviderConstructorTest() in D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\GrabbaRideMembershipProviderTest.cs:line 443
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="9bba0d36-b8f0-489a-a71d-7a143124335b" testId="ef320c25-9519-a727-36ab-a4e14fc808ab" testName="ValidateUserTest" computerName="ADRIAN-LAPTOP" duration="00:00:00.0089103" startTime="2008-09-18T23:58:01.7076000+12:00" endTime="2008-09-18T23:58:01.7356000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Inconclusive" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Inconclusive failed. Verify the correctness of this test method.</Message>
+          <StackTrace>   at GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest.ValidateUserTest() in D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\GrabbaRideMembershipProviderTest.cs:line 166
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="d3ee29e5-1bd0-487e-ae7c-2577a24e9123" testId="f43f48f2-d820-adb3-6362-e0cc7620e862" testName="GetPasswordTest" computerName="ADRIAN-LAPTOP" duration="00:00:00.0019461" startTime="2008-09-18T23:58:01.7366000+12:00" endTime="2008-09-18T23:58:01.7566000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest.GetPasswordTest threw exception:  System.NotSupportedException: You cannot retrieve users' passwords, they must be reset..</Message>
+          <StackTrace>    at GrabbaRide.UserManagement.GrabbaRideMembershipProvider.GetPassword(String username, String answer) in D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UserManagement\GrabbaRideMembershipProvider.cs:line 247
+   at GrabbaRide.UnitTests.GrabbaRideMembershipProviderTest.GetPasswordTest() in D:\Dev\GrabbaRide\grabbaride\trunk\GrabbaRide.UnitTests\GrabbaRideMembershipProviderTest.cs:line 283
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="cb7cd061-6330-4eb4-aa41-eabfb8f93154" testId="f496d897-9da8-25d0-0f6c-16c7a68bcbab" testName="GetUserByEmailTestNull" computerName="ADRIAN-LAPTOP" duration="00:00:00.0137344" startTime="2008-09-18T23:58:01.7586000+12:00" endTime="2008-09-18T23:58:01.7916000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="4059b42a-ee04-46e6-a6c3-7d4a0c7ea0d6" testId="f4984bd3-beb6-ed47-005c-91468d9e3496" testName="GetAllUsersTest" computerName="ADRIAN-LAPTOP" duration="00:00:00.6219889" startTime="2008-09-18T23:58:01.7936000+12:00" endTime="2008-09-18T23:58:02.4266000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="57f0d6f4-53d0-4359-8fe9-3b9000d33d37" testId="fe7ddfe1-020e-2c9c-4f33-ef63d1ac0d9d" testName="JourneyLengthTest" computerName="ADRIAN-LAPTOP" duration="00:00:00.0007499" startTime="2008-09-18T23:58:02.4336000+12:00" endTime="2008-09-18T23:58:02.4426000+12:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>
