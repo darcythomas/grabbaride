@@ -1,9 +1,11 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true"
-    CodeBehind="Register.aspx.cs" Inherits="GrabbaRide.Frontend.Register" Title="Untitled Page" %>
+    CodeBehind="Register.aspx.cs" Inherits="GrabbaRide.Frontend.Register" Title="GrabbaRide | Register" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
+    <h2>
+        Register for GrabbaRide</h2>
     <asp:CreateUserWizard ID="CreateUserWizard" runat="server" BackColor="#EFF3FB" BorderColor="#B5C7DE"
         BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="0.8em"
         Height="319px" Style="text-align: center" Width="363px">

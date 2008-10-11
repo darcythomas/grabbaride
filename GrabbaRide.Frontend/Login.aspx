@@ -1,5 +1,5 @@
 <%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true"
-    CodeBehind="Login.aspx.cs" Inherits="GrabbaRide.Frontend.Login" Title="Login to GrabbaRide" %>
+    CodeBehind="Login.aspx.cs" Inherits="GrabbaRide.Frontend.Login" Title="GrabbaRide | Login" %>
 
 <%@ Register Assembly="DotNetOpenId" Namespace="DotNetOpenId.RelyingParty" TagPrefix="RP" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">

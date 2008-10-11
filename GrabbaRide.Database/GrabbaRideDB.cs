@@ -83,6 +83,18 @@ namespace GrabbaRide.Database
             return rides;
         }
 
+        public IEnumerable<Ride> GetRecentlyAddedRides()
+        {
+            var rides = from r in Rides
+                        where r.NumSeats > 0 &&
+                              r.Available &&
+                              r.StartDate < DateTime.Now &&
+                              r.EndDate > DateTime.Now
+                        orderby r.CreationDate descending
+                        select r;
+            return rides.Take(15);
+        }
+
         /// <summary>
         /// Returns all rides belonging to userID
         /// </summary>
