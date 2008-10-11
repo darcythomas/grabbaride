@@ -24,6 +24,7 @@ function doPageLoad() {
       else if (maptype == "readonly")
         map = new GMap2(document.getElementById("searchmapread"));
       geocoder = new GClientGeocoder();
+      geocoder.setBaseCountryCode("nz");
       map.setCenter(new GLatLng(-40.356233600914656,175.61113357543945), 13);
       if (maptype == "normal")
         GEvent.addListener(map, "click", MapHandler);
