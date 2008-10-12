@@ -174,7 +174,7 @@ LAYOUT STYLES
 ******************/
 
 #mainnav-container {
-    width: 60%;
+    width: 65%;
     padding: 10px;
     border-bottom: 2px solid #7F7F7F;
     border-right: 1px solid #7F7F7F;
@@ -220,7 +220,7 @@ LAYOUT STYLES
 
 #header {
     margin-bottom: 1px;
-    width: 60%;
+    width: 65%;
     color: #000000;
     padding: 10px;
     border-bottom: 2px solid #7F7F7F;
@@ -248,7 +248,7 @@ LAYOUT STYLES
 }
 	
 #breadcrumb-container {
-    width: 60%;
+    width: 65%;
     padding: 10px 10px 8px 10px;
     border-bottom: 2px solid #7F7F7F;
     border-right: 1px solid #7F7F7F;
@@ -272,7 +272,7 @@ ft {
 	}
 
 #content-container {
-    width: 60%;
+    width: 65%;
     border-bottom: 2px solid #7F7F7F;
     border-right: 1px solid #7F7F7F;
     padding: 0px 0px 0px 40px;
@@ -334,7 +334,7 @@ ft {
 	}
 
 #footer {
-    width: 60%;
+    width: 65%;
     padding: 10px;
     border-bottom: 2px solid #7F7F7F;
     border-right: 1px solid #7F7F7F;
