@@ -160,7 +160,7 @@ h3
 	background-image: url('Images/adbar-bg.gif');
 	background-repeat: repeat-y;
 	border: 1px solid #74f230;
-	height: 300px;
+	height: 350px;
 	width: 200px;
 	margin: 10px 0px;
 }
@@ -176,7 +176,7 @@ h3
 {
 	font-size: small;
 }
-.recent-rides-grid th 
+.recent-rides-grid th
 {
 	padding: 5px;
 	text-align: left;
@@ -221,6 +221,14 @@ h3
  *  LOGIN PAGE
  */
 .login-form td
+{
+	padding: 2px 5px;
+}
+
+/*
+ *  REGISTER PAGE
+ */
+.register-form td
 {
 	padding: 2px 5px;
 }

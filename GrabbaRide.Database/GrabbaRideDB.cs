@@ -85,14 +85,15 @@ namespace GrabbaRide.Database
 
         public IEnumerable<Ride> GetRecentlyAddedRides()
         {
-            var rides = from r in Rides
-                        where r.NumSeats > 0 &&
-                              r.Available &&
-                              r.StartDate < DateTime.Now &&
-                              r.EndDate > DateTime.Now
-                        orderby r.CreationDate descending
-                        select r;
-            return rides.Take(15);
+            var rides = (from r in Rides
+                         where r.NumSeats > 0 &&
+                               r.Available &&
+                               r.StartDate < DateTime.Now &&
+                               r.EndDate > DateTime.Now
+                         orderby r.CreationDate descending
+                         select r).Take(15);
+
+            return rides;
         }
 
         /// <summary>
