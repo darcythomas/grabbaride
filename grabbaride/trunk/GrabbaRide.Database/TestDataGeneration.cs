@@ -99,7 +99,10 @@ namespace GrabbaRide.Database
                 DateTime result = new DateTime(
                     fromYear + _random.Next(diff),
                     _random.Next(12) + 1,
-                    _random.Next(28) + 1);
+                    _random.Next(28) + 1,
+                    _random.Next(24),
+                    _random.Next(60),
+                    _random.Next(60));
 
                 return result;
             }
@@ -120,6 +123,7 @@ namespace GrabbaRide.Database
 
             Ride r = new Ride(r1,r2,r3,r4);
             r.User = RandomExistingUser();
+            r.CreationDate = RandomDate(2008, 2008);
             r.StartDate = RandomDate(2007, 2008);
             r.EndDate = RandomDate(2009, 2010);
             r.DepartureTime = RandomTimeSpan(24);
@@ -173,7 +177,7 @@ namespace GrabbaRide.Database
             _random = new Random();
 
             AddUsers();
-            AddRides(50000);
+            AddRides(10000);
             AddFixedRides(50);
         }
     }
