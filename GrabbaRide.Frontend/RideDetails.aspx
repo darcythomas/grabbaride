@@ -1,5 +1,5 @@
 <%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true"
-    CodeBehind="RideDetails.aspx.cs" Inherits="GrabbaRide.Frontend.RideDetails" Title="GrabbaRide | Ride Details" %>
+    CodeBehind="RideDetails.aspx.cs" Inherits="GrabbaRide.Frontend.RideDetails" Title="GrabbaRide: Ride Details" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">
 </asp:Content>

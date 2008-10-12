@@ -10,8 +10,10 @@ using System.Net;
 
 namespace GrabbaRide.Frontend
 {
+ 
     public partial class RideDetails : System.Web.UI.Page
     {
+        static String tempToken2;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)

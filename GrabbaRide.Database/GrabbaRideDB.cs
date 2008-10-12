@@ -83,19 +83,6 @@ namespace GrabbaRide.Database
             return rides;
         }
 
-        public IEnumerable<Ride> GetRecentlyAddedRides()
-        {
-            var rides = (from r in Rides
-                         where r.NumSeats > 0 &&
-                               r.Available &&
-                               r.StartDate < DateTime.Now &&
-                               r.EndDate > DateTime.Now
-                         orderby r.CreationDate descending
-                         select r).Take(15);
-
-            return rides;
-        }
-
         /// <summary>
         /// Returns all rides belonging to userID
         /// </summary>
@@ -263,7 +250,6 @@ namespace GrabbaRide.Database
 
             // set the rating & submit to database
             feedback.Rating = rating;
-            feedback.DatePlaced = DateTime.Now;
             this.FeedbackRatings.InsertOnSubmit(feedback);
             this.SubmitChanges();
         }

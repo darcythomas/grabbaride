@@ -7,7 +7,7 @@ namespace GrabbaRide.Database
 {
     partial class GrabbaRideDBDataContext
     {
-        const double DISTANCE_VECTOR = 0.15; // 10%
+        const double DISTANCE_VECTOR = 0.1; // 10%
         const double TIME_VECTOR = 0.5; // 30 mins
 
         /// <summary>
@@ -18,7 +18,7 @@ namespace GrabbaRide.Database
         /// The list is ranked based on similarty to the param submittedRide</returns>
         public List<Ride> FindSimilarRides(Ride searchedRide)
         {
-            double searchRadius = (searchedRide.JourneyDistance * DISTANCE_VECTOR) + DISTANCE_VECTOR*0.07;
+            double searchRadius = searchedRide.JourneyDistance * DISTANCE_VECTOR;
             if (searchRadius == 0) { searchRadius = 0.1; }
 
             var query = from r in Rides

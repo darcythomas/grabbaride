@@ -1,5 +1,5 @@
 <%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true"
-    CodeBehind="CreateRide.aspx.cs" Inherits="GrabbaRide.Frontend.CreateRide" Title="Grabbaride | Create a Ride" %>
+    CodeBehind="CreateRide.aspx.cs" Inherits="GrabbaRide.Frontend.CreateRide" Title="Grabbaride: Create a new Ride" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">
     <style type="text/css">
@@ -178,7 +178,7 @@
             </td>
             <td>
                 Please enter any <strong>extra information</strong> in the box below, such as the
-                ride cost, non smoker, etc. and other special conditions on the ride:
+                ride cost and special conditions on the ride:
             </td>
             <td>
                 <asp:TextBox ID="txtDescription" runat="server" Rows="10" Width="400" TextMode="MultiLine"></asp:TextBox>

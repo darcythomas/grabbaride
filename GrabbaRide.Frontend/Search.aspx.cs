@@ -29,8 +29,6 @@ namespace GrabbaRide.Frontend
                 }
                 else
                 {
-                    // shrink the map
-                    gdiv.Attributes["class"] = "gmap-search-small";
                     DisplayResults();
                 }
             }

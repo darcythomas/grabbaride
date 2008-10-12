@@ -2,26 +2,22 @@
 /*
  *  HEADER
  */
-#header h1
-{
-	text-align: center;
-}
 #head-top-grey
 {
 	border-bottom: 1px solid gray;
-	font-size: x-small;
-	padding: 5px 10px;
-	margin: 0px;
-}
-#head-top-grey p
-{
 	padding: 0px;
-	margin: 0px;
 }
-.head-top-time
+#header h1 
+{
+	text-align: center;
+}
+#header-time 
 {
 	color: Gray;
-	float: right;
+	text-align: right;
+	padding: 5px 10px;
+	margin: 0px;
+	font-size: x-small;
 }
 
 /*
@@ -29,7 +25,6 @@
  */
 a
 {
-	color: #0066ff;
 	text-decoration: none;
 }
 a:hover
@@ -45,13 +40,6 @@ h2
 {
 	color: #0066ff;
 }
-h3
-{
-	color: #0066ff;
-	font-size: large;
-	width: 95%;
-	border-bottom: 2px solid #74ee33;
-}
 
 /*
  *  MAIN CONTENT PANEL
@@ -63,15 +51,16 @@ h3
 }
 #main-content
 {
-	margin: 5px 220px 30px 20px;
+	padding: 5px 0px 30px 0px;
+	margin-right: 220px;
 }
 
 /*
  *  TOP NAVIGATION BAR
  */
-#nav-bar
+#nav-bar 
 {
-	margin: 0px;
+	margin: 0px -2%;
 }
 #nav-bar table
 {
@@ -82,7 +71,7 @@ h3
 }
 #nav-bar a, #nav-bar a:visited
 {
-	color: #333333;
+	color: #0066ff;
 }
 #nav-bar tr
 {
@@ -117,7 +106,7 @@ h3
 	background-position: right top;
 	background-repeat: no-repeat;
 }
-#nav-bar-main ul
+#nav-bar-main ul 
 {
 	margin-top: 15px;
 	list-style-type: none;
@@ -141,11 +130,11 @@ h3
 	text-align: center;
 	border-top: 1px solid gray;
 }
-#footer ul
+#footer ul 
 {
 	list-style-type: none;
 }
-#footer li
+#footer li 
 {
 	display: inline;
 	margin: 5px;
@@ -154,7 +143,7 @@ h3
 /*
  *  AD BAR
  */
-#ad-bar
+#ad-bar 
 {
 	float: right;
 	font-size: x-large;
@@ -163,67 +152,22 @@ h3
 	background-image: url('Images/adbar-bg.gif');
 	background-repeat: repeat-y;
 	border: 1px solid #74f230;
-	height: 350px;
+	height: 300px;
 	width: 200px;
 	margin: 10px 0px;
 }
-#ad-bar p
+#ad-bar p 
 {
 	padding: 20px;
 }
 
 /*
- *  HOME PAGE
- */
-.recent-rides-grid
-{
-	font-size: small;
-}
-.recent-rides-grid th
-{
-	padding: 5px;
-	text-align: left;
-}
-.recent-rides-grid td
-{
-	padding: 5px;
-}
-
-/*
  *  SEARCH PAGE
  */
-#resultsViewStyle 
-{	
-	clear: both;
-}
 #resultsViewStyle td, #resultsViewStyle th
 {
 	border: solid 1px black;
 	background-color: #DCDCDC;
-}
-.gmap-search-small, .gmap-search-large
-{
-	margin-bottom: 20px;
-}
-.gmap-search-small
-{
-	width: 300px;
-}
-.gmap-search-large
-{
-	width: 500px;
-}
-.gmap-search-small td, .gmap-search-large td
-{
-	padding: 5px;
-}
-.gmap-search-small div#searchmap
-{
-	height: 300px;
-}
-.gmap-search-large div#searchmap
-{
-	height: 500px;
 }
 
 /*
@@ -233,33 +177,4 @@ h3
 {
 	vertical-align: top;
 	padding: 10px;
-}
-
-/*
- *  ABOUT US PAGE
- */
-.aboutustable td
-{
-	vertical-align: top;
-	padding: 10px;
-}
-.aboutustable img
-{
-	border: 1px solid black;
-}
-
-/*
- *  LOGIN PAGE
- */
-.login-form td
-{
-	padding: 2px 5px;
-}
-
-/*
- *  REGISTER PAGE
- */
-.register-form td
-{
-	padding: 2px 5px;
 }

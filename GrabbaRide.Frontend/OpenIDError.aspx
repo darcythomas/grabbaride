@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true"
-    CodeBehind="OpenIDError.aspx.cs" Inherits="GrabbaRide.Frontend.OpenIDError" Title="GrabbaRide | Error" %>
+    CodeBehind="OpenIDError.aspx.cs" Inherits="GrabbaRide.Frontend.OpenIDError" Title="Login to GrabbaRide" %>
 
 <%@ Register Assembly="DotNetOpenId" Namespace="DotNetOpenId.RelyingParty" TagPrefix="RP" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">

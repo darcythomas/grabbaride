@@ -17,20 +17,6 @@ namespace GrabbaRide.Database
         }
 
         /// <summary>
-        /// Returns whether the ride is available, has seats, and has good start and end dates.
-        /// </summary>
-        public bool IsValidAndAvailable
-        {
-            get
-            {
-                return this.Available &&
-                    this.StartDate <= DateTime.Now &&
-                    this.EndDate >= DateTime.Now &&
-                    this.NumSeats > 0;
-            }
-        }
-
-        /// <summary>
         /// The distance of the journey, in degrees, calcuated using sweet pythagoras.
         /// </summary>
         public double JourneyDistance
@@ -40,7 +26,7 @@ namespace GrabbaRide.Database
                 // a^2 + b^2 = c^2
                 double a = this.LocationToLat - this.LocationFromLat;
                 double b = this.LocationToLong - this.LocationFromLong;
-                double c2 = Math.Pow(a, 2) + Math.Pow(b, 2);
+                double c2 = Math.Pow(a,2) + Math.Pow(b,2);
 
                 return Math.Sqrt(c2);
             }
@@ -69,39 +55,6 @@ namespace GrabbaRide.Database
             this.LocationToLong = locToLong;
         }
 
-        public string DepartureTimeString
-        {
-            get
-            {
-                return new DateTime(this.DepartureTimeSrc).ToString("h:mm tt");
-            }
-        }
 
-        public string JourneyLengthString
-        {
-            get
-            {
-                return new DateTime(this.DepartureTimeSrc).ToString("H:mm");
-            }
-        }
-
-        /// <summary>
-        /// Gets the days of the week this ride is available, as a string.
-        /// </summary>
-        public string DaysAvailable
-        {
-            get
-            {
-                string days = String.Empty;
-                if (this.RecurMon) { days += "Mon, "; }
-                if (this.RecurTue) { days += "Tue, "; }
-                if (this.RecurWed) { days += "Wed, "; }
-                if (this.RecurThu) { days += "Thu, "; }
-                if (this.RecurFri) { days += "Fri, "; }
-                if (this.RecurSat) { days += "Sat, "; }
-                if (this.RecurSun) { days += "Sun, "; }
-                return days.TrimEnd(',', ' ');
-            }
-        }
     }
 }
