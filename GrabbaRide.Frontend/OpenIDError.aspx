@@ -29,22 +29,30 @@
         
     </div>
       <asp:Label ID="newUserName" Text="New user name:" Visable= "true" runat="server" />
-      <asp:TextBox ID="NewUserNameText" runat="server"></asp:TextBox>
+      <asp:TextBox ID="NewUserNameText" runat="server" Width="131px"></asp:TextBox>
+      <asp:Label ID="usernameError" Text="Username is not available" Visible="false" runat="server" />
+   
+    <br />
    
     <asp:Label ID="FristNameLbl" Text="First Name" Visible="false" runat="server"/>
+    
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     
     <asp:TextBox ID="TxtBox_First" runat="server" Visible="false"></asp:TextBox>
     <br />
     <asp:Label ID="LastNameLbl" Text="Last Name" Visible="false" runat="server"/>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <asp:TextBox ID="TxtBox_Last" runat="server" Visible="false"></asp:TextBox>
     <br />
     <asp:Label ID="GenderLbl" Text="Gender" Visible="false" runat="server"/>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <asp:DropDownList ID="GenderList" runat="server" Visible="false">
         <asp:ListItem>Male</asp:ListItem>
         <asp:ListItem>Female</asp:ListItem>
     </asp:DropDownList>
     <br />
       <asp:Label ID="EmailLbl" Text="Email" Visible="false" runat="server" />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <asp:TextBox ID="TxtBox_Email" runat="server" Visible=" false"></asp:TextBox>
     <br />
     <br />

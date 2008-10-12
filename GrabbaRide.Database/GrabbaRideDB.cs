@@ -347,6 +347,11 @@ namespace GrabbaRide.Database
 
         }
 
+        public bool HasUserName(string username)
+        {
+            return GetUserByUsername(username) != null;
+        }
+
         #endregion
 
         #region OpenIDMappings
