@@ -263,6 +263,7 @@ namespace GrabbaRide.Database
 
             // set the rating & submit to database
             feedback.Rating = rating;
+            feedback.DatePlaced = DateTime.Now;
             this.FeedbackRatings.InsertOnSubmit(feedback);
             this.SubmitChanges();
         }
