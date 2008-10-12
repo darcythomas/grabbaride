@@ -18,7 +18,7 @@ namespace GrabbaRide.Database
 
         private string[] _testUsernames = { "badguy69", "sillylady", "pissman", "duffman", "benjiMan", "Dogbrain",
                                        "BeerBarron", "Flanders", "AlGore", "BushRIP", "FACERIP", "DEATHDIVE",
-                                       "Droid1", "Droid2", "Droid3", "Droid4", "3cp0", "YODA", "Chewie", "JabbaTheHut",
+                                       "Droid1", "Droid2", "Droid3", "Droid4", "C3P0", "YODA", "Chewie", "JabbaTheHut",
                                        "mrPotatoHead", "mrsPotatoHead", "BuzzLightYear", "SlinkyDinky",
                                        "Droid2008", "HellenClarke", "Bigbummum", "wintsonPeters", "Denmin_deamon",
                                        "Droid-1110082", "greesedUpDeaf_Guy", "PhillipJ_fry", "Turanga_Leela",
@@ -84,7 +84,7 @@ namespace GrabbaRide.Database
 
         private double RandomLatLong()
         {
-            return _random.NextDouble() * 360 - 180;
+            return (_random.NextDouble() % 0.1)-0.05;
         }
 
         private DateTime RandomDate(int fromYear, int toYear)
@@ -113,7 +113,12 @@ namespace GrabbaRide.Database
 
         private Ride RandomRide()
         {
-            Ride r = new Ride(RandomLatLong(), RandomLatLong(), RandomLatLong(), RandomLatLong());
+            var r1 = (RandomLatLong() -40.355746);
+            var r2 = (RandomLatLong() + 175.61219);
+            var r3 = (RandomLatLong() -40.355746);
+            var r4 = (RandomLatLong() + 175.61219);
+
+            Ride r = new Ride(r1,r2,r3,r4);
             r.User = RandomExistingUser();
             r.StartDate = RandomDate(2007, 2008);
             r.EndDate = RandomDate(2009, 2010);
@@ -168,7 +173,7 @@ namespace GrabbaRide.Database
             _random = new Random();
 
             AddUsers();
-            AddRides(500);
+            AddRides(50000);
             AddFixedRides(50);
         }
     }
