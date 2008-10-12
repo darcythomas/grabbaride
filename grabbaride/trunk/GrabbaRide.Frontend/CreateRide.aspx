@@ -178,7 +178,7 @@
             </td>
             <td>
                 Please enter any <strong>extra information</strong> in the box below, such as the
-                ride cost and special conditions on the ride:
+                ride cost, non smoker, etc. and other special conditions on the ride:
             </td>
             <td>
                 <asp:TextBox ID="txtDescription" runat="server" Rows="10" Width="400" TextMode="MultiLine"></asp:TextBox>
