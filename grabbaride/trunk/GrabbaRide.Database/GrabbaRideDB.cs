@@ -47,12 +47,21 @@ namespace GrabbaRide.Database
         }
 
         //update a ride record
-        public void ReattachRide(Ride newRide)
+        public void UserEditRide(Ride newRide)
         {
-            Ride oldrecord = GetRideByID(newRide.RideID);
-            Rides.DeleteOnSubmit(oldrecord);
-            Rides.InsertOnSubmit(newRide);
-            SubmitChanges();
+            Ride oldrecord = this.GetRideByID(newRide.RideID);
+            oldrecord.NumSeats = newRide.NumSeats;
+            oldrecord.DepartureTime = newRide.DepartureTime;
+            oldrecord.RecurMon = newRide.RecurMon;
+            oldrecord.RecurTue = newRide.RecurTue;
+            oldrecord.RecurWed = newRide.RecurWed;
+            oldrecord.RecurThu = newRide.RecurThu;
+            oldrecord.RecurFri = newRide.RecurFri;
+            oldrecord.RecurSat = newRide.RecurSat;
+            oldrecord.RecurSun = newRide.RecurSun;
+            oldrecord.Details = newRide.Details;
+
+            this.SubmitChanges();
         }
 
         /// <summary>
@@ -217,6 +226,19 @@ namespace GrabbaRide.Database
             User u = GetUserByUsername(username);
             u.LastActvityDate = DateTime.Now;
             SubmitChanges();
+        }
+
+        /// <summary>
+        /// Checks if a user is valid, returns true or false
+        /// </summary>
+        /// <param name="username">username - the user's username</param>
+        public Boolean CheckUser(String username)
+        {
+            User u = GetUserByUsername(username);
+            if (u != null)
+                return true;
+            else
+                return false;
         }
 
         /// <summary>
