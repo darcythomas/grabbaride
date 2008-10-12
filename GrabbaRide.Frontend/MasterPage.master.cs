@@ -18,8 +18,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
             if (Request.IsAuthenticated)
             {
                 GrabbaRideDBDataContext dataContext = new GrabbaRideDBDataContext();
-                if (dataContext.CheckUser(Page.User.Identity.Name))
-                    dataContext.UpdateLastActivityByUsername(Page.User.Identity.Name);
+                dataContext.UpdateLastActivityByUsername(Page.User.Identity.Name);
             }
 
             FooterDateLabel.Text = DateTime.Now.ToString("d MMM, h:mm tt");

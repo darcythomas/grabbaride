@@ -224,8 +224,11 @@ namespace GrabbaRide.Database
         public void UpdateLastActivityByUsername(string username)
         {
             User u = GetUserByUsername(username);
-            u.LastActvityDate = DateTime.Now;
-            SubmitChanges();
+            if (u != null)
+            {
+                u.LastActvityDate = DateTime.Now;
+                SubmitChanges();
+            }
         }
 
         /// <summary>
