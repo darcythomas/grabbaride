@@ -7,27 +7,25 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <img src="Images/login_icon.jpg" alt="Login" style="float: right;" />
     <h2>
-        Login
-    </h2>
-    <p>
-        <strong>Login with your GrabbaRide details</strong></p>
-    <asp:Login ID="GrabbaRideLogin" runat="server" BackColor="#EFF3FB" BorderColor="#B5C7DE"
-        BorderPadding="4" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana"
-        Font-Size="0.8em" ForeColor="#333333" Style="text-align: center" Width="291px"
-        CreateUserText="Create Account" CreateUserUrl="Register.aspx">
-        <TextBoxStyle Font-Size="0.8em" />
-        <LoginButtonStyle BackColor="White" BorderColor="#507CD1" BorderStyle="Solid" BorderWidth="1px"
-            Font-Names="Verdana" Font-Size="0.8em" ForeColor="#284E98" />
-        <InstructionTextStyle Font-Italic="True" ForeColor="Black" />
-        <TitleTextStyle BackColor="#507CD1" Font-Bold="True" Font-Size="0.9em" ForeColor="White" />
+        Login</h2>
+    <h3>
+        Login with your GrabbaRide details</h3>
+    <asp:Login ID="GrabbaRideLogin" runat="server" CreateUserText="" UserNameLabelText="Username"
+        CssClass="login-form" UserNameRequiredErrorMessage="You must enter a username!"
+        PasswordRequiredErrorMessage="You must enter your password!" PasswordLabelText="Password"
+        TitleText="" LoginButtonText="Login &#187;">
+        <TitleTextStyle Height="0" />
+        <LabelStyle HorizontalAlign="Left" />
     </asp:Login>
     <p>
-        <strong>OR... Login with your OpenID!</strong></p>
+        Don't have an account? <strong><a href="Register.aspx">Register</a> for GrabbaRide!</strong></p>
+    <h3>
+        OR... Login with your OpenID!</h3>
     <asp:Panel ID="OpenIDPanel" runat="server">
         <RP:OpenIdLogin ID="OpenIdLogin1" runat="server" OnFailed="OpenIdLogin1_Failed" OnCanceled="OpenIdLogin1_Canceled"
             OnLoggedIn="OpenIdLogin1_LoggedIn" OnSetupRequired="OpenIdLogin1_SetupRequired"
             RequestBirthDate="Require" RequestEmail="Require" RequestFullName="Require" RequestGender="Require"
-            LabelText="OpenID:" />
+            LabelText="OpenID" />
         <br />
         <asp:Label ID="loginFailedLabel" runat="server" EnableViewState="False" Text="Login failed"
             Visible="False" />
