@@ -13,7 +13,7 @@
 	padding: 5px 10px;
 	margin: 0px;
 }
-#head-top-grey p 
+#head-top-grey p
 {
 	padding: 0px;
 	margin: 0px;
@@ -63,8 +63,7 @@ h3
 }
 #main-content
 {
-	padding: 5px 0px 30px 0px;
-	margin-right: 220px;
+	margin: 5px 220px 30px 20px;
 }
 
 /*
@@ -72,7 +71,7 @@ h3
  */
 #nav-bar
 {
-	margin: 0px -2%;
+	margin: 0px;
 }
 #nav-bar table
 {
@@ -83,7 +82,7 @@ h3
 }
 #nav-bar a, #nav-bar a:visited
 {
-	color: #0066ff;
+	color: #333333;
 }
 #nav-bar tr
 {
@@ -193,10 +192,38 @@ h3
 /*
  *  SEARCH PAGE
  */
+#resultsViewStyle 
+{	
+	clear: both;
+}
 #resultsViewStyle td, #resultsViewStyle th
 {
 	border: solid 1px black;
 	background-color: #DCDCDC;
+}
+.gmap-search-small, .gmap-search-large
+{
+	margin-bottom: 20px;
+}
+.gmap-search-small
+{
+	width: 300px;
+}
+.gmap-search-large
+{
+	width: 500px;
+}
+.gmap-search-small td, .gmap-search-large td
+{
+	padding: 5px;
+}
+.gmap-search-small div#searchmap
+{
+	height: 300px;
+}
+.gmap-search-large div#searchmap
+{
+	height: 500px;
 }
 
 /*

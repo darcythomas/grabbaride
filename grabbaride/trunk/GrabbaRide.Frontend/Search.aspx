@@ -4,16 +4,29 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
-<h2>Search</h2>
+    <h2>
+        Search</h2>
     <asp:ScriptManager ID="ScriptManager1" runat="server" />
-    <div id="gdiv" style="float: right;">
-        <p>
-            <input id="txtgeo" type="text" size="60" name="address" value="Palmerston North" /><br />
-            <input id="btnsetstart" type="button" value="Set Start" onclick="var address = document.getElementById('txtgeo'); setAddress(address.value, 'start'); return false" />
-            <input id="btnsetend" type="button" value="Set End" onclick="var address = document.getElementById('txtgeo'); setAddress(address.value, 'end'); return false" />
-        </p>
-        <div id="searchmap" style="width: 400px; height: 400px;">
-        </div>
+    <div id="gdiv" style="float: right;" class="gmap-search-large" runat="server">
+        <table>
+            <tr>
+                <td width="100%">
+                    <input id="txtgeo" type="text" name="address" value="Palmerston North" style="width: 100%" />
+                </td>
+                <td>
+                    <input id="btnsetstart" type="button" value="Set Start" onclick="var address = document.getElementById('txtgeo'); setAddress(address.value, 'start'); return false" />
+                </td>
+                <td>
+                    <input id="btnsetend" type="button" value="Set End" onclick="var address = document.getElementById('txtgeo'); setAddress(address.value, 'end'); return false" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <div id="searchmap">
+                    </div>
+                </td>
+            </tr>
+        </table>
     </div>
     Time:<br />
     <asp:DropDownList ID="drphours" runat="server">

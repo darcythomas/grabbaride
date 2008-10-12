@@ -23,6 +23,15 @@ namespace GrabbaRide.Frontend {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
+        /// gdiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl gdiv;
+        
+        /// <summary>
         /// drphours control.
         /// </summary>
         /// <remarks>
