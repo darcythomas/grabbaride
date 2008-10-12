@@ -20,8 +20,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 GrabbaRideDBDataContext dataContext = new GrabbaRideDBDataContext();
                 dataContext.UpdateLastActivityByUsername(Page.User.Identity.Name);
             }
-
-            FooterDateLabel.Text = DateTime.Now.ToString("d MMM, h:mm tt");
+            
         }
     }
 }

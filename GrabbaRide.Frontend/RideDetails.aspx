@@ -1,9 +1,11 @@
 <%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true"
     CodeBehind="RideDetails.aspx.cs" Inherits="GrabbaRide.Frontend.RideDetails" Title="GrabbaRide: Ride Details" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">
-</asp:Content>
 
+<asp:Content ID="Content1" ContentPlaceHolderID=HelpContentPlaceHolder runat="server">
+          <img alt="" src="themes/blue/help.gif" />&nbsp;&nbsp; This page is an expanded 
+details view of the ride you selected. 
+</asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <div id="RideInvalidDiv" runat="server" visible="false">
         <asp:ObjectDataSource ID="RideObjectDataSource" runat="server" 

@@ -1,44 +1,132 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true"
-    CodeBehind="Register.aspx.cs" Inherits="GrabbaRide.Frontend.Register" Title="Untitled Page" %>
+    CodeBehind="Register.aspx.cs" Inherits="GrabbaRide.Frontend.Register" Title="GrabbaRide | Register" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">
-</asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="HelpContentPlaceHolder" runat="server">
+          <img alt="" src="themes/blue/help.gif" />&nbsp;&nbsp; 
+Register
+ </asp:content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
-    <asp:CreateUserWizard ID="CreateUserWizard" runat="server" BackColor="#EFF3FB" BorderColor="#B5C7DE"
-        BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="0.8em"
-        Height="319px" Style="text-align: center" Width="363px">
-        <SideBarStyle BackColor="#507CD1" Font-Size="0.9em" VerticalAlign="Top" />
-        <SideBarButtonStyle BackColor="#507CD1" Font-Names="Verdana" ForeColor="White" />
-        <ContinueButtonStyle BackColor="White" BorderColor="#507CD1" BorderStyle="Solid"
-            BorderWidth="1px" Font-Names="Verdana" ForeColor="#284E98" />
-        <NavigationButtonStyle BackColor="White" BorderColor="#507CD1" BorderStyle="Solid"
-            BorderWidth="1px" Font-Names="Verdana" ForeColor="#284E98" />
-        <HeaderStyle BackColor="#284E98" BorderColor="#EFF3FB" BorderStyle="Solid" BorderWidth="2px"
-            Font-Bold="True" Font-Size="0.9em" ForeColor="White" HorizontalAlign="Center" />
-        <CreateUserButtonStyle BackColor="White" BorderColor="#507CD1" BorderStyle="Solid"
-            BorderWidth="1px" Font-Names="Verdana" ForeColor="#284E98" />
-        <TitleTextStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-        <StepStyle Font-Size="0.8em" />
+    <h3>
+        Register for GrabbaRide</h3>
+    <asp:CreateUserWizard ID="CreateUserWizard" runat="server" UserNameLabelText="Username"
+        PasswordLabelText="Password" 
+    ConfirmPasswordLabelText="Confirm Password" EmailLabelText="Email"
+        QuestionLabelText="Security Question" AnswerLabelText="Answer" DuplicateUserNameErrorMessage="That username is taken!"
+        CssClass="register-form" TitleTextStyle-Font-Bold="true"
+        CompleteSuccessText="Your account was created successfully!">
+        <LabelStyle HorizontalAlign="Left" />
+
+<TitleTextStyle Font-Bold="True"></TitleTextStyle>
+
         <WizardSteps>
-            <asp:CreateUserWizardStep runat="server" />
-            <asp:CompleteWizardStep runat="server">
+            <asp:CreateUserWizardStep runat="server" Title="" >
                 <ContentTemplate>
-                    <table border="0" style="font-family: Verdana; font-size: 100%; height: 319px; width: 363px;">
+                    <table border="0" style="font-size:100%;">
                         <tr>
-                            <td align="center" colspan="2" style="color: White; background-color: #507CD1; font-weight: bold;">
-                                Complete
+                            <td align="center" colspan="2" style="font-weight:bold;">
+                                Please Enter Your User Details</td>
+                        </tr>
+                        <tr>
+                            <td align="left">
+                                <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">Username</asp:Label>
                             </td>
+                            <td>
+                                <asp:TextBox ID="UserName" runat="server"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" 
+                                    ControlToValidate="UserName" ErrorMessage="User Name is required." 
+                                    ToolTip="User Name is required." ValidationGroup="CreateUserWizard">*</asp:RequiredFieldValidator>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left">
+                                <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">Password</asp:Label>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="Password" runat="server" TextMode="Password"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" 
+                                    ControlToValidate="Password" ErrorMessage="Password is required." 
+                                    ToolTip="Password is required." ValidationGroup="CreateUserWizard">*</asp:RequiredFieldValidator>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left">
+                                <asp:Label ID="ConfirmPasswordLabel" runat="server" 
+                                    AssociatedControlID="ConfirmPassword">Confirm Password</asp:Label>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="ConfirmPassword" runat="server" TextMode="Password"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="ConfirmPasswordRequired" runat="server" 
+                                    ControlToValidate="ConfirmPassword" 
+                                    ErrorMessage="Confirm Password is required." 
+                                    ToolTip="Confirm Password is required." ValidationGroup="CreateUserWizard">*</asp:RequiredFieldValidator>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left">
+                                <asp:Label ID="EmailLabel" runat="server" AssociatedControlID="Email">Email</asp:Label>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="Email" runat="server"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="EmailRequired" runat="server" 
+                                    ControlToValidate="Email" ErrorMessage="E-mail is required." 
+                                    ToolTip="E-mail is required." ValidationGroup="CreateUserWizard">*</asp:RequiredFieldValidator>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left">
+                                <asp:Label ID="QuestionLabel" runat="server" AssociatedControlID="Question">Security 
+                                Question</asp:Label>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="Question" runat="server"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="QuestionRequired" runat="server" 
+                                    ControlToValidate="Question" ErrorMessage="Security question is required." 
+                                    ToolTip="Security question is required." ValidationGroup="CreateUserWizard">*</asp:RequiredFieldValidator>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left">
+                                <asp:Label ID="AnswerLabel" runat="server" AssociatedControlID="Answer">Answer</asp:Label>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="Answer" runat="server"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="AnswerRequired" runat="server" 
+                                    ControlToValidate="Answer" ErrorMessage="Security answer is required." 
+                                    ToolTip="Security answer is required." ValidationGroup="CreateUserWizard">*</asp:RequiredFieldValidator>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center" colspan="2">
+                                <asp:CompareValidator ID="PasswordCompare" runat="server" 
+                                    ControlToCompare="Password" ControlToValidate="ConfirmPassword" 
+                                    Display="Dynamic" 
+                                    ErrorMessage="The Password and Confirmation Password must match." 
+                                    ValidationGroup="CreateUserWizard"></asp:CompareValidator>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center" colspan="2" style="color:Red;">
+                                <asp:Literal ID="ErrorMessage" runat="server" EnableViewState="False"></asp:Literal>
+                            </td>
+                        </tr>
+                    </table>
+                </ContentTemplate>
+            </asp:CreateUserWizardStep>
+            <asp:CompleteWizardStep runat="server" Title="Complete!" >
+                <ContentTemplate>
+                    <table border="0" style="font-size:100%;">
+                        <tr>
+                            <td align="center" colspan="2" style="font-weight:bold;">
+                                Complete!</td>
                         </tr>
                         <tr>
                             <td>
-                                Your account has been successfully created.
-                            </td>
+                                Your account was created successfully!</td>
                         </tr>
                         <tr>
                             <td align="right" colspan="2">
-                                <asp:Button ID="ContinueButton" runat="server" BackColor="White" BorderColor="#507CD1"
-                                    BorderStyle="Solid" BorderWidth="1px" CausesValidation="False" CommandName="Continue"
-                                    Font-Names="Verdana" ForeColor="#284E98" Text="Continue" ValidationGroup="CreateUserWizard1" />
+                                <asp:Button ID="ContinueButton" runat="server" CausesValidation="False" 
+                                    CommandName="Continue" Text="Continue" ValidationGroup="CreateUserWizard" />
                             </td>
                         </tr>
                     </table>

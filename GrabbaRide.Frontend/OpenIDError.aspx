@@ -2,9 +2,12 @@
     CodeBehind="OpenIDError.aspx.cs" Inherits="GrabbaRide.Frontend.OpenIDError" Title="Login to GrabbaRide" %>
 
 <%@ Register Assembly="DotNetOpenId" Namespace="DotNetOpenId.RelyingParty" TagPrefix="RP" %>
+<asp:Content ID="Content2" ContentPlaceHolderID=HelpContentPlaceHolder runat="server">
+          <img alt="" src="themes/blue/help.gif" />&nbsp;&nbsp; An error has occured with your openID login
+</asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <div id="OpenIDErrorDiv" runat="server" visible="false">
-     Opps. It seems either you have refused, or your provider doesnt support, attribute
+     Oops. It seems either you have refused, or your provider doesnt support, attribute
     exchange.
     <br />
     To allow you to log on using your openID, we need to know a few things about you.

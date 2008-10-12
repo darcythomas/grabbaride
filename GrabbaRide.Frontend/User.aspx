@@ -1,7 +1,9 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true"
     CodeBehind="User.aspx.cs" Inherits="GrabbaRide.Frontend.WebForm2" Title="Untitled Page" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID=HelpContentPlaceHolder runat="server">
+          <img alt="" src="themes/blue/help.gif" />&nbsp;&nbsp; You can edit your details 
+by clicking the edit button below 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <asp:ObjectDataSource ID="UserDataSource" runat="server" SelectMethod="GetUserByUsername"
@@ -12,8 +14,8 @@
     </asp:ObjectDataSource>
     <asp:ScriptManager ID="UserScriptManager" runat="server">
     </asp:ScriptManager>
-    <h2 title="User Profile Page">
-        User Page</h2>
+    <h3 title="User Profile Page">
+        User Page</h3>
             <asp:DetailsView ID="UserDetailsView" runat="server" 
         AutoGenerateRows="False" DataSourceID="UserDataSource"
                 AutoGenerateEditButton="True">

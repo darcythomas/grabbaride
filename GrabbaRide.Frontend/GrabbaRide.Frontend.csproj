@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{5F4F65E5-001E-46A6-90E5-611CE1A75016}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -198,6 +198,7 @@
     <Content Include="Images\header_bg.gif" />
     <Content Include="Images\header_left.gif" />
     <Content Include="Images\header_right.gif" />
+    <Content Include="Images\login_icon.jpg" />
     <Content Include="Images\OpenIDSmall.jpeg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -217,10 +218,33 @@
     <Content Include="Default.aspx" />
     <Resource Include="Library\DotNetOpenId.dll">
     </Resource>
+    <Content Include="msvs_template_simple_tables.css" />
+    <Content Include="msvs_template_simple_tables.htm" />
     <Content Include="OpenIDError.aspx" />
     <Content Include="Privacy.aspx" />
     <Content Include="RideDetails.aspx" />
     <Content Include="Terms.aspx" />
+    <Content Include="themes\blue\ad-01.gif" />
+    <Content Include="themes\blue\ad-02.gif" />
+    <Content Include="themes\blue\ad-03.gif" />
+    <Content Include="themes\blue\bg-button-search.gif" />
+    <Content Include="themes\blue\bg-header.gif" />
+    <Content Include="themes\blue\bg-main.gif" />
+    <Content Include="themes\blue\bg-photo-frame.jpg" />
+    <Content Include="themes\blue\bg-topnav.gif" />
+    <Content Include="themes\blue\bullet-link-active.gif" />
+    <Content Include="themes\blue\bullet-link-hover.gif" />
+    <Content Include="themes\blue\bullet-link-visited.gif" />
+    <Content Include="themes\blue\bullet-link.gif" />
+    <Content Include="themes\blue\bullet.gif" />
+    <Content Include="themes\blue\favicon.ico" />
+    <Content Include="themes\blue\help.gif" />
+    <Content Include="themes\blue\kiwi.gif" />
+    <Content Include="themes\blue\logo-graphic.gif" />
+    <Content Include="themes\blue\plusminus.gif" />
+    <Content Include="themes\blue\style.css" />
+    <Content Include="themes\blue\photo-big.jpg" />
+    <Content Include="themes\blue\photo-small.jpg" />
     <Content Include="User.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Register.aspx" />
@@ -261,9 +285,6 @@
           <IISUrl>
           </IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>

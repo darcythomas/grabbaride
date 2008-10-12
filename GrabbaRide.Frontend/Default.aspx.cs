@@ -14,10 +14,11 @@ using System.Xml.Linq;
 namespace GrabbaRide.Frontend
 {
     public partial class Default : System.Web.UI.Page
-    {
-        protected void Page_Load(object sender, EventArgs e)
+    {      
+        protected void btnSearch_Click(object sender, EventArgs e)
         {
-
+            string search = "Search.aspx";
+            Response.Redirect(search);
         }
     }
 }
