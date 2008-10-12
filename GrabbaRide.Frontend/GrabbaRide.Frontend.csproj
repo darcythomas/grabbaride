@@ -218,8 +218,6 @@
     <Content Include="Default.aspx" />
     <Resource Include="Library\DotNetOpenId.dll">
     </Resource>
-    <Content Include="msvs_template_simple_tables.css" />
-    <Content Include="msvs_template_simple_tables.htm" />
     <Content Include="OpenIDError.aspx" />
     <Content Include="Privacy.aspx" />
     <Content Include="RideDetails.aspx" />
