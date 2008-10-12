@@ -25,6 +25,7 @@
  */
 a
 {
+	color: #0066ff;
 	text-decoration: none;
 }
 a:hover
@@ -214,4 +215,12 @@ h3
 .aboutustable img
 {
 	border: 1px solid black;
+}
+
+/*
+ *  LOGIN PAGE
+ */
+.login-form td
+{
+	padding: 2px 5px;
 }
