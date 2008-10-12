@@ -30,7 +30,7 @@ by clicking the edit button below
                     <asp:BoundField DataField="LastName" HeaderText="Last Name" 
                         SortExpression="LastName" />
                     <asp:BoundField DataField="DateOfBirth" HeaderText="Date of Birth" 
-                        SortExpression="DateOfBirth" ReadOnly="True" />
+                        SortExpression="DateOfBirth" />
                     <asp:BoundField DataField="Occupation" HeaderText="Occupation" 
                         SortExpression="Occupation" />
                     <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
