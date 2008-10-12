@@ -9,8 +9,12 @@
 </head>
 <body id="body">
     <div id="head-top-grey">
-        <p id="header-time">
-            <asp:Label ID="FooterDateLabel" runat="server">[datetime]</asp:Label></p>
+        <p>
+            <asp:Label ID="FooterDateLabel" runat="server" CssClass="head-top-time">[datetime]</asp:Label></p>
+        <p>
+            GrabbaRide | <a href="http://www.horizons.govt.nz/">Horizons</a> | <a href="http://www.pncc.govt.nz/">
+                PNCC</a> | <a href="http://www.massey.ac.nz/">Massey University</a>
+        </p>
     </div>
     <form id="form1" runat="server">
     <div id="maxwidth">

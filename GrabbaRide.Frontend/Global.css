@@ -2,22 +2,26 @@
 /*
  *  HEADER
  */
-#head-top-grey
-{
-	border-bottom: 1px solid gray;
-	padding: 0px;
-}
 #header h1
 {
 	text-align: center;
 }
-#header-time
+#head-top-grey
 {
-	color: Gray;
-	text-align: right;
+	border-bottom: 1px solid gray;
+	font-size: x-small;
 	padding: 5px 10px;
 	margin: 0px;
-	font-size: x-small;
+}
+#head-top-grey p 
+{
+	padding: 0px;
+	margin: 0px;
+}
+.head-top-time
+{
+	color: Gray;
+	float: right;
 }
 
 /*
