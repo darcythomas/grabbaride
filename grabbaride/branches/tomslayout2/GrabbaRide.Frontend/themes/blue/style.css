@@ -585,3 +585,17 @@ img.photosmall {
 	width: 200px;
 	height: 200px;
 }
+
+.recent-rides-grid
+{
+	font-size: small;
+}
+.recent-rides-grid th
+{
+	padding: 5px;
+	text-align: left;
+}
+.recent-rides-grid td
+{
+	padding: 5px;
+}

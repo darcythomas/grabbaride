@@ -14,11 +14,15 @@ using System.Xml.Linq;
 namespace GrabbaRide.Frontend
 {
     public partial class Default : System.Web.UI.Page
-    {      
-        protected void btnSearch_Click(object sender, EventArgs e)
+    {
+        protected void Page_Load(object sender, EventArgs e)
         {
-            string search = "Search.aspx";
-            Response.Redirect(search);
+        }
+
+        public void RecentRidesDataSourceObjectDisposing(object sender, ObjectDataSourceDisposingEventArgs e)
+        {
+            // don't dispose of our linq datacontext!
+            e.Cancel = true;
         }
     }
 }
