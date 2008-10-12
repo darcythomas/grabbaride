@@ -71,6 +71,18 @@ namespace GrabbaRide.Frontend
             OpenIDUserResponseState claimsRequest = getResponse();
             if (claimsRequest == null || !AllRequiredFeildsSet())
             {
+                //check the user input if not ok reload the page with stuff that needs to be filed correctly 
+                if (!claimsRequest.UniqueUserName())
+                {
+                    usernameError.Visible = true;
+                    NewUserNameText.Text = "";
+                }
+                ///more input testing
+                
+                //post back
+                Response.Redirect("OpenIDError.aspx");
+
+
                 //testing
                 Boolean allfeildsset = AllRequiredFeildsSet();
                 Boolean isnull= claimsRequest==null;

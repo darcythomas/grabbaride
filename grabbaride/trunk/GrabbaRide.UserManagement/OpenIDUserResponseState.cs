@@ -46,9 +46,17 @@ namespace GrabbaRide.UserManagement
             {
               
                 return ((Profile.FullName != null) && (Profile.Gender != null) && 
-                    (Profile.Email != null)&&(!String.IsNullOrEmpty(this.GrabbaRideLoginName)));
+                    (Profile.Email != null)&&(!String.IsNullOrEmpty(this.GrabbaRideLoginName))&& UniqueUserName());
             }
         }
+
+        public Boolean UniqueUserName()
+        {
+
+            GrabbaRideDBDataContext context = new GrabbaRideDBDataContext();
+            return !context.HasUserName(this.GrabbaRideLoginName);
+        }
+
 
         
 
