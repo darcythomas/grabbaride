@@ -26,6 +26,10 @@
             {
                 width: 589px;
             }
+            .style3
+            {
+                width: 591px;
+            }
         </style>
 
 </head>
@@ -81,7 +85,7 @@
   -->
 <table border="0" cellspacing="0" cellpadding="0" id="breadcrumb-container">
   <tr>
-    <td id="breadcrumb-left" class="style2">
+    <td id="breadcrumb-left" class="style3">
         <div id="helpbar">
         <asp:ContentPlaceHolder ID="HelpContentPlaceHolder" runat="server">
         </asp:ContentPlaceHolder>

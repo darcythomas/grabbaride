@@ -1,6 +1,9 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true"
     CodeBehind="Default.aspx.cs" Inherits="GrabbaRide.Frontend.Default" Title="GrabbaRide | Home" %>
-
+<asp:Content ID="Content1" ContentPlaceHolderID="HelpContentPlaceHolder" runat="server">
+          <img alt="" src="themes/blue/help.gif" />&nbsp;GrabbaRide is a car-pooling site 
+          designed to aid you in your fight against man-bear-pig 
+ </asp:content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <h3>
         Welcome to GrabbaRide!</h3>

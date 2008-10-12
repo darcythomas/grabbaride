@@ -5,8 +5,8 @@
           <img alt="" src="themes/blue/help.gif" />&nbsp;&nbsp; The Team 
 </asp:Content>
 <asp:Content ID="Content3" runat="server" ContentPlaceHolderID="MainContentPlaceHolder">
-    <h2>
-        About Us</h2>
+    <h3>
+        About Us</h3>
     <p>
         This website was established in 2008 as Palmerston North-based GrabbaRide by the 
         .NET team at Massey University. The site was developed by a team of students as 
@@ -31,7 +31,7 @@
                     <strong>Team Leader</strong><br />
                     Bachelor of Arts/Bachelor of Science</p>
                 <p>
-                    Team's resident Stud-muffin. Also doubles as the team's illustrious leader.
+                    Team&#39;s resident Stud-muffin. Also doubles as the team&#39;s illustrious leader.
                     <br />
                     <br />
                     industrious... incurious, injurious, unserious, incestuous, injudicious, 
@@ -101,10 +101,10 @@
                     <strong>Nicholas James &quot;AJAX&quot; Sarten</strong><br />
                     Bachelor of Engineering (Honours)</strong></p>
                 <p>
-                    Hi I'm Nick, the second youngest member of the team. My degree is 
+                    Hi I&#39;m Nick, the second youngest member of the team. My degree is 
                     multidisciplinary, but I primarily love working with software. I came into this 
                     project being the &quot;JavaScript expert&quot; of the team. Despite looking horribly 
-                    angry, I'm not that bad (honest).</p>
+                    angry, I&#39;m not that bad (honest).</p>
             </td>
         </tr>
         <tr>
@@ -119,7 +119,7 @@
                 <p>
                     <strong>Thomas William Scott&nbsp; Satherley</strong></p>
                 <p>
-                    Hello, i'm a Physics major at Massey University, Palmerston North.</p>
+                    Hello, i&#39;m a Physics major at Massey University, Palmerston North.</p>
             </td>
         </tr>
     </table>
