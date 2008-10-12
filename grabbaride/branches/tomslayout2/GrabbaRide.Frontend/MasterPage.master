@@ -1,62 +1,139 @@
-ï»¿<%@ Master Language="C#" AutoEventWireup="true" Inherits="MasterPage" CodeBehind="MasterPage.master.cs" %>
+<%@ Master Language="C#" AutoEventWireup="true" Inherits="MasterPage" CodeBehind="MasterPage.master.cs" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title>GrabbaRide</title>
-    <link href="Global.css" rel="stylesheet" type="text/css" />
-    <asp:ContentPlaceHolder ID="HeadContentPlaceHolder" runat="server" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="description" content="GrabbaRide is a carpooling website" />
+<meta name="keywords" content="carpool, massey, nz, New Zealand, ride, grabbaride" />
+<title>Grabbaride</title>
+<link rel="shortcut icon" href="themes/default/images/favicon.ico" />
+        <link href="themes/blue/style.css" rel="stylesheet" type="text/css" />
+        
+ <script language="javascript">
+  function toggleDiv(divid){
+    if(document.getElementById(divid).style.display == 'none'){
+      document.getElementById(divid).style.display = 'block';
+    }else{
+      document.getElementById(divid).style.display = 'none';
+    }
+  }
+</script>
+
+        <style type="text/css">
+            .style2
+            {
+                width: 589px;
+            }
+        </style>
+
 </head>
-<body id="body">
-    <div id="head-top-grey">
-        <p id="header-time">
-            <asp:Label ID="FooterDateLabel" runat="server">[datetime]</asp:Label></p>
-    </div>
+<body>
+
+
     <form id="form1" runat="server">
-    <div id="maxwidth">
-        <div id="header">
-            <h1>
-                GrabbaRide</h1>
+ <div id="head-top-grey">
+        <p>
+            GrabbaRide | <a href="http://www.horizons.govt.nz/">Horizons</a> | <a href="http://www.pncc.govt.nz/">
+                PNCC</a> | <a href="http://www.solnetsolutions.co.nz/">Solnet Solutions</a>
+            | <a href="http://www.massey.ac.nz/">Massey University</a>
+        </p>
+</div>
+
+<!--
+  
+  MAIN NAV
+  
+-->
+<table border="0" cellspacing="0" cellpadding="0" id="mainnav-container">
+  <tr>
+    <td><div class="none"><a href="#maincontent">skip to the main content area of this 
+        page</a></div>
+      <ul>
+        <li><a href="Default.aspx" title="Return Home.">Home</a></li>
+        <li><a href="CreateRide.aspx" title="Create a Ride" >Create</a></li>
+        <li><a href="Search.aspx" title="Search for a Ride." >Search</a></li>
+        <li><a href="About.aspx" title="About Us" >About</a></li>
+        <li><a href="User.aspx" title="View and edit your profile" >Profile</a></li>
+      </ul></td>
+    <td id="mainnav-side" style="text-align: right">
+            <asp:LoginStatus ID="LoginStatus" runat="server" 
+                LoginText="Login or Register" />
+             </td>
+  </tr>
+</table>
+<!--
+  
+  SITE NAME & SLOGAN
+  
+-->
+<table border="0" cellspacing="0" cellpadding="0" id="header">
+  <tr>
+    <td><a href="Default.aspx" title="GrabbaRide"><img src="themes/blue/headlogo.gif" alt="GrabbaRide" border="0" /></a>
+      <div id="slogan">A Convenient Ride</div>
+  </tr>
+</table>
+<!--
+  
+  Help
+  
+  -->
+<table border="0" cellspacing="0" cellpadding="0" id="breadcrumb-container">
+  <tr>
+    <td id="breadcrumb-left" class="style2">
+        <div id="helpbar">
+        <asp:ContentPlaceHolder ID="HelpContentPlaceHolder" runat="server">
+        </asp:ContentPlaceHolder>
         </div>
-        <div id="nav-bar">
-            <table cellspacing="0" cellpadding="0" border="0">
-                <tr>
-                    <td id="nav-bar-left">
-                    </td>
-                    <td id="nav-bar-main">
-                        <ul>
-                            <li><a href="Default.aspx">Home</a></li>
-                            <li><a href="Search.aspx">Search</a></li>
-                            <li><a href="CreateRide.aspx">Create Ride</a></li>
-                            <li><a href="User.aspx">My Profile</a></li>
-                            <li>
-                                <asp:LoginStatus ID="LoginStatus" runat="server" />
-                            </li>
-                        </ul>
-                    </td>
-                    <td id="nav-bar-right">
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div id="ad-bar">
-            <p>
-                insert<br />
-                ads<br />
-                here</p>
-        </div>
-        <div id="main-content">
+      </td>
+    <td id="breadcrumb-right">&nbsp;</td>
+  </tr>
+</table>
+<!-- 
+	
+   CONTENT CONTAINER
+	
+-->
+<table border="0" cellspacing="0" cellpadding="0" id="content-container">
+  <tr>
+    <td id="content">
+	<!-- 
+
+  	   CONTENT
+
+  	-->
+      <a name="maincontent" id="maincontent"></a>
+      
+      <div id="content-main">
             <asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server" />
         </div>
-    </div>
-    </form>
-    <div id="footer">
-        <ul>
-            <li>Copyright &copy; 2008</li>
-            <li><a href="Terms.aspx">Terms of Use</a></li>
-            <li><a href="Privacy.aspx">Privacy Policy</a></li>
-            <li><a href="About.aspx">About Us</a></li>
-        </ul>
-    </div>
+       </td>
+      
+    <td id="content-right">
+	<!-- 
+	
+  	   RIGHT COLUMN
+  
+  	-->
+  	
+        <asp:Image ID="imageAd1" runat="server" ImageUrl="~/themes/blue/ad-01.gif" />
+  	
+    </td>
+  </tr>
+</table>
+<!-- 
+	
+  FOOTER
+  
+-->
+<table border="0" cellspacing="0" cellpadding="0" id="footer">
+  <tr>
+    <td>Copyright © 2008 | <a href="Terms.aspx" title="Terms and Conditions">Terms of 
+        use</a> | <a href="Privacy.aspx" title="Privacy Policy">Privacy Policy</a></td>
+  </tr>
+</table>
+</form>
 </body>
 </html>
+

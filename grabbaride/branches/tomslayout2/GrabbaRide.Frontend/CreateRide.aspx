@@ -1,17 +1,12 @@
 <%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true"
     CodeBehind="CreateRide.aspx.cs" Inherits="GrabbaRide.Frontend.CreateRide" Title="Grabbaride: Create a new Ride" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">
-    <style type="text/css">
-        #txtgeo
-        {
-            width: 400px;
-        }
-    </style>
+<asp:Content ID="Content1" ContentPlaceHolderID=HelpContentPlaceHolder runat="server">
+          <img alt="" src="themes/blue/help.gif" />&nbsp;&nbsp;Select the approximate starting and ending points for your ride on the map.    
 </asp:Content>
 <asp:Content ID="Content2" runat="server" ContentPlaceHolderID="MainContentPlaceHolder">
-    <h2>
-        Create A Ride</h2>
+    <h3>
+        Create A Ride</h3>
     <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true">
     </asp:ScriptManager>
     <table id="createridetable">
@@ -177,9 +172,9 @@
                 <img src="Images/5_off.gif" alt="5." />
             </td>
             <td>
-                Please enter any <strong>extra information</strong> in the box below, such as the
-                ride cost and special conditions on the ride:
-            </td>
+                Please enter any <strong>extra information</strong> in the box 
+                below, such as the ride cost and special conditions on the ride:</td>            
+            
             <td>
                 <asp:TextBox ID="txtDescription" runat="server" Rows="10" Width="400" TextMode="MultiLine"></asp:TextBox>
             </td>

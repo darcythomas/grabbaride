@@ -1,10 +1,11 @@
 <%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true"
     CodeBehind="Search.aspx.cs" Inherits="GrabbaRide.Frontend.WebForm5" Title="GrabbaRide Search" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID=HelpContentPlaceHolder runat="server">
+          <img alt="" src="themes/blue/help.gif" />&nbsp;&nbsp; Use the map to specify the search regions
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
-    <asp:ScriptManager ID="ScriptManager1" runat="server" />
+    <h3>Search</h3>    <asp:ScriptManager ID="ScriptManager1" runat="server" />
     <div id="gdiv" style="float: right;">
         <p>
             <input id="txtgeo" type="text" size="60" name="address" value="Palmerston North" /><br />
