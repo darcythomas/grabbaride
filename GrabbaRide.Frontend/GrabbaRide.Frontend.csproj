@@ -201,6 +201,7 @@
     <Content Include="Images\header_bg.gif" />
     <Content Include="Images\header_left.gif" />
     <Content Include="Images\header_right.gif" />
+    <Content Include="Images\login_icon.jpg" />
     <Content Include="Images\Michelle.JPG" />
     <Content Include="Images\Nick.JPG" />
     <Content Include="Images\OpenIDSmall.jpeg">

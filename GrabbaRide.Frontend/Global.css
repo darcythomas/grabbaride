@@ -40,6 +40,13 @@ h2
 {
 	color: #0066ff;
 }
+h3
+{
+	color: #0066ff;
+	font-size: large;
+	width: 95%;
+	border-bottom: 2px solid #74ee33;
+}
 
 /*
  *  MAIN CONTENT PANEL
@@ -162,6 +169,23 @@ h2
 }
 
 /*
+ *  HOME PAGE
+ */
+.recent-rides-grid
+{
+	font-size: small;
+}
+.recent-rides-grid th 
+{
+	padding: 5px;
+	text-align: left;
+}
+.recent-rides-grid td
+{
+	padding: 5px;
+}
+
+/*
  *  SEARCH PAGE
  */
 #resultsViewStyle td, #resultsViewStyle th
@@ -187,7 +211,7 @@ h2
 	vertical-align: top;
 	padding: 10px;
 }
-.aboutustable img 
+.aboutustable img
 {
 	border: 1px solid black;
 }
