@@ -74,7 +74,9 @@
 -->
 <table border="0" cellspacing="0" cellpadding="0" id="header">
   <tr>
-    <td><a href="Default.aspx" title="GrabbaRide"><img src="themes/blue/headlogo.gif" alt="GrabbaRide" border="0" /></a>
+    <td>
+        <img alt="" src="themes/blue/logonokiwi.gif" 
+            style="width: 375px; height: 75px" />
       <div id="slogan">A Convenient Ride</div>
   </tr>
 </table>

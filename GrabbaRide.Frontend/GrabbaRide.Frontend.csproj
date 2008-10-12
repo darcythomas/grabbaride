@@ -227,6 +227,7 @@
     <Content Include="themes\blue\ad-03.gif" />
     <Content Include="themes\blue\bg-button-search.gif" />
     <Content Include="themes\blue\bg-header.gif" />
+    <Content Include="themes\blue\bg-headergreen.gif" />
     <Content Include="themes\blue\bg-main.gif" />
     <Content Include="themes\blue\bg-photo-frame.jpg" />
     <Content Include="themes\blue\bg-topnav.gif" />
@@ -239,6 +240,8 @@
     <Content Include="themes\blue\help.gif" />
     <Content Include="themes\blue\kiwi.gif" />
     <Content Include="themes\blue\logo-graphic.gif" />
+    <Content Include="themes\blue\logogreen.gif" />
+    <Content Include="themes\blue\logonokiwi.gif" />
     <Content Include="themes\blue\plusminus.gif" />
     <Content Include="themes\blue\style.css" />
     <Content Include="themes\blue\photo-big.jpg" />
