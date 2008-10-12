@@ -1,0 +1,180 @@
+﻿
+/*
+ *  HEADER
+ */
+#head-top-grey
+{
+	border-bottom: 1px solid gray;
+	padding: 0px;
+}
+#header h1 
+{
+	text-align: center;
+}
+#header-time 
+{
+	color: Gray;
+	text-align: right;
+	padding: 5px 10px;
+	margin: 0px;
+	font-size: x-small;
+}
+
+/*
+ *  STANDARD ELEMENTS
+ */
+a
+{
+	text-decoration: none;
+}
+a:hover
+{
+	text-decoration: underline;
+}
+body
+{
+	font-family: Verdana, Arial;
+	margin: 0px;
+}
+h2
+{
+	color: #0066ff;
+}
+
+/*
+ *  MAIN CONTENT PANEL
+ */
+#maxwidth
+{
+	width: 80%;
+	margin: 10px auto;
+}
+#main-content
+{
+	padding: 5px 0px 30px 0px;
+	margin-right: 220px;
+}
+
+/*
+ *  TOP NAVIGATION BAR
+ */
+#nav-bar 
+{
+	margin: 0px -2%;
+}
+#nav-bar table
+{
+	height: 53px;
+	width: 100%;
+	margin: 0px;
+	font-size: large;
+}
+#nav-bar a, #nav-bar a:visited
+{
+	color: #0066ff;
+}
+#nav-bar tr
+{
+	background-image: url('Images/header_bg.gif');
+	background-position: top center;
+	background-repeat: repeat-x;
+	vertical-align: middle;
+}
+#nav-bar td
+{
+	margin: 0px;
+	padding: 0px;
+}
+#nav-bar-left
+{
+	width: 7px;
+	background-color: Transparent;
+	background-image: url('Images/header_left.gif');
+	background-position: left top;
+	background-repeat: no-repeat;
+}
+#nav-bar-main
+{
+	background-color: Transparent;
+	text-align: center;
+}
+#nav-bar-right
+{
+	width: 7px;
+	background-color: Transparent;
+	background-image: url('Images/header_right.gif');
+	background-position: right top;
+	background-repeat: no-repeat;
+}
+#nav-bar-main ul 
+{
+	margin-top: 15px;
+	list-style-type: none;
+}
+#nav-bar-main li
+{
+	display: inline;
+	margin: 10px;
+}
+#nav-bar-main li:hover
+{
+}
+
+/*
+ *  FOOTER BAR
+ */
+#footer
+{
+	clear: both;
+	font-size: small;
+	text-align: center;
+	border-top: 1px solid gray;
+}
+#footer ul 
+{
+	list-style-type: none;
+}
+#footer li 
+{
+	display: inline;
+	margin: 5px;
+}
+
+/*
+ *  AD BAR
+ */
+#ad-bar 
+{
+	float: right;
+	font-size: x-large;
+	color: Gray;
+	text-align: center;
+	background-image: url('Images/adbar-bg.gif');
+	background-repeat: repeat-y;
+	border: 1px solid #74f230;
+	height: 300px;
+	width: 200px;
+	margin: 10px 0px;
+}
+#ad-bar p 
+{
+	padding: 20px;
+}
+
+/*
+ *  SEARCH PAGE
+ */
+#resultsViewStyle td, #resultsViewStyle th
+{
+	border: solid 1px black;
+	background-color: #DCDCDC;
+}
+
+/*
+ *  CREATE RIDE PAGE
+ */
+#createridetable td
+{
+	vertical-align: top;
+	padding: 10px;
+}

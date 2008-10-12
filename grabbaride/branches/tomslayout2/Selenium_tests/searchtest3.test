@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:51118/" />
+<title>searchtest3</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">searchtest3</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/Search.aspx</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>ctl00_MainContentPlaceHolder_drphours</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>ctl00_MainContentPlaceHolder_drpmins</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>ctl00_MainContentPlaceHolder_drpdayhalf</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>ctl00_MainContentPlaceHolder_chkmon</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>ctl00_MainContentPlaceHolder_chktue</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>ctl00_MainContentPlaceHolder_chkwed</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>ctl00_MainContentPlaceHolder_chkthu</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>ctl00_MainContentPlaceHolder_chkfri</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>ctl00_MainContentPlaceHolder_chksat</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>ctl00_MainContentPlaceHolder_chksun</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>ctl00_MainContentPlaceHolder_btnSearch</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>ctl00_MainContentPlaceHolder_drphours</td>
+	<td>label=2</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>ctl00_MainContentPlaceHolder_drpmins</td>
+	<td>label=15</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>ctl00_MainContentPlaceHolder_drpdayhalf</td>
+	<td>label=pm</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>ctl00_MainContentPlaceHolder_chkmon</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>ctl00_MainContentPlaceHolder_chkwed</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>ctl00_MainContentPlaceHolder_chkfri</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>ctl00_MainContentPlaceHolder_hfstart</td>
+	<td>-40.36296570507351,175.59933185577393</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>ctl00_MainContentPlaceHolder_hfend</td>
+	<td>-40.36783777686385,175.60988903045654</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>ctl00_MainContentPlaceHolder_btnSearch</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyLocation</td>
+	<td>http://localhost:51118/Search.aspx?fromloc=-40.36296570507351,175.59933185577393&amp;toloc=-40.36783777686385,175.60988903045654&amp;mon=True&amp;tue=False&amp;wed=True&amp;thu=False&amp;fri=True&amp;sat=False&amp;sun=False&amp;hours=14&amp;mins=15</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>ctl00_MainContentPlaceHolder_GridView1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>528</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>
