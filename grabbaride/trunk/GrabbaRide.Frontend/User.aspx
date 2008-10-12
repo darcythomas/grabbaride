@@ -14,34 +14,29 @@
     </asp:ScriptManager>
     <h2 title="User Profile Page">
         User Page</h2>
-            <asp:DetailsView ID="UserDetailsView" runat="server" 
-        AutoGenerateRows="False" DataSourceID="UserDataSource"
-                AutoGenerateEditButton="True">
-                <Fields>
-                    <asp:BoundField DataField="Username" HeaderText="User" 
-                        SortExpression="Username" ReadOnly="True">
-                        <ControlStyle Font-Bold="False" />
-                        <ItemStyle Font-Bold="True" Font-Size="Large" />
-                    </asp:BoundField>
-                    <asp:BoundField DataField="FirstName" HeaderText="First Name" 
-                        SortExpression="FirstName" />
-                    <asp:BoundField DataField="LastName" HeaderText="Last Name" 
-                        SortExpression="LastName" />
-                    <asp:BoundField DataField="DateOfBirth" HeaderText="Date of Birth" 
-                        SortExpression="DateOfBirth" ReadOnly="True" />
-                    <asp:BoundField DataField="Occupation" HeaderText="Occupation" 
-                        SortExpression="Occupation" />
-                    <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
-                    <asp:BoundField DataField="CreationDate" HeaderText="Member Since" 
-                        SortExpression="CreationDate" ReadOnly="True" />
-                    <asp:BoundField DataField="LastLoginDate" HeaderText="Last Login" 
-                        SortExpression="LastLoginDate" ReadOnly="True" />
-                    <asp:BoundField DataField="LastActvityDate" HeaderText="Last Seen" 
-                        SortExpression="LastActvityDate" ReadOnly="True" />
-                    <asp:BoundField DataField="Comment" HeaderText="About Me" 
-                        SortExpression="Comment" />
-                </Fields>
-            </asp:DetailsView>
+    <asp:DetailsView ID="UserDetailsView" runat="server" AutoGenerateRows="False" DataSourceID="UserDataSource"
+        AutoGenerateEditButton="True">
+        <Fields>
+            <asp:BoundField DataField="Username" HeaderText="User" SortExpression="Username"
+                ReadOnly="True">
+                <ControlStyle Font-Bold="False" />
+                <ItemStyle Font-Bold="True" Font-Size="Large" />
+            </asp:BoundField>
+            <asp:BoundField DataField="FirstName" HeaderText="First Name" SortExpression="FirstName" />
+            <asp:BoundField DataField="LastName" HeaderText="Last Name" SortExpression="LastName" />
+            <asp:BoundField DataField="DateOfBirth" HeaderText="Date of Birth" SortExpression="DateOfBirth"
+                ReadOnly="True" />
+            <asp:BoundField DataField="Occupation" HeaderText="Occupation" SortExpression="Occupation" />
+            <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
+            <asp:BoundField DataField="CreationDate" HeaderText="Member Since" SortExpression="CreationDate"
+                ReadOnly="True" />
+            <asp:BoundField DataField="LastLoginDate" HeaderText="Last Login" SortExpression="LastLoginDate"
+                ReadOnly="True" />
+            <asp:BoundField DataField="LastActvityDate" HeaderText="Last Seen" SortExpression="LastActvityDate"
+                ReadOnly="True" />
+            <asp:BoundField DataField="Comment" HeaderText="About Me" SortExpression="Comment" />
+        </Fields>
+    </asp:DetailsView>
     <asp:UpdatePanel ID="UserDetailsUpdatePanel" runat="server">
         <ContentTemplate>
             <div>
@@ -61,8 +56,7 @@
                     You have already rated this user<br />
                     <asp:Image ID="imgRating" runat="server" />
                     <br />
-                    <asp:Button ID="btnDelete" runat="server" onclick="btnDelete_Click" 
-                        Text="Delete this rating" />
+                    <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Text="Delete this rating" />
                 </div>
             </div>
         </ContentTemplate>

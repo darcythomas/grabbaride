@@ -69,6 +69,39 @@ namespace GrabbaRide.Database
             this.LocationToLong = locToLong;
         }
 
+        public string DepartureTimeString
+        {
+            get
+            {
+                return new DateTime(this.DepartureTimeSrc).ToString("h:mm tt");
+            }
+        }
 
+        public string JourneyLengthString
+        {
+            get
+            {
+                return new DateTime(this.DepartureTimeSrc).ToString("H:mm");
+            }
+        }
+
+        /// <summary>
+        /// Gets the days of the week this ride is available, as a string.
+        /// </summary>
+        public string DaysAvailable
+        {
+            get
+            {
+                string days = String.Empty;
+                if (this.RecurMon) { days += "Mon, "; }
+                if (this.RecurTue) { days += "Tue, "; }
+                if (this.RecurWed) { days += "Wed, "; }
+                if (this.RecurThu) { days += "Thu, "; }
+                if (this.RecurFri) { days += "Fri, "; }
+                if (this.RecurSat) { days += "Sat, "; }
+                if (this.RecurSun) { days += "Sun, "; }
+                return days.TrimEnd(',', ' ');
+            }
+        }
     }
 }

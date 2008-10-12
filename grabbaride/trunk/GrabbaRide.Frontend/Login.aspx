@@ -5,7 +5,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
-    <h2>Login </h2>
+    <img src="Images/login_icon.jpg" alt="Login" style="float: right;" />
+    <h2>
+        Login
+    </h2>
     <p>
         <strong>Login with your GrabbaRide details</strong></p>
     <asp:Login ID="GrabbaRideLogin" runat="server" BackColor="#EFF3FB" BorderColor="#B5C7DE"
@@ -19,11 +22,12 @@
         <TitleTextStyle BackColor="#507CD1" Font-Bold="True" Font-Size="0.9em" ForeColor="White" />
     </asp:Login>
     <p>
-        <strong>OR... Login with your OpenID details!</strong></p>
+        <strong>OR... Login with your OpenID!</strong></p>
     <asp:Panel ID="OpenIDPanel" runat="server">
         <RP:OpenIdLogin ID="OpenIdLogin1" runat="server" OnFailed="OpenIdLogin1_Failed" OnCanceled="OpenIdLogin1_Canceled"
             OnLoggedIn="OpenIdLogin1_LoggedIn" OnSetupRequired="OpenIdLogin1_SetupRequired"
-            RequestBirthDate="Require" RequestEmail="Require" RequestFullName="Require" RequestGender="Require" LabelText="OpenID:" />
+            RequestBirthDate="Require" RequestEmail="Require" RequestFullName="Require" RequestGender="Require"
+            LabelText="OpenID:" />
         <br />
         <asp:Label ID="loginFailedLabel" runat="server" EnableViewState="False" Text="Login failed"
             Visible="False" />
