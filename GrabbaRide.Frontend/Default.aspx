@@ -33,7 +33,7 @@
                 <ItemTemplate>
                     <asp:HyperLink NavigateUrl='<%# Eval("RideID", "RideDetails.aspx?id={0}") %>' runat="server">
                     details &#187;
-                    </asp:HyperLink>
+                    </asp:HyperLink>&nbsp;
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>
