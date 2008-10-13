@@ -19,43 +19,43 @@
         </p>
     </div>
     <form id="form1" runat="server">
-    <table id="dropshadowtable" border="0" cellpadding="0" cellspacing="0">
-        <tr>
-            <td id="leftgrey">
-            </td>
-            <td id="middlewhite">
-                <div id="header">
-                    <h1>
-                        GrabbaRide</h1>
-                </div>
-                <div id="nav-bar">
-                    <table cellspacing="0" cellpadding="0" border="0">
-                        <tr>
-                            <td id="nav-bar-left">
-                            </td>
-                            <td id="nav-bar-main">
-                                <ul>
-                                    <li><a href="Default.aspx">Home</a></li>
-                                    <li><a href="Search.aspx">Search</a></li>
-                                    <li><a href="CreateRide.aspx">Create Ride</a></li>
-                                    <li><a href="UserDetails.aspx">My Profile</a></li>
-                                    <li>
-                                        <asp:LoginStatus ID="LoginStatus" runat="server" />
-                                    </li>
-                                </ul>
-                            </td>
-                            <td id="nav-bar-right">
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <div id="ad-bar">
-                    <p>
-                        insert<br />
-                        ads<br />
-                        here</p>
-                </div>
-                <div id="main-content">
+    <div id="maxwidth">
+        <div id="header" 
+            style="background-image: url('/D:/GrabbaRide/trunk/GrabbaRide.Frontend/Images/grab_banner_bg.png')">
+            <asp:Image ID="ImgBanner" runat="server" 
+                ImageUrl="~/Images/grab_banner_v2.png" />
+        </div>
+        <div id="nav-bar">
+            <table cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                    <td id="nav-bar-left">
+                    </td>
+                    <td id="nav-bar-main">
+                        <ul>
+                            <li><a href="Default.aspx">Home</a></li>
+                            <li><a href="Search.aspx">Search</a></li>
+                            <li><a href="CreateRide.aspx">Create Ride</a></li>
+                            <li><a href="User.aspx">My Profile</a></li>
+                            <li>
+                                <asp:LoginStatus ID="LoginStatus" runat="server" />
+                            </li>
+                        </ul>
+                    </td>
+                    <td id="nav-bar-right">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="ad-bar">
+            <p>
+                insert<br />
+                ads<br />
+                here</p>
+        </div>
+        <div id="main-content">
+            <asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server" />
+        </div>
+    </div>
                     <asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server" />
                 </div>
             </td>
