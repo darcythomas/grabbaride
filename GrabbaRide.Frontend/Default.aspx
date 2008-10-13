@@ -19,7 +19,7 @@
         <Columns>
             <asp:TemplateField HeaderText="User" SortExpression="UserID">
                 <ItemTemplate>
-                    <asp:HyperLink NavigateUrl='<%# Eval("User.Username", "User.aspx?id={0}") %>' runat="server"><%# Eval("User.Username") %></asp:HyperLink>
+                    <asp:HyperLink NavigateUrl='<%# Eval("User.Username", "UserDetails.aspx?id={0}") %>' runat="server"><%# Eval("User.Username") %></asp:HyperLink>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:BoundField DataField="CreationDate" HeaderText="Created" SortExpression="CreationDate"

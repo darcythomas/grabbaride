@@ -24,7 +24,7 @@ namespace GrabbaRide.Frontend
         private static readonly Dictionary<string, string> UrlRewriteRules =
             new Dictionary<string, string>() {
                 // pattern: { regular expression, replacement string }
-                // { "^/user/([^/]+)/?$", "/User.aspx?id={1}" },
+                // { "^/user/([^/]+)/?$", "/UserDetails.aspx?id={1}" },
             };
 
         protected void Application_Start(object sender, EventArgs e)
