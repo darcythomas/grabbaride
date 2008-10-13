@@ -89,12 +89,15 @@ h3
  */
 #logo-bar
 {
+	/* background-image: url('Images/grab_banner_bg.png'); background-repeat: repeat-x; */
 	background-color: #74f230;
-	background-image: url('Images/grab_banner_v2.png');
-	background-position: left;
-	background-repeat: no-repeat;
 	margin: 15px 15px 0px 15px;
+	padding: 0px;
 	height: 100px;
+}
+#logo-bar img
+{
+	margin: 0px;
 }
 #nav-bar
 {
