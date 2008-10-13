@@ -65,11 +65,23 @@ namespace GrabbaRide.Database
 
             //This sorts the List according to the values in the SearchRank field of the Ride object
             result.Sort(new SimilarRideComparer(searchedRide));
+            //remove 0 seats
+            result.RemoveAll(HasNoSeats);
 
             // Return the ranked list of possibly suitable rides
             return result;
         }
+        
+        
+        private static  bool HasNoSeats(Ride ride)
+        {   
+            return ride.NumSeats==0;
+             
+        }
+
     }
+
+    
 
     /// <summary>
     /// Ranks two rides based on their similarity to a base ride specified
