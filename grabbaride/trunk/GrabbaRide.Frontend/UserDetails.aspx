@@ -74,7 +74,7 @@
                         <asp:Image ID="ExistingRatingNeutralImage" runat="server" ImageUrl="Images/face-plain.png"
                             Visible="false" AlternateText=":-|" ToolTip=":-|" />
                         <asp:Image ID="ExistingRatingNegativeImage" runat="server" ImageUrl="Images/face-sad.png"
-                            Visible="false" AlternateText=":-(" ToolTip=":-(" />.<br />
+                            Visible="false" AlternateText=":-(" ToolTip=":-(" /><br />
                         <asp:Label ID="ChangeRatingLabel" runat="server">Click a face to change your rating:</asp:Label>
                     </span>
                     <asp:Label ID="PlaceRatingLabel" runat="server">Click a face to rate this user:</asp:Label>
