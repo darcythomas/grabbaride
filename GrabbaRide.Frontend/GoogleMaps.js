@@ -149,7 +149,7 @@ function DrawBoundingBoxes() {
     var lat = latlng.lat();
     var lng = latlng.lng();
     var lineardistance = Math.sqrt(Math.pow(lat - xlat,2) + Math.pow(lng - xlng,2));
-    var Offset = lineardistance * 0.1; //sets offset to be 10% of linear distance between points
+    var Offset = lineardistance * 0.15; //sets offset to be 15% of linear distance between points
     if (startpoly)
         map.removeOverlay(startpoly);
     startpoly = new GPolygon([
