@@ -6,6 +6,8 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <h2>
         Ride Details</h2>
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
     <table class="user-details-table">
         <tr>
             <th>
@@ -76,7 +78,7 @@
                 Location
             </th>
             <td>
-                <div id="searchmap" style="width: 400px; height: 400px;">
+                <div id="searchmapread" style="width: 400px; height: 400px;">
                 </div>
                 <asp:HiddenField ID="hfstart" runat="server" />
                 <asp:HiddenField ID="hfend" runat="server" />
@@ -97,10 +99,18 @@
                 Contact
             </th>
             <td>
-                <p>
-                    Write an email to this user:</p>
-                <asp:TextBox ID="EmailMessage" runat="server" Rows="10" Columns="60" TextMode="MultiLine" />
-                <asp:Button ID="EmailMessageSend" runat="server" Text="Send!" OnClick="EmailMessageSend_Click" />
+                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                    <ContentTemplate>
+                        <div id="SendEmailDiv" runat="server">
+                            Write an email to this user:<br />
+                            <asp:TextBox ID="EmailMessage" runat="server" Rows="10" Columns="60" TextMode="MultiLine" />
+                            <asp:Button ID="EmailMessageSend" runat="server" Text="Send!" OnClick="EmailMessageSend_Click" />
+                        </div>
+                        <div id="EmailSentDiv" runat="server" visible="false">
+                            <span style="color: Green;">Your email was sent successfully!</span>
+                        </div>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
             </td>
         </tr>
         <tr>

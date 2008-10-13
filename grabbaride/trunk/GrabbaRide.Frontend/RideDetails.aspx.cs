@@ -205,6 +205,8 @@ namespace GrabbaRide.Frontend
             User userSend = dataContext.GetUserByUsername(Page.User.Identity.Name);
             User userRecv = dataContext.GetRideByID(Int32.Parse(Request.QueryString["id"])).User;
             userRecv.SendMessage(EmailMessage.Text, userSend);
+            SendEmailDiv.Visible = false;
+            EmailSentDiv.Visible = true;
         }
     }
 }
