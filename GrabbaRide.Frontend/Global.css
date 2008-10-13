@@ -30,7 +30,7 @@
  */
 a
 {
-	color: #0066ff;
+	color: #336cbb;
 	text-decoration: none;
 }
 a:hover
@@ -45,14 +45,14 @@ body
 }
 h2
 {
-	color: #0066ff;
+	color: #336cbb;
 }
 h3
 {
-	color: #0066ff;
+	color: #336cbb;
 	font-size: large;
 	width: 95%;
-	border-bottom: 2px solid #74ee33;
+	border-bottom: 2px solid #74f230;
 }
 
 /*
