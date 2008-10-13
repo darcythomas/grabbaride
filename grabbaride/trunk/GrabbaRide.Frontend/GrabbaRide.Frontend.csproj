@@ -220,6 +220,7 @@
     <Content Include="GoogleMaps.js" />
     <Content Include="Images\page-left.png" />
     <Content Include="Images\page-right.png" />
+    <Content Include="Images\createride.png" />
     <Content Include="Images\starticon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

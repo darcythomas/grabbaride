@@ -50,13 +50,13 @@ namespace GrabbaRide.Frontend {
         protected global::System.Web.UI.WebControls.DropDownList drpmins;
         
         /// <summary>
-        /// drpdayhalf control.
+        /// drpampm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList drpdayhalf;
+        protected global::System.Web.UI.WebControls.DropDownList drpampm;
         
         /// <summary>
         /// chkmon control.

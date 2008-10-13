@@ -260,6 +260,10 @@ h3
 /*
  *  CREATE RIDE PAGE
  */
+#createridetable
+{
+	width: 100%;
+}
 #createridetable td
 {
 	vertical-align: top;
