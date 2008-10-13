@@ -259,12 +259,14 @@ function setAddress(address, marker) {
 function valGMapLocations() {
     var errordiv = document.getElementById("errordiv");
     var buttondiv = document.getElementById("buttondiv");
-    if (hfend.value && hfstart.value) {
-        buttondiv.style.visibility = "visible";
-        errordiv.style.visibility = "hidden";
-    } else {
-        buttondiv.style.visibility = "hidden";
-        errordiv.style.visibility = "visible";
+    if (buttondiv) {
+        if (hfend.value && hfstart.value) {
+            buttondiv.style.visibility = "visible";
+            errordiv.style.visibility = "hidden";
+        } else {
+            buttondiv.style.visibility = "hidden";
+            errordiv.style.visibility = "visible";
+        }
     }
 }
 
