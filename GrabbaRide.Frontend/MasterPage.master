@@ -56,19 +56,19 @@
                 <div id="main-content">
                     <asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server" />
                 </div>
+                <div id="footer">
+                    <ul>
+                        <li>Copyright &copy; 2008</li>
+                        <li><a href="Terms.aspx">Terms of Use</a></li>
+                        <li><a href="Privacy.aspx">Privacy Policy</a></li>
+                        <li><a href="About.aspx">About Us</a></li>
+                    </ul>
+                </div>
             </td>
             <td id="rightgrey">
             </td>
         </tr>
     </table>
     </form>
-    <div id="footer">
-        <ul>
-            <li>Copyright &copy; 2008</li>
-            <li><a href="Terms.aspx">Terms of Use</a></li>
-            <li><a href="Privacy.aspx">Privacy Policy</a></li>
-            <li><a href="About.aspx">About Us</a></li>
-        </ul>
-    </div>
 </body>
 </html>
