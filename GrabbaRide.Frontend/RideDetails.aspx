@@ -46,8 +46,9 @@
                     SortExpression="Details" />
             </Fields>
         </asp:DetailsView>
-        <asp:ImageButton ID="addToGcalender" runat="server" Style="padding: 5px" ImageUrl="http://www.google.com/calendar/images/ext/gc_button2_en-GB.gif"
-            ToolTip="Add to your Google calendar" OnClick="addToGcalender_Click" />
+        <div id="gcal" runat="server"><asp:ImageButton ID="addToGcalender" runat="server" Style="padding: 5px" ImageUrl="http://www.google.com/calendar/images/ext/gc_button2_en-GB.gif"
+            ToolTip="Add to your Google calendar" OnClick="addToGcalender_Click" /></div>
+            <div id="gcsent" runat="server" visible="false" style="padding: 5px">This ride has been added to your google calender</div>
         <div id="EmailUserDiv" runat="server">
             <p>
                 Email this user:</p>

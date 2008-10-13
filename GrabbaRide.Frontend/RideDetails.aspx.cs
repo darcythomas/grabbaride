@@ -28,8 +28,16 @@ namespace GrabbaRide.Frontend
                 {
                     Response.Redirect("Search.aspx");
                 }
-
-
+                if (Request.QueryString["gcadded"] == "true")
+                {
+                    gcal.Visible = false;
+                    gcsent.Visible = true;
+                }
+                else
+                {
+                    gcal.Style.Clear();
+                    gcsent.Style.Clear();
+                }
                 // If this is a redirect back from the google authentation 
                 if (Request.QueryString["token"] != null)
                 {
@@ -47,6 +55,7 @@ namespace GrabbaRide.Frontend
                         GrabbaRideDBDataContext GdataContext = new GrabbaRideDBDataContext();
                         var user = GdataContext.GetUserByUsername(Page.User.Identity.Name);
                         user.GAuthToken = Session["token"].ToString();
+                        GdataContext.SubmitChanges();
                     }
                     catch (Exception ex)
                     {
@@ -160,12 +169,12 @@ namespace GrabbaRide.Frontend
             recurrence.Value = recurData;
             calToPush.Recurrence = recurrence;
 
-            /*
+            
             Reminder fifteenMinReminder = new Reminder();
             fifteenMinReminder.Minutes = 15;
             fifteenMinReminder.Method = Reminder.ReminderMethod.sms;
             calToPush.Reminders.Add(fifteenMinReminder);
-            */
+            
 
             try
             {
@@ -194,8 +203,10 @@ namespace GrabbaRide.Frontend
                 }
 
             }
+            String whereToGoNext = Request.Url.AbsolutePath.ToString() + "?id=" + Request.QueryString["id"] + "&gcadded=true";
             
-            Response.Redirect(Request.Url.AbsoluteUri);// should this be here?
+            
+            Response.Redirect(whereToGoNext.ToString());
         }
 
         protected void addToGcalender_Click(object sender, ImageClickEventArgs e)
