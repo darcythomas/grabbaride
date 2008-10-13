@@ -25,6 +25,7 @@
             </td>
             <td id="middlewhite">
                 <div id="logo-bar">
+                    <img src="Images/grab_banner_v2.png" alt="GrabbaRide Logo" />
                 </div>
                 <div id="nav-bar">
                     <table cellspacing="0" cellpadding="0" border="0">
