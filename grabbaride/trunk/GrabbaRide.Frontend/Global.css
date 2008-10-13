@@ -216,12 +216,17 @@ h3
 }
 .recent-rides-grid th
 {
-	padding: 5px;
+	padding: 3px;
 	text-align: left;
 }
 .recent-rides-grid td
 {
-	padding: 5px;
+	padding: 3px;
+	vertical-align: middle;
+}
+.recent-rides-grid a
+{
+	vertical-align: middle;
 }
 
 /*
