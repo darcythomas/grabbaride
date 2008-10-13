@@ -187,15 +187,17 @@
             <td>
             </td>
             <td>
-                <div id="buttondiv" style="visibility: hidden;">
-                    <asp:Button ID="btnCreate" runat="server" OnClick="btnCreate_Click" Text="Create Ride!"
-                        Width="112px" Font-Bold="True" />
-                </div>
-                <div id="errordiv" style="visibility: hidden; font-family: Arial; font-size: medium;
-                    color: #FF0000;">
-                    Please mark start and end locations on the map
-                </div>
-                <br />
+                <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                    <ContentTemplate>
+                        <div>
+                            <asp:CustomValidator ID="RequireStartEndValidator" runat="server" ErrorMessage="You must enter a start and end date!"
+                                OnServerValidate="RequireStartEndValidator_ServerValidate" Display="Dynamic"></asp:CustomValidator>
+                            <asp:CustomValidator ID="InsideNZValidator" runat="server" ErrorMessage="You must enter start and end locations inside New Zealand!"
+                                OnServerValidate="InsideNZValidator_ServerValidate" Display="Dynamic"></asp:CustomValidator>
+                        </div>
+                        <asp:Button ID="btnCreate" runat="server" OnClick="btnCreate_Click" Text="Create Ride!" />
+                    </ContentTemplate>
+                </asp:UpdatePanel>
             </td>
         </tr>
     </table>
