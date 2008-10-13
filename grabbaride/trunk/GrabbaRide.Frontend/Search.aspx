@@ -4,6 +4,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
+    <img src="Images/system-search.png" alt="Search" class="floatrightimg" />
     <h2>
         Search</h2>
     <asp:ScriptManager ID="ScriptManager1" runat="server" />
