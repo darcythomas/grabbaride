@@ -64,6 +64,10 @@ namespace GrabbaRide.Frontend
                     else
                         LastSeenLabel.Text = "Never!";
 
+                    // fill in user's rides (if any)
+                    UsersRidesGridView.DataSource = displayedUser.Rides;
+                    UsersRidesGridView.DataBind();
+
                     // if user is viewing their own profile
                     if (displayedUser.Username == loggedUser.Username)
                     {

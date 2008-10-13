@@ -194,6 +194,13 @@
     <Compile Include="UserEdit.aspx.designer.cs">
       <DependentUpon>UserEdit.aspx</DependentUpon>
     </Compile>
+    <Compile Include="RideEdit.aspx.cs">
+      <DependentUpon>RideEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RideEdit.aspx.designer.cs">
+      <DependentUpon>RideEdit.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
@@ -212,6 +219,7 @@
     <Content Include="Images\endicon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\face-crying.png" />
     <Content Include="Images\face-plain.png" />
     <Content Include="Images\face-sad.png" />
     <Content Include="Images\face-smile.png" />
@@ -229,6 +237,7 @@
     <Content Include="Images\page-left.png" />
     <Content Include="Images\page-right.png" />
     <Content Include="Images\createride.png" />
+    <Content Include="Images\ride-edit.png" />
     <Content Include="Images\starticon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -250,6 +259,7 @@
     <Content Include="Search.aspx" />
     <Content Include="CreateRide.aspx" />
     <Content Include="UserEdit.aspx" />
+    <Content Include="RideEdit.aspx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

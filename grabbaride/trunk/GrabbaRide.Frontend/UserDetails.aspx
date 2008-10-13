@@ -103,5 +103,26 @@
                 </td>
             </tr>
         </table>
+        <h3>Rides created by this user</h3>
+        <asp:GridView ID="UsersRidesGridView" runat="server" AutoGenerateColumns="False"
+            CssClass="recent-rides-grid" GridLines="Horizontal">
+            <Columns>
+                <asp:BoundField DataField="CreationDate" HeaderText="Created" SortExpression="CreationDate"
+                    DataFormatString="{0:ddd h:mm tt}" />
+                <asp:BoundField DataField="NumSeats" HeaderText="Seats" SortExpression="NumSeats" />
+                <asp:BoundField DataField="DaysAvailable" HeaderText="Days" SortExpression="DaysAvailable" />
+                <asp:BoundField DataField="DepartureTimeString" HeaderText="Departing" SortExpression="DepartureTimeString" />
+                <asp:BoundField DataField="JourneyDistanceKm" HeaderText="Distance" ReadOnly="True"
+                    SortExpression="JourneyDistanceKm" DataFormatString="{0:f2} km" />
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:HyperLink ID="HyperLink2" NavigateUrl='<%# Eval("RideID", "RideDetails.aspx?id={0}") %>'
+                            runat="server">
+                    details &#187;
+                        </asp:HyperLink>&nbsp;
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
+        </asp:GridView>
     </div>
 </asp:Content>
