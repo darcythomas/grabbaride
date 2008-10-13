@@ -87,6 +87,15 @@ h3
 /*
  *  TOP NAVIGATION BAR
  */
+#logo-bar
+{
+	background-color: #74f230;
+	background-image: url('Images/grab_banner_v2.png');
+	background-position: left;
+	background-repeat: no-repeat;
+	margin: 15px 15px 0px 15px;
+	height: 100px;
+}
 #nav-bar
 {
 	margin: 0px;
