@@ -54,15 +54,15 @@ namespace GrabbaRide.UserManagement
         {
 
             GrabbaRideDBDataContext context = new GrabbaRideDBDataContext();
-            return !context.HasUserName(GrabbaRideLoginName)&& !String.IsNullOrEmpty(GrabbaRideLoginName);
+            return !context.HasUserName(GrabbaRideLoginName)&& !String.IsNullOrEmpty(GrabbaRideLoginName)&& UniqueUserName();
         }
 
 
-        
+        public bool UniqueUserName()
+        {
+            GrabbaRideDBDataContext context = new GrabbaRideDBDataContext();
 
-
-
-       
-       
+            return  context.HasUserName(GrabbaRideLoginName);
+        }
     }
 }
