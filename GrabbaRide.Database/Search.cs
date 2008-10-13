@@ -7,7 +7,7 @@ namespace GrabbaRide.Database
 {
     partial class GrabbaRideDBDataContext
     {
-        const double DISTANCE_VECTOR = 0.15; // 10%
+        const double DISTANCE_VECTOR = 0.2; // 20%
         const double TIME_VECTOR = 0.5; // 30 mins
 
         /// <summary>
@@ -18,8 +18,8 @@ namespace GrabbaRide.Database
         /// The list is ranked based on similarty to the param submittedRide</returns>
         public List<Ride> FindSimilarRides(Ride searchedRide)
         {
-            double searchRadius = (searchedRide.JourneyDistance * DISTANCE_VECTOR) + DISTANCE_VECTOR * 0.07;
-            if (searchRadius == 0) { searchRadius = 0.1; }
+            double searchRadius = (searchedRide.JourneyDistance * DISTANCE_VECTOR);
+            if (searchRadius < 0.01) { searchRadius = 0.01; }
 
             var query = from r in Rides
                         where
@@ -71,17 +71,17 @@ namespace GrabbaRide.Database
             // Return the ranked list of possibly suitable rides
             return result;
         }
-        
-        
-        private static  bool HasNoSeats(Ride ride)
-        {   
-            return ride.NumSeats==0;
-             
+
+
+        private static bool HasNoSeats(Ride ride)
+        {
+            return ride.NumSeats == 0;
+
         }
 
     }
 
-    
+
 
     /// <summary>
     /// Ranks two rides based on their similarity to a base ride specified
