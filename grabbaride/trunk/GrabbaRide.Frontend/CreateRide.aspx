@@ -17,7 +17,7 @@
         Enter the ride details</h3>
     <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true">
     </asp:ScriptManager>
-    <table id="createridetable">
+    <table class="create-ride-table">
         <tr>
             <td>
                 <img src="Images/1_off.gif" alt="1." />
@@ -57,13 +57,14 @@
         </tr>
         <tr>
             <td>
-                <img src="Images/3_off.gif" alt="4." />
+                <img src="Images/3_off.gif" alt="3." />
             </td>
             <td>
                 Please select the <strong>time</strong>
             </td>
             <td>
                 <asp:DropDownList ID="drphours" runat="server">
+                    <asp:ListItem Value="0" Text="12" />
                     <asp:ListItem Value="1" />
                     <asp:ListItem Value="2" />
                     <asp:ListItem Value="3" />
@@ -75,7 +76,6 @@
                     <asp:ListItem Value="9" Selected="True" />
                     <asp:ListItem Value="10" />
                     <asp:ListItem Value="11" />
-                    <asp:ListItem Value="12" />
                 </asp:DropDownList>
                 <asp:DropDownList ID="drpmins" runat="server">
                     <asp:ListItem Value="00" />
@@ -127,34 +127,28 @@
                 When should the listing to become available?
             </td>
             <td>
-                <asp:UpdatePanel ID="UpdatePanel1" runat="server" RenderMode="Inline">
+                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                     <ContentTemplate>
-                        <table cellpadding="0" cellspacing="0">
-                            <tr>
-                                <td>
-                                    <asp:RadioButtonList ID="StartDateRadioList" runat="server" AutoPostBack="true" CellPadding="0"
-                                        CellSpacing="0">
-                                        <asp:ListItem Selected="True">Now</asp:ListItem>
-                                        <asp:ListItem>Custom Date -&gt;</asp:ListItem>
-                                    </asp:RadioButtonList>
-                                </td>
-                                <td>
-                                    <asp:Calendar ID="calstart" runat="server" BackColor="White" BorderColor="Black"
-                                        CaptionAlign="Right" DayNameFormat="Shortest" Font-Size="8pt" ForeColor="Black"
-                                        NextPrevFormat="ShortMonth" TitleFormat="Month" Width="200px">
-                                        <SelectedDayStyle BackColor="#CC3333" ForeColor="White" />
-                                        <SelectorStyle BackColor="#CCCCCC" Font-Bold="True" Font-Size="8pt" ForeColor="#333333" />
-                                        <TodayDayStyle BackColor="#CCCC99" />
-                                        <OtherMonthDayStyle ForeColor="#999999" />
-                                        <NextPrevStyle Font-Size="8pt" ForeColor="White" />
-                                        <DayHeaderStyle BackColor="#CCCCCC" Font-Bold="True" Font-Size="7pt" ForeColor="#333333"
-                                            Height="10pt" />
-                                        <TitleStyle BackColor="Black" Font-Bold="True" Font-Size="13pt" ForeColor="White"
-                                            Height="14pt" />
-                                    </asp:Calendar>
-                                </td>
-                            </tr>
-                        </table>
+                        <asp:RadioButtonList ID="StartDateRadioList" runat="server" AutoPostBack="true" CellPadding="0"
+                            CellSpacing="0" CssClass="start-date-table">
+                            <asp:ListItem Selected="True">Now</asp:ListItem>
+                            <asp:ListItem>Custom Date &#187;</asp:ListItem>
+                        </asp:RadioButtonList>
+                        <div id="CalStartDiv" class="start-date-cal" runat="server">
+                            <asp:Calendar ID="calstart" runat="server" BackColor="White" BorderColor="Black"
+                                CaptionAlign="Right" DayNameFormat="Shortest" Font-Size="8pt" ForeColor="Black"
+                                NextPrevFormat="ShortMonth" TitleFormat="Month" Width="200px">
+                                <SelectedDayStyle BackColor="#CC3333" ForeColor="White" />
+                                <SelectorStyle BackColor="#CCCCCC" Font-Bold="True" Font-Size="8pt" ForeColor="#333333" />
+                                <TodayDayStyle BackColor="#CCCC99" />
+                                <OtherMonthDayStyle ForeColor="#999999" />
+                                <NextPrevStyle Font-Size="8pt" ForeColor="White" />
+                                <DayHeaderStyle BackColor="#CCCCCC" Font-Bold="True" Font-Size="7pt" ForeColor="#333333"
+                                    Height="10pt" />
+                                <TitleStyle BackColor="Black" Font-Bold="True" Font-Size="13pt" ForeColor="White"
+                                    Height="14pt" />
+                            </asp:Calendar>
+                        </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>
             </td>
