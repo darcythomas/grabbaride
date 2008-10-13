@@ -103,5 +103,21 @@ namespace GrabbaRide.Database
                 return days.TrimEnd(',', ' ');
             }
         }
+
+        public string DaysAvailableICal
+        {
+            get
+            {
+                string days = String.Empty;
+                if (this.RecurMon) { days += "MO,"; }
+                if (this.RecurTue) { days += "TU,"; }
+                if (this.RecurWed) { days += "WE,"; }
+                if (this.RecurThu) { days += "TH,"; }
+                if (this.RecurFri) { days += "FR,"; }
+                if (this.RecurSat) { days += "SA,"; }
+                if (this.RecurSun) { days += "SU,"; }
+                return days.TrimEnd(',');
+            }
+        }
     }
 }
