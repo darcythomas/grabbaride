@@ -14,49 +14,94 @@ namespace GrabbaRide.Frontend {
     public partial class RideDetails {
         
         /// <summary>
-        /// RideInvalidDiv control.
+        /// UserHyperLink control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl RideInvalidDiv;
+        protected global::System.Web.UI.WebControls.HyperLink UserHyperLink;
         
         /// <summary>
-        /// RideObjectDataSource control.
+        /// CreatedLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource RideObjectDataSource;
+        protected global::System.Web.UI.WebControls.Label CreatedLabel;
         
         /// <summary>
-        /// RideDetailsDiv control.
+        /// EndDateLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl RideDetailsDiv;
+        protected global::System.Web.UI.WebControls.Label EndDateLabel;
         
         /// <summary>
-        /// DetailsView1 control.
+        /// NumSeatsLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DetailsView DetailsView1;
+        protected global::System.Web.UI.WebControls.Label NumSeatsLabel;
         
         /// <summary>
-        /// gcal control.
+        /// RecurDaysLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl gcal;
+        protected global::System.Web.UI.WebControls.Label RecurDaysLabel;
+        
+        /// <summary>
+        /// DepartureTimeLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label DepartureTimeLabel;
+        
+        /// <summary>
+        /// DistanceLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label DistanceLabel;
+        
+        /// <summary>
+        /// RideDetailsLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label RideDetailsLabel;
+        
+        /// <summary>
+        /// hfstart control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfstart;
+        
+        /// <summary>
+        /// hfend control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfend;
         
         /// <summary>
         /// addToGcalender control.
@@ -68,22 +113,22 @@ namespace GrabbaRide.Frontend {
         protected global::System.Web.UI.WebControls.ImageButton addToGcalender;
         
         /// <summary>
-        /// gcsent control.
+        /// addedToGcal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl gcsent;
+        protected global::System.Web.UI.WebControls.Label addedToGcal;
         
         /// <summary>
-        /// EmailUserDiv control.
+        /// EmailUserRow control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl EmailUserDiv;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow EmailUserRow;
         
         /// <summary>
         /// EmailMessage control.
@@ -104,21 +149,12 @@ namespace GrabbaRide.Frontend {
         protected global::System.Web.UI.WebControls.Button EmailMessageSend;
         
         /// <summary>
-        /// hfstart control.
+        /// EditRideHyperLink control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hfstart;
-        
-        /// <summary>
-        /// hfend control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hfend;
+        protected global::System.Web.UI.WebControls.HyperLink EditRideHyperLink;
     }
 }

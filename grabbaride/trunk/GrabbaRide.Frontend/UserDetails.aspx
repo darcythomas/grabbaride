@@ -103,7 +103,8 @@
                 </td>
             </tr>
         </table>
-        <h3>Rides created by this user</h3>
+        <h3>
+            <asp:Label ID="RidesCreatedTitle" runat="server">Rides created by {0}</asp:Label></h3>
         <asp:GridView ID="UsersRidesGridView" runat="server" AutoGenerateColumns="False"
             CssClass="recent-rides-grid" GridLines="Horizontal">
             <Columns>
