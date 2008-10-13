@@ -131,15 +131,10 @@ namespace GrabbaRide.Database
             set
             {
                 string[] location = value.Split(',');
-
                 if (location.Length == 2)
                 {
                     this.LocationFromLat = Double.Parse(location[0]);
                     this.LocationFromLong = Double.Parse(location[1]);
-                }
-                else
-                {
-                    throw new ArgumentException();
                 }
             }
         }
@@ -155,15 +150,10 @@ namespace GrabbaRide.Database
             set
             {
                 string[] location = value.Split(',');
-
                 if (location.Length == 2)
                 {
                     this.LocationToLat = Double.Parse(location[0]);
                     this.LocationToLong = Double.Parse(location[1]);
-                }
-                else
-                {
-                    throw new ArgumentException();
                 }
             }
         }

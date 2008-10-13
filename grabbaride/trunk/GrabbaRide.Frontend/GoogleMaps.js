@@ -46,7 +46,6 @@ function doPageLoad() {
       }
     }
   }
-  valGMapLocations();
 }
 
 //Set the start location by transferring the lat,long to a hidden field and making a marker on the map
@@ -255,20 +254,6 @@ function setAddress(address, marker) {
         );
     }
   }
-}
-
-function valGMapLocations() {
-    var errordiv = document.getElementById("errordiv");
-    var buttondiv = document.getElementById("buttondiv");
-    if (buttondiv) {
-        if (hfend.value && hfstart.value) {
-            buttondiv.style.visibility = "visible";
-            errordiv.style.visibility = "hidden";
-        } else {
-            buttondiv.style.visibility = "hidden";
-            errordiv.style.visibility = "visible";
-        }
-    }
 }
 
 //sets init to occur on page load
