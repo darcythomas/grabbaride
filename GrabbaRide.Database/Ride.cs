@@ -119,5 +119,53 @@ namespace GrabbaRide.Database
                 return days.TrimEnd(',');
             }
         }
+
+        public string HiddenFieldStart
+        {
+            get
+            {
+                return String.Format("{0},{1}",
+                    this.LocationFromLat,
+                    this.LocationFromLong);
+            }
+            set
+            {
+                string[] location = value.Split(',');
+
+                if (location.Length == 2)
+                {
+                    this.LocationFromLat = Double.Parse(location[0]);
+                    this.LocationFromLong = Double.Parse(location[1]);
+                }
+                else
+                {
+                    throw new ArgumentException();
+                }
+            }
+        }
+
+        public string HiddenFieldEnd
+        {
+            get
+            {
+                return String.Format("{0},{1}",
+                    this.LocationToLat,
+                    this.LocationToLong);
+            }
+            set
+            {
+                string[] location = value.Split(',');
+
+                if (location.Length == 2)
+                {
+                    this.LocationToLat = Double.Parse(location[0]);
+                    this.LocationToLong = Double.Parse(location[1]);
+                }
+                else
+                {
+                    throw new ArgumentException();
+                }
+            }
+        }
     }
 }

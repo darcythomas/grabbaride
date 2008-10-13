@@ -104,19 +104,19 @@
                 and <strong>days of the week</strong>:
             </td>
             <td>
-                <asp:CheckBox ID="chkmon" runat="server" Text="Monday" Font-Names="Arial" Checked="true" />
+                <asp:CheckBox ID="chkmon" runat="server" Text="Monday" Checked="true" />
                 <br />
-                <asp:CheckBox ID="chktue" runat="server" Text="Tuesday" Font-Names="Arial" Checked="true" />
+                <asp:CheckBox ID="chktue" runat="server" Text="Tuesday" Checked="true" />
                 <br />
-                <asp:CheckBox ID="chkwed" runat="server" Text="Wednesday" Font-Names="Arial" Checked="true" />
+                <asp:CheckBox ID="chkwed" runat="server" Text="Wednesday" Checked="true" />
                 <br />
-                <asp:CheckBox ID="chkthurs" runat="server" Text="Thursday" Font-Names="Arial" Checked="true" />
+                <asp:CheckBox ID="chkthurs" runat="server" Text="Thursday" Checked="true" />
                 <br />
-                <asp:CheckBox ID="chkfri" runat="server" Text="Friday" Font-Names="Arial" Checked="true" />
+                <asp:CheckBox ID="chkfri" runat="server" Text="Friday" Checked="true" />
                 <br />
-                <asp:CheckBox ID="chksat" runat="server" Text="Saturday" Font-Names="Arial" />
+                <asp:CheckBox ID="chksat" runat="server" Text="Saturday" />
                 <br />
-                <asp:CheckBox ID="chksun" runat="server" Text="Sunday" Font-Names="Arial" />
+                <asp:CheckBox ID="chksun" runat="server" Text="Sunday" />
             </td>
         </tr>
         <tr>

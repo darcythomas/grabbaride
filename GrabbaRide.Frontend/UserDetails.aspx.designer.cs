@@ -219,5 +219,14 @@ namespace GrabbaRide.Frontend {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink EditUserHyperlink;
+        
+        /// <summary>
+        /// UsersRidesGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView UsersRidesGridView;
     }
 }
