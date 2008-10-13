@@ -19,7 +19,7 @@ namespace GrabbaRide.Database
         public List<Ride> FindSimilarRides(Ride searchedRide)
         {
             double searchRadius = (searchedRide.JourneyDistance * DISTANCE_VECTOR);
-            if (searchRadius < 0.01) { searchRadius = 0.01; }
+            if (searchRadius < 0.001) { searchRadius = 0.001; }
 
             var query = from r in Rides
                         where
