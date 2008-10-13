@@ -8,11 +8,11 @@ var endpoly = null;
 var line = null;
 var hfstart = null;
 var hfend = null;
+var maptype = null;
 
 //init stuff
 function doPageLoad() {
   if (GBrowserIsCompatible()) {
-    var maptype = null;
     //determine the map type based on the div present
     if (document.getElementById("searchmap")) {
         maptype = "normal";
@@ -49,7 +49,7 @@ function doPageLoad() {
 }
 
 //Set the start location by transferring the lat,long to a hidden field and making a marker on the map
-function SetStart(lat, lng, maptype) {
+function SetStart(lat, lng) {
   lat = parseFloat(lat);
   lng = parseFloat(lng);
   hfstart.value = lat + "," + lng;
@@ -75,6 +75,8 @@ function SetStart(lat, lng, maptype) {
   {
     DrawBoundingBoxes();
   }
+  //clear any popup windows that are open
+  map.closeInfoWindow();  
 }
 
 //marker dragstart hanlder
@@ -109,7 +111,7 @@ function EndDrag() {
 }
 
 //Set the end location by transferring the lat,long to a hidden field and making a marker on the map
-function SetEnd(lat, lng, maptype) {
+function SetEnd(lat, lng) {
   lat = parseFloat(lat);
   lng = parseFloat(lng);
   hfend.value = lat + "," + lng;
@@ -137,7 +139,8 @@ function SetEnd(lat, lng, maptype) {
   {
     DrawBoundingBoxes();
   }
-  
+  //clear any popup windows that are open
+  map.closeInfoWindow();  
 }
 
 //draws the bounding boxes around the start and end points, as well as a line between them
@@ -150,6 +153,7 @@ function DrawBoundingBoxes() {
     var lng = latlng.lng();
     var lineardistance = Math.sqrt(Math.pow(lat - xlat,2) + Math.pow(lng - xlng,2));
     var Offset = lineardistance * 0.15; //sets offset to be 15% of linear distance between points
+    if (Offset < 0.005) Offset = 0.005;
     if (startpoly)
         map.removeOverlay(startpoly);
     startpoly = new GPolygon([
@@ -223,7 +227,7 @@ function setAddress(address, marker) {
               alert(address + " not found");
             } else {
               map.setCenter(point, 13);
-              SetStart(point.lat(), point.lng(), "normal");
+              SetStart(point.lat(), point.lng());
             }
           }
         );
@@ -235,7 +239,7 @@ function setAddress(address, marker) {
               alert(address + " not found");
             } else {
               map.setCenter(point, 13);
-              SetEnd(point.lat(), point.lng(), "normal");
+              SetEnd(point.lat(), point.lng());
             }
           }
         );
