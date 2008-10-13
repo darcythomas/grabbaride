@@ -23,6 +23,15 @@ namespace GrabbaRide.Frontend {
         protected global::System.Web.UI.WebControls.Login GrabbaRideLogin;
         
         /// <summary>
+        /// GRRegisterHyperLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink GRRegisterHyperLink;
+        
+        /// <summary>
         /// OpenIDPanel control.
         /// </summary>
         /// <remarks>
