@@ -14,9 +14,23 @@ namespace GrabbaRide.Frontend
         {
             if (!Page.IsPostBack)
             {
-                // set the returnurl
-                GrabbaRideLogin.DestinationPageUrl = Request.QueryString["RedirectUrl"];
-                GrabbaRideLogin.CreateUserUrl += Request.Url.Query;
+                string redirectUrl = Request.QueryString["RedirectUrl"];
+                if (String.IsNullOrEmpty(redirectUrl))
+                {
+                    redirectUrl = "Default.aspx";
+                }
+
+                if (Request.IsAuthenticated)
+                {
+                    // can't login again!
+                    Response.Redirect(redirectUrl);
+                }
+                else
+                {
+                    // set the returnurl
+                    GrabbaRideLogin.DestinationPageUrl = redirectUrl;
+                    GRRegisterHyperLink.NavigateUrl += Request.Url.Query;
+                }
             }
         }
 

@@ -17,7 +17,8 @@
         <LabelStyle HorizontalAlign="Left" />
     </asp:Login>
     <p>
-        Don't have an account? <strong><a href="Register.aspx">Register</a> for GrabbaRide!</strong></p>
+        Don't have an account? <strong>
+            <asp:HyperLink ID="GRRegisterHyperLink" runat="server" NavigateUrl="Register.aspx">Register for GrabbaRide!</asp:HyperLink></strong></p>
     <h3>
         OR... Login with your OpenID!</h3>
     <asp:Panel ID="OpenIDPanel" runat="server">
