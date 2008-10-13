@@ -35,125 +35,26 @@ namespace GrabbaRide.Frontend
                 {
                     try
                     {
+
+                        //Take the single use token and exchange for a sessiontoken
                         String token = Request.QueryString["token"];
                         String NewToken = AuthSubUtil.exchangeForSessionToken(token, null).ToString();
                          
                         Session.Remove("token"); // just to be sure
-
                         Session.Add("token", NewToken);
-                        String test = Session["token"].ToString();
+                       
 
-                      
+                        GrabbaRideDBDataContext GdataContext = new GrabbaRideDBDataContext();
+                        var user = GdataContext.GetUserByUsername(Page.User.Identity.Name);
+                        user.GAuthToken = Session["token"].ToString();
                     }
                     catch (Exception ex)
                     {
                         Response.Write("Error processing request: " + ex.ToString());
                     }
-                    //This gets us our session authcation
-                    GAuthSubRequestFactory authFactory = new GAuthSubRequestFactory("cl", "CalendarSampleApp"); // tidy this up
-                    try
-                    {
 
-                        authFactory.Token = Session["token"].ToString();
-                       
-                    }
-                    catch (Exception ex)
-                    {
-                        Response.Write("Error processing request: " + ex.ToString());
-                    }
-                    /*
-                    CalendarService service = new CalendarService(authFactory.ApplicationName);
-                    Google.GData.Calendar.EventEntry entry = new Google.GData.Calendar.EventEntry();
-
-                    // Set the title and content of the entry.
-                    entry.Title.Text = "Tennis with Beth";
-                    entry.Content.Content = "Meet for a quick lesson.";
-
-                    // Set a location for the event.
-                    Where eventLocation = new Where();
-                    eventLocation.ValueString = "South Tennis Courts";
-                    entry.Locations.Add(eventLocation);
-
-                    When eventTime = new When(DateTime.Now, DateTime.Now.AddHours(2));
-                    entry.Times.Add(eventTime);
-
-                    Uri postUri = new Uri("http://www.google.com/calendar/feeds/default/private/full");
-
-                    try
-                    {
-                        // Send the request and receive the response:
-                        AtomEntry insertedEntry = service.Insert(postUri, entry);
-                    }
-                    catch (GDataRequestException gdre)
-                    {
-                        HttpWebResponse response = (HttpWebResponse)gdre.Response;
-
-                        //bad auth token, clear session and refresh the page
-                        if (response.StatusCode == HttpStatusCode.Unauthorized)
-                        {
-                            Session.Clear();
-                            Response.Redirect(Request.Url.AbsolutePath, true);
-                        }
-                    }
-                      */  
-
-                //  /*
-                    CalendarService service = new CalendarService( authFactory.ApplicationName);
-                   
-                    service.RequestFactory = authFactory;
-
-                    Google.GData.Calendar.EventEntry calToPush = new Google.GData.Calendar.EventEntry();
-
-                    String recurData =
-                      "DTSTART;VALUE=DATE:20081007\r\n" +
-                      "DTEND;VALUE=DATE:20090502\r\n" +
-                      "RRULE:FREQ=WEEKLY;BYDAY=Tu;UNTIL=20090904\r\n";
-
-                    Recurrence recurrence = new Recurrence();
-                    recurrence.Value = recurData;
-                    calToPush.Recurrence = recurrence;
-
-                    /*
-                    Reminder fifteenMinReminder = new Reminder();
-                    fifteenMinReminder.Minutes = 15;
-                    fifteenMinReminder.Method = Reminder.ReminderMethod.sms;
-                    calToPush.Reminders.Add(fifteenMinReminder);
-                    */
-
-                      try
-                    {
-                        Uri postUri = new Uri("http://www.google.com/calendar/feeds/default/private/full");
-
-                        // Send the request and receive the response:
-                        AtomEntry insertedEntry = service.Insert(postUri, calToPush);
-                        insertedEntry.Update();
-                          
-                       
-                    }
-                    catch (GDataRequestException gdre)
-                    {
-                        HttpWebResponse response = (HttpWebResponse)gdre.Response;
-
-                        //bad auth token, clear session and refresh the page
-                        if (response.StatusCode == HttpStatusCode.Unauthorized)
-                        {
-                            Session.Clear();
-                            Response.Redirect(Request.Url.AbsolutePath, true);
-                           
-                        }
-                        else
-                        {
-                            Response.Write("Error processing request: " + gdre.ToString());
-                        }
-                   
-                    }
-                    Session.Remove("token");// note: rarther than deleting this session token 
-                                            //  -as it doesn't expire- we could save it in the user table in the db
-                                            // this works for now and means we dont have to worry about 
-                                            // the security of the db so much at the cost of incovenence 
-                                            // to the user having to conferm for each ride
-                    Response.Redirect(Request.Url.AbsoluteUri);
-  //*/
+                    PostToGcal();
+ 
                 }
 
 
@@ -192,12 +93,129 @@ namespace GrabbaRide.Frontend
             }
         }
 
+        private void PostToGcal()
+        {
+            
+            //This gets us our session authcation
+            GAuthSubRequestFactory authFactory = new GAuthSubRequestFactory("cl", "Grabbaride"); 
+            
+            
+            try
+            {
+                authFactory.Token = Session["token"].ToString();
+            }
+            catch (Exception ex)
+            {
+                Response.Write("Error processing request: " + ex.ToString());
+            }
+            /*
+            CalendarService service = new CalendarService(authFactory.ApplicationName);
+            Google.GData.Calendar.EventEntry entry = new Google.GData.Calendar.EventEntry();
+
+            // Set the title and content of the entry.
+            entry.Title.Text = "Tennis with Beth";
+            entry.Content.Content = "Meet for a quick lesson.";
+
+            // Set a location for the event.
+            Where eventLocation = new Where();
+            eventLocation.ValueString = "South Tennis Courts";
+            entry.Locations.Add(eventLocation);
+
+            When eventTime = new When(DateTime.Now, DateTime.Now.AddHours(2));
+            entry.Times.Add(eventTime);
+
+            Uri postUri = new Uri("http://www.google.com/calendar/feeds/default/private/full");
+
+            try
+            {
+                // Send the request and receive the response:
+                AtomEntry insertedEntry = service.Insert(postUri, entry);
+            }
+            catch (GDataRequestException gdre)
+            {
+                HttpWebResponse response = (HttpWebResponse)gdre.Response;
+
+                //bad auth token, clear session and refresh the page
+                if (response.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    Session.Clear();
+                    Response.Redirect(Request.Url.AbsolutePath, true);
+                }
+            }
+              */
+
+            //  /*
+            CalendarService service = new CalendarService(authFactory.ApplicationName);
+
+            service.RequestFactory = authFactory;
+            
+            Google.GData.Calendar.EventEntry calToPush = new Google.GData.Calendar.EventEntry();
+
+            String recurData =
+              "DTSTART;VALUE=DATE:20081007\r\n" +
+              "DTEND;VALUE=DATE:20090502\r\n" +
+              "RRULE:FREQ=WEEKLY;BYDAY=Tu;UNTIL=20090904\r\n";
+
+            Recurrence recurrence = new Recurrence();
+            recurrence.Value = recurData;
+            calToPush.Recurrence = recurrence;
+
+            /*
+            Reminder fifteenMinReminder = new Reminder();
+            fifteenMinReminder.Minutes = 15;
+            fifteenMinReminder.Method = Reminder.ReminderMethod.sms;
+            calToPush.Reminders.Add(fifteenMinReminder);
+            */
+
+            try
+            {
+                Uri postUri = new Uri("http://www.google.com/calendar/feeds/default/private/full");
+
+                // Send the request and receive the response:
+                AtomEntry insertedEntry = service.Insert(postUri, calToPush);
+                insertedEntry.Update();
+
+
+            }
+            catch (GDataRequestException gdre)
+            {
+                HttpWebResponse response = (HttpWebResponse)gdre.Response;
+
+                //bad auth token, clear session and refresh the page
+                if (response.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    Session.Clear();
+                    Response.Redirect(Request.Url.AbsolutePath, true);
+
+                }
+                else
+                {
+                    Response.Write("Error processing request: " + gdre.ToString());
+                }
+
+            }
+            
+            Response.Redirect(Request.Url.AbsoluteUri);// should this be here?
+        }
+
         protected void addToGcalender_Click(object sender, ImageClickEventArgs e)
         {
-            Response.Redirect(AuthSubUtil.getRequestUrl(Request.Url.AbsoluteUri,
-                                                        "http://www.google.com/calendar/feeds/",
-                                                        false,
-                                                        true));
+            GrabbaRideDBDataContext GdataContext = new GrabbaRideDBDataContext();
+            var user = GdataContext.GetUserByUsername(Page.User.Identity.Name);
+            if (user.GAuthToken != null)
+            {
+                String NewToken = user.GAuthToken.ToString();
+                Session.Remove("token"); // just to be sure
+                Session.Add("token", NewToken);
+                PostToGcal();
+            }
+            else
+            {
+                Response.Redirect(AuthSubUtil.getRequestUrl(Request.Url.AbsoluteUri,
+                                                            "http://www.google.com/calendar/feeds/",
+                                                            false,
+                                                            true));
+            }
             
         }
 
