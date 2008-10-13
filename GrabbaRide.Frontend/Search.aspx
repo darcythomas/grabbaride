@@ -7,6 +7,8 @@
     <img src="Images/system-search.png" alt="Search" class="floatrightimg" />
     <h2>
         Search</h2>
+    <h3>
+        What sort of ride were you looking for?</h3>
     <asp:ScriptManager ID="ScriptManager1" runat="server" />
     <div id="gdiv" style="float: right;" class="gmap-search-large" runat="server">
         <table>
@@ -29,60 +31,70 @@
             </tr>
         </table>
     </div>
-    Time:<br />
-    <asp:DropDownList ID="drphours" runat="server">
-        <asp:ListItem Value="1" />
-        <asp:ListItem Value="2" />
-        <asp:ListItem Value="3" />
-        <asp:ListItem Value="4" />
-        <asp:ListItem Value="5" />
-        <asp:ListItem Value="6" />
-        <asp:ListItem Value="7" />
-        <asp:ListItem Value="8" />
-        <asp:ListItem Value="9" Selected="True" />
-        <asp:ListItem Value="10" />
-        <asp:ListItem Value="11" />
-        <asp:ListItem Value="12" />
-    </asp:DropDownList>
-    <asp:DropDownList ID="drpmins" runat="server">
-        <asp:ListItem Value="00" />
-        <asp:ListItem Value="05" />
-        <asp:ListItem Value="10" />
-        <asp:ListItem Value="15" />
-        <asp:ListItem Value="20" />
-        <asp:ListItem Value="25" />
-        <asp:ListItem Value="30" />
-        <asp:ListItem Value="35" />
-        <asp:ListItem Value="40" />
-        <asp:ListItem Value="45" />
-        <asp:ListItem Value="50" />
-        <asp:ListItem Value="55" />
-    </asp:DropDownList>
-    <asp:DropDownList ID="drpdayhalf" runat="server">
-        <asp:ListItem Value="am" Text="a.m." />
-        <asp:ListItem Value="pm" Text="p.m." />
-    </asp:DropDownList>
-    <br />
-    On Days:<br />
-    <asp:CheckBox ID="chkmon" runat="server" Text="Monday" />
-    <br />
-    <asp:CheckBox ID="chktue" runat="server" Text="Tuesday" />
-    <br />
-    <asp:CheckBox ID="chkwed" runat="server" Text="Wednesday" />
-    <br />
-    <asp:CheckBox ID="chkthu" runat="server" Text="Thursday" />
-    <br />
-    <asp:CheckBox ID="chkfri" runat="server" Text="Friday" />
-    <br />
-    <asp:CheckBox ID="chksat" runat="server" Text="Saturday" />
-    <br />
-    <asp:CheckBox ID="chksun" runat="server" Text="Sunday" />
-    <br />
-    <asp:HiddenField ID="hfstart" runat="server" />
-    <asp:HiddenField ID="hfend" runat="server" />
-    <br />
-    <asp:Button ID="btnSearch" runat="server" OnClick="btnSearch_Click" Text="Search Rides" />
-    <br />
+    <table class="user-details-table">
+        <tr>
+            <th>
+                Time
+            </th>
+            <td>
+                <asp:DropDownList ID="drphours" runat="server">
+                    <asp:ListItem Value="0" Text="12" />
+                    <asp:ListItem Value="1" />
+                    <asp:ListItem Value="2" />
+                    <asp:ListItem Value="3" />
+                    <asp:ListItem Value="4" />
+                    <asp:ListItem Value="5" />
+                    <asp:ListItem Value="6" />
+                    <asp:ListItem Value="7" />
+                    <asp:ListItem Value="8" />
+                    <asp:ListItem Value="9" Selected="True" />
+                    <asp:ListItem Value="10" />
+                    <asp:ListItem Value="11" />
+                </asp:DropDownList>
+                <asp:DropDownList ID="drpmins" runat="server">
+                    <asp:ListItem Value="00" />
+                    <asp:ListItem Value="05" />
+                    <asp:ListItem Value="10" />
+                    <asp:ListItem Value="15" />
+                    <asp:ListItem Value="20" />
+                    <asp:ListItem Value="25" />
+                    <asp:ListItem Value="30" />
+                    <asp:ListItem Value="35" />
+                    <asp:ListItem Value="40" />
+                    <asp:ListItem Value="45" />
+                    <asp:ListItem Value="50" />
+                    <asp:ListItem Value="55" />
+                </asp:DropDownList>
+                <asp:DropDownList ID="drpampm" runat="server">
+                    <asp:ListItem Value="a.m." />
+                    <asp:ListItem Value="p.m." />
+                </asp:DropDownList>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Days
+            </th>
+            <td>
+                <asp:CheckBox ID="chkmon" runat="server" Text="Monday" /><br />
+                <asp:CheckBox ID="chktue" runat="server" Text="Tuesday" /><br />
+                <asp:CheckBox ID="chkwed" runat="server" Text="Wednesday" /><br />
+                <asp:CheckBox ID="chkthu" runat="server" Text="Thursday" /><br />
+                <asp:CheckBox ID="chkfri" runat="server" Text="Friday" /><br />
+                <asp:CheckBox ID="chksat" runat="server" Text="Saturday" /><br />
+                <asp:CheckBox ID="chksun" runat="server" Text="Sunday" />
+            </td>
+        </tr>
+        <tr>
+            <th>
+            </th>
+            <td>
+                <asp:HiddenField ID="hfstart" runat="server" />
+                <asp:HiddenField ID="hfend" runat="server" />
+                <asp:Button ID="btnSearch" runat="server" OnClick="btnSearch_Click" Text="Search Rides" />
+            </td>
+        </tr>
+    </table>
     <div id="resultsViewStyle">
         <asp:ListView ID="ResultsListView" runat="server" DataKeyNames="RideID">
             <LayoutTemplate>

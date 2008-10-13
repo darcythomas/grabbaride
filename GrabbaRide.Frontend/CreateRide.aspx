@@ -10,8 +10,11 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" runat="server" ContentPlaceHolderID="MainContentPlaceHolder">
+    <img src="Images/createride.png" alt="Create Ride" class="floatrightimg" />
     <h2>
         Create A Ride</h2>
+    <h3>
+        Enter the ride details</h3>
     <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true">
     </asp:ScriptManager>
     <table id="createridetable">
@@ -190,12 +193,13 @@
             <td>
             </td>
             <td>
-                <div id="buttondiv" style="visibility:hidden; ">
-                <asp:Button ID="btnCreate" runat="server" OnClick="btnCreate_Click" Text="Create Ride!"
-                    Width="112px" Font-Bold="True" />
+                <div id="buttondiv" style="visibility: hidden;">
+                    <asp:Button ID="btnCreate" runat="server" OnClick="btnCreate_Click" Text="Create Ride!"
+                        Width="112px" Font-Bold="True" />
                 </div>
-                <div id="errordiv" style="visibility: hidden; font-family: Arial; font-size: medium; color: #FF0000;">
-                Please mark start and end locations on the map
+                <div id="errordiv" style="visibility: hidden; font-family: Arial; font-size: medium;
+                    color: #FF0000;">
+                    Please mark start and end locations on the map
                 </div>
                 <br />
             </td>

@@ -52,7 +52,7 @@ namespace GrabbaRide.Frontend
                 int hours = Int32.Parse(Request.QueryString["hours"]);
                 if (hours >= 12)
                 {
-                    drpdayhalf.SelectedValue = "pm";
+                    drpampm.SelectedValue = "p.m.";
                     hours -= 12;
                 }
                 drphours.SelectedValue = hours.ToString();
@@ -87,7 +87,10 @@ namespace GrabbaRide.Frontend
         {
             // convert the hours to 24h time
             int hours = Int32.Parse(drphours.SelectedValue);
-            if (drpdayhalf.SelectedValue == "pm") { hours += 12; }
+            if (drpampm.SelectedValue == "p.m.")
+            {
+                hours += 12;
+            }
 
             // redirect to the search results
             string search = "Search.aspx?" +
