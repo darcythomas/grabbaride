@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true"
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" EnableViewState="true"
     CodeBehind="OpenIDError.aspx.cs" Inherits="GrabbaRide.Frontend.OpenIDError" Title="GrabbaRide | Error" %>
 
 <%@ Register Assembly="DotNetOpenId" Namespace="DotNetOpenId.RelyingParty" TagPrefix="RP" %>
