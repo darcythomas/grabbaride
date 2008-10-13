@@ -75,7 +75,8 @@ namespace GrabbaRide.Frontend
             if (Page.IsValid)
             {
                 // add the user to the db
-                Membership.CreateUser(NewUserNameText.Text, String.Empty, TxtBox_Email.Text);
+                string password = Guid.NewGuid().ToString();
+                Membership.CreateUser(NewUserNameText.Text, password, TxtBox_Email.Text);
 
                 // get the user from the db
                 GrabbaRideDBDataContext context = new GrabbaRideDBDataContext();
