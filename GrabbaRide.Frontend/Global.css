@@ -12,6 +12,7 @@
 	font-size: x-small;
 	padding: 5px 10px;
 	margin: 0px;
+	background-color: White;
 }
 #head-top-grey p
 {
@@ -40,6 +41,7 @@ body
 {
 	font-family: Verdana, Arial;
 	margin: 0px;
+	background-color: #dedede;
 }
 h2
 {
@@ -58,12 +60,16 @@ h3
  */
 #maxwidth
 {
-	width: 80%;
+	width: 85%;
 	margin: 10px auto;
+	background-color: White;
+	background-image: url('Images/page-left.png');
+	background-repeat: repeat-y;
+	background-position: left;
 }
 #main-content
 {
-	margin: 5px 220px 30px 20px;
+	margin: 5px 235px 30px 35px;
 }
 
 /*
@@ -72,6 +78,7 @@ h3
 #nav-bar
 {
 	margin: 0px;
+	padding: 0px 15px;
 }
 #nav-bar table
 {
@@ -140,6 +147,9 @@ h3
 	font-size: small;
 	text-align: center;
 	border-top: 1px solid gray;
+	padding: 5px;
+	margin: 0px;
+	background-color: White;
 }
 #footer ul
 {
@@ -165,7 +175,7 @@ h3
 	border: 1px solid #74f230;
 	height: 350px;
 	width: 200px;
-	margin: 10px 0px;
+	margin: 10px 15px 10px 0px;
 }
 #ad-bar p
 {
