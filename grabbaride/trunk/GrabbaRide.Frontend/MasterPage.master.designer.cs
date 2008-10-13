@@ -13,6 +13,15 @@
 public partial class MasterPage {
     
     /// <summary>
+    /// Head1 control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.HtmlControls.HtmlHead Head1;
+    
+    /// <summary>
     /// HeadContentPlaceHolder control.
     /// </summary>
     /// <remarks>
@@ -40,13 +49,13 @@ public partial class MasterPage {
     protected global::System.Web.UI.WebControls.Label FooterDateLabel;
     
     /// <summary>
-    /// ImgBanner control.
+    /// ImageBanner control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Image ImgBanner;
+    protected global::System.Web.UI.WebControls.Image ImageBanner;
     
     /// <summary>
     /// LoginStatus control.
