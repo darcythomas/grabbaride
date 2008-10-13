@@ -93,13 +93,14 @@ function BeginDrag() {
 //marker dragend handler
 function EndDrag() {
     //update the hidden fields in case our marker positions have changed
+    var temp;
     if (startMkr) {
-        var temp = startMkr.getLatLng();
-        hftemp.value = temp.lat() + "," + temp.lng();
+        temp = startMkr.getLatLng();
+        hfstart.value = temp.lat() + "," + temp.lng();
     }
     if (endMkr) {
         temp = endMkr.getLatLng();
-        hftemp.value = temp.lat() + "," + temp.lng();
+        hfend.value = temp.lat() + "," + temp.lng();
     }
     //redraw the bounding boxes and lines
     if (endMkr && startMkr)
