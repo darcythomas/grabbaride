@@ -105,7 +105,6 @@ function EndDrag() {
     if (endMkr && startMkr)
     {
         DrawBoundingBoxes();
-        valGMapLocations();
     }
 }
 
@@ -137,7 +136,6 @@ function SetEnd(lat, lng, maptype) {
   if (endMkr && startMkr)
   {
     DrawBoundingBoxes();
-    valGMapLocations();
   }
   
 }
