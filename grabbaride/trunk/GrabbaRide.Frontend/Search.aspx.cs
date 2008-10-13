@@ -169,6 +169,7 @@ namespace GrabbaRide.Frontend
             if (results.Count == 0)
             {
                 SearchResultsLabel.Text = "No rides found!";
+                CreateRideLink.Visible = true;
             }
         }
 

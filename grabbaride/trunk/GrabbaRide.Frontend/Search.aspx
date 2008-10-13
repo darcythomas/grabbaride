@@ -10,6 +10,8 @@
     <div id="SearchResultsDiv" runat="server" visible="false">
         <h3>
             <asp:Label ID="SearchResultsLabel" runat="server">Search results</asp:Label></h3>
+        <p id="CreateRideLink" runat="server" visible="false">
+            <strong>Would you like to <a href="CreateRide.aspx">create a ride</a>?</strong></p>
         <asp:GridView ID="ResultsGridView" runat="server" AutoGenerateColumns="False" CssClass="recent-rides-grid"
             GridLines="Horizontal">
             <Columns>
