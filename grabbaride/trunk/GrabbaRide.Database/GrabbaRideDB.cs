@@ -64,6 +64,20 @@ namespace GrabbaRide.Database
             this.SubmitChanges();
         }
 
+        public void UpdateUserDetails(User user)
+        {
+            User oldUser = this.GetUserByID(user.UserID);
+
+            oldUser.Email = user.Email;
+            oldUser.DateOfBirth = user.DateOfBirth;
+            oldUser.Comment = user.Comment;
+            oldUser.Location = user.Location;
+            oldUser.FirstName = user.FirstName;
+            oldUser.LastName = user.LastName;
+
+            this.SubmitChanges();
+        }
+
         /// <summary>
         /// Gets the ride owned by the id
         /// </summary>
@@ -244,6 +258,13 @@ namespace GrabbaRide.Database
                 return false;
         }
 
+        public void PlaceFeedbackRating(string userRaterUsername, string userRatedUsername, short rating)
+        {
+            User userRater = GetUserByUsername(userRaterUsername);
+            User userRated = GetUserByUsername(userRatedUsername);
+            PlaceFeedbackRating(userRater, userRated, rating);
+        }
+
         /// <summary>
         /// Places feedback for a user.
         /// </summary>
@@ -279,17 +300,18 @@ namespace GrabbaRide.Database
                 feedback = new FeedbackRating();
                 feedback.UserRater = userRater;
                 feedback.UserRated = userRated;
+                feedback.DatePlaced = DateTime.Now;
+                this.FeedbackRatings.InsertOnSubmit(feedback);
             }
             else
             {
                 // overwrite the existing rating
                 feedback = query.Single();
+                feedback.Rating = rating;
+                feedback.DatePlaced = DateTime.Now;
             }
 
-            // set the rating & submit to database
-            feedback.Rating = rating;
-            feedback.DatePlaced = DateTime.Now;
-            this.FeedbackRatings.InsertOnSubmit(feedback);
+            // send to database
             this.SubmitChanges();
         }
 

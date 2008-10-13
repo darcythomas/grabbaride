@@ -5,7 +5,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
-    <img src="Images/login_icon.jpg" alt="Login" style="float: right;" />
+    <img src="Images/system-lock-screen.png" alt="Login" class="floatrightimg" />
     <h2>
         Login</h2>
     <h3>

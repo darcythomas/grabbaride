@@ -73,6 +73,15 @@ namespace GrabbaRide.Database
             return password;
         }
 
+        public string FeedbackString
+        {
+            get
+            {
+                return String.Format("{0}, created from {1} ratings.", this.FeedbackScoreTotal, this.FeedbackScoreCount);
+            }
+        }
+
+
         /// <summary>
         /// Calculates whether the user is currently signed in, based on whether their last activity
         /// was in the last 15 minutes.

@@ -14,7 +14,8 @@
         <p>
             GrabbaRide | <a href="http://www.horizons.govt.nz/">Horizons</a> | <a href="http://www.pncc.govt.nz/">
                 PNCC</a> | <a href="http://www.solnetsolutions.co.nz/">Solnet Solutions</a>
-            | <a href="http://www.massey.ac.nz/">Massey University</a>
+            | <a href="http://www.pixelthismobile.com/">Pixelthis</a> | <a href="http://www.massey.ac.nz/">
+                Massey University</a>
         </p>
     </div>
     <form id="form1" runat="server">
@@ -33,7 +34,7 @@
                             <li><a href="Default.aspx">Home</a></li>
                             <li><a href="Search.aspx">Search</a></li>
                             <li><a href="CreateRide.aspx">Create Ride</a></li>
-                            <li><a href="User.aspx">My Profile</a></li>
+                            <li><a href="UserDetails.aspx">My Profile</a></li>
                             <li>
                                 <asp:LoginStatus ID="LoginStatus" runat="server" />
                             </li>

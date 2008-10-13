@@ -192,8 +192,8 @@ h3
 /*
  *  SEARCH PAGE
  */
-#resultsViewStyle 
-{	
+#resultsViewStyle
+{
 	clear: both;
 }
 #resultsViewStyle td, #resultsViewStyle th
@@ -255,6 +255,11 @@ h3
 {
 	padding: 2px 5px;
 }
+.floatrightimg
+{
+	float: right;
+	background-color: White;
+}
 
 /*
  *  REGISTER PAGE
@@ -262,4 +267,22 @@ h3
 .register-form td
 {
 	padding: 2px 5px;
+}
+
+/*
+ *  USER PAGE
+ */
+.user-details-table img, .user-details-table input[type=image]
+{
+	vertical-align: text-top;
+}
+.user-details-table td, .user-details-table th
+{
+	padding: 5px;
+	vertical-align: top;
+}
+.user-details-table th
+{
+	text-align: left;
+	font-weight: bold;
 }
