@@ -104,7 +104,11 @@ namespace GrabbaRide.Frontend
 
         private void PostToGcal()
         {
-            
+             
+             GrabbaRideDBDataContext GdataContext = new GrabbaRideDBDataContext();
+             Ride thisRide = GdataContext.GetRideByID(Int32.Parse(Request.QueryString["id"]));
+
+
             //This gets us our session authcation
             GAuthSubRequestFactory authFactory = new GAuthSubRequestFactory("cl", "Grabbaride"); 
             
@@ -160,10 +164,13 @@ namespace GrabbaRide.Frontend
             
             Google.GData.Calendar.EventEntry calToPush = new Google.GData.Calendar.EventEntry();
 
+            calToPush.Title.Text = "Grabbaride with " + Page.User.Identity.Name;
+            calToPush.Content.Content = thisRide.Details;
+
             String recurData =
-              "DTSTART;VALUE=DATE:20081007\r\n" +
-              "DTEND;VALUE=DATE:20090502\r\n" +
-              "RRULE:FREQ=WEEKLY;BYDAY=Tu;UNTIL=20090904\r\n";
+              "DTSTART;VALUE=DATE:" + thisRide.StartDate.ToString("yyyyMMdd") + "\r\n" +
+              "DTEND;VALUE=DATE:" + thisRide.EndDate.ToString("yyyyMMdd") + "\r\n" +
+              "RRULE:FREQ=WEEKLY;" + "BYDAY=" + thisRide.DaysAvailableICal + ";UNTIL=" + thisRide.EndDate.ToString("yyyyMMdd") + "\r\n";
 
             Recurrence recurrence = new Recurrence();
             recurrence.Value = recurData;
@@ -240,5 +247,8 @@ namespace GrabbaRide.Frontend
             User userRecv = dataContext.GetRideByID(Int32.Parse(Request.QueryString["id"])).User;
             userRecv.SendMessage(EmailMessage.Text, userSend);
         }
+
+        
+        
     }
 }
