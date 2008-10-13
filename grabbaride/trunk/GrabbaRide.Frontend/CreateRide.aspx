@@ -190,8 +190,14 @@
             <td>
             </td>
             <td>
+                <div id="buttondiv" style="visibility:hidden; ">
                 <asp:Button ID="btnCreate" runat="server" OnClick="btnCreate_Click" Text="Create Ride!"
                     Width="112px" Font-Bold="True" />
+                </div>
+                <div id="errordiv" style="visibility: hidden; font-family: Arial; font-size: medium; color: #FF0000;">
+                Please mark start and end locations on the map
+                </div>
+                <br />
             </td>
         </tr>
     </table>

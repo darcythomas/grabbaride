@@ -6,6 +6,8 @@ var endMkr = null;
 var startpoly = null;
 var endpoly = null;
 var line = null;
+var hfstart = null;
+var hfend = null;
 
 //init stuff
 function doPageLoad() {
@@ -31,8 +33,8 @@ function doPageLoad() {
       map.addControl(new GSmallMapControl());
       map.addControl(new GMapTypeControl());
       //if the hidden fields have values, display them on the map
-      var hfstart = document.getElementById("ctl00_MainContentPlaceHolder_hfstart");
-      var hfend = document.getElementById("ctl00_MainContentPlaceHolder_hfend");
+      hfstart = document.getElementById("ctl00_MainContentPlaceHolder_hfstart");
+      hfend = document.getElementById("ctl00_MainContentPlaceHolder_hfend");
       if (hfstart.value != "") {
         var temp = hfstart.value.split(',');
         map.setCenter(new GLatLng(parseFloat(temp[0]),parseFloat(temp[1])), 13);
@@ -44,13 +46,13 @@ function doPageLoad() {
       }
     }
   }
+  valGMapLocations();
 }
 
 //Set the start location by transferring the lat,long to a hidden field and making a marker on the map
 function SetStart(lat, lng, maptype) {
   lat = parseFloat(lat);
   lng = parseFloat(lng);
-  var hfstart = document.getElementById("ctl00_MainContentPlaceHolder_hfstart");
   hfstart.value = lat + "," + lng;
   if (!startMkr) {
     var starticon = new GIcon(G_DEFAULT_ICON);
@@ -93,18 +95,17 @@ function EndDrag() {
     //update the hidden fields in case our marker positions have changed
     if (startMkr) {
         var temp = startMkr.getLatLng();
-        var hftemp = document.getElementById("ctl00_MainContentPlaceHolder_hfstart");
         hftemp.value = temp.lat() + "," + temp.lng();
     }
     if (endMkr) {
         temp = endMkr.getLatLng();
-        hftemp = document.getElementById("ctl00_MainContentPlaceHolder_hfend");
         hftemp.value = temp.lat() + "," + temp.lng();
     }
     //redraw the bounding boxes and lines
     if (endMkr && startMkr)
     {
         DrawBoundingBoxes();
+        valGMapLocations();
     }
 }
 
@@ -112,7 +113,6 @@ function EndDrag() {
 function SetEnd(lat, lng, maptype) {
   lat = parseFloat(lat);
   lng = parseFloat(lng);
-  var hfend = document.getElementById("ctl00_MainContentPlaceHolder_hfend");
   hfend.value = lat + "," + lng;
   if (!endMkr) {
     var endicon = new GIcon(G_DEFAULT_ICON);
@@ -137,6 +137,7 @@ function SetEnd(lat, lng, maptype) {
   if (endMkr && startMkr)
   {
     DrawBoundingBoxes();
+    valGMapLocations();
   }
   
 }
@@ -253,6 +254,18 @@ function setAddress(address, marker) {
         );
     }
   }
+}
+
+function valGMapLocations() {
+    var errordiv = document.getElementById("errordiv");
+    var buttondiv = document.getElementById("buttondiv");
+    if (hfend.value && hfstart.value) {
+        buttondiv.style.visibility = "visible";
+        errordiv.style.visibility = "hidden";
+    } else {
+        buttondiv.style.visibility = "hidden";
+        errordiv.style.visibility = "visible";
+    }
 }
 
 //sets init to occur on page load
