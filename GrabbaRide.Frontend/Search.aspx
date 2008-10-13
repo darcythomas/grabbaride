@@ -9,7 +9,7 @@
         Search</h2>
     <div id="SearchResultsDiv" runat="server" visible="false">
         <h3>
-            Search results</h3>
+            <asp:Label ID="SearchResultsLabel" runat="server">Search results</asp:Label></h3>
         <asp:GridView ID="ResultsGridView" runat="server" AutoGenerateColumns="False" CssClass="recent-rides-grid"
             GridLines="Horizontal">
             <Columns>

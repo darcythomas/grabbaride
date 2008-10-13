@@ -2,6 +2,7 @@
 
 using GrabbaRide.Database;
 using System.Web.UI.WebControls;
+using System.Collections.Generic;
 
 namespace GrabbaRide.Frontend
 {
@@ -161,8 +162,14 @@ namespace GrabbaRide.Frontend
 
             // search for the ride & display results
             GrabbaRideDBDataContext dc = new GrabbaRideDBDataContext();
-            ResultsGridView.DataSource = dc.FindSimilarRides(searchedRide);
+            List<Ride> results = dc.FindSimilarRides(searchedRide);
+            ResultsGridView.DataSource = results;
             ResultsGridView.DataBind();
+
+            if (results.Count == 0)
+            {
+                SearchResultsLabel.Text = "No rides found!";
+            }
         }
 
         protected void StartEndLocationsValidator_ServerValidate(object source, ServerValidateEventArgs args)
