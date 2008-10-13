@@ -1,5 +1,5 @@
-<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true"
-    CodeBehind="Search.aspx.cs" Inherits="GrabbaRide.Frontend.WebForm5" Title="GrabbaRide | Search" %>
+<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="True"
+    CodeBehind="Search.aspx.cs" Inherits="GrabbaRide.Frontend.Search" Title="GrabbaRide | Search" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">
 </asp:Content>
@@ -7,31 +7,39 @@
     <img src="Images/system-search.png" alt="Search" class="floatrightimg" />
     <h2>
         Search</h2>
-    <h3>
-        What sort of ride were you looking for?</h3>
-    <asp:ScriptManager ID="ScriptManager1" runat="server" />
-    <div id="gdiv" style="float: right;" class="gmap-search-large" runat="server">
-        <table>
-            <tr>
-                <td width="100%">
-                    <input id="txtgeo" type="text" name="address" value="Palmerston North" style="width: 100%" />
-                </td>
-                <td>
-                    <input id="btnsetstart" type="button" value="Set Start" onclick="var address = document.getElementById('txtgeo'); setAddress(address.value, 'start'); return false" />
-                </td>
-                <td>
-                    <input id="btnsetend" type="button" value="Set End" onclick="var address = document.getElementById('txtgeo'); setAddress(address.value, 'end'); return false" />
-                </td>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    <div id="searchmap">
-                    </div>
-                </td>
-            </tr>
-        </table>
+    <div id="SearchResultsDiv" runat="server" visible="false">
+        <h3>
+            Search results</h3>
+        <asp:GridView ID="ResultsGridView" runat="server" AutoGenerateColumns="False" CssClass="recent-rides-grid"
+            GridLines="Horizontal">
+            <Columns>
+                <asp:TemplateField HeaderText="User" SortExpression="UserID">
+                    <ItemTemplate>
+                        <asp:HyperLink ID="HyperLink1" NavigateUrl='<%# Eval("User.Username", "UserDetails.aspx?id={0}") %>'
+                            runat="server"><%# Eval("User.Username") %></asp:HyperLink>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:BoundField DataField="NumSeats" HeaderText="Seats" SortExpression="NumSeats" />
+                <asp:BoundField DataField="DaysAvailable" HeaderText="Days" SortExpression="DaysAvailable" />
+                <asp:BoundField DataField="DepartureTimeString" HeaderText="Departing" SortExpression="DepartureTimeString" />
+                <asp:BoundField DataField="JourneyDistanceKm" HeaderText="Distance" ReadOnly="True"
+                    SortExpression="JourneyDistanceKm" DataFormatString="{0:f2} km" />
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:HyperLink ID="HyperLink2" NavigateUrl='<%# Eval("RideID", "RideDetails.aspx?id={0}") %>'
+                            runat="server">
+                    details &#187;
+                        </asp:HyperLink>&nbsp;
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
+        </asp:GridView>
     </div>
-    <table class="user-details-table">
+    <h3>
+        <asp:Label ID="SearchDetailsTitle" runat="server">What sort of ride were you looking for?</asp:Label>
+    </h3>
+    <asp:ScriptManager ID="ScriptManager1" runat="server" />
+    <table class="search-ride-table">
         <tr>
             <th>
                 Time
@@ -70,128 +78,70 @@
                     <asp:ListItem Value="p.m." />
                 </asp:DropDownList>
             </td>
-        </tr>
-        <tr>
             <th>
                 Days
             </th>
             <td>
-                <asp:CheckBox ID="chkmon" runat="server" Text="Monday" /><br />
-                <asp:CheckBox ID="chktue" runat="server" Text="Tuesday" /><br />
-                <asp:CheckBox ID="chkwed" runat="server" Text="Wednesday" /><br />
-                <asp:CheckBox ID="chkthu" runat="server" Text="Thursday" /><br />
-                <asp:CheckBox ID="chkfri" runat="server" Text="Friday" /><br />
-                <asp:CheckBox ID="chksat" runat="server" Text="Saturday" /><br />
-                <asp:CheckBox ID="chksun" runat="server" Text="Sunday" />
+                <asp:CheckBox ID="chkmon" runat="server" Text="Monday" Font-Names="Arial" />
+                <br />
+                <asp:CheckBox ID="chktue" runat="server" Text="Tuesday" Font-Names="Arial" />
+                <br />
+                <asp:CheckBox ID="chkwed" runat="server" Text="Wednesday" Font-Names="Arial" />
+                <br />
+                <asp:CheckBox ID="chkthu" runat="server" Text="Thursday" Font-Names="Arial" />
             </td>
-        </tr>
-        <tr>
-            <th>
-            </th>
             <td>
-                <asp:HiddenField ID="hfstart" runat="server" />
-                <asp:HiddenField ID="hfend" runat="server" />
-                <asp:Button ID="btnSearch" runat="server" OnClick="btnSearch_Click" Text="Search Rides" />
+                <asp:CheckBox ID="chkfri" runat="server" Text="Friday" Font-Names="Arial" />
+                <br />
+                <asp:CheckBox ID="chksat" runat="server" Text="Saturday" Font-Names="Arial" />
+                <br />
+                <asp:CheckBox ID="chksun" runat="server" Text="Sunday" Font-Names="Arial" />
             </td>
         </tr>
     </table>
-    <div id="resultsViewStyle">
-        <asp:ListView ID="ResultsListView" runat="server" DataKeyNames="RideID">
-            <LayoutTemplate>
-                <table runat="server" cellspacing="0">
-                    <tr runat="server">
-                        <th id="Th1" runat="server">
-                            User
-                        </th>
-                        <th id="Th4" runat="server">
-                            Seats
-                        </th>
-                        <th id="Th2" runat="server">
-                            Departing
-                        </th>
-                        <th runat="server">
-                            Mon
-                        </th>
-                        <th runat="server">
-                            Tue
-                        </th>
-                        <th runat="server">
-                            Wed
-                        </th>
-                        <th runat="server">
-                            Thu
-                        </th>
-                        <th runat="server">
-                            Fri
-                        </th>
-                        <th runat="server">
-                            Sat
-                        </th>
-                        <th runat="server">
-                            Sun
-                        </th>
-                        <th>
-                            Details
-                        </th>
-                    </tr>
-                    <tr id="itemPlaceholder" runat="server">
-                    </tr>
-                </table>
-            </LayoutTemplate>
-            <EmptyDataTemplate>
-                <table runat="server">
-                    <tr>
-                        <td>
-                            No rides found!
-                        </td>
-                    </tr>
-                </table>
-            </EmptyDataTemplate>
-            <ItemTemplate>
-                <tr>
-                    <td>
-                        <asp:Label ID="UserLabel" runat="server" Text='<%# Eval("User.Username") %>' />
-                    </td>
-                    <td>
-                        <asp:Label ID="NumSeatsLabel" runat="server" Text='<%# Eval("NumSeats") %>' />
-                    </td>
-                    <td>
-                        <asp:Label ID="DepartureTimeLabel" runat="server" Text='<%# new DateTime((long)Eval("DepartureTime.Ticks")).ToString("t") %>' />
-                    </td>
-                    <td>
-                        <asp:CheckBox ID="RecurMonCheckBox" runat="server" Checked='<%# Eval("RecurMon") %>'
-                            Enabled="false" />
-                    </td>
-                    <td>
-                        <asp:CheckBox ID="RecurTueCheckBox" runat="server" Checked='<%# Eval("RecurTue") %>'
-                            Enabled="false" />
-                    </td>
-                    <td>
-                        <asp:CheckBox ID="RecurWedCheckBox" runat="server" Checked='<%# Eval("RecurWed") %>'
-                            Enabled="false" />
-                    </td>
-                    <td>
-                        <asp:CheckBox ID="RecurThuCheckBox" runat="server" Checked='<%# Eval("RecurThu") %>'
-                            Enabled="false" />
-                    </td>
-                    <td>
-                        <asp:CheckBox ID="RecurFriCheckBox" runat="server" Checked='<%# Eval("RecurFri") %>'
-                            Enabled="false" />
-                    </td>
-                    <td>
-                        <asp:CheckBox ID="RecurSatCheckBox" runat="server" Checked='<%# Eval("RecurSat") %>'
-                            Enabled="false" />
-                    </td>
-                    <td>
-                        <asp:CheckBox ID="RecurSunCheckBox" runat="server" Checked='<%# Eval("RecurSun") %>'
-                            Enabled="false" />
-                    </td>
-                    <td>
-                        <a id="viewdetails1" runat="server" href='<%# String.Format("RideDetails.aspx?id={0}", Eval("RideID")) %>'>
-                            details -> </a>
-                    </td>
-                </tr>
-            </ItemTemplate>
-        </asp:ListView>
-    </div>
+    <table class="search-ride-table">
+        <tr>
+            <th>
+                Location
+            </th>
+            <td>
+                <div id="gdiv" class="gmap-search-large" runat="server">
+                    <table>
+                        <tr>
+                            <td width="100%">
+                                <input id="txtgeo" type="text" name="address" value="Palmerston North" style="width: 100%" />
+                            </td>
+                            <td>
+                                <input id="btnsetstart" type="button" value="Set Start" onclick="var address = document.getElementById('txtgeo'); setAddress(address.value, 'start'); return false" />
+                            </td>
+                            <td>
+                                <input id="btnsetend" type="button" value="Set End" onclick="var address = document.getElementById('txtgeo'); setAddress(address.value, 'end'); return false" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <div id="searchmap">
+                                </div>
+                                <asp:HiddenField ID="hfstart" runat="server" />
+                                <asp:HiddenField ID="hfend" runat="server" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td align="right">
+                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                    <ContentTemplate>
+                        <asp:CustomValidator ID="StartEndLocationsValidator" runat="server" ErrorMessage="Please select start and end locations!"
+                            OnServerValidate="StartEndLocationsValidator_ServerValidate" Display="Dynamic"></asp:CustomValidator>
+                        <asp:Button ID="btnSearch" runat="server" OnClick="btnSearch_Click" Text="Search Rides &#187;" />
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </td>
+        </tr>
+    </table>
 </asp:Content>

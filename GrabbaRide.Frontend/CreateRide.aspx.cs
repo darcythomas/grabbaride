@@ -34,12 +34,12 @@ namespace GrabbaRide.Frontend
             // hide or show the calendar?
             if (StartDateRadioList.SelectedIndex == 0)
             {
-                calstart.Visible = false;
+                CalStartDiv.Visible = false;
                 calstart.SelectedDate = DateTime.Now;
             }
             else
             {
-                calstart.Visible = true;
+                CalStartDiv.Visible = true;
             }
         }
 
@@ -70,7 +70,7 @@ namespace GrabbaRide.Frontend
 
             // get time
             int hrs = Int32.Parse(drphours.SelectedValue);
-            if (drpdayhalf.SelectedValue == "pm") { hrs += 12; }
+            if (drpdayhalf.SelectedValue == "p.m.") { hrs += 12; }
             int mins = Int32.Parse(drpmins.SelectedValue);
             newRide.DepartureTime = new TimeSpan(hrs, mins, 0);
 

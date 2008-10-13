@@ -10,7 +10,7 @@
 {
 	border-bottom: 1px solid gray;
 	font-size: x-small;
-	padding: 5px 10px;
+	padding: 5px 15px;
 	margin: 0px;
 	background-color: White;
 }
@@ -72,6 +72,7 @@ h3
 {
 	background-color: White;
 	width: 80%;
+	min-width: 900px;
 }
 #rightgrey
 {
@@ -226,6 +227,11 @@ h3
 /*
  *  SEARCH PAGE
  */
+.search-ride-table td, .search-ride-table th
+{
+	vertical-align: top;
+	padding: 5px;
+}
 #resultsViewStyle
 {
 	clear: both;
@@ -238,6 +244,7 @@ h3
 .gmap-search-small, .gmap-search-large
 {
 	margin-bottom: 20px;
+	float: right;
 }
 .gmap-search-small
 {
@@ -245,11 +252,11 @@ h3
 }
 .gmap-search-large
 {
-	width: 400px;
+	width: 500px;
 }
 .gmap-search-small td, .gmap-search-large td
 {
-	padding: 5px;
+	padding: 0px 10px 10px 0px;
 }
 .gmap-search-small div#searchmap
 {
@@ -263,14 +270,22 @@ h3
 /*
  *  CREATE RIDE PAGE
  */
-#createridetable
+.create-ride-table
 {
 	width: 100%;
 }
-#createridetable td
+.create-ride-table td
 {
 	vertical-align: top;
 	padding: 10px;
+}
+.start-date-table td
+{
+	padding: 0px;
+}
+.start-date-cal
+{
+	margin: 10px 0px 0px 20px;
 }
 
 /*

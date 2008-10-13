@@ -44,6 +44,14 @@
         </tr>
         <tr>
             <th>
+                Location
+            </th>
+            <td>
+                <asp:TextBox ID="LocationTextBox" runat="server"></asp:TextBox>
+            </td>
+        </tr>
+        <tr>
+            <th>
                 About Me
             </th>
             <td>

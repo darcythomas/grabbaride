@@ -1,18 +1,14 @@
 ﻿using System;
 
 using GrabbaRide.Database;
+using System.Web.UI.WebControls;
 
 namespace GrabbaRide.Frontend
 {
-    public partial class WebForm5 : System.Web.UI.Page
+    public partial class Search : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            /*
-             * It is vital that this stuff only happens if this is not a postback.
-             * Note that a postback in this context means when the submit button is pressed,
-             * not when we redirect ourselves to a querystring.
-             */
             if (!Page.IsPostBack)
             {
                 // dynamically choose which google maps script to load
@@ -22,15 +18,9 @@ namespace GrabbaRide.Frontend
                 LoadQueryStringValues();
 
                 // display the results?
-                if (String.IsNullOrEmpty(Request.QueryString["fromloc"]) &&
-                    String.IsNullOrEmpty(Request.QueryString["toloc"]))
+                if (!String.IsNullOrEmpty(Request.QueryString["fromloc"]) &&
+                    !String.IsNullOrEmpty(Request.QueryString["toloc"]))
                 {
-                    ResultsListView.Visible = false;
-                }
-                else
-                {
-                    // shrink the map
-                    gdiv.Attributes["class"] = "gmap-search-small";
                     DisplayResults();
                 }
             }
@@ -85,28 +75,31 @@ namespace GrabbaRide.Frontend
         /// </summary>
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            // convert the hours to 24h time
-            int hours = Int32.Parse(drphours.SelectedValue);
-            if (drpampm.SelectedValue == "p.m.")
+            if (Page.IsValid)
             {
-                hours += 12;
+                // convert the hours to 24h time
+                int hours = Int32.Parse(drphours.SelectedValue);
+                if (drpampm.SelectedValue == "p.m.")
+                {
+                    hours += 12;
+                }
+
+                // redirect to the search results
+                string search = "Search.aspx?" +
+                    "fromloc=" + hfstart.Value +
+                    "&toloc=" + hfend.Value +
+                    "&hours=" + hours.ToString() +
+                    "&mins=" + drpmins.SelectedValue +
+                    "&mon=" + chkmon.Checked +
+                    "&tue=" + chktue.Checked +
+                    "&wed=" + chkwed.Checked +
+                    "&thu=" + chkthu.Checked +
+                    "&fri=" + chkfri.Checked +
+                    "&sat=" + chksat.Checked +
+                    "&sun=" + chksun.Checked;
+
+                Response.Redirect(search);
             }
-
-            // redirect to the search results
-            string search = "Search.aspx?" +
-                "fromloc=" + hfstart.Value +
-                "&toloc=" + hfend.Value +
-                "&hours=" + hours.ToString() +
-                "&mins=" + drpmins.SelectedValue +
-                "&mon=" + chkmon.Checked +
-                "&tue=" + chktue.Checked +
-                "&wed=" + chkwed.Checked +
-                "&thu=" + chkthu.Checked +
-                "&fri=" + chkfri.Checked +
-                "&sat=" + chksat.Checked +
-                "&sun=" + chksun.Checked;
-
-            Response.Redirect(search);
         }
 
         /// <summary>
@@ -114,6 +107,10 @@ namespace GrabbaRide.Frontend
         /// </summary>
         protected void DisplayResults()
         {
+            // show results pane
+            SearchResultsDiv.Visible = true;
+            SearchDetailsTitle.Text = "Search again?";
+
             Ride searchedRide = new Ride();
 
             // location searched for
@@ -164,8 +161,16 @@ namespace GrabbaRide.Frontend
 
             // search for the ride & display results
             GrabbaRideDBDataContext dc = new GrabbaRideDBDataContext();
-            ResultsListView.DataSource = dc.FindSimilarRides(searchedRide);
-            ResultsListView.DataBind();
+            ResultsGridView.DataSource = dc.FindSimilarRides(searchedRide);
+            ResultsGridView.DataBind();
+        }
+
+        protected void StartEndLocationsValidator_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            if (String.IsNullOrEmpty(hfstart.Value) || String.IsNullOrEmpty(hfend.Value))
+            {
+                args.IsValid = false;
+            }
         }
     }
 }

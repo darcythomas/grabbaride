@@ -33,6 +33,7 @@ namespace GrabbaRide.Frontend
                 FirstNameTextBox.Text = user.FirstName;
                 LastNameTextBox.Text = user.LastName;
                 OccupationTextBox.Text = user.Occupation;
+                LocationTextBox.Text = user.Location;
                 CommentTextBox.Text = user.Comment;
             }
         }
@@ -48,6 +49,7 @@ namespace GrabbaRide.Frontend
             user.FirstName = FirstNameTextBox.Text;
             user.LastName = LastNameTextBox.Text;
             user.Occupation = OccupationTextBox.Text;
+            user.Location = LocationTextBox.Text;
             user.Comment = CommentTextBox.Text;
             context.SubmitChanges();
 
