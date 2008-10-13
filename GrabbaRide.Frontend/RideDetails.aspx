@@ -1,62 +1,114 @@
-<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true"
+<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="True"
     CodeBehind="RideDetails.aspx.cs" Inherits="GrabbaRide.Frontend.RideDetails" Title="GrabbaRide | Ride Details" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">
 </asp:Content>
-
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
-    <div id="RideInvalidDiv" runat="server" visible="false">
-        <asp:ObjectDataSource ID="RideObjectDataSource" runat="server" 
-            DataObjectTypeName="GrabbaRide.Database.Ride" DeleteMethod="DetachRide" 
-            SelectMethod="GetRideByID" 
-            TypeName="GrabbaRide.Database.GrabbaRideDBDataContext" 
-            UpdateMethod="ReattachRide">
-            <SelectParameters>
-                <asp:QueryStringParameter DefaultValue="" Name="rideID" QueryStringField="id" 
-                    Type="Int32" />
-            </SelectParameters>
-        </asp:ObjectDataSource>
-    </div>
-    <div id="RideDetailsDiv" runat="server">
-        <div id="searchmap" style="width: 400px; height: 400px; float: right;">
-        </div>
-        <asp:DetailsView ID="DetailsView1" runat="server" AutoGenerateRows="False" 
-            DataSourceID="RideObjectDataSource">
-            <Fields>
-                <asp:BoundField DataField="RideID" HeaderText="Ride ID" SortExpression="RideID" 
-                    ReadOnly="True" />
-                <asp:BoundField DataField="UserID" HeaderText="User" SortExpression="UserID" 
-                    ReadOnly="True" />
-                <asp:BoundField DataField="CreationDate" HeaderText="Created" 
-                    SortExpression="CreationDate" ReadOnly="True" />
-                <asp:BoundField DataField="StartDate" HeaderText="Start Date" 
-                    SortExpression="StartDate" />
-                <asp:BoundField DataField="EndDate" HeaderText="End Date" 
-                    SortExpression="EndDate" />
-                <asp:BoundField DataField="NumSeats" HeaderText="Seats Available" 
-                    SortExpression="NumSeats" />
-                <asp:CheckBoxField DataField="RecurMon" HeaderText="Monday" SortExpression="RecurMon" />
-                <asp:CheckBoxField DataField="RecurTue" HeaderText="Tuesday" SortExpression="RecurTue" />
-                <asp:CheckBoxField DataField="RecurWed" HeaderText="Wednesday" SortExpression="RecurWed" />
-                <asp:CheckBoxField DataField="RecurThu" HeaderText="Thursday" SortExpression="RecurThu" />
-                <asp:CheckBoxField DataField="RecurFri" HeaderText="Friday" SortExpression="RecurFri" />
-                <asp:CheckBoxField DataField="RecurSat" HeaderText="Saturday" SortExpression="RecurSat" />
-                <asp:CheckBoxField DataField="RecurSun" HeaderText="Sunday" SortExpression="RecurSun" />
-                <asp:BoundField DataField="Details" HeaderText="Details" 
-                    SortExpression="Details" />
-            </Fields>
-        </asp:DetailsView>
-        <div id="gcal" runat="server"><asp:ImageButton ID="addToGcalender" runat="server" Style="padding: 5px" ImageUrl="http://www.google.com/calendar/images/ext/gc_button2_en-GB.gif"
-            ToolTip="Add to your Google calendar" OnClick="addToGcalender_Click" /></div>
-            <div id="gcsent" runat="server" visible="false" style="padding: 5px">This ride has been added to your google calender</div>
-        <div id="EmailUserDiv" runat="server">
-            <p>
-                Email this user:</p>
-            <asp:TextBox ID="EmailMessage" runat="server" Rows="10" Columns="60" TextMode="MultiLine" />
-            <asp:Button ID="EmailMessageSend" runat="server" Text="Send!" 
-                onclick="EmailMessageSend_Click" />
-        </div>
-        <asp:HiddenField ID="hfstart" runat="server"  />
-        <asp:HiddenField ID="hfend" runat="server" />
-    </div>
+    <h2>
+        Ride Details</h2>
+    <table class="user-details-table">
+        <tr>
+            <th>
+                User
+            </th>
+            <td>
+                <asp:HyperLink ID="UserHyperLink" runat="server"></asp:HyperLink>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Created
+            </th>
+            <td>
+                <asp:Label ID="CreatedLabel" runat="server"></asp:Label>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Ad Expires
+            </th>
+            <td>
+                <asp:Label ID="EndDateLabel" runat="server"></asp:Label>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Seats
+            </th>
+            <td>
+                <asp:Label ID="NumSeatsLabel" runat="server"></asp:Label>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Days
+            </th>
+            <td>
+                <asp:Label ID="RecurDaysLabel" runat="server"></asp:Label>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Departing
+            </th>
+            <td>
+                <asp:Label ID="DepartureTimeLabel" runat="server"></asp:Label>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Distance
+            </th>
+            <td>
+                <asp:Label ID="DistanceLabel" runat="server"></asp:Label>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Details
+            </th>
+            <td>
+                <asp:Label ID="RideDetailsLabel" runat="server"></asp:Label>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Location
+            </th>
+            <td>
+                <div id="searchmap" style="width: 400px; height: 400px;">
+                </div>
+                <asp:HiddenField ID="hfstart" runat="server" />
+                <asp:HiddenField ID="hfend" runat="server" />
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Calendar
+            </th>
+            <td>
+                <asp:ImageButton ID="addToGcalender" runat="server" ImageUrl="http://www.google.com/calendar/images/ext/gc_button2_en-GB.gif"
+                    ToolTip="Add ride to your Google Calendar" OnClick="addToGcalender_Click" />
+                <asp:Label ID="addedToGcal" runat="server" Visible="false">This ride was successfully added to your Google Calender!</asp:Label>
+            </td>
+        </tr>
+        <tr id="EmailUserRow" runat="server">
+            <th>
+                Contact
+            </th>
+            <td>
+                <p>
+                    Write an email to this user:</p>
+                <asp:TextBox ID="EmailMessage" runat="server" Rows="10" Columns="60" TextMode="MultiLine" />
+                <asp:Button ID="EmailMessageSend" runat="server" Text="Send!" OnClick="EmailMessageSend_Click" />
+            </td>
+        </tr>
+        <tr>
+            <th>
+            </th>
+            <td>
+                <asp:HyperLink ID="EditRideHyperLink" runat="server" Text="Edit Ride Details" Visible="false"></asp:HyperLink>
+            </td>
+        </tr>
+    </table>
 </asp:Content>

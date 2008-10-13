@@ -71,14 +71,15 @@ namespace GrabbaRide.Frontend
                     // if user is viewing their own profile
                     if (displayedUser.Username == loggedUser.Username)
                     {
-                        // show edit button
+                        // show edit button, hide rating buttons
                         EditUserHyperlink.Visible = true;
-
-                        // hide rating buttons
                         PlaceRatingTr.Visible = false;
+                        RidesCreatedTitle.Text = String.Format(RidesCreatedTitle.Text, "you");
                     }
                     else // we are viewing a different user
                     {
+                        RidesCreatedTitle.Text = string.Format(RidesCreatedTitle.Text, displayedUser.Username);
+
                         // check for an existing rating
                         FeedbackRating existingRating = dataContext.GetFeedbackRating(loggedUser, displayedUser);
 
