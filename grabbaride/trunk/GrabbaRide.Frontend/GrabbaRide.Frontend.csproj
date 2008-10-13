@@ -141,6 +141,13 @@
     <Compile Include="Search.aspx.designer.cs">
       <DependentUpon>Search.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ServerError.aspx.cs">
+      <DependentUpon>ServerError.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ServerError.aspx.designer.cs">
+      <DependentUpon>ServerError.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Terms.aspx.cs">
       <DependentUpon>Terms.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -235,6 +242,7 @@
     <Content Include="OpenIDError.aspx" />
     <Content Include="Privacy.aspx" />
     <Content Include="RideDetails.aspx" />
+    <Content Include="ServerError.aspx" />
     <Content Include="Terms.aspx" />
     <Content Include="UserDetails.aspx" />
     <Content Include="Login.aspx" />
