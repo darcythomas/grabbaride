@@ -208,6 +208,8 @@
     <Content Include="Images\face-plain.png" />
     <Content Include="Images\face-sad.png" />
     <Content Include="Images\face-smile.png" />
+    <Content Include="Images\grab_banner_bg.png" />
+    <Content Include="Images\grab_banner_v1.png" />
     <Content Include="Images\header_bg.gif" />
     <Content Include="Images\header_left.gif" />
     <Content Include="Images\header_right.gif" />
