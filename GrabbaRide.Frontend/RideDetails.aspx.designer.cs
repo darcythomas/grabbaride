@@ -14,6 +14,15 @@ namespace GrabbaRide.Frontend {
     public partial class RideDetails {
         
         /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        
+        /// <summary>
         /// UserHyperLink control.
         /// </summary>
         /// <remarks>
@@ -131,6 +140,24 @@ namespace GrabbaRide.Frontend {
         protected global::System.Web.UI.HtmlControls.HtmlTableRow EmailUserRow;
         
         /// <summary>
+        /// UpdatePanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        
+        /// <summary>
+        /// SendEmailDiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SendEmailDiv;
+        
+        /// <summary>
         /// EmailMessage control.
         /// </summary>
         /// <remarks>
@@ -147,6 +174,15 @@ namespace GrabbaRide.Frontend {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button EmailMessageSend;
+        
+        /// <summary>
+        /// EmailSentDiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl EmailSentDiv;
         
         /// <summary>
         /// EditRideHyperLink control.
