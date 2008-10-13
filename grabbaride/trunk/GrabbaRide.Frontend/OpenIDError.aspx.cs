@@ -16,14 +16,25 @@ namespace GrabbaRide.Frontend
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            
+            loadViewState();
+            if (!Page.IsPostBack)
+            {
 
-           if(getResponse()!=null)
-                 SetVisablePageLoad();
-           else
-           {
-               Response.Redirect("Default.aspx");
-           }
-
+                if (getResponse() != null)
+                {
+                    SetVisablePageLoad();
+                    
+                }
+                else
+                {
+                    Response.Redirect("Default.aspx");
+                }
+            }
+            else
+            {
+           //     loadViewState();
+            }
         
 
         }
@@ -74,8 +85,10 @@ namespace GrabbaRide.Frontend
                 //check the user input if not ok reload the page with stuff that needs to be filed correctly 
                 if (!claimsRequest.UniqueUserName())
                 {
-                    usernameError.Visible = true;
-                    NewUserNameText.Text = "";
+                    
+                    // set the veiw state
+                   
+
                 }
                 ///more input testing
                 
@@ -87,7 +100,8 @@ namespace GrabbaRide.Frontend
                 Boolean allfeildsset = AllRequiredFeildsSet();
                 Boolean isnull= claimsRequest==null;
                 claimsRequest = RespondToClaim(claimsRequest);
-                Session.Add("MissingClaims", RespondToClaim(claimsRequest));
+                Session.Add("MissingClaims", RespondToClaim(claimsRequest)); 
+                setViewState();
             }
 
             else
@@ -107,6 +121,32 @@ namespace GrabbaRide.Frontend
   
             Response.Redirect("Login.aspx");
           
+        }
+
+        private void loadViewState()
+        {
+            if (!Page.IsPostBack && getResponse() != null && !getResponse().UniqueUserName())
+            {
+                usernameError.Visible = true;
+            }
+            if(ViewState["FirstName"]!=null)
+                TxtBox_First.Text = ViewState["FirstName"].ToString();
+            if (ViewState["LastName"] != null)
+                TxtBox_Last.Text =  ViewState["LastName"].ToString();
+            if(ViewState["Gender"]!=null)
+                GenderList.SelectedIndex = (int)ViewState["Gender"];
+            if(ViewState["Email"]!=null)
+              TxtBox_Email.Text =ViewState["Email"].ToString();
+        
+        }
+
+        private void setViewState()
+        {
+           
+            ViewState.Add("FirstName", TxtBox_First.Text);
+            ViewState.Add("LastName", TxtBox_Last.Text);
+            ViewState.Add("Gender", GenderList.SelectedIndex);
+            ViewState.Add("Email", TxtBox_Email.Text);
         }
 
         private OpenIDUserResponseState RespondToClaim(OpenIDUserResponseState response)
