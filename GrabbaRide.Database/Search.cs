@@ -18,7 +18,7 @@ namespace GrabbaRide.Database
         /// The list is ranked based on similarty to the param submittedRide</returns>
         public List<Ride> FindSimilarRides(Ride searchedRide)
         {
-            double searchRadius = (searchedRide.JourneyDistance * DISTANCE_VECTOR) + DISTANCE_VECTOR*0.07;
+            double searchRadius = (searchedRide.JourneyDistance * DISTANCE_VECTOR) + DISTANCE_VECTOR * 0.07;
             if (searchRadius == 0) { searchRadius = 0.1; }
 
             var query = from r in Rides
@@ -38,6 +38,7 @@ namespace GrabbaRide.Database
                                r.LocationToLong >= (searchedRide.LocationToLong - searchRadius) &&
                                r.LocationToLong <= (searchedRide.LocationToLong + searchRadius)))
                             // rides are on the right days
+                            /*
                           && (r.RecurMon || !searchedRide.RecurMon) &&
                              (r.RecurTue || !searchedRide.RecurTue) &&
                              (r.RecurWed || !searchedRide.RecurWed) &&
@@ -45,6 +46,11 @@ namespace GrabbaRide.Database
                              (r.RecurFri || !searchedRide.RecurFri) &&
                              (r.RecurSat || !searchedRide.RecurSat) &&
                              (r.RecurSun || !searchedRide.RecurSun)
+                             */
+                            //commented this out as it cuts out too many potental rides 
+                            // be good to implment some ranking in the SimilarRideComparer()
+                            // based on what the days that the ride is up for.
+
                            //Where ride is set to avalable
                           && (r.Available == true)
                         select r;
@@ -74,7 +80,8 @@ namespace GrabbaRide.Database
         private Ride baseRide;
 
         const double DISTANCE_SCALE = 100000;
-        const double TIME_SCALE = 10;
+        const double TIME_SCALE = -10;
+        const double DAY_SCALE = -1.0;
 
         private SimilarRideComparer() { }
         public SimilarRideComparer(Ride baseRide)
@@ -95,17 +102,36 @@ namespace GrabbaRide.Database
                                 Math.Pow(r2.LocationToLong - baseRide.LocationToLong, 2);
 
             // find the time between the two rides
-            double r1Time = Math.Pow((r1.DepartureTime - baseRide.DepartureTime).TotalHours, 2);
-            double r2Time = Math.Pow((r2.DepartureTime - baseRide.DepartureTime).TotalHours, 2);
+            double r1Time = 1 - Math.Abs((r1.DepartureTime - baseRide.DepartureTime).TotalHours);
+            double r2Time = 1 - Math.Abs((r2.DepartureTime - baseRide.DepartureTime).TotalHours);
+
+            //find what days match between the two rides
+            double r1Days = 0;
+            double r2Days = 0;
+
+            if (r1.RecurMon == baseRide.RecurMon) r1Days++;
+            if (r1.RecurTue == baseRide.RecurTue) r1Days++;
+            if (r1.RecurWed == baseRide.RecurWed) r1Days++;
+            if (r1.RecurThu == baseRide.RecurThu) r1Days++;
+            if (r1.RecurFri == baseRide.RecurFri) r1Days++;
+            if (r1.RecurSat == baseRide.RecurSat) r1Days++;
+
+            if (r2.RecurMon == baseRide.RecurMon) r2Days++;
+            if (r2.RecurTue == baseRide.RecurTue) r2Days++;
+            if (r2.RecurWed == baseRide.RecurWed) r2Days++;
+            if (r2.RecurThu == baseRide.RecurThu) r2Days++;
+            if (r2.RecurFri == baseRide.RecurFri) r2Days++;
+            if (r2.RecurSat == baseRide.RecurSat) r2Days++;
+
 
             // find the total score for each ride
             double r1Total = r1Distance * DISTANCE_SCALE +
-                             r1Time * TIME_SCALE;
+                             r1Time * TIME_SCALE + r1Days * DAY_SCALE;
             double r2Total = r2Distance * DISTANCE_SCALE +
-                             r2Time * TIME_SCALE;
+                             r2Time * TIME_SCALE + r2Days * DAY_SCALE;
 
             // compare the two rides
-            return (int)(r2Total - r1Total);
+            return (int)(r1Total - r2Total);
         }
     }
 }
