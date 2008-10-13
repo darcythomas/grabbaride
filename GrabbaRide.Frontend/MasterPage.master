@@ -24,9 +24,7 @@
             <td id="leftgrey">
             </td>
             <td id="middlewhite">
-                <div id="header" style="background-image: Images/grab_banner_bg.png">
-                    <asp:Image ID="ImageBanner" runat="server" 
-                        ImageUrl="~/Images/grab_banner_v2.png" />
+                <div id="logo-bar">
                 </div>
                 <div id="nav-bar">
                     <table cellspacing="0" cellpadding="0" border="0">
