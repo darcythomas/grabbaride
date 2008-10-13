@@ -58,14 +58,26 @@ h3
 /*
  *  MAIN CONTENT PANEL
  */
-#maxwidth
+#dropshadowtable
 {
-	width: 85%;
-	margin: 10px auto;
-	background-color: White;
+	width: 100%;
+}
+#leftgrey
+{
 	background-image: url('Images/page-left.png');
+	background-position: right;
 	background-repeat: repeat-y;
+}
+#middlewhite
+{
+	background-color: White;
+	width: 80%;
+}
+#rightgrey
+{
+	background-image: url('Images/page-right.png');
 	background-position: left;
+	background-repeat: repeat-y;
 }
 #main-content
 {
