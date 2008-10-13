@@ -45,18 +45,12 @@ namespace GrabbaRide.Database
                 u.DateOfBirth = RandomDate(1955, 1990);
                 u.CreationDate = RandomDate(2006, 2007);
                 u.Password = "password";// cant test if i dont have a password
-                u.Email = RandomEmail();
+                u.Email = String.Format("{0}.gr@darcythomas.com", u.Username);
                 u.ApplicationName = "GrabbaRide";
 
                 this.Users.InsertOnSubmit(u);
             }
             this.SubmitChanges();
-        }
-
-        private string RandomEmail()
-        {
-            Guid g = Guid.NewGuid();
-            return g.ToString().Substring(1, 16) + "@amypal.com";
         }
 
         private string RandomFirstname()
@@ -84,7 +78,7 @@ namespace GrabbaRide.Database
 
         private double RandomLatLong()
         {
-            return (_random.NextDouble() % 0.1)-0.05;
+            return (_random.NextDouble() % 0.1) - 0.05;
         }
 
         private DateTime RandomDate(int fromYear, int toYear)
@@ -116,12 +110,12 @@ namespace GrabbaRide.Database
 
         private Ride RandomRide()
         {
-            var r1 = (RandomLatLong() -40.355746);
+            var r1 = (RandomLatLong() - 40.355746);
             var r2 = (RandomLatLong() + 175.61219);
-            var r3 = (RandomLatLong() -40.355746);
+            var r3 = (RandomLatLong() - 40.355746);
             var r4 = (RandomLatLong() + 175.61219);
 
-            Ride r = new Ride(r1,r2,r3,r4);
+            Ride r = new Ride(r1, r2, r3, r4);
             r.User = RandomExistingUser();
             r.CreationDate = RandomDate(2008, 2008);
             r.StartDate = RandomDate(2007, 2008);
