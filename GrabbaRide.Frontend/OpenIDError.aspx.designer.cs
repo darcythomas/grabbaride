@@ -14,31 +14,22 @@ namespace GrabbaRide.Frontend {
     public partial class OpenIDError {
         
         /// <summary>
-        /// OpenIDErrorDiv control.
+        /// ScriptManager1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl OpenIDErrorDiv;
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
-        /// ChangeUserName control.
+        /// UpdatePanel1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ChangeUserName;
-        
-        /// <summary>
-        /// newUserName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label newUserName;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
         /// NewUserNameText control.
@@ -50,22 +41,22 @@ namespace GrabbaRide.Frontend {
         protected global::System.Web.UI.WebControls.TextBox NewUserNameText;
         
         /// <summary>
-        /// usernameError control.
+        /// UsernameRequiredFieldValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label usernameError;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator UsernameRequiredFieldValidator;
         
         /// <summary>
-        /// FristNameLbl control.
+        /// UsernameValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label FristNameLbl;
+        protected global::System.Web.UI.WebControls.CustomValidator UsernameValidator;
         
         /// <summary>
         /// TxtBox_First control.
@@ -77,15 +68,6 @@ namespace GrabbaRide.Frontend {
         protected global::System.Web.UI.WebControls.TextBox TxtBox_First;
         
         /// <summary>
-        /// LastNameLbl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LastNameLbl;
-        
-        /// <summary>
         /// TxtBox_Last control.
         /// </summary>
         /// <remarks>
@@ -95,33 +77,6 @@ namespace GrabbaRide.Frontend {
         protected global::System.Web.UI.WebControls.TextBox TxtBox_Last;
         
         /// <summary>
-        /// GenderLbl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label GenderLbl;
-        
-        /// <summary>
-        /// GenderList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList GenderList;
-        
-        /// <summary>
-        /// EmailLbl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label EmailLbl;
-        
-        /// <summary>
         /// TxtBox_Email control.
         /// </summary>
         /// <remarks>
@@ -129,6 +84,33 @@ namespace GrabbaRide.Frontend {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TxtBox_Email;
+        
+        /// <summary>
+        /// EmailRequiredFieldValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator EmailRequiredFieldValidator1;
+        
+        /// <summary>
+        /// EmailRegularExpressionValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator EmailRegularExpressionValidator1;
+        
+        /// <summary>
+        /// EmailCustomValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator EmailCustomValidator1;
         
         /// <summary>
         /// SubmitBttn control.
