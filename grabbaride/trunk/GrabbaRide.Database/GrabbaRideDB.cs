@@ -396,7 +396,7 @@ namespace GrabbaRide.Database
 
         public bool HasUserName(string username)
         {
-            return GetUserByUsername(username) != null;
+            return (GetUserByUsername(username) != null) && !String.IsNullOrEmpty(username);
         }
 
         #endregion

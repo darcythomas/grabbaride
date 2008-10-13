@@ -14,7 +14,6 @@
         CssClass="login-form" UserNameRequiredErrorMessage="You must enter a username!"
         PasswordRequiredErrorMessage="You must enter your password!" PasswordLabelText="Password"
         TitleText="" LoginButtonText="Login &#187;">
-        <TitleTextStyle Height="0" />
         <LabelStyle HorizontalAlign="Left" />
     </asp:Login>
     <p>
@@ -24,8 +23,7 @@
     <asp:Panel ID="OpenIDPanel" runat="server">
         <RP:OpenIdLogin ID="OpenIdLogin1" runat="server" OnFailed="OpenIdLogin1_Failed" OnCanceled="OpenIdLogin1_Canceled"
             OnLoggedIn="OpenIdLogin1_LoggedIn" OnSetupRequired="OpenIdLogin1_SetupRequired"
-            RequestBirthDate="Require" RequestEmail="Require" RequestFullName="Require" RequestGender="Require"
-            LabelText="OpenID" />
+            RequestEmail="Request" RequestFullName="Request" LabelText="OpenID" />
         <br />
         <asp:Label ID="loginFailedLabel" runat="server" EnableViewState="False" Text="Login failed"
             Visible="False" />

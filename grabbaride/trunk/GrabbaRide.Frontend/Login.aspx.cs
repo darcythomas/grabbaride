@@ -4,6 +4,7 @@ using System.Web.UI;
 using DotNetOpenId.RelyingParty;
 using GrabbaRide.Database;
 using GrabbaRide.UserManagement;
+using System.Web.Security;
 
 namespace GrabbaRide.Frontend
 {
@@ -16,42 +17,7 @@ namespace GrabbaRide.Frontend
                 // set the returnurl
                 GrabbaRideLogin.DestinationPageUrl = Request.QueryString["RedirectUrl"];
                 GrabbaRideLogin.CreateUserUrl += Request.Url.Query;
-
-                // detect session data and respond acordingly
-                OpenIDUserResponseState state = HttpContext.Current.Session["MissingClaims"] as OpenIDUserResponseState;
-
-                //if there is a current login session, and that login session has all required feilds 
-
-                if (state != null && state.AllRequiredFeilds())
-                {
-                    //inject into database
-                    AuthenticateResponse(state);
-                }
             }
-        }
-
-        public void AuthenticateResponse(OpenIDUserResponseState state)
-        {
-            // steps for authenication
-            GrabbaRideDBDataContext context = new GrabbaRideDBDataContext(); 
-            GrabbaRideMembershipProvider membership = new GrabbaRideMembershipProvider();
-            if (context.IsOpenIDRegistered(state.OpenIDLoginName))
-            {// do we have this user already?
-              // ep if its sececond time login then we wont be asking them for there grabbaride log in
-                // need to store it in db
-                membership.ValidateOpenIDUser(state.GrabbaRideLoginName);
-            }
-            else
-            {
-
-                // if so log them in
-                // if not
-                // add them
-               
-                membership.OpenIDCreateUser(state);
-                // log them in
-            }
-            Response.Redirect("Default.aspx");
         }
 
         /// <summary>
@@ -60,42 +26,25 @@ namespace GrabbaRide.Frontend
         /// </summary>
         protected void OpenIdLogin1_LoggedIn(object sender, OpenIdEventArgs e)
         {
-            LoggedInLabel.Visible = true;
-            LoggedInLabel.Text += " WELCOME" + e.Response.FriendlyIdentifierForDisplay;
+            // look for an existing openid in our db
+            OpenIDUserResponseState responseState = new OpenIDUserResponseState(e);
+            GrabbaRideDBDataContext context = new GrabbaRideDBDataContext();
+            OpenID openID = context.GetOpenIDByUrl(responseState.OpenIDLoginName);
 
-            processResponse(new OpenIDUserResponseState(e));
-        }
-
-        private void processResponse(OpenIDUserResponseState response)
-        {
-            // first should check if we have this user?????
-            if (!OpenIDSignInPrevious(response))
-            { // if not then do the rest.....
-
-                if (!response.AllRequiredFeilds())
-                {
-                    // add the missing request to the session and redirect
-                    Session.Add("MissingClaims", response);
-                    Response.Redirect("OpenIDError.aspx?RedirectUrl=Login.aspx");
-                }
-                else
-                {
-                    // inject
-                    AuthenticateResponse(response);
-                }
-
+            if (openID == null)
+            {
+                // user needs to be registered
+                Session.Add("MissingClaims", responseState);
+                Response.Redirect("OpenIDError.aspx");
             }
             else
             {
+                // log in the user
+                FormsAuthentication.RedirectFromLoginPage(openID.User.Username, false);
 
-                // check that openid has autheticated then login the user from our records
+                // redirect to next page
+                Response.Redirect(GrabbaRideLogin.DestinationPageUrl);
             }
-        }
-
-        private Boolean OpenIDSignInPrevious(OpenIDUserResponseState response)
-        {
-            GrabbaRideDBDataContext context = new GrabbaRideDBDataContext();
-            return context.IsOpenIDRegistered(response.OpenIDLoginName);
         }
 
         protected void OpenIdLogin1_Failed(object sender, OpenIdEventArgs e)
@@ -112,7 +61,7 @@ namespace GrabbaRide.Frontend
 
         protected void OpenIdLogin1_SetupRequired(object sender, OpenIdEventArgs e)
         {
-            loginFailedLabel.Text = "It seems you need to set up an openID account";
+            loginFailedLabel.Text = "Not a valid OpenID!";
             loginFailedLabel.Visible = true;
         }
     }
