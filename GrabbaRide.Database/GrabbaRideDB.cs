@@ -300,6 +300,7 @@ namespace GrabbaRide.Database
                 feedback = new FeedbackRating();
                 feedback.UserRater = userRater;
                 feedback.UserRated = userRated;
+                feedback.Rating = rating;
                 feedback.DatePlaced = DateTime.Now;
                 this.FeedbackRatings.InsertOnSubmit(feedback);
             }
