@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Net;
 using System.Web.UI;
-using GrabbaRide.Database;
-
 using Google.GData.Calendar;
 using Google.GData.Client;
 using Google.GData.Extensions;
-using System.Net;
+using GrabbaRide.Database;
 
 namespace GrabbaRide.Frontend
 {
@@ -87,7 +85,8 @@ namespace GrabbaRide.Frontend
                     // load gmaps scripts
                     GoogleMaps.LoadGoogleMapsScripts(this.Page);
 
-                    if (thisride.User.Username == User.Identity.Name)
+                    User currentUser = db.GetUserByUsername(Page.User.Identity.Name);
+                    if (thisride.User.UserID == currentUser.UserID)
                     {
                         // show ride edit button
                         EditRideHyperLink.NavigateUrl = String.Format("RideEdit.aspx?id={0}", thisride.RideID);
