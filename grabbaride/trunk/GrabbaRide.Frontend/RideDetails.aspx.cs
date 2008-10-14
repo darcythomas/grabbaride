@@ -126,9 +126,12 @@ namespace GrabbaRide.Frontend
             calToPush.Title.Text = "Grabbaride with " + Page.User.Identity.Name;
             calToPush.Content.Content = thisRide.Details;
 
+            string departTime = new DateTime(thisRide.DepartureTime.Ticks).ToString("HHmmss");
+            string arriveTime = new DateTime(thisRide.DepartureTime.Ticks).AddMinutes(30).ToString("HHmmss");
+
             String recurData =
-              "DTSTART;VALUE=DATE:" + thisRide.StartDate.ToString("yyyyMMdd") + "\r\n" +
-              "DTEND;VALUE=DATE:" + thisRide.EndDate.ToString("yyyyMMdd") + "\r\n" +
+              "DTSTART;VALUE=DATE:" + thisRide.StartDate.ToString("yyyyMMdd") + "T" + departTime + "\r\n" +
+              "DTEND;VALUE=DATE:" + thisRide.StartDate.ToString("yyyyMMdd") + "T" + arriveTime + "\r\n" +
               "RRULE:FREQ=WEEKLY;" + "BYDAY=" + thisRide.DaysAvailableICal + ";UNTIL=" + thisRide.EndDate.ToString("yyyyMMdd") + "\r\n";
 
             Recurrence recurrence = new Recurrence();
