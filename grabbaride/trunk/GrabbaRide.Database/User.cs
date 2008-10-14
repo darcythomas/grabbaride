@@ -107,8 +107,8 @@ namespace GrabbaRide.Database
         /// <param name="message">The message to send</param>
         public void SendMessage(string message, User fromUser)
         {
-            const string MESSAGE_TEMPLATE = "You have recieved a new message from GrabbaRide user {0}:\r\n" +
-                "{1}\r\nThank you for using GrabbaRide!\r\nIf you have any queries, feel free to contact us " +
+            const string MESSAGE_TEMPLATE = "You have recieved a new message from GrabbaRide user {0}:\r\n\r\n---\r\n\r\n" +
+                "{1}\r\n\r\n---\r\n\r\nThank you for using GrabbaRide!\r\nIf you have any queries, feel free to contact us " +
                 "at grabbaride@gmail.com\r\nYou can reply to the user simply by selecting the \"Reply\"" +
                 "option in your email client.";
 
