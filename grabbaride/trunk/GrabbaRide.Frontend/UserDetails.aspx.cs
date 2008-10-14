@@ -1,15 +1,5 @@
 ﻿using System;
-using System.Collections;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Web;
-using System.Web.Security;
 using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
-using System.Xml.Linq;
 
 using GrabbaRide.Database;
 
@@ -69,7 +59,7 @@ namespace GrabbaRide.Frontend
                     UsersRidesGridView.DataBind();
 
                     // if user is viewing their own profile
-                    if (displayedUser.Username == loggedUser.Username)
+                    if (displayedUser.UserID == loggedUser.UserID)
                     {
                         // show edit button, hide rating buttons
                         EditUserHyperlink.Visible = true;
