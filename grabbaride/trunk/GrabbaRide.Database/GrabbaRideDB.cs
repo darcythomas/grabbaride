@@ -111,6 +111,7 @@ namespace GrabbaRide.Database
             var rides = (from r in Rides
                          where r.NumSeats > 0 &&
                                r.Available &&
+                               r.CreationDate < DateTime.Now &&
                                r.StartDate < DateTime.Now &&
                                r.EndDate > DateTime.Now
                          orderby r.CreationDate descending
