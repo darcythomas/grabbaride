@@ -101,6 +101,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="App_Data\GoogleMaps.cs" />
+    <Compile Include="Help.aspx.cs">
+      <DependentUpon>Help.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help.aspx.designer.cs">
+      <DependentUpon>Help.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MasterPage.master.cs">
       <DependentUpon>MasterPage.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -211,6 +218,7 @@
     <Resource Include="Library\Google.GData.Calendar.dll" />
     <Resource Include="Library\Google.GData.Client.DLL" />
     <Resource Include="Library\Google.GData.Extensions.dll" />
+    <Content Include="Help.aspx" />
     <Content Include="Images\1_off.gif" />
     <Content Include="Images\2_off.gif" />
     <Content Include="Images\3_off.gif" />
