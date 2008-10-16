@@ -113,11 +113,13 @@
                 </asp:UpdatePanel>
             </td>
         </tr>
-        <tr>
+        <tr id="EditDeleteRow" runat="server" visible="false">
             <th>
             </th>
             <td>
-                <asp:HyperLink ID="EditRideHyperLink" runat="server" Text="Edit Ride Details" Visible="false"></asp:HyperLink>
+                <asp:HyperLink ID="EditRideHyperLink" runat="server" Text="Edit Ride Details"></asp:HyperLink>
+                -
+                <asp:HyperLink ID="DeleteRideHyperLink" runat="server" Text="Delete Ride"></asp:HyperLink>
             </td>
         </tr>
     </table>

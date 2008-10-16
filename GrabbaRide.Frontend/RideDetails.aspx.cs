@@ -88,9 +88,10 @@ namespace GrabbaRide.Frontend
                     User currentUser = db.GetUserByUsername(Page.User.Identity.Name);
                     if (thisride.User.UserID == currentUser.UserID)
                     {
-                        // show ride edit button
+                        // show ride edit and delete buttons
+                        EditDeleteRow.Visible = true;
                         EditRideHyperLink.NavigateUrl = String.Format("RideEdit.aspx?id={0}", thisride.RideID);
-                        EditRideHyperLink.Visible = true;
+                        DeleteRideHyperLink.NavigateUrl = String.Format("RideDelete.aspx?id={0}", thisride.RideID);
 
                         // hide email user box
                         EmailUserRow.Visible = false;

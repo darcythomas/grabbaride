@@ -55,7 +55,7 @@ namespace GrabbaRide.Frontend
                         LastSeenLabel.Text = "Never!";
 
                     // fill in user's rides (if any)
-                    UsersRidesGridView.DataSource = displayedUser.Rides;
+                    UsersRidesGridView.DataSource = dataContext.GetRidesByUserID(displayedUser.UserID);
                     UsersRidesGridView.DataBind();
 
                     // if user is viewing their own profile

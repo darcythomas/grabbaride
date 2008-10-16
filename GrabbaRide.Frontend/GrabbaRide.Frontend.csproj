@@ -142,6 +142,13 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="RideDelete.aspx.cs">
+      <DependentUpon>RideDelete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RideDelete.aspx.designer.cs">
+      <DependentUpon>RideDelete.aspx</DependentUpon>
+    </Compile>
     <Compile Include="RideDetails.aspx.cs">
       <DependentUpon>RideDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -228,6 +235,7 @@
     <Content Include="Images\Adrian.jpg" />
     <Content Include="Images\Amy.jpg" />
     <Content Include="Images\Darcy.jpg" />
+    <Content Include="Images\edit-delete.png" />
     <Content Include="Images\endicon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -263,6 +271,7 @@
     </Resource>
     <Content Include="OpenIDError.aspx" />
     <Content Include="Privacy.aspx" />
+    <Content Include="RideDelete.aspx" />
     <Content Include="RideDetails.aspx" />
     <Content Include="ServerError.aspx" />
     <Content Include="Terms.aspx" />
