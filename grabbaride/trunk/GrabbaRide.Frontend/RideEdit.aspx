@@ -120,8 +120,9 @@
             <th>
             </th>
             <td>
-                <asp:Button ID="UpdateRideButton" runat="server" Text="Update Ride Details" 
-                    onclick="UpdateRideButton_Click" />
+                <asp:Button ID="UpdateRideButton" runat="server" Text="Update Ride Details" OnClick="UpdateRideButton_Click" />
+                <asp:Button ID="DeleteRideButton" runat="server" Text="Delete Ride" 
+                    onclick="DeleteRideButton_Click" />
             </td>
         </tr>
     </table>

@@ -111,5 +111,10 @@ namespace GrabbaRide.Frontend
             // redirect to ride details page
             Response.Redirect(String.Format("RideDetails.aspx?id={0}", ride.RideID));
         }
+
+        protected void DeleteRideButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(String.Format("RideDelete.aspx?id={0}", Request.QueryString["id"]));
+        }
     }
 }

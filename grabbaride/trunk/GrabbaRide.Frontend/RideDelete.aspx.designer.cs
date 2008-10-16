@@ -11,7 +11,7 @@
 namespace GrabbaRide.Frontend {
     
     
-    public partial class RideDetails {
+    public partial class RideDelete {
         
         /// <summary>
         /// ScriptManager1 control.
@@ -21,15 +21,6 @@ namespace GrabbaRide.Frontend {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.ScriptManager ScriptManager1;
-        
-        /// <summary>
-        /// UserHyperLink control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink UserHyperLink;
         
         /// <summary>
         /// CreatedLabel control.
@@ -68,33 +59,6 @@ namespace GrabbaRide.Frontend {
         protected global::System.Web.UI.WebControls.Label RecurDaysLabel;
         
         /// <summary>
-        /// DepartureTimeLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label DepartureTimeLabel;
-        
-        /// <summary>
-        /// DistanceLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label DistanceLabel;
-        
-        /// <summary>
-        /// RideDetailsLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label RideDetailsLabel;
-        
-        /// <summary>
         /// hfstart control.
         /// </summary>
         /// <remarks>
@@ -113,33 +77,6 @@ namespace GrabbaRide.Frontend {
         protected global::System.Web.UI.WebControls.HiddenField hfend;
         
         /// <summary>
-        /// addToGcalender control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton addToGcalender;
-        
-        /// <summary>
-        /// addedToGcal control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label addedToGcal;
-        
-        /// <summary>
-        /// EmailUserRow control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow EmailUserRow;
-        
-        /// <summary>
         /// UpdatePanel1 control.
         /// </summary>
         /// <remarks>
@@ -149,66 +86,39 @@ namespace GrabbaRide.Frontend {
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
-        /// SendEmailDiv control.
+        /// DeleteConfirmNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SendEmailDiv;
+        protected global::System.Web.UI.WebControls.Button DeleteConfirmNo;
         
         /// <summary>
-        /// EmailMessage control.
+        /// DeleteConfirmYes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox EmailMessage;
+        protected global::System.Web.UI.WebControls.Button DeleteConfirmYes;
         
         /// <summary>
-        /// EmailMessageSend control.
+        /// DeleteSuccessLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button EmailMessageSend;
+        protected global::System.Web.UI.WebControls.Label DeleteSuccessLabel;
         
         /// <summary>
-        /// EmailSentDiv control.
+        /// DeleteSuccessContinue control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl EmailSentDiv;
-        
-        /// <summary>
-        /// EditDeleteRow control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow EditDeleteRow;
-        
-        /// <summary>
-        /// EditRideHyperLink control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink EditRideHyperLink;
-        
-        /// <summary>
-        /// DeleteRideHyperLink control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink DeleteRideHyperLink;
+        protected global::System.Web.UI.WebControls.Button DeleteSuccessContinue;
     }
 }

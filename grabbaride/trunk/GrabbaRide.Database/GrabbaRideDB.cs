@@ -121,14 +121,18 @@ namespace GrabbaRide.Database
         }
 
         /// <summary>
-        /// Returns all rides belonging to userID
+        /// Returns all current rides belonging to userID
         /// </summary>
         /// <param name="userID"></param>
         /// <returns></returns>
         public IEnumerable<Ride> GetRidesByUserID(int userID)
         {
             var rides = from r in Rides
-                        where r.UserID == userID
+                        where r.UserID == userID &&
+                              r.Available == true &&
+                              r.CreationDate < DateTime.Now &&
+                              r.StartDate < DateTime.Now &&
+                              r.EndDate > DateTime.Now
                         select r;
 
             return rides;
