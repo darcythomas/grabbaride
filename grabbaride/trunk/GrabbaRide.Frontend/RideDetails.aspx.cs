@@ -122,16 +122,17 @@ namespace GrabbaRide.Frontend
             service.RequestFactory = authFactory;
 
             Google.GData.Calendar.EventEntry calToPush = new Google.GData.Calendar.EventEntry();
-
-            calToPush.Title.Text = "Grabbaride with " + Page.User.Identity.Name;
+           
+            
+            calToPush.Title.Text = "Grabbaride with " + thisRide.User.Username;
             calToPush.Content.Content = thisRide.Details;
 
             string departTime = new DateTime(thisRide.DepartureTime.Ticks).ToString("HHmmss");
-            string arriveTime = new DateTime(thisRide.DepartureTime.Ticks).AddMinutes(30).ToString("HHmmss");
+           
 
             String recurData =
-              "DTSTART;VALUE=DATE:" + thisRide.StartDate.ToString("yyyyMMdd") + "T" + departTime + "\r\n" +
-              "DTEND;VALUE=DATE:" + thisRide.StartDate.ToString("yyyyMMdd") + "T" + arriveTime + "\r\n" +
+              "DTSTART;TZID=Pacific/Auckland:" + thisRide.StartDate.ToString("yyyyMMdd") + "T" + departTime  + "\r\n" +
+              "DURATION:PT30M \r\n" +
               "RRULE:FREQ=WEEKLY;" + "BYDAY=" + thisRide.DaysAvailableICal + ";UNTIL=" + thisRide.EndDate.ToString("yyyyMMdd") + "\r\n";
 
             Recurrence recurrence = new Recurrence();
@@ -162,9 +163,7 @@ namespace GrabbaRide.Frontend
                 //bad auth token, clear session and refresh the page
                 if (response.StatusCode == HttpStatusCode.Unauthorized)
                 {
-                    Session.Clear();
-                    Response.Redirect(Request.Url.AbsolutePath, true);
-
+                    GetNewToken();
                 }
                 else
                 {
@@ -191,12 +190,18 @@ namespace GrabbaRide.Frontend
             }
             else
             {
-                Response.Redirect(AuthSubUtil.getRequestUrl(Request.Url.AbsoluteUri,
-                                                            "http://www.google.com/calendar/feeds/",
-                                                            false,
-                                                            true));
+                GetNewToken();
             }
 
+        }
+
+        private void GetNewToken()
+        {
+
+            Response.Redirect(AuthSubUtil.getRequestUrl(Request.Url.AbsoluteUri,
+                                                        "http://www.google.com/calendar/feeds/",
+                                                        false,
+                                                        true));
         }
 
         /// <summary>
