@@ -38,6 +38,7 @@
                                     <li><a href="Search.aspx">Search</a></li>
                                     <li><a href="CreateRide.aspx">Create Ride</a></li>
                                     <li><a href="UserDetails.aspx">My Profile</a></li>
+                                    <li><a href="Help.aspx">Help</a></li>
                                     <li>
                                         <asp:LoginStatus ID="LoginStatus" runat="server" />
                                     </li>
