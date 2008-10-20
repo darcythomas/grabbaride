@@ -38,10 +38,11 @@
                                     <li><a href="Search.aspx">Search</a></li>
                                     <li><a href="CreateRide.aspx">Create Ride</a></li>
                                     <li><a href="UserDetails.aspx">My Profile</a></li>
-                                    <li><a href="Help.aspx">Help</a></li>
                                     <li>
                                         <asp:LoginStatus ID="LoginStatus" runat="server" />
                                     </li>
+                                    <li>
+                                        <asp:HyperLink ID="HelpHyperLink" runat="server" NavigateUrl="Help.aspx">Help</asp:HyperLink></li>
                                 </ul>
                             </td>
                             <td id="nav-bar-right">

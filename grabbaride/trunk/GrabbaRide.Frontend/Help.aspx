@@ -30,13 +30,13 @@
 		In addition, the user can edit the ride details, or delete the ride completely.
 	</p>
     <h3>
-        <a id="editride"></a>Editing rides</h3>
+        <a id="rideedit"></a>Editing rides</h3>
     	<p class="style1" style="width: 817px">
         Users can edit the ride(s) they have created at the end of ride creation, when they are redirected to the search page, they can view and edit their ride details 
 		here. Otherwise, the user can edit/delete their created rides in their profile page. In the profile page they can view/edit their personal details, as well as, edit/delete existing rides.  
     </p>
     <h3>
-        <a id="editprofile"></a>Editing your details</h3>
+        <a id="useredit"></a>Editing your details</h3>
     	<p class="style1" style="width: 817px">
     	In the profile page, registered users can view and edit their account details. This is essentially a record of who the user is to the team at GrabbaRide, and to other users who may wish to browse their details before choosing to accept a ride with them.<br>
 		<br><strong>The following information is held by GrabbaRide:</strong> Name, Location, Occupation, Member Since, Last Seen, Feedback Rating 

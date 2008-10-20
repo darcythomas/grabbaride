@@ -21,7 +21,13 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 dataContext.UpdateLastActivityByUsername(Page.User.Identity.Name);
             }
 
+            // add time
             FooterDateLabel.Text = DateTime.Now.ToString("d MMM, h:mm tt");
+
+            // try to guess the page name, and add it to the help link
+            string pageName = Request.AppRelativeCurrentExecutionFilePath.TrimStart('~', '/').ToLower();
+            int x = pageName.IndexOf(".aspx");
+            HelpHyperLink.NavigateUrl += String.Format("#{0}", pageName.Substring(0, x));
         }
     }
 }
