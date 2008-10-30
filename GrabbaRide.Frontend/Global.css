@@ -54,6 +54,10 @@ h3
 	width: 95%;
 	border-bottom: 2px solid #74f230;
 }
+.justify
+{
+	text-align: justify;
+}
 
 /*
  *  MAIN CONTENT PANEL

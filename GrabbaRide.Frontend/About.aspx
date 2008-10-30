@@ -2,17 +2,11 @@
     CodeBehind="About.aspx.cs" Inherits="GrabbaRide.Frontend.About" Title="GrabbaRide | About Us" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">
-    <style type="text/css">
-        p
-        {
-            text-align: justify;
-        }
-    </style>
 </asp:Content>
 <asp:Content ID="Content3" runat="server" ContentPlaceHolderID="MainContentPlaceHolder">
     <h2>
         About Us</h2>
-    <p>
+    <p class="justify">
         This website was established in 2008 as Palmerston North-based GrabbaRide by the
         .NET team at Massey University. The site was developed by a team of students as
         part of their third year studies for the paper 159.356 Software Engineering C.<br />
@@ -29,11 +23,11 @@
                 <img src="Images/Adrian.jpg" alt="Adrian" />
             </td>
             <td>
-                <p>
+                <p class="justify">
                     <strong>Adrian James &quot;Jesus&quot; Macneil</strong><br />
                     <strong>Team Leader</strong><br />
                     Bachelor of Arts/Bachelor of Science</p>
-                <p>
+                <p class="justify">
                     Team's resident Stud-muffin. Also doubles as the team's illustrious leader.
                     <br />
                     <br />
@@ -51,7 +45,7 @@
                 <img src="Images/Michelle.JPG" alt="Michelle" />
             </td>
             <td>
-                <p>
+                <p class="justify">
                     <strong>Michelle "Team Reports" Cho</strong><br />
                     Bachelor of Engineering (Honours)<br />
                     This lady is seriously like... the most like... amazing... um...... lady like i
@@ -67,7 +61,7 @@
                 <img src="Images/Amy.jpg" alt="Amy" />
             </td>
             <td>
-                <p>
+                <p class="justify">
                     <strong>Amy Elizabeth &quot;Seductive&quot; Palamountain</strong><br />
                     Bachelor of Science: Computer Science and Genetics<br />
                     <br />
@@ -82,7 +76,7 @@
                 <img src="Images/Darcy.jpg" alt="Darcy" />
             </td>
             <td>
-                <p>
+                <p class="justify">
                     <strong>Thomas James &quot;Darcy-Darce&quot; Burge</strong><br />
                     Bachelor of Applied Science (Medical Imaging Technology)<br />
                     Graduate Diploma of Science (Software Engineering)</strong>
@@ -99,7 +93,7 @@
                 <img src="Images/Nick.JPG" alt="Nick" />
             </td>
             <td>
-                <p>
+                <p class="justify">
                     <strong>Nicholas James &quot;AJAX&quot; Sarten</strong><br />
                     Bachelor of Engineering (Honours)
                     <br />
@@ -117,7 +111,7 @@
                 </div>
             </td>
             <td>
-                <p>
+                <p class="justify">
                     <strong>Thomas William Scott Satherley</strong></p>
             </td>
         </tr>
