@@ -186,7 +186,7 @@ function DrawBoundingBoxes() {
 //onclick handler for map
 function MapHandler(overlay, latlng) {
   if (latlng) { 
-    var myHtml = "<a onclick='SetStart(" + latlng.lat() + ", " + latlng.lng() + ");'>Set Start</a><br><a onclick='SetEnd(" + latlng.lat() + ", " + latlng.lng() + ");'>Set End</a>";
+    var myHtml = "<a onclick='SetStart(" + latlng.lat() + ", " + latlng.lng() + ");'>Set Start</a><br /><a onclick='SetEnd(" + latlng.lat() + ", " + latlng.lng() + ");'>Set End</a>";
     map.openInfoWindow(latlng, myHtml);
   }
 }
@@ -194,7 +194,7 @@ function MapHandler(overlay, latlng) {
 //onclick handler for polygons, needed because polys fire different event arguments to the map
 function PolyHandler(latlng) {
   if (latlng) { 
-    var myHtml = "<a onclick='SetStart(" + latlng.lat() + ", " + latlng.lng() + ");'>Set Start</a><br><a onclick='SetEnd(" + latlng.lat() + ", " + latlng.lng() + ");'>Set End</a>";
+    var myHtml = "<a onclick='SetStart(" + latlng.lat() + ", " + latlng.lng() + ");'>Set Start</a><br /><a onclick='SetEnd(" + latlng.lat() + ", " + latlng.lng() + ");'>Set End</a>";
     map.openInfoWindow(latlng, myHtml);
   }
 }
@@ -202,7 +202,7 @@ function PolyHandler(latlng) {
 //onclick handler for Start Marker
 function StartHandler(latlng) { 
   if (latlng) { 
-    var myHtml = "This is your set<br>start location";
+    var myHtml = "This is your set<br />start location";
     map.openInfoWindow(latlng, myHtml);
   } 
 }
@@ -210,7 +210,7 @@ function StartHandler(latlng) {
 //onclick handler for End Marker
 function EndHandler(latlng) { 
   if (latlng) { 
-    var myHtml = "This is your set<br>end location";
+    var myHtml = "This is your set<br />end location";
     map.openInfoWindow(latlng, myHtml);
   } 
 }
