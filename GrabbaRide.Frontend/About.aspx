@@ -2,6 +2,12 @@
     CodeBehind="About.aspx.cs" Inherits="GrabbaRide.Frontend.About" Title="GrabbaRide | About Us" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">
+    <style type="text/css">
+        p
+        {
+            text-align: justify;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content3" runat="server" ContentPlaceHolderID="MainContentPlaceHolder">
     <h2>

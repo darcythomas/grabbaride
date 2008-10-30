@@ -2,6 +2,12 @@
     AutoEventWireup="true" CodeBehind="Help.aspx.cs" Inherits="GrabbaRide.Frontend.Help" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">
+    <style type="text/css">
+        p
+        {
+            text-align: justify;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <h2>
@@ -90,8 +96,8 @@
         user, if any. The user may like to review or confirm ride details, as well as edit
         ride fields when the situation changes.
     </p>
-    <h3><a id="login"></a>
-        Logging in to GrabbaRide</h3>
+    <h3>
+        <a id="login"></a>Logging in to GrabbaRide</h3>
     <p>
         You can log in to GrabbaRide using either your GrabbaRide details, or an OpenID
         account.</p>
