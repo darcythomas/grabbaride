@@ -9,7 +9,8 @@
     <asp:CreateUserWizard ID="CreateUserWizard" runat="server" UserNameLabelText="Username"
         PasswordLabelText="Password" ConfirmPasswordLabelText="Confirm Password" EmailLabelText="Email"
         QuestionLabelText="Security Question" AnswerLabelText="Answer" DuplicateUserNameErrorMessage="That username is taken!"
-        CssClass="register-form" TitleTextStyle-Font-Bold="true" CompleteSuccessText="Your account was created successfully!">
+        CssClass="register-form" TitleTextStyle-Font-Bold="true" CompleteSuccessText="Your account was created successfully!"
+        EmailRegularExpression="^([^ ])+@([^ ])+$" EmailRegularExpressionErrorMessage="Your email address is not valid!">
         <LabelStyle HorizontalAlign="Left" />
         <TitleTextStyle Font-Bold="True"></TitleTextStyle>
         <WizardSteps>
