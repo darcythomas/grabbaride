@@ -1,0 +1,350 @@
+﻿
+/*
+ *  HEADER
+ */
+#header h1
+{
+	text-align: center;
+}
+#head-top-grey
+{
+	border-bottom: 1px solid gray;
+	font-size: x-small;
+	padding: 5px 15px;
+	margin: 0px;
+	background-color: White;
+}
+#head-top-grey p
+{
+	padding: 0px;
+	margin: 0px;
+}
+.head-top-time
+{
+	color: Gray;
+	float: right;
+}
+
+/*
+ *  STANDARD ELEMENTS
+ */
+a
+{
+	color: #336cbb;
+	text-decoration: none;
+}
+a:hover
+{
+	text-decoration: underline;
+}
+body
+{
+	font-family: Verdana, Arial;
+	margin: 0px;
+	background-color: #dedede;
+}
+h2
+{
+	color: #336cbb;
+}
+h3
+{
+	color: #336cbb;
+	font-size: large;
+	width: 95%;
+	border-bottom: 2px solid #74f230;
+}
+.justify
+{
+	text-align: justify;
+}
+
+/*
+ *  MAIN CONTENT PANEL
+ */
+#dropshadowtable
+{
+	width: 100%;
+}
+#leftgrey
+{
+	background-image: url('Images/page-left.png');
+	background-position: right;
+	background-repeat: repeat-y;
+}
+#middlewhite
+{
+	background-color: White;
+	width: 80%;
+	min-width: 900px;
+}
+#rightgrey
+{
+	background-image: url('Images/page-right.png');
+	background-position: left;
+	background-repeat: repeat-y;
+}
+#main-content
+{
+	margin: 5px 235px 30px 35px;
+}
+
+/*
+ *  TOP NAVIGATION BAR
+ */
+#logo-bar
+{
+	/* background-image: url('Images/grab_banner_bg.png'); background-repeat: repeat-x; */
+	background-color: #74f230;
+	margin: 15px 15px 0px 15px;
+	padding: 0px;
+	height: 100px;
+}
+#logo-bar img
+{
+	margin: 0px;
+}
+#nav-bar
+{
+	margin: 0px;
+	padding: 0px 15px;
+}
+#nav-bar table
+{
+	height: 53px;
+	width: 100%;
+	margin: 0px;
+	font-size: large;
+}
+#nav-bar a, #nav-bar a:visited
+{
+	color: #333333;
+}
+#nav-bar tr
+{
+	background-image: url('Images/header_bg.gif');
+	background-position: top center;
+	background-repeat: repeat-x;
+	vertical-align: middle;
+}
+#nav-bar td
+{
+	margin: 0px;
+	padding: 0px;
+}
+#nav-bar-left
+{
+	width: 7px;
+	background-color: Transparent;
+	background-image: url('Images/header_left.gif');
+	background-position: left top;
+	background-repeat: no-repeat;
+}
+#nav-bar-main
+{
+	background-color: Transparent;
+	text-align: center;
+}
+#nav-bar-right
+{
+	width: 7px;
+	background-color: Transparent;
+	background-image: url('Images/header_right.gif');
+	background-position: right top;
+	background-repeat: no-repeat;
+}
+#nav-bar-main ul
+{
+	margin-top: 15px;
+	list-style-type: none;
+}
+#nav-bar-main li
+{
+	display: inline;
+	margin: 10px;
+}
+#nav-bar-main li:hover
+{
+}
+
+/*
+ *  FOOTER BAR
+ */
+#footer
+{
+	clear: both;
+	font-size: small;
+	text-align: center;
+	border-top: 1px solid gray;
+	padding: 5px;
+	margin: 0px;
+	background-color: #b2fe9e;
+}
+#footer ul
+{
+	list-style-type: none;
+}
+#footer li
+{
+	display: inline;
+	margin: 5px;
+}
+
+/*
+ *  AD BAR
+ */
+#ad-bar
+{
+	float: right;
+	font-size: x-large;
+	color: Gray;
+	text-align: center;
+	background-image: url('Images/adbar-bg.gif');
+	background-repeat: repeat-y;
+	border: 1px solid #74f230;
+	height: 350px;
+	width: 200px;
+	margin: 10px 15px 10px 0px;
+}
+#ad-bar p
+{
+	padding: 20px;
+}
+
+/*
+ *  HOME PAGE
+ */
+.recent-rides-grid
+{
+	font-size: small;
+}
+.recent-rides-grid th
+{
+	padding: 3px;
+	text-align: left;
+}
+.recent-rides-grid td
+{
+	padding: 3px;
+	vertical-align: middle;
+}
+.recent-rides-grid a
+{
+	vertical-align: middle;
+}
+
+/*
+ *  SEARCH PAGE
+ */
+.search-ride-table td, .search-ride-table th
+{
+	vertical-align: top;
+	padding: 5px;
+}
+#resultsViewStyle
+{
+	clear: both;
+}
+#resultsViewStyle td, #resultsViewStyle th
+{
+	border: solid 1px black;
+	background-color: #DCDCDC;
+}
+.gmap-search-small, .gmap-search-large
+{
+	margin-bottom: 20px;
+	float: right;
+}
+.gmap-search-small
+{
+	width: 300px;
+}
+.gmap-search-large
+{
+	width: 500px;
+}
+.gmap-search-small td, .gmap-search-large td
+{
+	padding: 0px 10px 10px 0px;
+}
+.gmap-search-small div#searchmap
+{
+	height: 300px;
+}
+.gmap-search-large div#searchmap
+{
+	height: 400px;
+}
+
+/*
+ *  CREATE RIDE PAGE
+ */
+.create-ride-table
+{
+	width: 100%;
+}
+.create-ride-table td
+{
+	vertical-align: top;
+	padding: 10px;
+}
+.start-date-table td
+{
+	padding: 0px;
+}
+.start-date-cal
+{
+	margin: 10px 0px 0px 20px;
+}
+
+/*
+ *  ABOUT US PAGE
+ */
+.aboutustable td
+{
+	vertical-align: top;
+	padding: 10px;
+}
+.aboutustable img
+{
+	border: 1px solid black;
+}
+
+/*
+ *  LOGIN PAGE
+ */
+.login-form td
+{
+	padding: 2px 5px;
+}
+.floatrightimg
+{
+	float: right;
+	background-color: White;
+}
+
+/*
+ *  REGISTER PAGE
+ */
+.register-form td
+{
+	padding: 2px 5px;
+}
+
+/*
+ *  USER PAGE
+ */
+.user-details-table img, .user-details-table input[type=image]
+{
+	vertical-align: text-top;
+}
+.user-details-table td, .user-details-table th
+{
+	padding: 5px;
+	vertical-align: top;
+}
+.user-details-table th
+{
+	text-align: left;
+	font-weight: bold;
+}

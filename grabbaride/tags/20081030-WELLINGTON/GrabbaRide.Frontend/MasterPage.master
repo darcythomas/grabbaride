@@ -1,0 +1,77 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" Inherits="MasterPage" CodeBehind="MasterPage.master.cs" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>GrabbaRide</title>
+    <link href="Global.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContentPlaceHolder" runat="server" />
+</head>
+<body id="body">
+    <form id="form1" runat="server">
+    <table id="dropshadowtable" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+            <td id="leftgrey">
+            </td>
+            <td id="middlewhite">
+                <div id="head-top-grey">
+                    <p>
+                        <asp:Label ID="FooterDateLabel" runat="server" CssClass="head-top-time">[datetime]</asp:Label></p>
+                    <p>
+                        GrabbaRide | <a href="http://www.horizons.govt.nz/">Horizons</a> | <a href="http://www.pncc.govt.nz/">
+                            PNCC</a> | <a href="http://www.solnetsolutions.co.nz/">Solnet Solutions</a>
+                        | <a href="http://www.pixelthismobile.com/">Pixelthis</a> | <a href="http://www.massey.ac.nz/">
+                            Massey University</a>
+                    </p>
+                </div>
+                <div id="logo-bar">
+                    <img src="Images/grab_banner_v2.png" alt="GrabbaRide Logo" />
+                </div>
+                <div id="nav-bar">
+                    <table cellspacing="0" cellpadding="0" border="0">
+                        <tr>
+                            <td id="nav-bar-left">
+                            </td>
+                            <td id="nav-bar-main">
+                                <ul>
+                                    <li><a href="Default.aspx">Home</a></li>
+                                    <li><a href="Search.aspx">Search</a></li>
+                                    <li><a href="CreateRide.aspx">Create Ride</a></li>
+                                    <li><a href="UserDetails.aspx">My Profile</a></li>
+                                    <li>
+                                        <asp:LoginStatus ID="LoginStatus" runat="server" />
+                                    </li>
+                                    <li>
+                                        <asp:HyperLink ID="HelpHyperLink" runat="server" NavigateUrl="Help.aspx">Help</asp:HyperLink></li>
+                                </ul>
+                            </td>
+                            <td id="nav-bar-right">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="ad-bar">
+                    <p>
+                        insert<br />
+                        ads<br />
+                        here</p>
+                </div>
+                <div id="main-content">
+                    <asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server" />
+                </div>
+                <div id="footer">
+                    <ul>
+                        <li>Copyright &copy; 2008</li>
+                        <li><a href="Terms.aspx">Terms of Use</a></li>
+                        <li><a href="Privacy.aspx">Privacy Policy</a></li>
+                        <li><a href="About.aspx">About Us</a></li>
+                    </ul>
+                </div>
+            </td>
+            <td id="rightgrey">
+            </td>
+        </tr>
+    </table>
+    </form>
+</body>
+</html>
